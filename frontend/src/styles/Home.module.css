@@ -1,0 +1,43 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 50%; /* Bredd på desktop */
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem; /* Storlek på desktop */
+  color: #333;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.content {
+  font-size: 1rem; /* Storlek på desktop */
+  color: #555;
+}
+
+/* Responsiv design för mobiler */
+@media (max-width: 768px) {
+  .container {
+    width: 100%; /* Bredd för mobil */
+  }
+
+  .title {
+    font-size: 1rem; /* Justera titelstorlek för mobil */
+  }
+
+  .content {
+    font-size: 0.7rem; /* Justera textstorlek för mobil */
+  }
+}

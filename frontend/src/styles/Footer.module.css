@@ -1,0 +1,49 @@
+/* Footer.module.css */
+
+.footer {
+  background-color: #66bb6a;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  position: relative; /* Avoid fixed positioning */
+  margin-top: auto; /* Push footer to the bottom */
+}
+
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.socialLinks {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.socialLinks a {
+  color: #000;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.socialLinks a:hover {
+  color: #0070f3;
+}
+
+/* Responsiv design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 15px;
+  }
+
+  .footer p {
+    font-size: 0.7rem;
+  }
+
+  .socialLinks a {
+    font-size: 1.2rem;
+  }
+}

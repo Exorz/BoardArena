@@ -1,0 +1,80 @@
+/* Modal.module.css */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-align: center; /* Centrera text och element */
+  position: relative;
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modalContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center; /* Centrera alla element i formuläret */
+  margin-top: 30px;
+}
+
+.modalContent input {
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #2a2a2a;
+  color: #fff;
+  width: 100%;
+}
+
+.modalContent button {
+  padding: 10px;
+  background: #66bb6a;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+.modalContent .closeButtonAlt {
+  padding: 10px;
+  background: #d9534f; /* Röd bakgrund för stäng-knappen */
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px; /* Mer mellanrum mellan register/login och stäng-knappen */
+  transition: background-color 0.3s;
+}
+
+.modalContent .closeButtonAlt:hover {
+  background: #c9302c; /* Lite mörkare röd vid hover */
+}
