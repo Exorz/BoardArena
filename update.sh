@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Steg 1: Uppdatera repositoryn från GitHub
