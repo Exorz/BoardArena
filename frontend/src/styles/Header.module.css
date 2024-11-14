@@ -84,7 +84,7 @@
   top: 10px; /* Justering från toppen för att förhindra att den rör sig */
   right: 2px; /* Justering från höger för fast placering */
   font-size: 2rem;
-  color: white;
+  color: black;
   cursor: pointer;
   z-index: 1000;
 }
@@ -92,7 +92,7 @@
 .navOpen {
   position: fixed;
   top: 50px;
-  right: 10px; /* Matcha .navToggle */
+  right: 100px; /* Matcha .navToggle */
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.8);
