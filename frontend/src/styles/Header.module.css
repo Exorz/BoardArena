@@ -82,7 +82,7 @@
 .navToggle {
   position: fixed;
   top: 10px; /* Justering från toppen för att förhindra att den rör sig */
-  right: 2px; /* Justering från höger för fast placering */
+  right: 3px; /* Justering från höger för fast placering */
   font-size: 2rem;
   color: black;
   cursor: pointer;
@@ -92,7 +92,7 @@
 .navOpen {
   position: fixed;
   top: 50px;
-  right: 100px; /* Matcha .navToggle */
+  right: 3px; /* Matcha .navToggle */
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.8);
