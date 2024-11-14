@@ -42,6 +42,6 @@ mongoose.connect('mongodb+srv://johannessonandree:Fiskbulle1a@db.bo2i6.mongodb.n
 .catch((err) => console.error('Could not connect to MongoDB', err));
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });
