@@ -19,10 +19,6 @@
     z-index: 10; /* Keep header above other content */
 }
 
-
-
-
-
 /* Håller texten i toppen av headern */
 .titleContainer {
   text-align: center;
@@ -82,9 +78,6 @@
     background-color: rgba(255, 255, 255, 0.2); /* Lighten background on hover */
 }
 
-
-
-
 /* Fixering av hamburger-menyn */
 .navToggle {
   position: fixed;
@@ -108,11 +101,6 @@
   width: max-content;
   z-index: 999;
 }
-
-
-
-
-
 
 .navOpen button {
   background-color: #66bb6a; /* Samma bakgrundsfärg som footern */
@@ -140,10 +128,13 @@
   border-color: #000;
 }
 
-
-
 /* Responsiv design */
 @media (max-width: 768px) {
+  .header {
+    max-width: 100%; /* Gör headern full bredd på mobiler */
+    height: 10vh; /* Öka höjden något på mobiler */
+  }
+
   .nav {
     display: none;
   }
@@ -156,10 +147,6 @@
     display: flex;
   }
 
-  .header {
-    height: 10vh; /* Öka höjden något på mobiler */
-  }
-
   .title {
     font-size: 1rem; /* Minska storleken på titeln för mindre skärmar */
   }
@@ -168,12 +155,12 @@
     font-size: 0.7rem; /* Anpassa storleken på underrubriken */
   }
   
- .userInfo {
+  .userInfo {
     position: relative; /* Gör den relativ så att den kan flyttas längre ner */
     top: auto; /* Återställ top-positionering */
     right: auto; /* Återställ höger-positionering */
     margin-top: 10px; /* Extra mellanrum för att placera längre ner */
-	margin-right: 10px;
+    margin-right: 10px;
     text-align: right; /* Centrerar texten horisontellt på mobil */
     font-size: 0.7rem; /* Justerar textstorlek för mindre skärmar */
   }
