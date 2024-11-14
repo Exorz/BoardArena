@@ -82,7 +82,7 @@
 .navToggle {
   position: fixed;
   top: 10px; /* Justering från toppen för att förhindra att den rör sig */
-  right: 3px; /* Justering från höger för fast placering */
+  right: 10px; /* Justering från höger för fast placering */
   font-size: 2rem;
   color: black;
   cursor: pointer;
