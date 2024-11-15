@@ -16,7 +16,8 @@ export default function GameLobby() {
         <PlayerCount game={game} />
       </div>
       <div className={styles.gameSection}>
-        <h2 className={styles.lobbyTitle}>{game} Lobby6</h2>
+        <h2 className={styles.lobbyTitle}>{game} Lobby
+    </h2>
         <button className={styles.createTableButton}>Create New Table</button>
         <TableComponent game={game} />
       </div>
