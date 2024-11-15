@@ -221,7 +221,7 @@
 
   /* Chat-sektionen på mobil */
   .chatSection {
-    max-height: 450px; /* Sätt maxhöjd för chatten till 450px på mobil */
+    height: 450px; /* Sätt maxhöjd för chatten till 450px på mobil */
     height: auto; /* Låter chatten anpassa sin höjd men begränsas av max-height */
     overflow-y: auto; /* Gör så att texten scrollar om den blir för lång */
   }
