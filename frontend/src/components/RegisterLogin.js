@@ -7,7 +7,7 @@ const RegisterLogin = ({ isOpen, onClose, mode, onLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // Hantera felmeddelanden
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +27,6 @@ const RegisterLogin = ({ isOpen, onClose, mode, onLoginSuccess }) => {
           }/api/auth/login`;
 
     const body = { username, password };
-
     if (mode === "register") {
       body.email = email;
     }
@@ -47,19 +46,11 @@ const RegisterLogin = ({ isOpen, onClose, mode, onLoginSuccess }) => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log(`${mode} successful`, data);
-
-        // Spara token, username och userId i localStorage
-        if (data.token) {
-          localStorage.setItem("authToken", data.token);
-          localStorage.setItem("username", data.username);
-          localStorage.setItem("userId", data.userId);
-
-          console.log("Token, username, and userId saved to localStorage");
-        } else {
-          console.error("No token received from server");
-          setErrorMessage("Authentication failed. No token received.");
-        }
+        console.log("Saving token and user data:", data);
+        localStorage.setItem("authToken", data.token);
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("userId", data.userId);
+        console.log("Token and user data saved to localStorage");
 
         if (onLoginSuccess) {
           onLoginSuccess(username);
@@ -67,7 +58,7 @@ const RegisterLogin = ({ isOpen, onClose, mode, onLoginSuccess }) => {
         onClose();
       } else {
         console.error("Error from server:", data.message);
-        setErrorMessage(data.message || "An error occurred during authentication.");
+        setErrorMessage(data.message || "Authentication failed.");
       }
     } catch (error) {
       console.error("Network error:", error);
@@ -78,7 +69,7 @@ const RegisterLogin = ({ isOpen, onClose, mode, onLoginSuccess }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <h2>{mode === "register" ? "Register" : "Login"}</h2>
-      {errorMessage && <p className="error">{errorMessage}</p>} {/* Visa felmeddelanden */}
+      {errorMessage && <p className="error">{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
