@@ -8,8 +8,6 @@ export default function ChatComponent({ game }) {
 
   useEffect(() => {
     const token = localStorage.getItem('authToken');
-if (!token) {
-  console.error('Token is null. User might not be logged in.');
     console.log('Emitting joinLobby with:', { lobbyId: game, token }); // Logga joinLobby
     socket.emit('joinLobby', { lobbyId: game, token });
 
