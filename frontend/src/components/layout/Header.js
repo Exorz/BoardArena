@@ -76,7 +76,7 @@ const Header = () => {
         )}
       </nav>
       <div className={styles.titleContainer}>
-        <h1 className={styles.title}>BoardArena555</h1>
+        <h1 className={styles.title}>BoardArena5565</h1>
         <p className={styles.subtitle}>Find and join exciting games in our community.</p>
       </div>
       {isLoggedIn && (
