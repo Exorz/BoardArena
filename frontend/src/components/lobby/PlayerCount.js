@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
+import socket from '../../socket';
 import styles from '../../styles/Lobby.module.css';
-
-const socket = io('http://90.143.144.169:3000');
 
 export default function PlayerCount({ game }) {
   const [playerCount, setPlayerCount] = useState(1);
@@ -16,7 +14,7 @@ export default function PlayerCount({ game }) {
     });
 
     return () => {
-      socket.disconnect();
+      socket.off('updatePlayerCount');
     };
   }, [game]);
 
