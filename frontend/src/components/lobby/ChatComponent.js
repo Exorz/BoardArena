@@ -8,20 +8,25 @@ export default function ChatComponent({ game }) {
 
   useEffect(() => {
     const token = localStorage.getItem('authToken');
+    console.log('Emitting joinLobby with:', { lobbyId: game, token }); // Logga joinLobby
     socket.emit('joinLobby', { lobbyId: game, token });
 
     // Lyssna på tidigare meddelanden
     socket.emit('requestChatHistory', game);
+    console.log('Emitting requestChatHistory for lobby:', game); // Logga requestChatHistory
     socket.on('chatHistory', (chatHistory) => {
+      console.log('Received chat history:', chatHistory); // Logga chatHistory
       setMessages(chatHistory);
     });
 
     // Lyssna på nya meddelanden
     socket.on('newMessage', (message) => {
+      console.log('Received new message:', message); // Logga nya meddelanden
       setMessages((prev) => [...prev, message]);
     });
 
     return () => {
+      console.log('Removing listeners for chatHistory and newMessage');
       socket.off('chatHistory');
       socket.off('newMessage');
     };
@@ -29,7 +34,8 @@ export default function ChatComponent({ game }) {
 
   const sendMessage = () => {
     if (input.trim()) {
-      const username = localStorage.getItem('username'); // Anta att användarnamn finns sparat
+      const username = localStorage.getItem('username');
+      console.log('Sending message:', { lobbyId: game, text: input, username }); // Logga skickat meddelande
       socket.emit('sendMessage', { lobbyId: game, text: input, username });
       setInput('');
     }
