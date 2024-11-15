@@ -1,56 +1,70 @@
 "use client";
 
-import React, { useState } from 'react';
-import Modal from './common/Modal';
+import React, { useState } from "react";
+import Modal from "./common/Modal";
 
 const RegisterLogin = ({ isOpen, onClose, mode, onLoginSuccess }) => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Dynamiskt sätta URL beroende på om vi kör lokalt eller på IP
     const url =
-      mode === 'register'
-        ? `${window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'http://90.143.144.169:5000'}/api/auth/register`
-        : `${window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'http://90.143.144.169:5000'}/api/auth/login`;
+      mode === "register"
+        ? `${
+            window.location.hostname === "localhost"
+              ? "http://localhost:5000"
+              : "http://90.143.144.169:5000"
+          }/api/auth/register`
+        : `${
+            window.location.hostname === "localhost"
+              ? "http://localhost:5000"
+              : "http://90.143.144.169:5000"
+          }/api/auth/login`;
 
-    const body = {
-      username,
-      password,
-    };
+    const body = { username, password };
 
-    if (mode === 'register') {
+    if (mode === "register") {
       body.email = email;
     }
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
 
-    const data = await response.json();
-    if (response.ok) {
-      console.log(`${mode} successful`, data);
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('username', username);
-      if (onLoginSuccess) {
-        onLoginSuccess(username);
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(`${mode} successful`, data);
+
+        // Spara token, username och userId i localStorage
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("userId", data.userId);
+
+        if (onLoginSuccess) {
+          onLoginSuccess(username);
+        }
+        onClose();
+      } else {
+        console.error("Error:", data.message);
       }
-      onClose();
-    } else {
-      console.error('Error:', data.message);
+    } catch (error) {
+      console.error("Network error:", error);
     }
   };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <h2>{mode === 'register' ? 'Register' : 'Login'}</h2>
+      <h2>{mode === "register" ? "Register" : "Login"}</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
@@ -62,7 +76,7 @@ const RegisterLogin = ({ isOpen, onClose, mode, onLoginSuccess }) => {
             required
           />
         </div>
-        {mode === 'register' && (
+        {mode === "register" && (
           <div>
             <label htmlFor="email">Email:</label>
             <input
@@ -84,8 +98,11 @@ const RegisterLogin = ({ isOpen, onClose, mode, onLoginSuccess }) => {
             required
           />
         </div>
-        <button type="submit" className={mode === 'register' ? 'registerButton' : 'loginButton'}>
-          {mode === 'register' ? 'Register' : 'Login'}
+        <button
+          type="submit"
+          className={mode === "register" ? "registerButton" : "loginButton"}
+        >
+          {mode === "register" ? "Register" : "Login"}
         </button>
       </form>
     </Modal>
