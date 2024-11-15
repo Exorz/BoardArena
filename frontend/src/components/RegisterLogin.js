@@ -10,10 +10,12 @@ const RegisterLogin = ({ isOpen, onClose, mode, onLoginSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Här använder vi miljövariabeln NEXT_PUBLIC_BACKEND_URL för att dynamiskt få rätt URL
     const url =
       mode === 'register'
-        ? 'http://localhost:5000/api/auth/register'
-        : 'http://localhost:5000/api/auth/login';
+        ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/register`
+        : `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
 
     const body = {
       username,
