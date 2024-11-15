@@ -11,11 +11,11 @@ const RegisterLogin = ({ isOpen, onClose, mode, onLoginSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Här använder vi miljövariabeln NEXT_PUBLIC_BACKEND_URL för att dynamiskt få rätt URL
+    // Dynamiskt sätta URL beroende på om vi kör lokalt eller på IP
     const url =
       mode === 'register'
-        ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/register`
-        : `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
+        ? `${window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'http://90.143.144.169:5000'}/api/auth/register`
+        : `${window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'http://90.143.144.169:5000'}/api/auth/login`;
 
     const body = {
       username,
