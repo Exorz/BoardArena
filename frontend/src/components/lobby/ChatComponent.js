@@ -1,13 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { io } from 'socket.io-client';
 import styles from '../../styles/Lobby.module.css';
 
-export default function ChatComponent() {
+const socket = io('http://90.143.144.169:3000'); // Backend URL
+
+export default function ChatComponent({ game }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
+  useEffect(() => {
+    const token = localStorage.getItem('authToken'); // Hämta token från localStorage
+    socket.emit('joinLobby', { lobbyId: game, token });
+
+    // Lyssna på tidigare meddelanden
+    socket.emit('requestChatHistory', game);
+    socket.on('chatHistory', (chatHistory) => {
+      setMessages(chatHistory);
+    });
+
+    // Lyssna på nya meddelanden
+    socket.on('newMessage', (message) => {
+      setMessages((prev) => [...prev, message]);
+    });
+
+    return () => {
+      socket.disconnect(); // Koppla från vid komponentens avmontering
+    };
+  }, [game]);
+
   const sendMessage = () => {
     if (input.trim()) {
-      setMessages([...messages, { text: input, sender: 'You' }]);
+      const username = localStorage.getItem('username'); // Antag att användarnamn finns sparat
+      socket.emit('sendMessage', { lobbyId: game, text: input, username });
       setInput('');
     }
   };
