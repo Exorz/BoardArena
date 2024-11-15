@@ -16,16 +16,20 @@ exports.registerUser = async (req, res) => {
     user = new User({ username, email, password });
     await user.save();
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    });
+    // Lägg till username i token-payload
+    const token = jwt.sign(
+      { userId: user._id, username: user.username },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
 
-    res.status(201).json({ token });
+    res.status(201).json({ token, userId: user._id, username: user.username }); // Skicka tillbaka username och userId
   } catch (error) {
-    console.error('Error during registration:', error); // Lägg till mer information i loggen
+    console.error('Error during registration:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
+
 
 
 // Inloggning av användare
@@ -43,12 +47,16 @@ exports.loginUser = async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    });
+    // Lägg till username i token-payload
+    const token = jwt.sign(
+      { userId: user._id, username: user.username },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
 
-    res.json({ token });
+    res.json({ token, userId: user._id, username: user.username }); // Skicka tillbaka username och userId
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
