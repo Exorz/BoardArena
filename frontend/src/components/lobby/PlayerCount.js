@@ -7,13 +7,16 @@ export default function PlayerCount({ game }) {
 
   useEffect(() => {
     const token = localStorage.getItem('authToken');
+    console.log('Emitting joinLobby with:', { lobbyId: game, token }); // Logga joinLobby
     socket.emit('joinLobby', { lobbyId: game, token });
 
     socket.on('updatePlayerCount', (count) => {
+      console.log('Received updated player count:', count); // Logga spelarantal
       setPlayerCount(count);
     });
 
     return () => {
+      console.log('Removing updatePlayerCount listener');
       socket.off('updatePlayerCount');
     };
   }, [game]);
