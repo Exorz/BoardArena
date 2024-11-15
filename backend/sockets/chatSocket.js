@@ -2,25 +2,36 @@ const Message = require('../models/message');
 
 module.exports = (io) => {
   io.on('connection', (socket) => {
-    socket.on('sendMessage', async ({ lobbyId, text, username }) => {
-      try {
-        console.log(`New message from ${username} in lobby ${lobbyId}: ${text}`);
-        let lobbyMessages = await Message.findOne({ lobbyId });
-        if (!lobbyMessages) {
-          lobbyMessages = new Message({ lobbyId, messages: [] });
-        }
+   socket.on('sendMessage', async ({ lobbyId, text, username }) => {
+  try {
+    console.log(`Message received: ${text} from ${username} in ${lobbyId}`);
+    // Validera att användaren är autentiserad
+    const token = socket.handshake.auth?.token || null; // Hämta token om möjligt
+    if (!token) {
+      console.error('No token provided for sendMessage');
+      return;
+    }
 
-        lobbyMessages.messages.push({ text, sender: username });
-        if (lobbyMessages.messages.length > 50) {
-          lobbyMessages.messages.shift();
-        }
-        await lobbyMessages.save();
+    const user = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(`Valid token for user: ${user.username}`);
 
-        io.to(lobbyId).emit('newMessage', { text, sender: username });
-      } catch (err) {
-        console.error('Error sending message:', err.message);
-      }
-    });
+    // Spara meddelandet
+    let lobbyMessages = await Message.findOne({ lobbyId });
+    if (!lobbyMessages) {
+      lobbyMessages = new Message({ lobbyId, messages: [] });
+    }
+    lobbyMessages.messages.push({ text, sender: username });
+    if (lobbyMessages.messages.length > 50) {
+      lobbyMessages.messages.shift();
+    }
+    await lobbyMessages.save();
+
+    io.to(lobbyId).emit('newMessage', { text, sender: username });
+  } catch (err) {
+    console.error('Error sending message:', err.message);
+  }
+});
+
 
     socket.on('requestChatHistory', async (lobbyId) => {
       try {
