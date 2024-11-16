@@ -19,6 +19,7 @@ socket.on('disconnect', () => {
 // Funktion för att ansluta till servern med token
 const connectWithToken = () => {
   const token = localStorage.getItem('authToken');
+  console.log('Attempting to connect with token:', token); // Lägg till denna logg
   if (!token) {
     console.error('No auth token found. Unable to connect.');
     return;
@@ -26,6 +27,7 @@ const connectWithToken = () => {
   socket.auth = { token }; // Skicka token i handshake
   socket.connect();
 };
+
 
 // Funktion för att gå med i en lobby
 const joinLobby = (lobbyId) => {
