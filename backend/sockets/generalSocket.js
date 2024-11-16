@@ -4,11 +4,8 @@ module.exports = (io) => {
   io.on('connection', (socket) => {
     console.log(`Socket connected: ${socket.id}`);
 
-    // När en användare ansluter till en lobby
     socket.on('joinLobby', ({ lobbyId, token }) => {
-      console.log('joinLobby event triggered.');
-      console.log('Lobby ID:', lobbyId);
-      console.log('Token received:', token);
+      console.log('joinLobby event received:', { lobbyId, token });
 
       if (!token) {
         console.error('No token provided. Disconnecting user.');
@@ -27,7 +24,7 @@ module.exports = (io) => {
         socket.join(lobbyId);
 
         const onlineUsers = io.sockets.adapter.rooms.get(lobbyId)?.size || 0;
-        console.log(`Online users in lobby ${lobbyId}: ${onlineUsers}`);
+        console.log(`Current online users in lobby ${lobbyId}: ${onlineUsers}`);
 
         io.to(lobbyId).emit('updatePlayerCount', onlineUsers);
       } catch (err) {
@@ -37,7 +34,6 @@ module.exports = (io) => {
       }
     });
 
-    // Hantera frånkoppling
     socket.on('disconnect', () => {
       console.log(`Socket disconnected: ${socket.id}`);
 
