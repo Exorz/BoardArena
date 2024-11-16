@@ -1,42 +1,48 @@
-import { io } from 'socket.io-client';
+import { io } from "socket.io-client";
 
-// Skapa en Socket.IO-klientinstans
-const socket = io('http://90.143.144.169:3000', {
-  transports: ['websocket'],
-  autoConnect: false,
-});
+let socket;
 
-// Hantera anslutning
-socket.on('connect', () => {
-  console.log(`Connected to server with socket ID: ${socket.id}`);
-});
+export const connectWithToken = (token) => {
+  const SERVER_URL = "http://90.143.144.169:3000"; // Uppdatera URL om nödvändigt
+  console.log("Attempting to connect with token:", token);
 
-// Hantera frånkoppling
-socket.on('disconnect', () => {
-  console.log('Disconnected from server');
-});
+  socket = io(SERVER_URL, {
+    auth: {
+      token: token || "default-token", // Hämta token dynamiskt om möjligt
+    },
+    transports: ["websocket"], // Prioritera WebSocket
+    timeout: 5000, // Timeout för anslutningar
+  });
 
-// Funktion för att ansluta till servern med token
-const connectWithToken = () => {
-  const token = localStorage.getItem('authToken');
-  console.log('Attempting to connect with token:', token);
-  if (!token) {
-    console.error('No auth token found. Unable to connect.');
+  socket.on("connect", () => {
+    console.log("Socket connected:", socket.id);
+  });
+
+  socket.on("connect_error", (error) => {
+    console.error("Connection error:", error.message);
+  });
+
+  socket.on("disconnect", (reason) => {
+    console.warn("Socket disconnected:", reason);
+  });
+
+  return socket;
+};
+
+export const joinLobby = (lobbyId) => {
+  if (!socket) {
+    console.error("Socket is not connected. Call `connectWithToken` first.");
     return;
   }
-  socket.auth = { token };
-  socket.connect();
 
-  socket.on('connect_error', (err) => {
-    console.error('Connection error:', err.message);
+  console.log("Joining lobby:", lobbyId);
+  socket.emit("joinLobby", { lobbyId }, (ack) => {
+    if (ack.error) {
+      console.error("Error joining lobby:", ack.error);
+    } else {
+      console.log("Successfully joined lobby:", lobbyId);
+    }
   });
 };
 
-// Funktion för att gå med i en lobby
-const joinLobby = (lobbyId) => {
-  console.log(`Joining lobby: ${lobbyId}`);
-  const token = localStorage.getItem('authToken');
-  socket.emit('joinLobby', { lobbyId, token });
-};
-
-export { socket, connectWithToken, joinLobby };
+export const getSocket = () => socket;
