@@ -12,10 +12,13 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: '*',
+    origin: 'http://90.143.144.169:3000', // Frontend-URL
     methods: ['GET', 'POST'],
+    allowedHeaders: ['Authorization', 'Content-Type'],
+    credentials: true,
   },
 });
+
 
 // Middleware
 app.use(express.json());
