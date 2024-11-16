@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { socket } from "../../socketManager"; // Hantera generella socketfunktioner i socketManager.js
+import { socket } from "../../socketManager";
 import styles from "../../styles/Lobby.module.css";
 
 export default function ChatComponent({ game }) {
@@ -7,23 +7,19 @@ export default function ChatComponent({ game }) {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    // Begär historik för lobbyn
     socket.emit("requestChatHistory", game);
     console.log("Requesting chat history for lobby:", game);
 
-    // Lyssna på historik
     socket.on("chatHistory", (chatHistory) => {
       console.log("Received chat history:", chatHistory);
       setMessages(chatHistory);
     });
 
-    // Lyssna på nya meddelanden
     socket.on("newMessage", (message) => {
       console.log("Received new message:", message);
       setMessages((prev) => [...prev, message]);
     });
 
-    // Rensa lyssnare vid avmontering
     return () => {
       console.log("Removing listeners for chatHistory and newMessage");
       socket.off("chatHistory");
@@ -33,9 +29,10 @@ export default function ChatComponent({ game }) {
 
   const sendMessage = () => {
     if (input.trim()) {
+      const token = localStorage.getItem("authToken");
       const username = localStorage.getItem("username");
-      console.log("Sending message:", { lobbyId: game, text: input, username });
-      socket.emit("sendMessage", { lobbyId: game, text: input, username });
+      console.log("Sending message:", { lobbyId: game, text: input, username, token });
+      socket.emit("sendMessage", { lobbyId: game, text: input, username, token });
       setInput("");
     }
   };
