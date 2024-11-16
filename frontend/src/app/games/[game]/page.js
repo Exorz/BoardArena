@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
-import { connectWithToken } from "../../../socketManager"; // För att hantera anslutning
+import { connectWithToken, joinLobby } from "../../../socketManager";
 import PlayerCount from "../../../components/lobby/PlayerCount";
 import ChatComponent from "../../../components/lobby/ChatComponent";
 import TableComponent from "../../../components/lobby/TableComponent";
@@ -12,8 +12,8 @@ export default function GameLobby() {
   const { game } = useParams();
 
   useEffect(() => {
-    // Anslut till servern med token
     connectWithToken();
+    joinLobby(game);
     console.log(`Connecting to server and joining lobby: ${game}`);
   }, [game]);
 
