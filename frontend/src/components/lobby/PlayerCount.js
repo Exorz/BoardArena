@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
-import socket from "../../socket";
+import { socket } from "../../socketManager"; // Hantera socket i socketManager.js
 import styles from "../../styles/Lobby.module.css";
 
 export default function PlayerCount({ game }) {
   const [playerCount, setPlayerCount] = useState(1);
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    console.log("Token in PlayerCount:", token);
-
-    socket.emit("joinLobby", { lobbyId: game, token });
-
+    // Lyssna på uppdateringar av spelarantal
     socket.on("updatePlayerCount", (count) => {
       console.log("Received updated player count:", count);
       setPlayerCount(count);
     });
 
+    // Rensa lyssnare vid avmontering
     return () => {
       console.log("Removing updatePlayerCount listener");
       socket.off("updatePlayerCount");
