@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
-import { connectWithToken, joinLobby } from "../../../socketManager";
+import { connectWithToken, joinLobby, getSocket } from "../../../socketManager";
 import PlayerCount from "../../../components/lobby/PlayerCount";
 import ChatComponent from "../../../components/lobby/ChatComponent";
 import TableComponent from "../../../components/lobby/TableComponent";
@@ -12,9 +12,16 @@ export default function GameLobby() {
   const { game } = useParams();
 
   useEffect(() => {
-    connectWithToken();
+    const token = localStorage.getItem("authToken") || "default-token"; // Hämta token dynamiskt
+    const socket = connectWithToken(token);
     joinLobby(game);
+
     console.log(`Connecting to server and joining lobby: ${game}`);
+
+    return () => {
+      console.log(`Cleaning up socket for lobby: ${game}`);
+      socket?.disconnect();
+    };
   }, [game]);
 
   return (
