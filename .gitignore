@@ -1,0 +1,16 @@
+# Ignorera node_modules
+node_modules/
+
+# Ignorera .env-filen för känslig information
+.env
+
+# Ignorera loggfiler
+*.log
+
+# Ignorera körbara filer
+*.exe
+*.out
+
+# Ignorera filer skapade av IDE:er
+.vscode/
+.idea/
