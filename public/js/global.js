@@ -14,6 +14,29 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(response => response.text())
     .then(html => {
       document.getElementById('navigation-container').innerHTML = html;
+
+      // Efter att navigation.html har laddats, binda eventlyssnare till login och register-länkar
+      const loginLink = document.getElementById('login-link');
+      if (loginLink) {
+        console.log('Login link found');  // Debugging: Kontrollera om login-länken finns
+        loginLink.addEventListener('click', (event) => {
+          event.preventDefault();  // Förhindra standardlänk beteende
+          openModal('login-modal');  // Visa login modal
+        });
+      } else {
+        console.error('Login link not found');  // Debugging: Om login-länken inte hittas
+      }
+
+      const registerLink = document.getElementById('register-link');
+      if (registerLink) {
+        console.log('Register link found');  // Debugging: Kontrollera om register-länken finns
+        registerLink.addEventListener('click', (event) => {
+          event.preventDefault();  // Förhindra standardlänk beteende
+          openModal('register-modal');  // Visa register modal
+        });
+      } else {
+        console.error('Register link not found');  // Debugging: Om register-länken inte hittas
+      }
     })
     .catch(error => {
       console.error("Error loading navigation:", error);
@@ -28,17 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => {
       console.error("Error loading footer:", error);
     });
-
-  // Funktion för att öppna och stänga menyn
-  const navLinks = document.getElementById('nav-links');
-  if (navLinks) {
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    if (hamburgerMenu) {
-      hamburgerMenu.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-      });
-    }
-  }
 
   // Funktion för att öppna och stänga modals
   function openModal(modalId) {
@@ -58,29 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       console.error('Modal not found for closing:', modalId);  // Debugging: Om modalen inte hittas
     }
-  }
-
-  // Hantera login och register modals
-  const loginLink = document.getElementById('login-link');
-  if (loginLink) {
-    console.log('Login link found');  // Debugging: Kontrollera om login-länken finns
-    loginLink.addEventListener('click', (event) => {
-      event.preventDefault();  // Förhindra standardlänk beteende
-      openModal('login-modal');  // Visa login modal
-    });
-  } else {
-    console.error('Login link not found');  // Debugging: Om login-länken inte hittas
-  }
-
-  const registerLink = document.getElementById('register-link');
-  if (registerLink) {
-    console.log('Register link found');  // Debugging: Kontrollera om register-länken finns
-    registerLink.addEventListener('click', (event) => {
-      event.preventDefault();  // Förhindra standardlänk beteende
-      openModal('register-modal');  // Visa register modal
-    });
-  } else {
-    console.error('Register link not found');  // Debugging: Om register-länken inte hittas
   }
 
   const loginSubmit = document.getElementById('login-submit');
