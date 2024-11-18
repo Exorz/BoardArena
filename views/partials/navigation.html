@@ -5,5 +5,31 @@
     <li><a href="/games">Games</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/contact">Contact</a></li>
+    <li id="login-register-links">
+      <a href="#" id="login-link">Login</a> | <a href="#" id="register-link">Register</a>
+    </li>
+    <li id="logout-link" style="display: none;">
+      <a href="#" id="logout-button">Logout</a>
+    </li>
   </ul>
 </nav>
+
+<!-- Login Modal -->
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <h2>Login</h2>
+    <input type="text" id="login-username" placeholder="Username">
+    <input type="password" id="login-password" placeholder="Password">
+    <button id="login-submit">Login</button>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div id="register-modal" class="modal">
+  <div class="modal-content">
+    <h2>Register</h2>
+    <input type="text" id="register-username" placeholder="Username">
+    <input type="password" id="register-password" placeholder="Password">
+    <button id="register-submit">Register</button>
+  </div>
+</div>
