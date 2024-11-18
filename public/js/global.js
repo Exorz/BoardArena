@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal('register-modal');
     }
   }
-});
+
 
 
   // Kontrollera om användaren är inloggad vid sidladdning
