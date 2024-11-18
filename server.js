@@ -18,7 +18,7 @@ app.use(cors());          // Aktivera CORS (Cross-Origin Resource Sharing)
 app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
 
 // Servera statiska filer från 'public' mappen
-app.use(express.static('public'));  // Express kommer nu att servera filer från /public
+app.use(express.static('Public'));  // Express kommer nu att servera filer från /public
 
 // Anslut till MongoDB utan deprecated options
 mongoose.connect(config.mongoURI)
