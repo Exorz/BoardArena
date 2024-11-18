@@ -14,11 +14,7 @@ body {
   min-height: 100vh;  /* Gör så att body tar upp hela visningshöjden */
   display: flex;
   flex-direction: column;  /* Gör så att innehållet i body arrangeras vertikalt */
-}
-
-/* För att hålla contenten centralt, växa det om innehållet inte räcker */
-.content {
-  flex-grow: 1;  /* Detta gör så att contenten fyller utrymmet och pushar footern ner */
+  justify-content: space-between;  /* Se till att footern alltid är längst ner */
 }
 
 /* Styling för alla länkar */
