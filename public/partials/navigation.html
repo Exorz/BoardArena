@@ -1,4 +1,5 @@
-<!-- /views/partials/navigation.html -->
+<!-- navigation.html -->
+
 <nav>
   <!-- Hamburgermenyns ikon för mobila enheter -->
   <div class="hamburger-menu" id="hamburger-menu" onclick="toggleMenu()">
@@ -23,23 +24,23 @@
 </nav>
 
 <!-- Login Modal -->
-<div id="login-modal" class="modal" style="display: none;">
+<div id="login-modal" class="modal">
   <div class="modal-content">
+    <span class="close" onclick="closeModal('login-modal')">&times;</span> <!-- Close button -->
     <h2>Login</h2>
     <input type="text" id="login-username" placeholder="Username">
     <input type="password" id="login-password" placeholder="Password">
-    <button id="login-submit">Login</button>
+    <button id="login-submit" class="btn">Login</button>
   </div>
 </div>
 
 <!-- Register Modal -->
-<div id="register-modal" class="modal" style="display: none;">
+<div id="register-modal" class="modal">
   <div class="modal-content">
+    <span class="close" onclick="closeModal('register-modal')">&times;</span> <!-- Close button -->
     <h2>Register</h2>
     <input type="text" id="register-username" placeholder="Username">
     <input type="password" id="register-password" placeholder="Password">
-    <button id="register-submit">Register</button>
+    <button id="register-submit" class="btn">Register</button>
   </div>
 </div>
-
-
