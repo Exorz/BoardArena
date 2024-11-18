@@ -1,2 +1,3 @@
 nodemon server.js
 ./auto-update.sh &
+git pull
