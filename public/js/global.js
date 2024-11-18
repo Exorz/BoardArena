@@ -34,12 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Funktion för att öppna och stänga menyn
   const navLinks = document.getElementById('nav-links');
   if (navLinks) {
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    if (hamburgerMenu) {
-      hamburgerMenu.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-      });
-    }
+    document.getElementById('hamburger-menu').addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
   }
 
   // Funktion för att öppna och stänga modals
@@ -106,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
           closeModal('login-modal');
           document.getElementById('login-register-links').style.display = 'none';
           document.getElementById('logout-link').style.display = 'block';
-          document.getElementById('header-subtitle').innerText = `Logged in as: ${data.username}`;
+          document.getElementById('header-subtitle').innerText = Logged in as: ${data.username};
         } else {
           alert('Invalid credentials');
         }
@@ -149,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (data.loggedIn) {
         document.getElementById('login-register-links').style.display = 'none';
         document.getElementById('logout-link').style.display = 'block';
-        document.getElementById('header-subtitle').innerText = `Logged in as: ${data.username}`;
+        document.getElementById('header-subtitle').innerText = Logged in as: ${data.username};
       }
     });
 });
