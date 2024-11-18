@@ -25,9 +25,10 @@ mongoose.connect(config.mongoURI)
     process.exit(1); // Stänger ner servern om anslutningen misslyckas
   });
 
-// Definiera API-rutter här (t.ex. för spel eller användare)
+// Definiera rutter
+// Start-sida (index)
 app.get('/', (req, res) => {
-  res.send('Välkommen till BoardArena!');
+  res.sendFile(__dirname + '/views/index.html'); // Ladda in startsidan
 });
 
 // Starta servern
