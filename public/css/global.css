@@ -34,20 +34,22 @@ header {
   background-position: bottom center;  /* Visar den nedersta delen av bilden */
   padding: 30px 0;
   text-align: center;
-  color: white;
+  color: black;  /* Sätt textfärgen i headern till svart */
 }
 
 .header-container {
   display: flex;
-  justify-content: space-between;  /* Gör så att logotypen och titeln är separerade */
+  justify-content: space-between;  /* Se till att logotypen och titel är separerade */
   align-items: center;
   gap: 15px;
+  padding: 0 20px;  /* Lägger till lite padding så att innehållet inte är vid kanten */
 }
 
 .header-title {
   font-size: 3rem;
   font-weight: bold;
   margin: 0;
+  color: black;  /* Sätt färgen på titeln till svart */
 }
 
 .header-logo {
@@ -58,7 +60,7 @@ header {
 .header-subtitle {
   font-size: 1.2rem;
   margin-top: 10px;
-  color: #fff;
+  color: black;  /* Sätt undertitelns textfärg till svart */
 }
 
 /* Styling för navigeringen */
@@ -99,13 +101,13 @@ nav .hamburger-menu .bar {
 }
 
 #nav-links a {
-  color: white;
+  color: black;  /* Sätt färgen på navigeringslänkarna till svart */
   text-decoration: none;
   font-size: 1.2rem;
 }
 
 #nav-links a:hover {
-  color: #66bb6a;
+  color: #66bb6a;  /* Grön färg på hover */
 }
 
 /* När hamburgermenyn är aktiv (öppen) */
@@ -119,7 +121,7 @@ nav .hamburger-menu .bar {
 /* Styling för footern */
 footer {
   background-color: #66bb6a;  /* Samma färg som navigeringen */
-  color: white;
+  color: black;  /* Sätt textfärgen i footern till svart */
   padding: 10px 0;
   text-align: center;
   font-size: 1rem;
