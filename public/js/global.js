@@ -42,28 +42,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Funktion för att öppna och stänga modals
   function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';  // Visa modalen
+    console.log('Opening modal:', modalId);  // Debugging: Kontrollera om vi försöker öppna modalen
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'block';  // Visa modalen
+    } else {
+      console.error('Modal not found:', modalId);  // Debugging: Om modalen inte hittas
+    }
   }
 
   function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';   // Dölja modalen
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'none';   // Dölja modalen
+    } else {
+      console.error('Modal not found for closing:', modalId);  // Debugging: Om modalen inte hittas
+    }
   }
 
   // Hantera login och register modals
   const loginLink = document.getElementById('login-link');
   if (loginLink) {
+    console.log('Login link found');  // Debugging: Kontrollera om login-länken finns
     loginLink.addEventListener('click', (event) => {
-      event.preventDefault(); // Förhindra standardlänk beteende
+      event.preventDefault();  // Förhindra standardlänk beteende
       openModal('login-modal');  // Visa login modal
     });
+  } else {
+    console.error('Login link not found');  // Debugging: Om login-länken inte hittas
   }
 
   const registerLink = document.getElementById('register-link');
   if (registerLink) {
+    console.log('Register link found');  // Debugging: Kontrollera om register-länken finns
     registerLink.addEventListener('click', (event) => {
-      event.preventDefault(); // Förhindra standardlänk beteende
+      event.preventDefault();  // Förhindra standardlänk beteende
       openModal('register-modal');  // Visa register modal
     });
+  } else {
+    console.error('Register link not found');  // Debugging: Om register-länken inte hittas
   }
 
   const loginSubmit = document.getElementById('login-submit');
