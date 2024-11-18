@@ -2,32 +2,32 @@
 
 /* Allmän styling för hela body */
 body {
-  font-family: 'Arial', sans-serif;  /* All text på sidan kommer använda Arial */
-  font-size: 16px;                   /* Standard textstorlek */
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
   margin: 0;
   padding: 0;
-  background-image: url(''); /* Bakgrundsbild för hela sidan */
-  background-size: cover;           /* Gör bakgrunden responsiv */
-  background-position: center;      /* Centrera bakgrunden */
-  color: #333;                      /* Standard textfärg */
+  background-image: url('');
+  background-size: cover;
+  background-position: center;
+  color: #333;
 }
 
 /* Styling för alla länkar */
 a {
   text-decoration: none;
-  color: inherit;                   /* Länkar tar textfärgen från omgivande text */
+  color: inherit;
 }
 
 a:hover {
-  color: #66bb6a;                   /* Länkar får grön färg när man hovrar */
+  color: #66bb6a;
 }
 
 /* Styling för headern */
 header {
-  background-color: rgba(0, 0, 0, 0.5); /* Halvgenomskinlig svart bakgrund för att skapa kontrast */
-  padding: 30px 0;                     /* Padding för att ge utrymme runt innehållet */
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 30px 0;
   text-align: center;
-  color: white;                        /* Vit textfärg */
+  color: white;
 }
 
 .header-container {
@@ -38,13 +38,13 @@ header {
 }
 
 .header-title {
-  font-size: 3rem;                     /* Stor text för titeln */
+  font-size: 3rem;
   font-weight: bold;
   margin: 0;
 }
 
 .header-logo {
-  height: 50px;                        /* Justera storlek på logotypen */
+  height: 50px;
   width: auto;
 }
 
@@ -54,63 +54,72 @@ header {
   color: #fff;
 }
 
-/* Styling för navigering */
+/* Styling för navigeringen */
 nav {
-  background-color: #333;              /* Mörk bakgrund för navigeringen */
+  background-color: #333;
   padding: 10px;
+  position: relative;
 }
 
-nav ul {
-  list-style-type: none;               /* Ta bort punktlistan */
+nav .hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+nav .hamburger-menu .bar {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+#nav-links {
+  list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;             /* Centrera menyn horisontellt */
+  justify-content: center;
+  gap: 15px;
 }
 
-nav li {
-  margin: 0 15px;                      /* Skapa mellanrum mellan länkar */
+#nav-links li {
+  margin: 0;
 }
 
-nav a {
-  color: white;                        /* Vit text för länkar */
+#nav-links a {
+  color: white;
   text-decoration: none;
-  font-size: 1.2rem;                   /* Justera storlek på texten */
+  font-size: 1.2rem;
 }
 
-nav a:hover {
-  color: #66bb6a;                      /* Grön färg på hover */
+#nav-links a:hover {
+  color: #66bb6a;
 }
 
-/* Styling för footern */
-footer {
-  background-color: #66bb6a;           /* Grön bakgrundsfärg */
-  color: white;                        /* Vit textfärg */
-  padding: 10px 0;
-  text-align: center;
-  font-size: 1rem;
+/* När hamburgermenyn är aktiv (öppen) */
+#nav-links.open {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 /* Responsiv design för mobil */
 @media (max-width: 768px) {
-  body {
-    font-size: 14px;                  /* Minska textstorlek på mobiler */
+  /* Visa hamburgermenyn på mobila enheter */
+  .hamburger-menu {
+    display: flex;
   }
 
-  .header-title {
-    font-size: 2rem;                   /* Minska titelns storlek på mobiler */
+  /* Dölja de vanliga navigeringslänkarna på mobiler tills hamburgermenyn öppnas */
+  #nav-links {
+    display: none;
   }
 
-  .header-subtitle {
-    font-size: 1rem;                   /* Justera storlek på undertitel */
-  }
-
-  nav ul {
-    flex-direction: column;            /* Gör menyn vertikal på mobiler */
-  }
-
-  nav li {
-    margin: 5px 0;                     /* Justera mellanrum på mobiler */
+  /* När hamburgermenyn öppnas, visa menyn */
+  #nav-links.open {
+    display: flex;
   }
 }
-
