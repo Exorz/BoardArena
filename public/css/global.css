@@ -160,6 +160,7 @@ footer {
 
 /* Full-width input fields */
 .modal-content input[type="text"],
+.modal-content input[type="email"],
 .modal-content input[type="password"] {
     width: 100%; /* Full width for input fields */
     padding: 12px; /* Padding for input fields */
@@ -189,30 +190,36 @@ footer {
     opacity: 0.9; /* Slight opacity */
 }
 
-/* Cancel button styling */
-.modal-content .cancel {
-    background-color: red; /* Color for cancel button */
-    margin-top: 10px; /* Space between buttons */
+/* Close button styling */
+.modal-content .close {
+    background-color: red; /* Close button color */
+    color: white; /* Text color for close button */
+    padding: 12px; /* Padding for button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    width: 100%; /* Full width */
+    opacity: 0.9;
+    margin-top: 10px; /* Space between register button and close button */
 }
 
 /* Hover effects for buttons */
 .modal-content .btn:hover,
-.modal-content .cancel:hover {
+.modal-content .close:hover {
     opacity: 1; /* Full opacity on hover */
 }
 
-/* Close button (optional) */
-.modal-content .close {
+/* Center modal vertically and horizontally */
+.modal-content {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    color: #aaa;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* This ensures centering in height */
 }
 
-.modal-content .close:hover {
-    color: #333;
+/* Optional: Add some extra padding to the modal container for better spacing */
+.modal-content {
+    padding: 25px;
 }
 
 
