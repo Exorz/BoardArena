@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const morgan = require('morgan');
 const session = require('express-session');
-const config = require('/config/config');
+const config = require('./config/config');
 
 // Importera autentiseringsrutter
 const authRoutes = require('./routes/auth');
