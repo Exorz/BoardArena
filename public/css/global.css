@@ -13,8 +13,8 @@ body {
   color: black;  /* Sätt all text till svart */
   min-height: 100vh;  /* Gör så att body tar upp hela visningshöjden */
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;  /* För att hålla footern längst ner om innehållet inte är långt nog */
+  flex-direction: column;  /* Gör så att innehållet i body arrangeras vertikalt */
+  justify-content: space-between;  /* Se till att footern alltid är längst ner */
 }
 
 /* Styling för alla länkar */
@@ -39,9 +39,10 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: center;  /* Centrerar både logotyp och titel */
+  justify-content: center;  /* Se till att logotypen och titel är separerade */
   align-items: center;
   gap: 15px;
+  padding: 0 20px;  /* Lägger till lite padding så att innehållet inte är vid kanten */
 }
 
 .header-title {
