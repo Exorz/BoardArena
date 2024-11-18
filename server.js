@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const morgan = require('morgan');
+const session = require('express-session');
 const config = require('./config/config');
+
+// Importera autentiseringsrutter
+const authRoutes = require('./routes/auth');
 
 // Läs in miljövariabler från .env
 dotenv.config();
@@ -17,6 +21,14 @@ app.use(express.json());  // För att kunna ta emot JSON från klienten
 app.use(cors());          // Aktivera CORS (Cross-Origin Resource Sharing)
 app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
 
+// Middleware för sessionhantering
+app.use(session({
+  secret: 'your-secret-key', // Hela sessionen är krypterad med den här nyckeln
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }  // Ställ in på true om du använder HTTPS
+}));
+
 // Servera statiska filer från 'public' mappen
 app.use(express.static('public'));  // Express kommer nu att servera filer från /public
 
@@ -28,13 +40,15 @@ mongoose.connect(config.mongoURI)
     process.exit(1); // Stänger ner servern om anslutningen misslyckas
   });
 
-// Definiera rutter
-// Start-sida (index)
+// Använd autentiseringsrutter
+app.use('/auth', authRoutes);  // Auth-rutter som login, register, logout
+
+// Definiera andra rutter (t.ex. för sidor som index, spel etc.)
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html'); // Ladda in startsidan
 });
 
 // Starta servern
 app.listen(config.port, () => {
-  console.log(`Servern körs på http://localhost:${config.port}`);
+  console.log(`Servern kör på http://localhost:${config.port}`);
 });
