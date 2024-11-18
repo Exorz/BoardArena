@@ -6,7 +6,7 @@ body {
   font-size: 16px;                   /* Standard textstorlek */
   margin: 0;
   padding: 0;
-  background-image: url('/images/background.jpg'); /* Bakgrundsbild för hela sidan */
+  background-image: url(''); /* Bakgrundsbild för hela sidan */
   background-size: cover;           /* Gör bakgrunden responsiv */
   background-position: center;      /* Centrera bakgrunden */
   color: #333;                      /* Standard textfärg */
