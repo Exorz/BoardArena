@@ -1,6 +1,14 @@
 /* /public/css/global.css */
 
 /* Allmän styling för hela body */
+
+html, body {
+  height: 100%; /* Säkerställ att body och html tar upp 100% av fönsterhöjden */
+  margin: 0; /* Ta bort standardmarginalen */
+  display: flex; /* Gör body till en flexbox */
+  flex-direction: column; /* Organisera innehållet i en kolumn (top-down) */
+}
+
 body {
   font-family: 'Arial', sans-serif;
   font-size: 16px;
