@@ -42,22 +42,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Funktion för att öppna och stänga modals
   function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';
+    document.getElementById(modalId).style.display = 'block';  // Visa modalen
   }
 
   function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
+    document.getElementById(modalId).style.display = 'none';   // Dölja modalen
   }
 
   // Hantera login och register modals
   const loginLink = document.getElementById('login-link');
   if (loginLink) {
-    loginLink.addEventListener('click', () => openModal('login-modal'));
+    loginLink.addEventListener('click', (event) => {
+      event.preventDefault(); // Förhindra standardlänk beteende
+      openModal('login-modal');  // Visa login modal
+    });
   }
 
   const registerLink = document.getElementById('register-link');
   if (registerLink) {
-    registerLink.addEventListener('click', () => openModal('register-modal'));
+    registerLink.addEventListener('click', (event) => {
+      event.preventDefault(); // Förhindra standardlänk beteende
+      openModal('register-modal');  // Visa register modal
+    });
   }
 
   const loginSubmit = document.getElementById('login-submit');
