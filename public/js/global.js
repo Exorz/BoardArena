@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // Ladda header.html och injicera den i #header-container
-  fetch('/views/partials/header.html')
+  fetch('/partials/header.html')
     .then(response => response.text())
     .then(html => {
       document.getElementById('header-container').innerHTML = html;
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   // Ladda navigation.html och injicera den i #navigation-container
-  fetch('/views/partials/navigation.html')
+  fetch('/partials/navigation.html')
     .then(response => response.text())
     .then(html => {
       document.getElementById('navigation-container').innerHTML = html;
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   // Ladda footer.html och injicera den i #footer-container
-  fetch('/views/partials/footer.html')
+  fetch('/partials/footer.html')
     .then(response => response.text())
     .then(html => {
       document.getElementById('footer-container').innerHTML = html;
