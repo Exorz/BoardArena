@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const morgan = require('morgan');
 const session = require('express-session');
+const path = require('path');  // Importera path-modulen
 const config = require('./config/config');
 
 // Importera autentiseringsrutter
