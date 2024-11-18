@@ -34,9 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Funktion för att öppna och stänga menyn
   const navLinks = document.getElementById('nav-links');
   if (navLinks) {
-    document.getElementById('hamburger-menu').addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    if (hamburgerMenu) {
+      hamburgerMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+    }
   }
 
   // Funktion för att öppna och stänga modals
