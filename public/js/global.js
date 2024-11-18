@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (loginLink) {
         console.log('Login link found');
         loginLink.addEventListener('click', (event) => {
-          event.preventDefault();  // Förhindra standardlänk beteende
-          openModal('login-modal');  // Visa login modal
+          event.preventDefault();
+          openModal('login-modal');
         });
       }
 
@@ -29,18 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
       if (registerLink) {
         console.log('Register link found');
         registerLink.addEventListener('click', (event) => {
-          event.preventDefault();  // Förhindra standardlänk beteende
-          openModal('register-modal');  // Visa register modal
+          event.preventDefault();
+          openModal('register-modal');
         });
       }
 
       // Lägg till eventlyssnare för Close-knapparna
-      const closeLoginModal = document.querySelector('#login-modal .close');
+      const closeLoginModal = document.getElementById('login-close');
       if (closeLoginModal) {
         closeLoginModal.addEventListener('click', () => closeModal('login-modal'));
       }
 
-      const closeRegisterModal = document.querySelector('#register-modal .close');
+      const closeRegisterModal = document.getElementById('register-close');
       if (closeRegisterModal) {
         closeRegisterModal.addEventListener('click', () => closeModal('register-modal'));
       }
@@ -145,6 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal('register-modal');
     }
   }
+});
+
 
   // Kontrollera om användaren är inloggad vid sidladdning
   fetch('/auth/user')
