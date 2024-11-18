@@ -6,9 +6,10 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
-  background-image: url('/img/background.jpg');
-  background-size: cover;
-  background-position: center;
+  background-image: url('/img/background.jpg'); /* Bakgrundsbilden */
+  background-size: cover;  /* Gör så att bakgrunden täcker hela området */
+  background-position: center;  /* Centrera bakgrunden */
+  background-repeat: no-repeat;  /* Förhindrar upprepning av bakgrundsbilden */
   color: #333;
 }
 
@@ -24,7 +25,9 @@ a:hover {
 
 /* Styling för headern */
 header {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url('/img/header.jpg');  /* Lägger till bakgrundsbilden */
+  background-size: cover;  /* Gör så att bilden täcker hela området */
+  background-position: bottom center;  /* Visar den nedersta delen av bilden */
   padding: 30px 0;
   text-align: center;
   color: white;
@@ -52,6 +55,15 @@ header {
   font-size: 1.2rem;
   margin-top: 10px;
   color: #fff;
+}
+
+/* Styling för footern */
+footer {
+  background-color: #66bb6a;  /* Grön bakgrundsfärg */
+  color: white;               /* Vit textfärg */
+  padding: 10px 0;            /* Lite padding för att skapa utrymme */
+  text-align: center;         /* Centrera texten */
+  font-size: 1rem;            /* Textstorlek */
 }
 
 /* Styling för navigeringen */
