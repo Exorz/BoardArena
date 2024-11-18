@@ -43,9 +43,9 @@ mongoose.connect(config.mongoURI)
 // Använd autentiseringsrutter
 app.use('/auth', authRoutes);  // Auth-rutter som login, register, logout
 
-// Definiera andra rutter (t.ex. för sidor som index, spel etc.)
+// Servera index.html från 'views' mappen när användaren besöker hemsidan
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/views/index.html'); // Ladda in startsidan
+  res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 // Starta servern
