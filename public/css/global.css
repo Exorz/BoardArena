@@ -1,12 +1,19 @@
 /* /public/css/global.css */
 
 /* Allmän styling för hela body */
-
+/* Allmän styling för hela body */
 html, body {
-  height: 100%; /* Säkerställ att body och html tar upp 100% av fönsterhöjden */
-  margin: 0; /* Ta bort standardmarginalen */
-  display: flex; /* Gör body till en flexbox */
-  flex-direction: column; /* Organisera innehållet i en kolumn (top-down) */
+  height: 100%;  /* Se till att body och html tar upp hela visningshöjden */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;  /* Använd flexbox och arrangera element vertikalt */
+}
+
+/* Gör så att main-innehållet växer och fyller all ledig plats */
+main {
+  flex-grow: 1;  /* Låt main växa och ta upp all ledig plats */
+  padding: 20px;
 }
 
 body {
@@ -129,10 +136,11 @@ nav .hamburger-menu .bar {
 /* Styling för footern */
 footer {
   background-color: #66bb6a;  /* Samma färg som navigeringen */
-  color: black;  /* Sätt textfärgen i footern till svart */
+  color: black;
   padding: 10px 0;
   text-align: center;
   font-size: 1rem;
+  margin-top: auto; /* Detta skjuter footern längst ner */
 }
 
 /* Popup form */
