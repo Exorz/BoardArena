@@ -1,6 +1,14 @@
 <!-- /views/partials/navigation.html -->
 <nav>
-  <ul>
+  <!-- Hamburgermenyns ikon för mobila enheter -->
+  <div class="hamburger-menu" id="hamburger-menu" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <!-- Navigeringsmeny -->
+  <ul id="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/games">Games</a></li>
     <li><a href="/about">About</a></li>
