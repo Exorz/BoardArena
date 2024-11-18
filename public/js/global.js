@@ -1,5 +1,11 @@
 // /public/js/global.js
 
+// Funktion för att öppna och stänga menyn
+function toggleMenu() {
+  const navLinks = document.getElementById('nav-links');
+  navLinks.classList.toggle('open'); // Lägg till eller ta bort 'open'-klassen
+}
+
 // Funktion för att öppna och stänga modals
 function openModal(modalId) {
   document.getElementById(modalId).style.display = 'block';
