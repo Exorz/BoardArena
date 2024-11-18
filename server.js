@@ -45,9 +45,9 @@ app.use('/auth', authRoutes);  // Auth-rutter som login, register, logout
 
 // Servera index.html från 'views' mappen när användaren besöker hemsidan
 app.get('/', (req, res) => {
-  // Här använder vi path.join för att säkerställa att vi får korrekt sökväg
-  const filePath = path.join(__dirname, '..', 'views', 'index.html');  // Gå upp en nivå för att komma åt views
-  console.log('Looking for file at:', filePath); // Kontrollera den fullständiga sökvägen
+  // Här serverar vi direkt index.html från views-mappen
+  const filePath = path.join(__dirname, 'views', 'index.html');  // Ingen upp-nivå krävs, views finns direkt i rotmappen
+  console.log('Looking for file at:', filePath); // Kontrollera den fullständiga sökvägen för felsökning
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
