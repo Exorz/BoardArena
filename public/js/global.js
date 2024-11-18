@@ -18,24 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
       // Efter att navigation.html har laddats, binda eventlyssnare till login och register-länkar
       const loginLink = document.getElementById('login-link');
       if (loginLink) {
-        console.log('Login link found');  // Debugging: Kontrollera om login-länken finns
+        console.log('Login link found');
         loginLink.addEventListener('click', (event) => {
           event.preventDefault();  // Förhindra standardlänk beteende
           openModal('login-modal');  // Visa login modal
         });
-      } else {
-        console.error('Login link not found');  // Debugging: Om login-länken inte hittas
       }
 
       const registerLink = document.getElementById('register-link');
       if (registerLink) {
-        console.log('Register link found');  // Debugging: Kontrollera om register-länken finns
+        console.log('Register link found');
         registerLink.addEventListener('click', (event) => {
           event.preventDefault();  // Förhindra standardlänk beteende
           openModal('register-modal');  // Visa register modal
         });
-      } else {
-        console.error('Register link not found');  // Debugging: Om register-länken inte hittas
+      }
+
+      // Lägg till eventlyssnare för Close-knapparna
+      const closeLoginModal = document.querySelector('#login-modal .close');
+      if (closeLoginModal) {
+        closeLoginModal.addEventListener('click', () => closeModal('login-modal'));
+      }
+
+      const closeRegisterModal = document.querySelector('#register-modal .close');
+      if (closeRegisterModal) {
+        closeRegisterModal.addEventListener('click', () => closeModal('register-modal'));
       }
     })
     .catch(error => {
@@ -52,50 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error("Error loading footer:", error);
     });
 
-  // Funktion för att öppna och stänga modals
+  // Funktion för att öppna modaler
   function openModal(modalId) {
-    console.log('Opening modal:', modalId);  // Debugging: Kontrollera om vi försöker öppna modalen
+    console.log('Opening modal:', modalId);
     const modal = document.getElementById(modalId);
     if (modal) {
       modal.style.display = 'block';  // Visa modalen
     } else {
-      console.error('Modal not found:', modalId);  // Debugging: Om modalen inte hittas
+      console.error('Modal not found:', modalId);
     }
   }
 
+  // Funktion för att stänga modaler
   function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
-      modal.style.display = 'none';   // Dölja modalen
+      modal.style.display = 'none';  // Dölja modalen
     } else {
-      console.error('Modal not found for closing:', modalId);  // Debugging: Om modalen inte hittas
+      console.error('Modal not found for closing:', modalId);
     }
-  }
-
-  const loginSubmit = document.getElementById('login-submit');
-  if (loginSubmit) {
-    loginSubmit.addEventListener('click', loginUser);
-  }
-
-  const registerSubmit = document.getElementById('register-submit');
-  if (registerSubmit) {
-    registerSubmit.addEventListener('click', registerUser);
-  }
-
-  const logoutButton = document.getElementById('logout-button');
-  if (logoutButton) {
-    logoutButton.addEventListener('click', logoutUser);
-  }
-
-  // Logout-funktion
-  function logoutUser() {
-    fetch('/auth/logout')
-      .then(response => response.json())
-      .then(() => {
-        document.getElementById('login-register-links').style.display = 'block';
-        document.getElementById('logout-link').style.display = 'none';
-        document.getElementById('header-subtitle').innerText = 'Play your favorite games online and challenge your friends!';
-      });
   }
 
   // Login-funktion
@@ -126,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Register-funktion
   function registerUser() {
     const username = document.getElementById('register-username').value;
+    const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
 
     fetch('/auth/register', {
@@ -133,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, email, password }),
     })
       .then(response => response.json())
       .then(data => {
@@ -141,6 +124,17 @@ document.addEventListener('DOMContentLoaded', () => {
           alert('Registration successful! Please log in.');
           closeModal('register-modal');
         }
+      });
+  }
+
+  // Logout-funktion
+  function logoutUser() {
+    fetch('/auth/logout')
+      .then(response => response.json())
+      .then(() => {
+        document.getElementById('login-register-links').style.display = 'block';
+        document.getElementById('logout-link').style.display = 'none';
+        document.getElementById('header-subtitle').innerText = 'Play your favorite games online and challenge your friends!';
       });
   }
 
