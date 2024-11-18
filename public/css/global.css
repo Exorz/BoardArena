@@ -6,17 +6,21 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
-  background-image: url('/img/background.jpg'); /* Bakgrundsbilden */
+  background-image: url('/img/background.jpg');  /* Bakgrundsbilden */
   background-size: cover;  /* Gör så att bakgrunden täcker hela området */
   background-position: center;  /* Centrera bakgrunden */
   background-repeat: no-repeat;  /* Förhindrar upprepning av bakgrundsbilden */
-  color: #333;
+  color: black;  /* Sätt all text till svart */
+  min-height: 100vh;  /* Gör så att body tar upp hela visningshöjden */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* Se till att footern alltid är längst ner */
 }
 
 /* Styling för alla länkar */
 a {
   text-decoration: none;
-  color: inherit;
+  color: inherit;  /* Länkar får färgen från omgivande text */
 }
 
 a:hover {
@@ -35,7 +39,7 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;  /* Gör så att logotypen och titeln är separerade */
   align-items: center;
   gap: 15px;
 }
@@ -57,33 +61,27 @@ header {
   color: #fff;
 }
 
-/* Styling för footern */
-footer {
-  background-color: #66bb6a;  /* Grön bakgrundsfärg */
-  color: white;               /* Vit textfärg */
-  padding: 10px 0;            /* Lite padding för att skapa utrymme */
-  text-align: center;         /* Centrera texten */
-  font-size: 1rem;            /* Textstorlek */
-}
-
 /* Styling för navigeringen */
 nav {
-  background-color: #333;
+  background-color: #66bb6a;  /* Samma färg som footern */
   padding: 10px;
   position: relative;
 }
 
 nav .hamburger-menu {
-  display: none;
+  display: none;  /* Dölj hamburgermenyn som standard */
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
+  position: absolute;  /* Placera den på rätt plats i headern */
+  top: 15px;  /* Sätt avstånd från toppen */
+  right: 20px;  /* Sätt avstånd från höger */
 }
 
 nav .hamburger-menu .bar {
   width: 30px;
   height: 4px;
-  background-color: white;
+  background-color: black;  /* Gör hamburgermenyn svart */
   border-radius: 2px;
 }
 
@@ -118,6 +116,15 @@ nav .hamburger-menu .bar {
   gap: 10px;
 }
 
+/* Styling för footern */
+footer {
+  background-color: #66bb6a;  /* Samma färg som navigeringen */
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1rem;
+}
+
 /* Responsiv design för mobil */
 @media (max-width: 768px) {
   /* Visa hamburgermenyn på mobila enheter */
@@ -133,5 +140,25 @@ nav .hamburger-menu .bar {
   /* När hamburgermenyn öppnas, visa menyn */
   #nav-links.open {
     display: flex;
+  }
+
+  body {
+    font-size: 14px;  /* Minska textstorlek på mobiler */
+  }
+
+  .header-title {
+    font-size: 2rem;  /* Minska titelns storlek på mobiler */
+  }
+
+  .header-subtitle {
+    font-size: 1rem;  /* Justera storlek på undertitel */
+  }
+
+  nav ul {
+    flex-direction: column;  /* Gör menyn vertikal på mobiler */
+  }
+
+  nav li {
+    margin: 5px 0;  /* Justera mellanrum på mobiler */
   }
 }
