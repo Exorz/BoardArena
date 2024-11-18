@@ -6,54 +6,44 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
-  background-image: url('/img/background.jpg');  /* Bakgrundsbilden */
-  background-size: cover;  /* Gör så att bakgrunden täcker hela området */
-  background-position: center;  /* Centrera bakgrunden */
-  background-repeat: no-repeat;  /* Förhindrar upprepning av bakgrundsbilden */
-  color: black;  /* Sätt all text till svart */
-  min-height: 100vh;  /* Gör så att body tar upp hela visningshöjden */
+  background-image: url('/img/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;  /* Gör så att innehållet i body arrangeras vertikalt */
+  flex-direction: column;
 }
 
 /* För att hålla contenten centralt, växa det om innehållet inte räcker */
 .content {
-  flex-grow: 1;  /* Detta gör så att contenten fyller utrymmet och pushar footern ner */
-}
-
-/* Styling för alla länkar */
-a {
-  text-decoration: none;
-  color: inherit;  /* Länkar får färgen från omgivande text */
-}
-
-a:hover {
-  color: #66bb6a;
+  flex-grow: 1; /* Gör så att contenten fyller utrymmet och pushar footern ner */
 }
 
 /* Styling för headern */
 header {
-  background-image: url('/img/header.jpg');  /* Lägger till bakgrundsbilden */
-  background-size: cover;  /* Gör så att bilden täcker hela området */
-  background-position: bottom center;  /* Visar den nedersta delen av bilden */
+  background-image: url('/img/header.jpg');
+  background-size: cover;
+  background-position: bottom center;
   padding: 30px 0;
   text-align: center;
-  color: black;  /* Sätt textfärgen i headern till svart */
+  color: black;
 }
 
 .header-container {
   display: flex;
-  justify-content: center;  /* Se till att logotypen och titel är separerade */
+  justify-content: center;
   align-items: center;
   gap: 15px;
-  padding: 0 20px;  /* Lägger till lite padding så att innehållet inte är vid kanten */
+  padding: 0 20px;
 }
 
 .header-title {
   font-size: 3rem;
   font-weight: bold;
   margin: 0;
-  color: black;  /* Sätt färgen på titeln till svart */
+  color: black;
 }
 
 .header-logo {
@@ -64,31 +54,31 @@ header {
 .header-subtitle {
   font-size: 1.2rem;
   margin-top: 10px;
-  color: black;  /* Sätt undertitelns textfärg till svart */
+  color: black;
 }
 
 /* Styling för navigeringen */
 nav {
-  background-color: #66bb6a;  /* Samma färg som footern */
+  background-color: #66bb6a;
   padding: 10px;
   position: relative;
-  text-align: center;  /* Centrera länkarna */
+  text-align: center;
 }
 
 nav .hamburger-menu {
-  display: none;  /* Dölj hamburgermenyn som standard */
+  display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  position: absolute;  /* Placera den på rätt plats i headern */
-  top: 15px;  /* Sätt avstånd från toppen */
-  right: 20px;  /* Sätt avstånd från höger */
+  position: absolute;
+  top: 15px;
+  right: 20px;
 }
 
 nav .hamburger-menu .bar {
   width: 30px;
   height: 4px;
-  background-color: black;  /* Gör hamburgermenyn svart */
+  background-color: black;
   border-radius: 2px;
 }
 
@@ -106,13 +96,13 @@ nav .hamburger-menu .bar {
 }
 
 #nav-links a {
-  color: black;  /* Sätt färgen på navigeringslänkarna till svart */
+  color: black;
   text-decoration: none;
   font-size: 1.2rem;
 }
 
 #nav-links a:hover {
-  color: #66bb6a;  /* Grön färg på hover */
+  color: #66bb6a;
 }
 
 /* När hamburgermenyn är aktiv (öppen) */
@@ -125,47 +115,9 @@ nav .hamburger-menu .bar {
 
 /* Styling för footern */
 footer {
-  background-color: #66bb6a;  /* Samma färg som navigeringen */
-  color: black;  /* Sätt textfärgen i footern till svart */
+  background-color: #66bb6a;
+  color: black;
   padding: 10px 0;
   text-align: center;
   font-size: 1rem;
-}
-
-/* Responsiv design för mobil */
-@media (max-width: 768px) {
-  /* Visa hamburgermenyn på mobila enheter */
-  .hamburger-menu {
-    display: flex;
-  }
-
-  /* Dölja de vanliga navigeringslänkarna på mobiler tills hamburgermenyn öppnas */
-  #nav-links {
-    display: none;
-  }
-
-  /* När hamburgermenyn öppnas, visa menyn */
-  #nav-links.open {
-    display: flex;
-  }
-
-  body {
-    font-size: 14px;  /* Minska textstorlek på mobiler */
-  }
-
-  .header-title {
-    font-size: 2rem;  /* Minska titelns storlek på mobiler */
-  }
-
-  .header-subtitle {
-    font-size: 1rem;  /* Justera storlek på undertitel */
-  }
-
-  nav ul {
-    flex-direction: column;  /* Gör menyn vertikal på mobiler */
-  }
-
-  nav li {
-    margin: 5px 0;  /* Justera mellanrum på mobiler */
-  }
 }
