@@ -14,13 +14,12 @@ html, body {
 main {
   flex-grow: 1;  /* Låt main växa och ta upp all ledig plats */
   padding: 20px;
+  overflow: auto;  /* Se till att innehållet inte spillrar utanför */
 }
 
 body {
   font-family: 'Arial', sans-serif;
   font-size: 16px;
-  margin: 0;
-  padding: 0;
   background-image: url('/img/background.jpg');  /* Bakgrundsbilden */
   background-size: cover;  /* Gör så att bakgrunden täcker hela området */
   background-position: center;  /* Centrera bakgrunden */
@@ -29,7 +28,7 @@ body {
   min-height: 100vh;  /* Gör så att body tar upp hela visningshöjden */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;  /* För att hålla footern längst ner om innehållet inte är långt nog */
+  justify-content: flex-start;  /* Håll content högst upp om det inte finns tillräckligt med innehåll */
 }
 
 /* Styling för alla länkar */
@@ -141,9 +140,9 @@ footer {
   padding: 10px 0;
   text-align: center;
   font-size: 1rem;
-  margin-top: auto; /* Detta skjuter footern längst ner */
+  margin-top: auto; /* Detta gör att footern kommer längst ner */
+  flex-shrink: 0;  /* Förhindrar att footern krymper om innehållet är litet */
 }
-
 /* Popup form */
 .modal {
     display: none; /* Keep this as none until triggered */
