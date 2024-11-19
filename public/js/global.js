@@ -44,6 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (closeRegisterModal) {
         closeRegisterModal.addEventListener('click', () => closeModal('register-modal'));
       }
+
+      // Lägg till eventlyssnare för hamburgermenyn
+      const hamburgerMenu = document.getElementById('hamburger-menu');
+      if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', toggleMenu);
+      }
     })
     .catch(error => {
       console.error("Error loading navigation:", error);
@@ -146,8 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-
-
   // Kontrollera om användaren är inloggad vid sidladdning
   fetch('/auth/user')
     .then(response => response.json())
@@ -158,4 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('header-subtitle').innerText = `Logged in as: ${data.username}`;
       }
     });
+
+  // Funktion för att växla visning av navigeringen vid klick på hamburgermenyn
+  function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    if (navLinks) {
+      navLinks.classList.toggle('open');
+    }
+  }
 });
