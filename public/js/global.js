@@ -146,13 +146,31 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(error => console.error('Error registering:', error));
   }
 
-  // Logout-funktion
-  function logoutUser() {
-    localStorage.removeItem('token'); // Ta bort token från lokal lagring
-    document.getElementById('login-register-links').style.display = 'block';
-    document.getElementById('logout-link').style.display = 'none';
-    document.getElementById('header-subtitle').innerText = 'Play your favorite games online and challenge your friends!';
-  }
+// Logout-funktion
+function logoutUser() {
+  // Ta bort token från localStorage
+  localStorage.removeItem('token');
+
+  // Gör ett API-anrop till servern för att logga ut användaren (om du vill hantera server-side logout)
+  fetch('/auth/logout', {
+    method: 'GET',
+  })
+    .then(response => response.json())
+    .then(() => {
+      // Uppdatera UI efter logout
+      document.getElementById('login-register-links').style.display = 'block';
+      document.getElementById('logout-link').style.display = 'none';
+      document.getElementById('header-subtitle').innerText = 'Play your favorite games online and challenge your friends!';
+    })
+    .catch(error => {
+      console.error('Logout failed:', error);
+      // Om något går fel kan vi fortfarande rensa lokal lagring och uppdatera UI
+      document.getElementById('login-register-links').style.display = 'block';
+      document.getElementById('logout-link').style.display = 'none';
+      document.getElementById('header-subtitle').innerText = 'Play your favorite games online and challenge your friends!';
+    });
+}
+
 
   // Toggle hamburgermeny
   function toggleMenu() {
