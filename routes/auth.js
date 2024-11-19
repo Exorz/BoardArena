@@ -43,13 +43,21 @@ router.post('/login', (req, res) => {
   User.findOne({ username })
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
-        // Skapa en JWT-token
-        const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
-        res.json({
-          message: 'Login successful',
-          username: user.username,
-          token, // Skicka token till klienten
-        });
+        // Uppdatera lastLogin och playerStatus vid inloggning
+        user.lastLogin = Date.now();
+        user.playerStatus = 'online';  // Sätt användaren till online när de loggar in
+
+        user.save()
+          .then(() => {
+            // Skapa en JWT-token
+            const token = jwt.sign({ userId: user._id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+            res.json({
+              message: 'Login successful',
+              username: user.username,
+              token, // Skicka token till klienten
+            });
+          })
+          .catch(err => res.status(500).json({ message: 'Error updating user', error: err }));
       } else {
         res.status(400).json({ message: 'Invalid credentials' });
       }
@@ -59,8 +67,18 @@ router.post('/login', (req, res) => {
 
 // Logout-rutt
 router.get('/logout', (req, res) => {
-  // Här hanteras inte sessioner längre, så logout är inte nödvändig i denna implementation
-  res.json({ message: 'Logged out' });
+  const { userId } = req.body;
+
+  User.findById(userId)
+    .then(user => {
+      user.playerStatus = 'offline'; // Sätt användaren till offline vid utloggning
+      user.save()
+        .then(() => {
+          res.json({ message: 'Logged out' });
+        })
+        .catch(err => res.status(500).json({ message: 'Error updating user status', error: err }));
+    })
+    .catch(err => res.status(500).json({ message: 'Error finding user', error: err }));
 });
 
 // Kontrollera om användaren är inloggad med JWT
@@ -77,7 +95,7 @@ router.get('/user', (req, res) => {
     }
 
     User.findById(decoded.userId)
-      .then(user => res.json({ loggedIn: true, username: user.username }))
+      .then(user => res.json({ loggedIn: true, username: user.username, playerStatus: user.playerStatus }))
       .catch(err => res.status(500).json({ message: 'Error retrieving user' }));
   });
 });
