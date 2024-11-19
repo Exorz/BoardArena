@@ -1,7 +1,6 @@
 /* /public/css/global.css */
 
 /* Allmän styling för hela body */
-/* Allmän styling för hela body */
 html, body {
   height: 100%;  /* Se till att body och html tar upp hela visningshöjden */
   margin: 0;
@@ -29,6 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;  /* Håll content högst upp om det inte finns tillräckligt med innehåll */
+  padding-bottom: 50px; /* Lägg till extra utrymme för att göra plats för footern */
 }
 
 /* Styling för alla länkar */
@@ -142,6 +142,8 @@ footer {
   font-size: 1rem;
   margin-top: auto; /* Detta gör att footern kommer längst ner */
   flex-shrink: 0;  /* Förhindrar att footern krymper om innehållet är litet */
+  position: relative;
+  bottom: 0; /* Säkerställer att footern inte går för långt ner */
 }
 /* Popup form */
 .modal {
