@@ -43,10 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
         closeRegisterModal.addEventListener('click', () => closeModal('register-modal'));
       }
 
-      // Lägg till eventlyssnare för hamburgermenyn
+      // Kontrollera om hamburgarmenyn finns i DOM
       const hamburgerMenu = document.getElementById('hamburger-menu');
       if (hamburgerMenu) {
-        hamburgerMenu.addEventListener('click', toggleMenu);
+        console.log('Hamburgarmenyn finns i DOM!');
+      } else {
+        console.log('Hamburgarmenyn finns inte i DOM!');
       }
 
       // Lägg till eventlyssnare för login och register submit
