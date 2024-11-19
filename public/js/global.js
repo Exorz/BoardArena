@@ -48,6 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
       if (hamburgerMenu) {
         hamburgerMenu.addEventListener('click', toggleMenu);
       }
+
+      // Lägg till eventlyssnare för login och register submit
+      const loginSubmit = document.getElementById('login-submit');
+      if (loginSubmit) {
+        loginSubmit.addEventListener('click', (event) => {
+          event.preventDefault(); // Förhindra att sidan laddas om
+          loginUser(); // Anropa loginUser-funktionen
+        });
+      }
+
+      const registerSubmit = document.getElementById('register-submit');
+      if (registerSubmit) {
+        registerSubmit.addEventListener('click', (event) => {
+          event.preventDefault(); // Förhindra att sidan laddas om
+          registerUser(); // Anropa registerUser-funktionen
+        });
+      }
     })
     .catch(error => {
       console.error("Error loading navigation:", error);
@@ -102,7 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           alert('Invalid credentials');
         }
-      });
+      })
+      .catch(error => console.error('Error logging in:', error));
   }
 
   // Register-funktion
@@ -124,7 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
           alert('Registration successful! Please log in.');
           closeModal('register-modal');
         }
-      });
+      })
+      .catch(error => console.error('Error registering:', error));
   }
 
   // Logout-funktion
@@ -166,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('logout-link').style.display = 'block';
         document.getElementById('header-subtitle').innerText = `Logged in as: ${data.username}`;
       }
-    });
+    })
+    .catch(error => console.error('Error checking login:', error));
   }
 });
