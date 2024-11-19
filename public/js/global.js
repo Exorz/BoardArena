@@ -208,22 +208,28 @@ function logoutUser(event) {
     }
   }
 
-  // Kontrollera om användaren är inloggad vid sidladdning
-  const token = localStorage.getItem('token');
-  if (token) {
-    fetch('/auth/user', {
-      headers: {
-        'Authorization': `Bearer ${token}`,  // Skicka token som header
+// Kontrollera om användaren är inloggad vid sidladdning
+const token = localStorage.getItem('token');
+if (token) {
+  fetch('/auth/user', {
+    headers: {
+      'Authorization': `Bearer ${token}`,  // Skicka token som header
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.loggedIn) {
+      document.getElementById('login-register-links').style.display = 'none';
+      document.getElementById('logout-link').style.display = 'block';
+
+      // Visa användarinformation och uppdatera den
+      const userInfo = document.getElementById('user-info');
+      if (userInfo) {
+        userInfo.style.display = 'block'; // Visa user-info
+        userInfo.innerText = `Logged in as: ${data.username}`;
       }
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.loggedIn) {
-        document.getElementById('login-register-links').style.display = 'none';
-        document.getElementById('logout-link').style.display = 'block';
-        document.getElementById('header-subtitle').innerText = `Logged in as: ${data.username}`;
-      }
-    })
-    .catch(error => console.error('Error checking login:', error));
-  }
-});
+    }
+  })
+  .catch(error => console.error('Error checking login:', error));
+}
+
