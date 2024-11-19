@@ -20,11 +20,9 @@
 .news-title {
   color: black;           /* Svart textfärg */
   font-size: 2.5em;       /* Större fontstorlek */
-  margin-bottom: 20px;    /* Mer utrymme under titeln */
+  margin-bottom: 15px;    /* Mindre utrymme under titeln */
   font-weight: bold;      /* Fetstil på titeln */
-  border-bottom: 2px solid #333; /* Tunn svart linje under titeln */
-  display: inline-block;  /* Gör titeln till ett block så att linjen fungerar korrekt */
-  padding-bottom: 10px;   /* Lite utrymme mellan text och linje */
+  padding-top: 20px;      /* Mer utrymme ovanför titeln */
 }
 
 /* Brödtexten i nyheten */
