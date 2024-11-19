@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BoardArena</title>
+  <link rel="stylesheet" href="/css/global.css">  <!-- Länk till global CSS -->
+  <link rel="stylesheet" href="/css/games.css">  <!-- Länk till index CSS -->
+</head>
+<body>
+  <!-- Här kommer headern att laddas in -->
+  <div id="header-container"></div>
+  <!-- Här kommer navigationen att laddas in -->
+  <div id="navigation-container"></div>
+  <!-- Main content -->
+  <main>
+     <section class="games">
+            <h2>Games</h2>
+            <div class="game-list">
+                <div class="game-card" style="background-image: url('/img/games/yatzy.webp'); background-size: cover; background-position: center;">
+                    <h3>Yatzy</h3>
+                    <button onclick="location.href='/lobby?game=yatzy'">Play Yatzy</button>
+                    <img src="/img/games/yatzy.webp" alt="Yatzy multiplayer" style="display:none;"> <!-- Hidden image for SEO -->
+                </div>
+                
+                <div class="game-card" style="background-image: url('/img/games/battleships.webp'); background-size: cover; background-position: center;">
+                    <h3>Battleships</h3>
+                    <button onclick="location.href='/lobby?game=battleships'">Play Battleships</button>
+                    <img src="/img/games/battleships.webp" alt="Battleships multiplayer" style="display:none;"> <!-- Hidden image for SEO -->
+                </div>
 
+
+
+<div class="game-card" style="background-image: url('/img/games/spades.webp'); background-size: cover; background-position: center;">
+                    <h3>Spades</h3>
+                    <button disabled>Worked on</button>
+                </div>
+				
+			<div class="game-card" style="background-image: url('/img/games/hearts.webp'); background-size: cover; background-position: center;">
+                    <h3>Hearts</h3>
+                    <button disabled>Worked on</button>
+                </div>
+				
+				<div class="game-card" style="background-image: url('/img/games/ludo.webp'); background-size: cover; background-position: center;">
+                    <h3>Ludo</h3>
+                    <button disabled>Worked on</button>
+                </div>
+
+
+<div class="game-card" style="background-image: url('/img/games/blockwars.webp'); background-size: cover; background-position: center;">
+                    <h3>Blockwars</h3>
+                    <button disabled>Worked on</button>
+                </div>
+				
+				 <div class="game-card" style="background-image: url('/img/games/general.webp'); background-size: cover; background-position: center;">
+                    <h3>General</h3>
+                    <button disabled>Worked on</button>
+                </div>
+				
+				 <div class="game-card" style="background-image: url('/img/games/fourinarow.webp'); background-size: cover; background-position: center;">
+                    <h3>Four in a row</h3>
+                    <button disabled>Worked on</button>
+                </div>
+
+              <div class="game-card" style="background-image: url('/img/games/tictactoe.webp'); background-size: cover; background-position: center;">
+                    <h3>Tic-Tac-Toe</h3>
+                    <button disabled>Worked on</button>
+                </div>
+                <div class="game-card" style="background-image: url('/img/games/chess.webp'); background-size: cover; background-position: center;">
+                    <h3>Chess</h3>
+                    <button disabled>Worked on</button>
+                </div>
+            </div>
+        </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer id="footer-container">
+    <p>© 2024 BoardArena. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/global.js"></script> <!-- Länk till global JavaScript -->
+</body>
+</html>
