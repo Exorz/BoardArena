@@ -1,1 +1,73 @@
+/* Game section styles */
+.games {
+    padding: 20px; /* Outer padding for the game section */
+    text-align: center; /* Center align text in the section */
+    width: 60%; /* Set the width of the container to 60% of the screen */
+    margin: 0 auto; /* Center the container horizontally */
+}
+.games h2 {
+    margin: 20px 0; /* Add margin for spacing */
+    color: white; /* Set h2 color to white */
+}
 
+/* Game list styles */
+.game-list {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center the cards */
+}
+
+/* Game list styles */
+.game-list {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center the cards */
+}
+
+/* Game card styles */
+.game-card {
+    width: 200px; /* Set a fixed width for the game cards */
+    margin-bottom: 20px; /* Space between cards */
+    background-size: cover; /* Cover the entire card */
+    background-position: center; /* Center the background image */
+    padding: 20px; /* Space inside the card */
+    border-radius: 10px; /* Rounded corners */
+    color: white; /* Default text color */
+    text-align: center; /* Center text */
+    height: 200px; /* Height for the card */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    background-color: rgba(233, 236, 239, 0.5); /* Light background with transparency */
+    display: flex; /* Enable flexbox on card */
+    flex-direction: column; /* Align items in a column */
+    justify-content: space-between; /* Space items to fill card */
+}
+
+/* Specific styles for the h3 and p elements within game-card */
+.game-card h3,
+.game-card p {
+    margin-top: 0; /* Remove top margin */
+    background-color: rgba(40, 167, 69, 0.7); /* Semi-transparent green background */
+    padding: 5px; /* Padding around text */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* Ensure text is white for readability */
+}
+
+/* Button styles */
+.game-card button {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    padding: 10px; /* Padding inside the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    margin-top: auto; /* Push button to bottom */
+    margin-bottom: 0px; /* Margin below the button */
+    width: 100%; /* Full width of the card */
+}
+
+.game-card button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
