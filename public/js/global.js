@@ -232,4 +232,4 @@ if (token) {
   })
   .catch(error => console.error('Error checking login:', error));
 }
-
+}
