@@ -104,31 +104,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Login-funktion
-  function loginUser() {
-    const username = document.getElementById('login-username').value;
-    const password = document.getElementById('login-password').value;
+function loginUser() {
+  const username = document.getElementById('login-username').value;
+  const password = document.getElementById('login-password').value;
 
-    fetch('/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.message === 'Login successful') {
-          localStorage.setItem('token', data.token); // Spara token i lokal lagring
-          closeModal('login-modal');
-          document.getElementById('login-register-links').style.display = 'none';
-          document.getElementById('logout-link').style.display = 'block';
-          document.getElementById('header-subtitle').innerText = `Logged in as: ${data.username}`;
-        } else {
-          alert('Invalid credentials');
+  fetch('/auth/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ username, password }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message === 'Login successful') {
+        localStorage.setItem('token', data.token); // Spara token i lokal lagring
+        closeModal('login-modal');
+        document.getElementById('login-register-links').style.display = 'none';
+        document.getElementById('logout-link').style.display = 'block';
+
+        // Uppdatera användarinformationen och visa den
+        const userInfo = document.getElementById('user-info');
+        if (userInfo) {
+          userInfo.style.display = 'block'; // Visa user-info
+          userInfo.innerText = `Logged in as: ${data.username}`;
         }
-      })
-      .catch(error => console.error('Error logging in:', error));
-  }
+      } else {
+        alert('Invalid credentials');
+      }
+    })
+    .catch(error => console.error('Error logging in:', error));
+}
+
 
   // Register-funktion
   function registerUser() {
