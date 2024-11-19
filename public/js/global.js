@@ -1,4 +1,3 @@
-Kan du uppdatera min nuvarande global.js så jag ska copy paste tack
 
 document.addEventListener('DOMContentLoaded', () => {
   // Ladda header.html och injicera den i #header-container
