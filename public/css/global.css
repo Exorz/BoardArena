@@ -243,6 +243,15 @@ background-color: #66bb6a; /* Lägg till en bakgrundsfärg på den öppna menyn 
     padding: 25px;
 }
 
+.user-info {
+    position: absolute; /* Place user information the same way */
+    top: 60px; /* Adjust so it lies on the same level as login */
+    right: 20px; /* Adjust to fit design */
+    color: black; /* Change to black for visibility */
+    font-size: 14px; /* Adjust font size if needed */
+    /* Removed display: none; */
+}
+
 /* Mobilanpassning */
 @media (max-width: 768px) {
   /* Visa hamburgermenyn på mobila enheter */
