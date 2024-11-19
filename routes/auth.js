@@ -1,4 +1,41 @@
-const newUser = new User({ username, password: hashedPassword });
+// /routes/auth.js
+const express = require('express');
+const bcrypt = require('bcryptjs');
+const User = require('../models/User'); // Din användarmodell
+const router = express.Router();
+
+// Login-rutt
+router.post('/login', (req, res) => {
+  const { username, password } = req.body;
+
+  User.findOne({ username })
+    .then(user => {
+      if (user && bcrypt.compareSync(password, user.password)) {
+        req.session.userId = user._id;  // Sätt användarens ID i sessionen
+        res.json({ message: 'Login successful', username: user.username });
+      } else {
+        res.status(400).json({ message: 'Invalid credentials' });
+      }
+    })
+    .catch(err => res.status(500).json({ message: 'Server error' }));
+});
+
+// Logout-rutt
+router.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      return res.status(500).json({ message: 'Logout error' });
+    }
+    res.json({ message: 'Logged out' });
+  });
+});
+
+// Register-rutt
+router.post('/register', (req, res) => {
+  const { username, password } = req.body;
+  const hashedPassword = bcrypt.hashSync(password, 10); // Kryptera lösenordet
+
+  const newUser = new User({ username, password: hashedPassword });
 
   newUser.save()
     .then(user => {
