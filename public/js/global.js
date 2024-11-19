@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Efter att navigation.html har laddats, binda eventlyssnare till login och register-länkar
       const loginLink = document.getElementById('login-link');
       if (loginLink) {
-        console.log('Login link found');
         loginLink.addEventListener('click', (event) => {
           event.preventDefault();
           openModal('login-modal');
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const registerLink = document.getElementById('register-link');
       if (registerLink) {
-        console.log('Register link found');
         registerLink.addEventListener('click', (event) => {
           event.preventDefault();
           openModal('register-modal');
@@ -67,12 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Funktion för att öppna modaler
   function openModal(modalId) {
-    console.log('Opening modal:', modalId);
     const modal = document.getElementById(modalId);
     if (modal) {
       modal.style.display = 'block';  // Visa modalen
-    } else {
-      console.error('Modal not found:', modalId);
     }
   }
 
@@ -81,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById(modalId);
     if (modal) {
       modal.style.display = 'none';  // Dölja modalen
-    } else {
-      console.error('Modal not found for closing:', modalId);
     }
   }
 
@@ -144,6 +137,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
+  // Toggle hamburgermeny
+  function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    if (navLinks) {
+      navLinks.classList.toggle('open');
+    }
+  }
+
   // Stäng modals om användaren klickar utanför modal-fönstret
   window.onclick = function(event) {
     if (event.target.className === 'modal') {
@@ -162,12 +163,4 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('header-subtitle').innerText = `Logged in as: ${data.username}`;
       }
     });
-
-  // Funktion för att växla visning av navigeringen vid klick på hamburgermenyn
-  function toggleMenu() {
-    const navLinks = document.getElementById('nav-links');
-    if (navLinks) {
-      navLinks.classList.toggle('open');
-    }
-  }
 });
