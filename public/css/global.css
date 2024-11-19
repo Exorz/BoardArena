@@ -240,14 +240,6 @@ footer {
 }
 
 
-/* När hamburgermenyn är öppen, visa navigeringen vertikalt */
-  #nav-links.open {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    background-color: #66bb6a;  /* Lägg till bakgrundsfärg när menyn är öppen */
-  }
 
   /* Justera storlek och layout för mobil */
   body {
