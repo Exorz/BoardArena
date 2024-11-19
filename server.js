@@ -64,6 +64,13 @@ app.get('/contact', (req, res) => {
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
+// Servera contact.html
+app.get('/games', (req, res) => {
+  const filePath = path.join(__dirname, 'views', 'games.html');
+  console.log('Looking for file at:', filePath);
+  res.sendFile(filePath);  // Skicka filen till klienten
+});
+
 // Starta servern
 app.listen(config.port, () => {
   console.log(`Servern kör på http://localhost:${config.port}`);
