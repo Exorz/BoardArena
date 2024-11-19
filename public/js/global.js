@@ -1,3 +1,5 @@
+Kan du uppdatera min nuvarande global.js så jag ska copy paste tack
+
 document.addEventListener('DOMContentLoaded', () => {
   // Ladda header.html och injicera den i #header-container
   fetch('/partials/header.html')
@@ -94,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(response => response.json())
       .then(data => {
         if (data.message === 'Login successful') {
-          localStorage.setItem('token', data.token); // Spara token i lokal lagring
           closeModal('login-modal');
           document.getElementById('login-register-links').style.display = 'none';
           document.getElementById('logout-link').style.display = 'block';
@@ -129,10 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Logout-funktion
   function logoutUser() {
-    localStorage.removeItem('token'); // Ta bort token från lokal lagring
-    document.getElementById('login-register-links').style.display = 'block';
-    document.getElementById('logout-link').style.display = 'none';
-    document.getElementById('header-subtitle').innerText = 'Play your favorite games online and challenge your friends!';
+    fetch('/auth/logout')
+      .then(response => response.json())
+      .then(() => {
+        document.getElementById('login-register-links').style.display = 'block';
+        document.getElementById('logout-link').style.display = 'none';
+        document.getElementById('header-subtitle').innerText = 'Play your favorite games online and challenge your friends!';
+      });
   }
 
   // Toggle hamburgermeny
@@ -152,13 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Kontrollera om användaren är inloggad vid sidladdning
-  const token = localStorage.getItem('token');
-  if (token) {
-    fetch('/auth/user', {
-      headers: {
-        'Authorization': `Bearer ${token}`,  // Skicka token som header
-      }
-    })
+  fetch('/auth/user')
     .then(response => response.json())
     .then(data => {
       if (data.loggedIn) {
@@ -167,5 +165,4 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('header-subtitle').innerText = `Logged in as: ${data.username}`;
       }
     });
-  }
 });
