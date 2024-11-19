@@ -1,1 +1,25 @@
+/* Styla för nyhetscontainern */
+.news-container {
+  background-color: white; /* Vit bakgrund */
+  padding: 20px;           /* Utrymme runt innehållet */
+  border-radius: 8px;      /* Rundade hörn */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Lätt skugga för djup */
+  margin: 20px auto;       /* Centrera container på sidan */
+  max-width: 800px;        /* Maximal bredd på containern */
+}
+
+/* Titel för nyheten */
+.news-title {
+  color: black;           /* Svart textfärg */
+  font-size: 2em;         /* Större fontstorlek */
+  margin-bottom: 10px;    /* Utrymme under titeln */
+  font-weight: bold;      /* Fetstil på titeln */
+}
+
+/* Brödtexten i nyheten */
+.news-text {
+  color: black;           /* Svart textfärg */
+  font-size: 1.2em;       /* Lite större text än normal */
+  line-height: 1.6;       /* Ökat radavstånd för läsbarhet */
+}
 
