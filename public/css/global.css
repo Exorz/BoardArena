@@ -98,15 +98,17 @@ nav {
   text-align: center;  /* Centrera länkarna */
 }
 
-nav .hamburger-menu {
-  display: none;  /* Dölj hamburgermenyn som standard */
+nav /* Visa hamburgermenyn på mobila enheter */
+.hamburger-menu {
+  display: none;  /* Dölj hamburgermenyn på större skärmar */
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  position: absolute;  /* Placera den på rätt plats i headern */
-  top: 15px;  /* Sätt avstånd från toppen */
-  right: 20px;  /* Sätt avstånd från höger */
+  position: absolute;  /* Placera hamburgermenyn längst till höger på mobilen */
+  top: 15px;
+  right: 20px;
 }
+
 
 nav .hamburger-menu .bar {
   width: 30px;
@@ -252,16 +254,15 @@ background-color: #66bb6a; /* Lägg till en bakgrundsfärg på den öppna menyn 
     /* Removed display: none; */
 }
 
-/* Mobilanpassning */
 @media (max-width: 768px) {
   /* Visa hamburgermenyn på mobila enheter */
   .hamburger-menu {
-    display: flex;
+    display: flex;  /* Gör hamburgermenyn synlig på små skärmar */
   }
 
   /* Dölja de vanliga länkarna på mobilen tills hamburgermenyn öppnas */
   #nav-links {
-    display: none;
+    display: none; /* Döljer länkar på små skärmar */
   }
 
   /* När hamburgermenyn är öppen, visa navigeringen vertikalt */
@@ -279,19 +280,39 @@ background-color: #66bb6a; /* Lägg till en bakgrundsfärg på den öppna menyn 
   }
 
   .header-title {
-    font-size: 2rem;
+    font-size: 2rem; /* Minska rubrikens storlek på mobilen */
   }
 
   .header-subtitle {
-    font-size: 1rem;
+    font-size: 1rem;  /* Minska storleken på undertiteln på mobilen */
   }
 
+  /* Navigation: Gör länkar vertikala på mobil */
   nav ul {
-    flex-direction: column;  /* Gör menyn vertikal på mobiler */
+    flex-direction: column;
+    align-items: center;
   }
 
   nav li {
     margin: 5px 0;
   }
-}
 
+  /* Större knappstorlek och padding på mobil */
+  .modal-content .btn {
+    padding: 14px;
+    font-size: 1.1rem;
+  }
+
+  .modal-content .close {
+    padding: 14px;
+    font-size: 1.1rem;
+  }
+
+  /* Ändra storlek på input-fält på mobilen */
+  .modal-content input[type="text"],
+  .modal-content input[type="email"],
+  .modal-content input[type="password"] {
+    width: 100%;  /* Full bredd på input-fält */
+    padding: 14px;
+  }
+}
