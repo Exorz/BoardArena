@@ -33,6 +33,7 @@ body {
   margin-bottom: 0;  /* Ta bort eventuell extra marginal längst ner */
 }
 
+
 /* Footern ska alltid vara längst ner */
 footer {
   background-color: #66bb6a;  /* Samma färg som navigeringen */
@@ -44,6 +45,7 @@ footer {
   flex-shrink: 0;  /* Förhindrar att footern krymper om innehållet är litet */
   position: relative;
 }
+
 
 /* Styling för alla länkar */
 a {
