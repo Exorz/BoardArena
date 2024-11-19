@@ -131,6 +131,7 @@ nav .hamburger-menu .bar {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+background-color: #66bb6a; /* Lägg till en bakgrundsfärg på den öppna menyn */
 }
 
 /* Styling för footern */
