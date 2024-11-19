@@ -45,9 +45,22 @@ app.use('/auth', authRoutes);  // Auth-rutter som login, register, logout
 
 // Servera index.html från 'views' mappen när användaren besöker hemsidan
 app.get('/', (req, res) => {
-  // Här serverar vi direkt index.html från views-mappen
-  const filePath = path.join(__dirname, 'views', 'index.html');  // Ingen upp-nivå krävs, views finns direkt i rotmappen
-  console.log('Looking for file at:', filePath); // Kontrollera den fullständiga sökvägen för felsökning
+  const filePath = path.join(__dirname, 'views', 'index.html');
+  console.log('Looking for file at:', filePath);
+  res.sendFile(filePath);  // Skicka filen till klienten
+});
+
+// Servera about.html
+app.get('/about', (req, res) => {
+  const filePath = path.join(__dirname, 'views', 'about.html');
+  console.log('Looking for file at:', filePath);
+  res.sendFile(filePath);  // Skicka filen till klienten
+});
+
+// Servera contact.html
+app.get('/contact', (req, res) => {
+  const filePath = path.join(__dirname, 'views', 'contact.html');
+  console.log('Looking for file at:', filePath);
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
