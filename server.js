@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const morgan = require('morgan');
-const session = require('express-session');
 const path = require('path');  // Importera path-modulen
 const config = require('./config/config');
 
@@ -21,13 +20,13 @@ app.use(express.json());  // För att kunna ta emot JSON från klienten
 app.use(cors());          // Aktivera CORS (Cross-Origin Resource Sharing)
 app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
 
-// Middleware för sessionhantering
-app.use(session({
-  secret: 'your-secret-key', // Hela sessionen är krypterad med den här nyckeln
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }  // Ställ in på true om du använder HTTPS
-}));
+// Ta bort sessionhantering, eftersom den inte behövs för JWT
+// app.use(session({
+//   secret: 'your-secret-key', // Hela sessionen är krypterad med den här nyckeln
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: { secure: false }  // Ställ in på true om du använder HTTPS
+// }));
 
 // Servera statiska filer från 'public' mappen
 app.use(express.static('public'));  // Express kommer nu att servera filer från /public
@@ -64,7 +63,7 @@ app.get('/contact', (req, res) => {
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
-// Servera contact.html
+// Servera games.html
 app.get('/games', (req, res) => {
   const filePath = path.join(__dirname, 'views', 'games.html');
   console.log('Looking for file at:', filePath);
