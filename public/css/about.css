@@ -1,1 +1,37 @@
+/* Styla för about-container */
+.about-container {
+  background-color: white; /* Vit bakgrund */
+  padding: 30px;           /* Mer utrymme runt innehållet */
+  border-radius: 12px;     /* Mjukare rundade hörn */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Starkare skugga för mer djup */
+  margin: 20px auto;       /* Centrera container på sidan */
+  max-width: 800px;        /* Maximal bredd på containern */
+  text-align: center;      /* Centrera texten inom containern */
+  transition: all 0.3s ease; /* Övergång för snygg effekt vid hover */
+}
+
+/* Effekt vid hover på containern */
+.about-container:hover {
+  transform: translateY(-5px); /* Lätt upplyftning vid hover */
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15); /* Förstärkt skugga vid hover */
+}
+
+/* Titel för about-sektionen */
+.about-title {
+  color: black;           /* Svart textfärg */
+  font-size: 2.5em;       /* Större fontstorlek */
+  margin-top: 10px;       /* Liten marginal ovanför titeln */
+  margin-bottom: 15px;    /* Lite utrymme under titeln */
+  font-weight: bold;      /* Fetstil på titeln */
+}
+
+/* Brödtexten i about-sektionen */
+.about-text {
+  color: black;           /* Svart textfärg */
+  font-size: 1.2em;       /* Lite större text än normal */
+  line-height: 1.8;       /* Ökat radavstånd för bättre läsbarhet */
+  max-width: 750px;       /* Begränsa bredden på texten för bättre läsbarhet */
+  margin: 0 auto;         /* Centrera brödtexten */
+  font-family: 'Arial', sans-serif; /* Välj en modern sans-serif font */
+}
 
