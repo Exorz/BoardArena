@@ -1,1 +1,80 @@
+/* Styla för contact-container */
+.contact-container {
+  background-color: white; /* Vit bakgrund */
+  padding: 30px;           /* Mer utrymme runt innehållet */
+  border-radius: 12px;     /* Mjukare rundade hörn */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Starkare skugga för mer djup */
+  margin: 20px auto;       /* Centrera container på sidan */
+  max-width: 800px;        /* Maximal bredd på containern */
+  text-align: center;      /* Centrera texten inom containern */
+  transition: all 0.3s ease; /* Övergång för snygg effekt vid hover */
+}
+
+/* Effekt vid hover på containern */
+.contact-container:hover {
+  transform: translateY(-5px); /* Lätt upplyftning vid hover */
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15); /* Förstärkt skugga vid hover */
+}
+
+/* Titel för kontakt-sektionen */
+.contact-title {
+  color: black;           /* Svart textfärg */
+  font-size: 2.5em;       /* Större fontstorlek */
+  margin-top: 10px;       /* Liten marginal ovanför titeln */
+  margin-bottom: 15px;    /* Lite utrymme under titeln */
+  font-weight: bold;      /* Fetstil på titeln */
+}
+
+/* Styla formulärsfält */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center; /* Centrera formuläret horisontellt */
+  margin-top: 20px;
+}
+
+/* Fält i formuläret */
+.form-group {
+  width: 100%; /* Gör så att alla fält är lika breda */
+  max-width: 600px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.form-group textarea {
+  resize: vertical; /* Gör textområdet resizable vertikalt */
+  min-height: 150px;
+}
+
+/* Stil på submit-knappen */
+.submit-button {
+  background-color: black;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #444; /* Mörkare nyans vid hover */
+}
 
