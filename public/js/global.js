@@ -147,7 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 // Logout-funktion
-function logoutUser() {
+function logoutUser(event) {
+  event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
+
   // Ta bort token från localStorage
   localStorage.removeItem('token');
 
@@ -160,16 +162,15 @@ function logoutUser() {
       // Uppdatera UI efter logout
       document.getElementById('login-register-links').style.display = 'block';
       document.getElementById('logout-link').style.display = 'none';
-      document.getElementById('header-subtitle').innerText = 'Play your favorite games online and challenge your friends!';
     })
     .catch(error => {
       console.error('Logout failed:', error);
       // Om något går fel kan vi fortfarande rensa lokal lagring och uppdatera UI
       document.getElementById('login-register-links').style.display = 'block';
       document.getElementById('logout-link').style.display = 'none';
-      document.getElementById('header-subtitle').innerText = 'Play your favorite games online and challenge your friends!';
     });
 }
+
 
 
   // Toggle hamburgermeny
