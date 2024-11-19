@@ -240,33 +240,26 @@ footer {
 }
 
 
-/* Responsiv design för mobil */
-@media (max-width: 768px) {
-  /* Visa hamburgermenyn på mobila enheter */
-  .hamburger-menu {
-    display: flex;
-  }
-
-  /* Dölja de vanliga navigeringslänkarna på mobiler tills hamburgermenyn öppnas */
-  #nav-links {
-    display: none;
-  }
-
-  /* När hamburgermenyn öppnas, visa menyn */
+/* När hamburgermenyn är öppen, visa navigeringen vertikalt */
   #nav-links.open {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #66bb6a;  /* Lägg till bakgrundsfärg när menyn är öppen */
   }
 
+  /* Justera storlek och layout för mobil */
   body {
-    font-size: 14px;  /* Minska textstorlek på mobiler */
+    font-size: 14px;
   }
 
   .header-title {
-    font-size: 2rem;  /* Minska titelns storlek på mobiler */
+    font-size: 2rem;
   }
 
   .header-subtitle {
-    font-size: 1rem;  /* Justera storlek på undertitel */
+    font-size: 1rem;
   }
 
   nav ul {
@@ -274,6 +267,6 @@ footer {
   }
 
   nav li {
-    margin: 5px 0;  /* Justera mellanrum på mobiler */
+    margin: 5px 0;
   }
 }
