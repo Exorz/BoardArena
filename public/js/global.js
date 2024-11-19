@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   // Ladda header.html och injicera den i #header-container
   fetch('/partials/header.html')
