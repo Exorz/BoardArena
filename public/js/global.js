@@ -104,17 +104,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Login-funktion
-function loginUser() {
-  const username = document.getElementById('login-username').value;
-  const password = document.getElementById('login-password').value;
+  function loginUser() {
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
 
-  fetch('/auth/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ username, password }),
-  })
+    fetch('/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    })
     .then(response => response.json())
     .then(data => {
       if (data.message === 'Login successful') {
@@ -134,8 +134,7 @@ function loginUser() {
       }
     })
     .catch(error => console.error('Error logging in:', error));
-}
-
+  }
 
   // Register-funktion
   function registerUser() {
@@ -150,27 +149,27 @@ function loginUser() {
       },
       body: JSON.stringify({ username, email, password }),
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.message === 'Registration successful') {
-          alert('Registration successful! Please log in.');
-          closeModal('register-modal');
-        }
-      })
-      .catch(error => console.error('Error registering:', error));
+    .then(response => response.json())
+    .then(data => {
+      if (data.message === 'Registration successful') {
+        alert('Registration successful! Please log in.');
+        closeModal('register-modal');
+      }
+    })
+    .catch(error => console.error('Error registering:', error));
   }
 
-// Logout-funktion
-function logoutUser(event) {
-  event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
+  // Logout-funktion
+  function logoutUser(event) {
+    event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
 
-  // Ta bort token från localStorage
-  localStorage.removeItem('token');
+    // Ta bort token från localStorage
+    localStorage.removeItem('token');
 
-  // Gör ett API-anrop till servern för att logga ut användaren (om du vill hantera server-side logout)
-  fetch('/auth/logout', {
-    method: 'GET',
-  })
+    // Gör ett API-anrop till servern för att logga ut användaren (om du vill hantera server-side logout)
+    fetch('/auth/logout', {
+      method: 'GET',
+    })
     .then(response => response.json())
     .then(() => {
       // Uppdatera UI efter logout
@@ -189,8 +188,7 @@ function logoutUser(event) {
       document.getElementById('login-register-links').style.display = 'block';
       document.getElementById('logout-link').style.display = 'none';
     });
-}
-
+  }
 
   // Toggle hamburgermeny
   function toggleMenu() {
@@ -208,28 +206,28 @@ function logoutUser(event) {
     }
   }
 
-// Kontrollera om användaren är inloggad vid sidladdning
-const token = localStorage.getItem('token');
-if (token) {
-  fetch('/auth/user', {
-    headers: {
-      'Authorization': `Bearer ${token}`,  // Skicka token som header
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.loggedIn) {
-      document.getElementById('login-register-links').style.display = 'none';
-      document.getElementById('logout-link').style.display = 'block';
-
-      // Visa användarinformation och uppdatera den
-      const userInfo = document.getElementById('user-info');
-      if (userInfo) {
-        userInfo.style.display = 'block'; // Visa user-info
-        userInfo.innerText = `Logged in as: ${data.username}`;
+  // Kontrollera om användaren är inloggad vid sidladdning
+  const token = localStorage.getItem('token');
+  if (token) {
+    fetch('/auth/user', {
+      headers: {
+        'Authorization': `Bearer ${token}`,  // Skicka token som header
       }
-    }
-  })
-  .catch(error => console.error('Error checking login:', error));
-}
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.loggedIn) {
+        document.getElementById('login-register-links').style.display = 'none';
+        document.getElementById('logout-link').style.display = 'block';
+
+        // Visa användarinformation och uppdatera den
+        const userInfo = document.getElementById('user-info');
+        if (userInfo) {
+          userInfo.style.display = 'block'; // Visa user-info
+          userInfo.innerText = `Logged in as: ${data.username}`;
+        }
+      }
+    })
+    .catch(error => console.error('Error checking login:', error));
+  }
 });
