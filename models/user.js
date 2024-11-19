@@ -22,6 +22,16 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
     auto: true, // Detta gör att MongoDB skapar ett unikt ID för varje användare
+  },
+  // De nya fälten:
+  lastLogin: {
+    type: Date,
+    default: Date.now  // Sätt default till nuvarande tidpunkt
+  },
+  playerStatus: {
+    type: String,
+    enum: ['online', 'offline'], // Definiera statusvärden
+    default: 'offline' // Standardstatus är offline
   }
 });
 
