@@ -5,7 +5,7 @@ const User = require('../models/User'); // Din användarmodell
 const router = express.Router();
 
 // Secret key för JWT (sätt denna som en miljövariabel i din .env-fil)
-const JWT_SECRET = process.env.JWT_SECRET || '9399891';
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
 // Register-rutt
 router.post('/register', (req, res) => {
