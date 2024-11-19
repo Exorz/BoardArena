@@ -160,30 +160,37 @@ function loginUser() {
       .catch(error => console.error('Error registering:', error));
   }
 
-  // Logout-funktion
-  function logoutUser(event) {
-    event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
+// Logout-funktion
+function logoutUser(event) {
+  event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
 
-    // Ta bort token från localStorage
-    localStorage.removeItem('token');
+  // Ta bort token från localStorage
+  localStorage.removeItem('token');
 
-    // Gör ett API-anrop till servern för att logga ut användaren (om du vill hantera server-side logout)
-    fetch('/auth/logout', {
-      method: 'GET',
+  // Gör ett API-anrop till servern för att logga ut användaren (om du vill hantera server-side logout)
+  fetch('/auth/logout', {
+    method: 'GET',
+  })
+    .then(response => response.json())
+    .then(() => {
+      // Uppdatera UI efter logout
+      document.getElementById('login-register-links').style.display = 'block';
+      document.getElementById('logout-link').style.display = 'none';
+
+      // Dölj användarinformationen
+      const userInfo = document.getElementById('user-info');
+      if (userInfo) {
+        userInfo.style.display = 'none'; // Dölj användarinformation
+      }
     })
-      .then(response => response.json())
-      .then(() => {
-        // Uppdatera UI efter logout
-        document.getElementById('login-register-links').style.display = 'block';
-        document.getElementById('logout-link').style.display = 'none';
-      })
-      .catch(error => {
-        console.error('Logout failed:', error);
-        // Om något går fel kan vi fortfarande rensa lokal lagring och uppdatera UI
-        document.getElementById('login-register-links').style.display = 'block';
-        document.getElementById('logout-link').style.display = 'none';
-      });
-  }
+    .catch(error => {
+      console.error('Logout failed:', error);
+      // Om något går fel kan vi fortfarande rensa lokal lagring och uppdatera UI
+      document.getElementById('login-register-links').style.display = 'block';
+      document.getElementById('logout-link').style.display = 'none';
+    });
+}
+
 
   // Toggle hamburgermeny
   function toggleMenu() {
