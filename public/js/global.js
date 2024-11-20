@@ -160,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error registering:', error));
   }
-
   // Logout-funktion
   function logoutUser(event) {
     event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
@@ -231,5 +230,25 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
     .catch(error => console.error('Error checking login:', error));
+  }
+
+  // Funktion för att visa login-medddelande i ett stiliserat UI-element
+  function showLoginMessage(message) {
+    // Skapa meddelandet elementet om det inte finns
+    let messageElement = document.getElementById('login-message');
+    if (!messageElement) {
+      messageElement = document.createElement('div');
+      messageElement.id = 'login-message';
+      document.body.appendChild(messageElement);
+    }
+
+    // Ställ in meddelandets text och gör det synligt
+    messageElement.innerHTML = `${message} <a href="/auth/login">Login here</a>`;
+    messageElement.style.display = 'block';
+
+    // Dölja meddelandet efter 5 sekunder (kan justeras om så önskas)
+    setTimeout(() => {
+      messageElement.style.display = 'none';
+    }, 5000); // Döljs efter 5 sekunder
   }
 });
