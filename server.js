@@ -23,21 +23,28 @@ app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
 
 // Middleware för autentisering (skyddar alla lobbysidor)
 function isAuthenticated(req, res, next) {
+  // Kolla om token finns i headers
   let token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Hämta token från headern
-
+  
+  // Logga för att se om token är korrekt skickad
+  console.log('Authorization header:', req.headers.authorization);
+  
   if (!token) {
+    console.log('Token saknas i headern'); // Logga när token saknas
     return res.redirect('/?message=You must be logged in to join a lobby'); // Om inte inloggad, omdirigera
   }
 
+  // Verifiera token med JWT
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
+      console.log('Token är ogiltig eller har gått ut:', err); // Logga om token är ogiltig
       return res.redirect('/?message=You must be logged in to join a lobby'); // Om token är ogiltig, omdirigera
     }
     req.user = decoded;  // Lägg till användarinformation i req
+    console.log('Token verifierad, användare:', req.user); // Logga när användaren är verifierad
     next();  // Fortsätt till nästa middleware eller rutt
   });
 }
-
 
 // Servera statiska filer från 'public' mappen
 app.use(express.static('public'));  // Express kommer nu att servera filer från /public
@@ -57,30 +64,36 @@ app.use('/auth', authRoutes);  // Auth-rutter som login, register, logout
 app.get('/lobbies/:game/lobby.html', isAuthenticated, (req, res) => {
   const { game } = req.params;  // Hämta speltypen från URL
   const filePath = path.join(__dirname, 'views', 'lobbies', game, 'lobby.html');
+  
+  console.log(`Försöker ladda lobby för spelet: ${game}`); // Logga vilken lobby som begärs
   res.sendFile(filePath);  // Skicka den specifika lobbyfilen
 });
 
 // Servera index.html från 'views' mappen när användaren besöker hemsidan
 app.get('/', (req, res) => {
   const filePath = path.join(__dirname, 'views', 'index.html');
+  console.log('Laddar index.html');
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
 // Servera about.html
 app.get('/about', (req, res) => {
   const filePath = path.join(__dirname, 'views', 'about.html');
+  console.log('Laddar about.html');
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
 // Servera contact.html
 app.get('/contact', (req, res) => {
   const filePath = path.join(__dirname, 'views', 'contact.html');
+  console.log('Laddar contact.html');
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
 // Servera games.html
 app.get('/games', (req, res) => {
   const filePath = path.join(__dirname, 'views', 'games.html');
+  console.log('Laddar games.html');
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
