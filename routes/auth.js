@@ -109,8 +109,9 @@ router.get('/logout', (req, res) => {
 
 // Kontrollera om användaren är inloggad med JWT
 router.get('/user', (req, res) => {
-  const token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Förväntar sig "Bearer <token>"
-  
+  // Här hämtar vi token från query parameter istället för headern
+  const token = req.query.token;  // Hämta token från query parameter
+
   console.log('Checking user login status with token:', token); // Logga token kontroll
 
   if (!token) {
