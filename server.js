@@ -67,28 +67,24 @@ app.get('/lobbies/:game/lobby.html', isAuthenticated, (req, res) => {
 // Servera index.html från 'views' mappen när användaren besöker hemsidan
 app.get('/', (req, res) => {
   const filePath = path.join(__dirname, 'views', 'index.html');
-  console.log('Looking for file at:', filePath);
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
 // Servera about.html
 app.get('/about', (req, res) => {
   const filePath = path.join(__dirname, 'views', 'about.html');
-  console.log('Looking for file at:', filePath);
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
 // Servera contact.html
 app.get('/contact', (req, res) => {
   const filePath = path.join(__dirname, 'views', 'contact.html');
-  console.log('Looking for file at:', filePath);
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
 // Servera games.html
 app.get('/games', (req, res) => {
   const filePath = path.join(__dirname, 'views', 'games.html');
-  console.log('Looking for file at:', filePath);
   res.sendFile(filePath);  // Skicka filen till klienten
 });
 
