@@ -273,7 +273,7 @@ background-color: #66bb6a; /* Lägg till en bakgrundsfärg på den öppna menyn 
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    background-color: #66bb6a;  /* Lägg till bakgrundsfärg när menyn är öppen */
+    background-color: black;  /* Lägg till bakgrundsfärg när menyn är öppen */
   }
 
   /* Justera storlek och layout för mobil */
