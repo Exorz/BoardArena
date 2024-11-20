@@ -23,14 +23,14 @@ app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
 
 // Middleware för autentisering (skyddar alla lobbysidor)
 function isAuthenticated(req, res, next) {
-  // Försök hämta token från query parameter istället för från headers
-  let token = req.query.token; // Nu hämtas token från URL:en (query string)
-
+  // Kolla om token finns i headers
+  let token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Hämta token från headern
+  
   // Logga för att se om token är korrekt skickad
-  console.log('Authorization token in query:', token);
+  console.log('Authorization header:', req.headers.authorization);
 
   if (!token) {
-    console.log('Token saknas i query parameter'); // Logga när token saknas
+    console.log('Token saknas i headern'); // Logga när token saknas
     return res.redirect('/?message=You must be logged in to join a lobby'); // Om inte inloggad, omdirigera
   }
 
@@ -64,7 +64,7 @@ app.use('/auth', authRoutes);  // Auth-rutter som login, register, logout
 app.get('/lobbies/:game/lobby.html', isAuthenticated, (req, res) => {
   const { game } = req.params;  // Hämta speltypen från URL
   const filePath = path.join(__dirname, 'views', 'lobbies', game, 'lobby.html');
-  
+
   console.log(`Försöker ladda lobby för spelet: ${game}`); // Logga vilken lobby som begärs
   res.sendFile(filePath);  // Skicka den specifika lobbyfilen
 });
