@@ -51,11 +51,12 @@ router.post('/login', (req, res) => {
           .then(() => {
             // Skapa en JWT-token
             const token = jwt.sign({ userId: user._id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
-            res.json({
-              message: 'Login successful',
-              username: user.username,
-              token, // Skicka token till klienten
-            });
+res.json({
+  message: 'Login successful',
+  username: user.username,
+  token, // Skicka token till klienten
+});
+
           })
           .catch(err => res.status(500).json({ message: 'Error updating user', error: err }));
       } else {
