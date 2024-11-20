@@ -237,41 +237,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Kontrollera om användaren är inloggad vid sidladdning
-  const token = localStorage.getItem('token');
-  if (token) {
-    console.log('Token found in localStorage, checking login status');
-  
-    // Kontrollera och logga headers för att säkerställa att token skickas
-    fetch(`/auth/user?token=${token}`, {  // Skicka token som query parameter istället för i header
-      method: 'GET',
-    })
-    .then(response => {
-      console.log('Response status:', response.status);  // Logga svarstatus
-      return response.json();
-    })
-    .then(data => {
-      if (data.loggedIn) {
-        console.log('User is logged in:', data.username);
-        document.getElementById('login-register-links').style.display = 'none';
-        document.getElementById('logout-link').style.display = 'block';
+// Kontrollera om användaren är inloggad vid sidladdning
+const token = localStorage.getItem('token');
+if (token) {
+  console.log('Token found in localStorage, checking login status');
 
-        // Visa användarinformation och uppdatera den
-        const userInfo = document.getElementById('user-info');
-        if (userInfo) {
-          userInfo.style.display = 'block'; // Visa user-info
-          userInfo.innerText = `Logged in as: ${data.username}`;
-        }
-      } else {
-        console.log('User is not logged in');
+  // Kontrollera och logga headers för att säkerställa att token skickas
+  fetch('/auth/user', {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,  // Skicka token som header
+    }
+  })
+  .then(response => {
+    console.log('Response status:', response.status);  // Logga svarstatus
+    return response.json();
+  })
+  .then(data => {
+    if (data.loggedIn) {
+      console.log('User is logged in:', data.username);
+      document.getElementById('login-register-links').style.display = 'none';
+      document.getElementById('logout-link').style.display = 'block';
+
+      // Visa användarinformation och uppdatera den
+      const userInfo = document.getElementById('user-info');
+      if (userInfo) {
+        userInfo.style.display = 'block'; // Visa user-info
+        userInfo.innerText = `Logged in as: ${data.username}`;
       }
-    })
-    .catch(error => {
-      console.error('Error checking login status:', error);
-    });
-  } else {
-    console.log('No token found in localStorage');
-  }
+    } else {
+      console.log('User is not logged in');
+    }
+  })
+  .catch(error => {
+    console.error('Error checking login status:', error);
+  });
+} else {
+  console.log('No token found in localStorage');
+}
 
   // Toggle hamburgermeny
   function toggleMenu() {
