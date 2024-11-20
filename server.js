@@ -21,9 +21,13 @@ app.use(express.json());  // För att kunna ta emot JSON från klienten
 app.use(cors());          // Aktivera CORS (Cross-Origin Resource Sharing)
 app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
 
-// Middleware för autentisering (skyddar alla lobbies)
 function isAuthenticated(req, res, next) {
-  const token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Hämta token från headern
+  let token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Hämta token från headern
+
+  // Om token inte finns i header, kontrollera cookies (för att hantera båda möjliga sätt)
+  if (!token && req.cookies && req.cookies.token) {
+    token = req.cookies.token;
+  }
 
   if (!token) {
     return res.redirect('/?message=You must be logged in to join a lobby'); // Om inte inloggad, omdirigera
@@ -38,13 +42,6 @@ function isAuthenticated(req, res, next) {
   });
 }
 
-// Ta bort sessionhantering, eftersom den inte behövs för JWT
-// app.use(session({
-//   secret: 'your-secret-key', // Hela sessionen är krypterad med den här nyckeln
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: { secure: false }  // Ställ in på true om du använder HTTPS
-// }));
 
 // Servera statiska filer från 'public' mappen
 app.use(express.static('public'));  // Express kommer nu att servera filer från /public
