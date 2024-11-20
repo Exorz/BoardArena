@@ -23,14 +23,14 @@ app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
 
 // Middleware för autentisering (skyddar alla lobbysidor)
 function isAuthenticated(req, res, next) {
-  // Kolla om token finns i headers
-  let token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Hämta token från headern
-  
+  // Kolla om token finns i query parameter istället för headers
+  let token = req.query.token;  // Hämta token från query parameter
+
   // Logga för att se om token är korrekt skickad
-  console.log('Authorization header:', req.headers.authorization);
+  console.log('Authorization token:', token);
   
   if (!token) {
-    console.log('Token saknas i headern'); // Logga när token saknas
+    console.log('Token saknas i query parameter'); // Logga när token saknas
     return res.redirect('/?message=You must be logged in to join a lobby'); // Om inte inloggad, omdirigera
   }
 
