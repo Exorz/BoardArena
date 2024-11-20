@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const morgan = require('morgan');
-const path = require('path');  // Importera path-modulen
+const path = require('path');
+const jwt = require('jsonwebtoken');
 const config = require('./config/config');
 
 // Importera autentiseringsrutter
@@ -19,6 +20,23 @@ const app = express();
 app.use(express.json());  // För att kunna ta emot JSON från klienten
 app.use(cors());          // Aktivera CORS (Cross-Origin Resource Sharing)
 app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
+
+// Middleware för autentisering (skyddar alla lobbies)
+function isAuthenticated(req, res, next) {
+  const token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Hämta token från headern
+
+  if (!token) {
+    return res.redirect('/?message=You must be logged in to join a lobby'); // Om inte inloggad, omdirigera
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.redirect('/?message=You must be logged in to join a lobby'); // Om token är ogiltig, omdirigera
+    }
+    req.user = decoded;  // Lägg till användarinformation i req
+    next();  // Fortsätt till nästa middleware eller rutt
+  });
+}
 
 // Ta bort sessionhantering, eftersom den inte behövs för JWT
 // app.use(session({
@@ -41,6 +59,13 @@ mongoose.connect(config.mongoURI)
 
 // Använd autentiseringsrutter
 app.use('/auth', authRoutes);  // Auth-rutter som login, register, logout
+
+// Skydda alla lobbysidor med autentisering (wildcard för alla spel)
+app.get('/lobbies/:game/lobby.html', isAuthenticated, (req, res) => {
+  const { game } = req.params;  // Hämta speltypen från URL
+  const filePath = path.join(__dirname, 'views', 'lobbies', game, 'lobby.html');
+  res.sendFile(filePath);  // Skicka den specifika lobbyfilen
+});
 
 // Servera index.html från 'views' mappen när användaren besöker hemsidan
 app.get('/', (req, res) => {
