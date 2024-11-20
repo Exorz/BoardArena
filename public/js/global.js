@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error("Error loading navigation:", error);
     });
 
-  // Ladda footer.html och injicera den i #footer-container
+  // Ladda footer.html och injiciera den i #footer-container
   fetch('/partials/footer.html')
     .then(response => response.text())
     .then(html => {
@@ -137,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error logging in:', error));
   }
-
   // Register-funktion
   function registerUser() {
     const username = document.getElementById('register-username').value;
@@ -160,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error registering:', error));
   }
+
   // Logout-funktion
   function logoutUser(event) {
     event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
@@ -234,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Funktion för att visa login-medddelande i ett stiliserat UI-element
   function showLoginMessage(message) {
-    // Skapa meddelandet elementet om det inte finns
     let messageElement = document.getElementById('login-message');
     if (!messageElement) {
       messageElement = document.createElement('div');
@@ -242,13 +241,11 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.appendChild(messageElement);
     }
 
-    // Ställ in meddelandets text och gör det synligt
     messageElement.innerHTML = `${message} <a href="/auth/login">Login here</a>`;
     messageElement.style.display = 'block';
 
-    // Dölja meddelandet efter 5 sekunder (kan justeras om så önskas)
     setTimeout(() => {
       messageElement.style.display = 'none';
-    }, 5000); // Döljs efter 5 sekunder
+    }, 5000);
   }
 });
