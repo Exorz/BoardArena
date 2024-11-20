@@ -107,37 +107,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Login-funktion
   function loginUser() {
-  const username = document.getElementById('login-username').value;
-  const password = document.getElementById('login-password').value;
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
 
-  fetch('/auth/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ username, password }),
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.message === 'Login successful') {
-      localStorage.setItem('token', data.token); // Spara token i lokal lagring
-      closeModal('login-modal');
-      document.getElementById('login-register-links').style.display = 'none';
-      document.getElementById('logout-link').style.display = 'block';
+    fetch('/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message === 'Login successful') {
+        localStorage.setItem('token', data.token); // Spara token i lokal lagring
+        closeModal('login-modal');
+        document.getElementById('login-register-links').style.display = 'none';
+        document.getElementById('logout-link').style.display = 'block';
 
-      // Uppdatera användarinformationen och visa den
-      const userInfo = document.getElementById('user-info');
-      if (userInfo) {
-        userInfo.style.display = 'block'; // Visa user-info
-        userInfo.innerText = `Logged in as: ${data.username}`;
+        // Uppdatera användarinformationen och visa den
+        const userInfo = document.getElementById('user-info');
+        if (userInfo) {
+          userInfo.style.display = 'block'; // Visa user-info
+          userInfo.innerText = `Logged in as: ${data.username}`;
+        }
+      } else {
+        alert('Invalid credentials');
       }
-    } else {
-      alert('Invalid credentials');
-    }
-  })
-  .catch(error => console.error('Error logging in:', error));
-}
-
+    })
+    .catch(error => console.error('Error logging in:', error));
+  }
 
   // Register-funktion
   function registerUser() {
@@ -161,55 +160,55 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error registering:', error));
   }
-  // Logout-funktion
-  function logoutUser(event) {
-    event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
+// Logout-funktion
+function logoutUser(event) {
+  event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
 
-    // Ta bort token från localStorage
-    localStorage.removeItem('token');
+  // Ta bort token från localStorage
+  localStorage.removeItem('token');
 
-    // Gör ett API-anrop till servern för att logga ut användaren (om du vill hantera server-side logout)
-    fetch('/auth/logout', {
-      method: 'GET',
-    })
-    .then(response => response.json())
-    .then(() => {
-      // Uppdatera UI efter logout
-      document.getElementById('login-register-links').style.display = 'block';
-      document.getElementById('logout-link').style.display = 'none';
+  // Gör ett API-anrop till servern för att logga ut användaren (om du vill hantera server-side logout)
+  fetch('/auth/logout', {
+    method: 'GET',
+  })
+  .then(response => response.json())
+  .then(() => {
+    // Uppdatera UI efter logout
+    document.getElementById('login-register-links').style.display = 'block';
+    document.getElementById('logout-link').style.display = 'none';
 
-      // Dölj användarinformationen
-      const userInfo = document.getElementById('user-info');
-      if (userInfo) {
-        userInfo.style.display = 'none'; // Dölj användarinformation
-      }
-    })
-    .catch(error => {
-      console.error('Logout failed:', error);
-      // Om något går fel kan vi fortfarande rensa lokal lagring och uppdatera UI
-      document.getElementById('login-register-links').style.display = 'block';
-      document.getElementById('logout-link').style.display = 'none';
-    });
-  }
-
-  // Toggle hamburgermeny
-  function toggleMenu() {
-    const navLinks = document.getElementById('nav-links');
-    if (navLinks) {
-      navLinks.classList.toggle('open');
+    // Dölj användarinformationen
+    const userInfo = document.getElementById('user-info');
+    if (userInfo) {
+      userInfo.style.display = 'none'; // Dölj användarinformation
     }
-  }
+  })
+  .catch(error => {
+    console.error('Logout failed:', error);
+    // Om något går fel kan vi fortfarande rensa lokal lagring och uppdatera UI
+    document.getElementById('login-register-links').style.display = 'block';
+    document.getElementById('logout-link').style.display = 'none';
+  });
+}
 
-  // Stäng modals om användaren klickar utanför modal-fönstret
-  window.onclick = function(event) {
-    if (event.target.className === 'modal') {
-      closeModal('login-modal');
-      closeModal('register-modal');
-    }
+// Toggle hamburgermeny
+function toggleMenu() {
+  const navLinks = document.getElementById('nav-links');
+  if (navLinks) {
+    navLinks.classList.toggle('open');
   }
+}
 
-  // Kontrollera om användaren är inloggad vid sidladdning
-  const token = localStorage.getItem('token');
+// Stäng modals om användaren klickar utanför modal-fönstret
+window.onclick = function(event) {
+  if (event.target.className === 'modal') {
+    closeModal('login-modal');
+    closeModal('register-modal');
+  }
+}
+
+// Kontrollera om användaren är inloggad vid sidladdning
+const token = localStorage.getItem('token');
 if (token) {
   fetch('/auth/user', {
     headers: {
@@ -233,24 +232,19 @@ if (token) {
   .catch(error => console.error('Error checking login:', error));
 }
 
-
-  // Funktion för att visa login-medddelande i ett stiliserat UI-element
-  function showLoginMessage(message) {
-    // Skapa meddelandet elementet om det inte finns
-    let messageElement = document.getElementById('login-message');
-    if (!messageElement) {
-      messageElement = document.createElement('div');
-      messageElement.id = 'login-message';
-      document.body.appendChild(messageElement);
-    }
-
-    // Ställ in meddelandets text och gör det synligt
-    messageElement.innerHTML = `${message} <a href="/auth/login">Login here</a>`;
-    messageElement.style.display = 'block';
-
-    // Dölja meddelandet efter 5 sekunder (kan justeras om så önskas)
-    setTimeout(() => {
-      messageElement.style.display = 'none';
-    }, 5000); // Döljs efter 5 sekunder
+// Funktion för att visa login-medddelande i ett stiliserat UI-element
+function showLoginMessage(message) {
+  let messageElement = document.getElementById('login-message');
+  if (!messageElement) {
+    messageElement = document.createElement('div');
+    messageElement.id = 'login-message';
+    document.body.appendChild(messageElement);
   }
-});
+
+  messageElement.innerHTML = `${message} <a href="/auth/login">Login here</a>`;
+  messageElement.style.display = 'block';
+
+  setTimeout(() => {
+    messageElement.style.display = 'none';
+  }, 5000);
+}
