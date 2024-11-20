@@ -256,6 +256,27 @@ background-color: #66bb6a; /* Lägg till en bakgrundsfärg på den öppna menyn 
     /* Removed display: none; */
 }
 
+/* Styling för meddelandet som visas om användaren inte är inloggad */
+#login-message {
+  display: none;  /* Visa meddelandet endast när det behövs */
+  position: fixed;  /* Placera det längst upp på sidan */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);  /* Bakgrund med transparent svart */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  z-index: 1000;  /* Se till att meddelandet syns över allt annat */
+}
+
+#login-message a {
+  color: #66bb6a;  /* Länkfärg som matchar temat */
+  font-weight: bold;
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   /* Visa hamburgermenyn på mobila enheter */
   .hamburger-menu {
