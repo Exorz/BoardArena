@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BoardArena</title>
-  <link rel="stylesheet" href="/css/global.css">  <!-- Länk till global CSS -->
-  <link rel="stylesheet" href="/css/index.css">  <!-- Länk till index CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blip.se - Home</title>
+
+    <!-- Path to main.css -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Path to scripts.js for login/logout functionality -->
+    <script src="/js/scripts.js" defer></script>
 </head>
 <body>
-  <!-- Här kommer headern att laddas in -->
-  <div id="header-container"></div>
-  <!-- Här kommer navigationen att laddas in -->
-  <div id="navigation-container"></div>
-  <!-- Main content -->
-  <main>
-    <div class="news-container">
-      <h1 class="news-title">News</h1>
-      <p class="news-text">Här är några nyheter för dig att läsa...</p>
-    </div>
-  </main>
-  
-  <!-- Footer -->
-  <footer id="footer-container">
-    <p>© 2024 BoardArena. All rights reserved.</p>
-  </footer>
+    <!-- Load the header -->
+    <div id="header-container"></div>
 
-  <script src="/js/global.js"></script> <!-- Länk till global JavaScript -->
+    <!-- Main content -->
+    <main class="content"> 
+        <section class="news">
+            <div class="news-container">
+                <h2>Latest News</h2>
+                <p>Stay tuned for exciting updates and events on Blip.se!</p>
+            </div>
+        </section>
+
+        <!-- Placeholder for redirect message -->
+        <div id="redirect-message" style="display:none; color: red; font-weight: bold;"></div>
+    </main>
+
+    <!-- Load the footer -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript to show the redirect message if it exists -->
+    <script>
+        // Check for the redirect message
+        const message = localStorage.getItem('redirectMessage');
+        if (message) {
+            const messageContainer = document.getElementById('redirect-message');
+            messageContainer.textContent = message;
+            messageContainer.style.display = 'block';
+            localStorage.removeItem('redirectMessage'); // Remove it after displaying
+        }
+    </script>
 </body>
 </html>

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BoardArena</title>
-  <link rel="stylesheet" href="/css/global.css">  <!-- Länk till global CSS -->
-  <link rel="stylesheet" href="/css/games.css">  <!-- Länk till index CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+    
+    <!-- Path to main.css -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Path to JavaScript for login/logout -->
+    <script src="/js/scripts.js" defer></script> <!-- Låt scripts.js hantera header och footer -->
 </head>
 <body>
-  <!-- Här kommer headern att laddas in -->
-  <div id="header-container"></div>
-  <!-- Här kommer navigationen att laddas in -->
-  <div id="navigation-container"></div>
-  <!-- Main content -->
-  <main>
-     <section class="games">
+    <!-- Load the header -->
+    <div id="header-container"></div>
+
+    <!-- Main content -->
+    <main class="content">
+        <section class="games">
             <h2>Games</h2>
             <div class="game-list">
                 <div class="game-card" style="background-image: url('/img/games/yatzy.webp'); background-size: cover; background-position: center;">
@@ -24,11 +27,10 @@
                 </div>
                 
                 <div class="game-card" style="background-image: url('/img/games/battleships.webp'); background-size: cover; background-position: center;">
-    <h3>Battleships</h3>
-    <button onclick="location.href='/lobbies/battleships/lobby.html'">Play Battleships</button>
-    <img src="/img/games/battleships.webp" alt="Battleships multiplayer" style="display:none;"> <!-- Hidden image for SEO -->
-</div>
-
+                    <h3>Battleships</h3>
+                    <button onclick="location.href='/lobby?game=battleships'">Play Battleships</button>
+                    <img src="/img/games/battleships.webp" alt="Battleships multiplayer" style="display:none;"> <!-- Hidden image for SEO -->
+                </div>
 
 
 
@@ -73,13 +75,9 @@
                 </div>
             </div>
         </section>
-  </main>
-  
-  <!-- Footer -->
-  <footer id="footer-container">
-    <p>© 2024 BoardArena. All rights reserved.</p>
-  </footer>
+    </main>
 
-  <script src="/js/global.js"></script> <!-- Länk till global JavaScript -->
+    <!-- Load the footer -->
+    <div id="footer-container"></div>
 </body>
 </html>

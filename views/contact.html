@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BoardArena - Contact</title>
-  <link rel="stylesheet" href="/css/global.css">  <!-- Länk till global CSS -->
-  <link rel="stylesheet" href="/css/contact.css">  <!-- Länk till Contact CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blip.se - Contact Us</title>
+
+    <!-- Path to main.css -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Path to scripts.js for login/logout functionality -->
+    <script src="/js/scripts.js" defer></script>
 </head>
 <body>
-  <!-- Här kommer headern att laddas in -->
-  <!-- Containers där vi kommer att ladda in header, navigation och footer -->
-  <div id="header-container"></div>
-  <!-- Här kommer navigationen att laddas in -->
-  <div id="navigation-container"></div>
-  <!-- Main content -->
-  <main>
-    <div class="contact-container">
-      <h1 class="contact-title">Contact Us</h1>
-      <form action="#" method="post" class="contact-form">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" required placeholder="Enter your name">
-        </div>
-        <div class="form-group">
-          <label for="email">Your Email</label>
-          <input type="email" id="email" name="email" required placeholder="Enter your email">
-        </div>
-        <div class="form-group">
-          <label for="message">Your Message</label>
-          <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
-        </div>
-        <button type="submit" class="submit-button">Send Message</button>
-      </form>
-    </div>
-  </main>
+    <!-- Load the header -->
+    <div id="header-container"></div>
 
-  <!-- Här kommer footern att laddas in -->
-<!-- Footer -->
-  <footer id="footer-container">
-    <p>© 2024 BoardArena. All rights reserved.</p>
-  </footer>
-  
-  <script src="/js/global.js"></script> <!-- Länk till global JavaScript -->
+    <!-- Main content -->
+    <main class="content">
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <div class="contact-container"> <!-- Added container for better styling -->
+                <form id="contact-form" class="contact-form" action="/contact" method="POST">
+                    <div class="input-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+                <div id="contact-message"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Load the footer -->
+    <div id="footer-container"></div>
 </body>
 </html>
-

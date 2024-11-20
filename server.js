@@ -1,101 +1,82 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const morgan = require('morgan');
+const express = require('express'); 
 const path = require('path');
-const jwt = require('jsonwebtoken');
-const config = require('./config/config');
-
-// Importera autentiseringsrutter
-const authRoutes = require('./routes/auth');
-
-// Läs in miljövariabler från .env
-dotenv.config();
-
-// Skapa appen
+const mongoose = require('mongoose');
+require('dotenv').config();
 const app = express();
+const morgan = require('morgan');
+const { authenticateToken } = require('./middlewares/authMiddleware');
 
-// Middleware
-app.use(express.json());  // För att kunna ta emot JSON från klienten
-app.use(cors());          // Aktivera CORS (Cross-Origin Resource Sharing)
-app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
+// Middleware for handling JSON and URL-encoded data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Middleware för autentisering (skyddar alla lobbysidor)
-function isAuthenticated(req, res, next) {
-  let token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Hämta token från headern
-  
-  console.log('Authorization header:', req.headers.authorization); // Logga för att se om token är korrekt skickad
+// Static files (CSS, JavaScript, etc.)
+app.use(express.static(path.join(__dirname, 'public')));
 
-  if (!token) {
-    console.log('Token saknas i headern'); // Logga när token saknas
-    return res.status(401).json({ message: 'You must be logged in to join a lobby' }); // Skicka JSON med felmeddelande
-  }
+// Connect to MongoDB
+mongoose.connect('mongodb+srv://johannessonandree:Fiskbulle1a@db.bo2i6.mongodb.net/db?retryWrites=true&w=majority')
+    .then(() => {
+       
+    });
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      console.log('Token är ogiltig eller har gått ut:', err); // Logga om token är ogiltig
-      return res.status(401).json({ message: 'You must be logged in to join a lobby' }); // Skicka JSON med felmeddelande
-    }
-    req.user = decoded;  // Lägg till användarinformation i req
-    console.log('Token verifierad, användare:', req.user); // Logga när användaren är verifierad
-    next();  // Fortsätt till nästa middleware eller rutt
-  });
-}
+// Import routes
+const authRoutes = require('./routes/auth');
+app.use('/auth', authRoutes);
+
+const leaderboardRoutes = require('./routes/leaderboard');
+app.use('/leaderboard', leaderboardRoutes);
 
 
-// Servera statiska filer från 'public' mappen
-app.use(express.static('public'));  // Express kommer nu att servera filer från /public
+// Serve HTML pages
 
-// Anslut till MongoDB utan deprecated options
-mongoose.connect(config.mongoURI)
-  .then(() => console.log('MongoDB ansluten'))
-  .catch((err) => {
-    console.error('Fel vid anslutning till MongoDB:', err);
-    process.exit(1); // Stänger ner servern om anslutningen misslyckas
-  });
-
-// Använd autentiseringsrutter
-app.use('/auth', authRoutes);  // Auth-rutter som login, register, logout
-
-// Skydda alla lobbysidor med autentisering (wildcard för alla spel)
-app.get('/lobbies/:game/lobby.html', isAuthenticated, (req, res) => {
-  const { game } = req.params;  // Hämta speltypen från URL
-  const filePath = path.join(__dirname, 'views', 'lobbies', game, 'lobby.html');
-
-  console.log(`Försöker ladda lobby för spelet: ${game}`); // Logga vilken lobby som begärs
-  res.sendFile(filePath);  // Skicka den specifika lobbyfilen
+// Route för How to Play filer
+app.get('/howto/:game', (req, res) => {
+    const game = req.params.game;
+    res.sendFile(path.join(__dirname, 'views', 'games', 'howto', `howto_${game}.html`));
 });
 
-// Servera index.html från 'views' mappen när användaren besöker hemsidan
+// Route för Leaderboard filer
+app.get('/leaderboard/:game', (req, res) => {
+    const game = req.params.game;
+    res.sendFile(path.join(__dirname, 'views', 'games', 'leaderboard', `leaderboard_${game}.html`));
+});
+
+
+
+
 app.get('/', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'index.html');
-  console.log('Laddar index.html');
-  res.sendFile(filePath);  // Skicka filen till klienten
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-// Servera about.html
-app.get('/about', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'about.html');
-  console.log('Laddar about.html');
-  res.sendFile(filePath);  // Skicka filen till klienten
-});
-
-// Servera contact.html
-app.get('/contact', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'contact.html');
-  console.log('Laddar contact.html');
-  res.sendFile(filePath);  // Skicka filen till klienten
-});
-
-// Servera games.html
 app.get('/games', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'games.html');
-  console.log('Laddar games.html');
-  res.sendFile(filePath);  // Skicka filen till klienten
+    res.sendFile(path.join(__dirname, 'views', 'games.html'));
 });
 
-// Starta servern
-app.listen(config.port, () => {
-  console.log(`Servern kör på http://localhost:${config.port}`);
+app.get('/contact', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'contact.html'));
 });
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'about.html'));
+});
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+const server = app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
+
+// Socket.IO setup
+const io = require('socket.io')(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST'],
+        credentials: true
+    }
+});
+
+// Main lobby connection
+
+
+// Game namespace connection
+

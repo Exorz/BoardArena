@@ -1,28 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Battleships</title>
-  <link rel="stylesheet" href="/css/global.css">  <!-- Länk till global CSS -->
-  <!-- <link rel="stylesheet" href="/css/lobby.css">  <!-- Länk till index CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blip.se - Yatzy Lobby</title>
+    <link rel="stylesheet" href="/css/lobby.css"> <!-- Include shared lobby CSS -->
 </head>
 <body>
-  <!-- Här kommer headern att laddas in -->
-  <div id="header-container"></div>
-  <!-- Här kommer navigationen att laddas in -->
-  <div id="navigation-container"></div>
-  <!-- Main content -->
+    <!-- Load the header (could be dynamically loaded if needed) -->
+    <div id="header-container"></div>
+    
+    <div class="lobby-container">
+	<div class="popup-buttons">
+    <button onclick="openPopup('howToPlay')">How to Play</button>
+    <button onclick="openPopup('leaderboard')">Leaderboard</button>
+</div>
 
-  <main>
-  
-  </main>
-  
-  <!-- Footer -->
-  <footer id="footer-container">
-    <p>© 2024 BoardArena. All rights reserved.</p>
-  </footer>
+        <h1 class="lobby-title" id="lobby-title">Yatzy Lobby</h1> <!-- Game title will be set based on URL -->
+        
+        <!-- Chat Box with accessible labels -->
+        <div class="chat-box" aria-live="polite">
+            <div class="chat-header">
+                <center><h2>Chat</h2></center>
+            </div>
+            <div class="chat-messages" id="chatMessages" aria-label="Chat messages"></div>
+            
+            <!-- Chat input and send button -->
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Enter your message..." aria-label="Chat message input" />
+                <button id="sendButton" aria-label="Send chat message">Send</button>
+            </div>
+        </div>
 
-  <script src="/js/global.js"></script> <!-- Länk till global JavaScript -->
+        <!-- Player Count Section -->
+        <section class="player-count">
+            <p id="playerCountText" class="online-text" aria-live="polite">Online: 0</p>
+        </section>
+		
+        <!-- Main Content of the Lobby -->
+        <section class="lobby">
+            <button id="createTableButton" aria-label="Create a new game table">Create New Table</button>
+            <div class="tables-container" id="tablesContainer" aria-label="List of game tables"></div> 
+        </section>
+    </div>
+	
+<div class="form-popup" id="lobbyContentPopup"> <!-- Bytt namn här -->
+    <div class="form-container" id="lobbyFormContainer"> <!-- Lagt till ID här för att styla specifikt -->
+        <h2 id="popupTitle">Title</h2>
+        <div id="lobbyPopupContent">Text</div>
+        <button type="button" class="btn cancel" onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+
+	
+    
+    <!-- Load the footer (could be dynamically loaded if needed) -->
+    <div id="footer-container"></div>
+
+    <!-- Socket.IO library and scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="/js/rankUtils.js"></script>
+    <script src="/js/scripts.js" defer></script> 
+    <script src="/js/mainclient.js" defer></script>
+    <script src="/js/tables.js" defer></script>
+    <script src="/js/lobbychat.js" defer></script>
 </body>
 </html>
