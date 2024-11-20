@@ -23,28 +23,26 @@ app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
 
 // Middleware för autentisering (skyddar alla lobbysidor)
 function isAuthenticated(req, res, next) {
-  // Kolla om token finns i headers
   let token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Hämta token från headern
   
-  // Logga för att se om token är korrekt skickad
-  console.log('Authorization header:', req.headers.authorization);
+  console.log('Authorization header:', req.headers.authorization); // Logga för att se om token är korrekt skickad
 
   if (!token) {
     console.log('Token saknas i headern'); // Logga när token saknas
-    return res.redirect('/?message=You must be logged in to join a lobby'); // Om inte inloggad, omdirigera
+    return res.status(401).json({ message: 'You must be logged in to join a lobby' }); // Skicka JSON med felmeddelande
   }
 
-  // Verifiera token med JWT
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       console.log('Token är ogiltig eller har gått ut:', err); // Logga om token är ogiltig
-      return res.redirect('/?message=You must be logged in to join a lobby'); // Om token är ogiltig, omdirigera
+      return res.status(401).json({ message: 'You must be logged in to join a lobby' }); // Skicka JSON med felmeddelande
     }
     req.user = decoded;  // Lägg till användarinformation i req
     console.log('Token verifierad, användare:', req.user); // Logga när användaren är verifierad
     next();  // Fortsätt till nästa middleware eller rutt
   });
 }
+
 
 // Servera statiska filer från 'public' mappen
 app.use(express.static('public'));  // Express kommer nu att servera filer från /public
