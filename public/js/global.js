@@ -241,12 +241,18 @@ document.addEventListener('DOMContentLoaded', () => {
 const token = localStorage.getItem('token');
 if (token) {
   console.log('Token found in localStorage, checking login status');
+  
+  // Kontrollera och logga headers för att säkerställa att token skickas
   fetch('/auth/user', {
+    method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`,  // Skicka token som header
     }
   })
-  .then(response => response.json())
+  .then(response => {
+    console.log('Response status:', response.status);  // Logga svarstatus
+    return response.json();
+  })
   .then(data => {
     if (data.loggedIn) {
       console.log('User is logged in:', data.username);
@@ -269,6 +275,7 @@ if (token) {
 } else {
   console.log('No token found in localStorage');
 }
+
 
 
   // Toggle hamburgermeny
