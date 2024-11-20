@@ -160,7 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error registering:', error));
   }
-// Logout-funktion
+
+                          // Logout-funktion
 function logoutUser(event) {
   event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
 
