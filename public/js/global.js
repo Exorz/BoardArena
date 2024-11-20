@@ -101,14 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error("Error loading footer:", error);
     });
 
-  // Funktion för att visa felmeddelande i main
-  function showMessage(message) {
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('alert');
-    messageElement.textContent = message;
-    document.querySelector('main').appendChild(messageElement);
-  }
-
   // Funktion för att öppna modaler
   function openModal(modalId) {
     console.log('Opening modal:', modalId);
@@ -129,6 +121,26 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       console.error('Modal not found:', modalId);
     }
+  }
+
+  // Funktion för att visa login-medddelande i ett stiliserat UI-element
+  function showLoginMessage(message) {
+    console.log('Displaying login message:', message);
+    let messageElement = document.getElementById('login-message');
+    if (!messageElement) {
+      console.log('Creating login message element');
+      messageElement = document.createElement('div');
+      messageElement.id = 'login-message';
+      document.querySelector('main').appendChild(messageElement);  // Lägg till meddelandet i main
+    }
+
+    messageElement.innerHTML = `${message} <a href="/auth/login">Login here</a>`;
+    messageElement.style.display = 'block';
+
+    setTimeout(() => {
+      console.log('Hiding login message');
+      messageElement.style.display = 'none';
+    }, 5000); // Döljs efter 5 sekunder
   }
 
   // Login-funktion
@@ -166,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error logging in:', error));
   }
-
   // Register-funktion
   function registerUser() {
     const username = document.getElementById('register-username').value;
@@ -230,26 +241,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');
   if (token) {
     console.log('Token found in localStorage, checking login status');
-
+  
     // Kontrollera och logga headers för att säkerställa att token skickas
-    fetch('/auth/user?token=' + token)
-      .then(response => response.json())
-      .then(data => {
-        if (data.loggedIn) {
-          document.getElementById('login-register-links').style.display = 'none';
-          document.getElementById('logout-link').style.display = 'block';
-          const userInfo = document.getElementById('user-info');
-          if (userInfo) {
-            userInfo.style.display = 'block';
-            userInfo.innerText = `Logged in as: ${data.username}`;
-          }
-        } else {
-          showMessage("You must be logged in to join a lobby");
+    fetch(`/auth/user?token=${token}`, {  // Skicka token som query parameter istället för i header
+      method: 'GET',
+    })
+    .then(response => {
+      console.log('Response status:', response.status);  // Logga svarstatus
+      return response.json();
+    })
+    .then(data => {
+      if (data.loggedIn) {
+        console.log('User is logged in:', data.username);
+        document.getElementById('login-register-links').style.display = 'none';
+        document.getElementById('logout-link').style.display = 'block';
+
+        // Visa användarinformation och uppdatera den
+        const userInfo = document.getElementById('user-info');
+        if (userInfo) {
+          userInfo.style.display = 'block'; // Visa user-info
+          userInfo.innerText = `Logged in as: ${data.username}`;
         }
-      })
-      .catch(error => console.error('Error checking login:', error));
+      } else {
+        console.log('User is not logged in');
+      }
+    })
+    .catch(error => {
+      console.error('Error checking login status:', error);
+    });
   } else {
-    showMessage("You must be logged in to join a lobby");
+    console.log('No token found in localStorage');
   }
 
   // Toggle hamburgermeny
@@ -271,77 +292,5 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal('login-modal');
       closeModal('register-modal');
     }
-  }
-
-  // Stänger modals om användaren klickar utanför modal-fönstret
-  window.onclick = function(event) {
-    console.log('Window clicked');
-    if (event.target.className === 'modal') {
-      console.log('Closing modal due to click outside');
-      closeModal('login-modal');
-      closeModal('register-modal');
-    }
-  }
-
-  // Funktion för att visa meddelande om användaren inte är inloggad
-  function showMessage(message) {
-    let messageElement = document.getElementById('login-message');
-    if (!messageElement) {
-      console.log('Creating login message element');
-      messageElement = document.createElement('div');
-      messageElement.id = 'login-message';
-      document.querySelector('main').appendChild(messageElement);  // Lägg till meddelandet i main
-    }
-
-    messageElement.innerHTML = message;
-    messageElement.style.display = 'block';
-
-    setTimeout(() => {
-      console.log('Hiding login message');
-      messageElement.style.display = 'none';
-    }, 5000); // Döljs efter 5 sekunder
-  }
-
-  // Funktion för att uppdatera UI efter inloggning eller utloggning
-  function updateUIOnLogin(loggedIn, username) {
-    if (loggedIn) {
-      document.getElementById('login-register-links').style.display = 'none';
-      document.getElementById('logout-link').style.display = 'block';
-      const userInfo = document.getElementById('user-info');
-      if (userInfo) {
-        userInfo.style.display = 'block';
-        userInfo.innerText = `Logged in as: ${username}`;
-      }
-    } else {
-      showMessage("You must be logged in to join a lobby");
-    }
-  }
-
-  // Funktion för att kontrollera loginstatus
-  function checkLoginStatus(token) {
-    console.log('Checking login status with token:', token);
-    fetch(`/auth/user?token=${token}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.loggedIn) {
-          updateUIOnLogin(true, data.username);
-        } else {
-          updateUIOnLogin(false);
-        }
-      })
-      .catch(error => {
-        console.error('Error checking login status:', error);
-        updateUIOnLogin(false);
-      });
-  }
-
-  // Kontrollera om användaren är inloggad vid sidladdning
-  const token = localStorage.getItem('token');
-  if (token) {
-    console.log('Token found in localStorage, checking login status');
-    checkLoginStatus(token);
-  } else {
-    console.log('No token found in localStorage');
-    updateUIOnLogin(false);
   }
 });
