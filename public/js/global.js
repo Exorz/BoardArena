@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal('register-modal');
     }
   }
-});
+
   // Stänger modals om användaren klickar utanför modal-fönstret
   window.onclick = function(event) {
     console.log('Window clicked');
