@@ -25,11 +25,6 @@ app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
 function isAuthenticated(req, res, next) {
   let token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Hämta token från headern
 
-  // Om token inte finns i header, kontrollera cookies (för att hantera båda möjliga sätt)
-  if (!token && req.cookies && req.cookies.token) {
-    token = req.cookies.token;
-  }
-
   if (!token) {
     return res.redirect('/?message=You must be logged in to join a lobby'); // Om inte inloggad, omdirigera
   }
@@ -42,6 +37,7 @@ function isAuthenticated(req, res, next) {
     next();  // Fortsätt till nästa middleware eller rutt
   });
 }
+
 
 // Servera statiska filer från 'public' mappen
 app.use(express.static('public'));  // Express kommer nu att servera filer från /public
