@@ -107,36 +107,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Login-funktion
   function loginUser() {
-    const username = document.getElementById('login-username').value;
-    const password = document.getElementById('login-password').value;
+  const username = document.getElementById('login-username').value;
+  const password = document.getElementById('login-password').value;
 
-    fetch('/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.message === 'Login successful') {
-        localStorage.setItem('token', data.token); // Spara token i lokal lagring
-        closeModal('login-modal');
-        document.getElementById('login-register-links').style.display = 'none';
-        document.getElementById('logout-link').style.display = 'block';
+  fetch('/auth/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ username, password }),
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.message === 'Login successful') {
+      localStorage.setItem('token', data.token); // Spara token i lokal lagring
+      closeModal('login-modal');
+      document.getElementById('login-register-links').style.display = 'none';
+      document.getElementById('logout-link').style.display = 'block';
 
-        // Uppdatera användarinformationen och visa den
-        const userInfo = document.getElementById('user-info');
-        if (userInfo) {
-          userInfo.style.display = 'block'; // Visa user-info
-          userInfo.innerText = `Logged in as: ${data.username}`;
-        }
-      } else {
-        alert('Invalid credentials');
+      // Uppdatera användarinformationen och visa den
+      const userInfo = document.getElementById('user-info');
+      if (userInfo) {
+        userInfo.style.display = 'block'; // Visa user-info
+        userInfo.innerText = `Logged in as: ${data.username}`;
       }
-    })
-    .catch(error => console.error('Error logging in:', error));
-  }
+    } else {
+      alert('Invalid credentials');
+    }
+  })
+  .catch(error => console.error('Error logging in:', error));
+}
+
 
   // Register-funktion
   function registerUser() {
@@ -209,28 +210,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Kontrollera om användaren är inloggad vid sidladdning
   const token = localStorage.getItem('token');
-  if (token) {
-    fetch('/auth/user', {
-      headers: {
-        'Authorization': `Bearer ${token}`,  // Skicka token som header
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.loggedIn) {
-        document.getElementById('login-register-links').style.display = 'none';
-        document.getElementById('logout-link').style.display = 'block';
+if (token) {
+  fetch('/auth/user', {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.loggedIn) {
+      document.getElementById('login-register-links').style.display = 'none';
+      document.getElementById('logout-link').style.display = 'block';
 
-        // Visa användarinformation och uppdatera den
-        const userInfo = document.getElementById('user-info');
-        if (userInfo) {
-          userInfo.style.display = 'block'; // Visa user-info
-          userInfo.innerText = `Logged in as: ${data.username}`;
-        }
+      // Visa användarinformation och uppdatera den
+      const userInfo = document.getElementById('user-info');
+      if (userInfo) {
+        userInfo.style.display = 'block'; // Visa user-info
+        userInfo.innerText = `Logged in as: ${data.username}`;
       }
-    })
-    .catch(error => console.error('Error checking login:', error));
-  }
+    }
+  })
+  .catch(error => console.error('Error checking login:', error));
+}
+
 
   // Funktion för att visa login-medddelande i ett stiliserat UI-element
   function showLoginMessage(message) {
