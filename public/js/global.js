@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Ladda header.html och injicera den i #header-container
+  // Ladda header.html och injiciera den i #header-container
   fetch('/partials/header.html')
     .then(response => response.text())
     .then(html => {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error("Error loading header:", error);
     });
 
-  // Ladda navigation.html och injicera den i #navigation-container
+  // Ladda navigation.html och injiciera den i #navigation-container
   fetch('/partials/navigation.html')
     .then(response => response.text())
     .then(html => {
@@ -105,6 +105,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Funktion för att visa login-medddelande i ett stiliserat UI-element
+  function showLoginMessage(message) {
+    let messageElement = document.getElementById('login-message');
+    if (!messageElement) {
+      messageElement = document.createElement('div');
+      messageElement.id = 'login-message';
+      document.querySelector('main').appendChild(messageElement);  // Lägg till meddelandet i main
+    }
+
+    messageElement.innerHTML = `${message} <a href="/auth/login">Login here</a>`;
+    messageElement.style.display = 'block';
+
+    setTimeout(() => {
+      messageElement.style.display = 'none';
+    }, 5000); // Döljs efter 5 sekunder
+  }
+
   // Login-funktion
   function loginUser() {
     const username = document.getElementById('login-username').value;
@@ -185,26 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => {
       console.error('Logout failed:', error);
-      // Om något går fel kan vi fortfarande rensa lokal lagring och uppdatera UI
-      document.getElementById('login-register-links').style.display = 'block';
-      document.getElementById('logout-link').style.display = 'none';
     });
-  }
-
-  // Toggle hamburgermeny
-  function toggleMenu() {
-    const navLinks = document.getElementById('nav-links');
-    if (navLinks) {
-      navLinks.classList.toggle('open');
-    }
-  }
-
-  // Stäng modals om användaren klickar utanför modal-fönstret
-  window.onclick = function(event) {
-    if (event.target.className === 'modal') {
-      closeModal('login-modal');
-      closeModal('register-modal');
-    }
   }
 
   // Kontrollera om användaren är inloggad vid sidladdning
@@ -212,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (token) {
     fetch('/auth/user', {
       headers: {
-        'Authorization': `Bearer ${token}`,  // Skicka token som header
+        'Authorization': `Bearer ${token}`,
       }
     })
     .then(response => response.json())
@@ -232,20 +230,19 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => console.error('Error checking login:', error));
   }
 
-  // Funktion för att visa login-medddelande i ett stiliserat UI-element
-  function showLoginMessage(message) {
-    let messageElement = document.getElementById('login-message');
-    if (!messageElement) {
-      messageElement = document.createElement('div');
-      messageElement.id = 'login-message';
-      document.body.appendChild(messageElement);
+  // Toggle hamburgermeny
+  function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    if (navLinks) {
+      navLinks.classList.toggle('open');
     }
+  }
 
-    messageElement.innerHTML = `${message} <a href="/auth/login">Login here</a>`;
-    messageElement.style.display = 'block';
-
-    setTimeout(() => {
-      messageElement.style.display = 'none';
-    }, 5000);
+  // Stäng modals om användaren klickar utanför modal-fönstret
+  window.onclick = function(event) {
+    if (event.target.className === 'modal') {
+      closeModal('login-modal');
+      closeModal('register-modal');
+    }
   }
 });
