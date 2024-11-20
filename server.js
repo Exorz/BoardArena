@@ -21,6 +21,7 @@ app.use(express.json());  // För att kunna ta emot JSON från klienten
 app.use(cors());          // Aktivera CORS (Cross-Origin Resource Sharing)
 app.use(morgan('dev'));   // Logga HTTP-förfrågningar i utvecklingsläge
 
+// Middleware för autentisering (skyddar alla lobbysidor)
 function isAuthenticated(req, res, next) {
   let token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Hämta token från headern
 
@@ -41,7 +42,6 @@ function isAuthenticated(req, res, next) {
     next();  // Fortsätt till nästa middleware eller rutt
   });
 }
-
 
 // Servera statiska filer från 'public' mappen
 app.use(express.static('public'));  // Express kommer nu att servera filer från /public
