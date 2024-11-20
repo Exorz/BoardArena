@@ -160,92 +160,95 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error registering:', error));
   }
+  // Logout-funktion
+  function logoutUser(event) {
+    event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
 
-                          // Logout-funktion
-function logoutUser(event) {
-  event.preventDefault(); // Förhindra att sidan laddas om när du klickar på logout-länken
+    // Ta bort token från localStorage
+    localStorage.removeItem('token');
 
-  // Ta bort token från localStorage
-  localStorage.removeItem('token');
+    // Gör ett API-anrop till servern för att logga ut användaren (om du vill hantera server-side logout)
+    fetch('/auth/logout', {
+      method: 'GET',
+    })
+    .then(response => response.json())
+    .then(() => {
+      // Uppdatera UI efter logout
+      document.getElementById('login-register-links').style.display = 'block';
+      document.getElementById('logout-link').style.display = 'none';
 
-  // Gör ett API-anrop till servern för att logga ut användaren (om du vill hantera server-side logout)
-  fetch('/auth/logout', {
-    method: 'GET',
-  })
-  .then(response => response.json())
-  .then(() => {
-    // Uppdatera UI efter logout
-    document.getElementById('login-register-links').style.display = 'block';
-    document.getElementById('logout-link').style.display = 'none';
-
-    // Dölj användarinformationen
-    const userInfo = document.getElementById('user-info');
-    if (userInfo) {
-      userInfo.style.display = 'none'; // Dölj användarinformation
-    }
-  })
-  .catch(error => {
-    console.error('Logout failed:', error);
-    // Om något går fel kan vi fortfarande rensa lokal lagring och uppdatera UI
-    document.getElementById('login-register-links').style.display = 'block';
-    document.getElementById('logout-link').style.display = 'none';
-  });
-}
-
-// Toggle hamburgermeny
-function toggleMenu() {
-  const navLinks = document.getElementById('nav-links');
-  if (navLinks) {
-    navLinks.classList.toggle('open');
-  }
-}
-
-// Stäng modals om användaren klickar utanför modal-fönstret
-window.onclick = function(event) {
-  if (event.target.className === 'modal') {
-    closeModal('login-modal');
-    closeModal('register-modal');
-  }
-}
-
-// Kontrollera om användaren är inloggad vid sidladdning
-const token = localStorage.getItem('token');
-if (token) {
-  fetch('/auth/user', {
-    headers: {
-      'Authorization': `Bearer ${token}`,
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.loggedIn) {
-      document.getElementById('login-register-links').style.display = 'none';
-      document.getElementById('logout-link').style.display = 'block';
-
-      // Visa användarinformation och uppdatera den
+      // Dölj användarinformationen
       const userInfo = document.getElementById('user-info');
       if (userInfo) {
-        userInfo.style.display = 'block'; // Visa user-info
-        userInfo.innerText = `Logged in as: ${data.username}`;
+        userInfo.style.display = 'none'; // Dölj användarinformation
       }
-    }
-  })
-  .catch(error => console.error('Error checking login:', error));
-}
-
-// Funktion för att visa login-medddelande i ett stiliserat UI-element
-function showLoginMessage(message) {
-  let messageElement = document.getElementById('login-message');
-  if (!messageElement) {
-    messageElement = document.createElement('div');
-    messageElement.id = 'login-message';
-    document.body.appendChild(messageElement);
+    })
+    .catch(error => {
+      console.error('Logout failed:', error);
+      // Om något går fel kan vi fortfarande rensa lokal lagring och uppdatera UI
+      document.getElementById('login-register-links').style.display = 'block';
+      document.getElementById('logout-link').style.display = 'none';
+    });
   }
 
-  messageElement.innerHTML = `${message} <a href="/auth/login">Login here</a>`;
-  messageElement.style.display = 'block';
+  // Toggle hamburgermeny
+  function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    if (navLinks) {
+      navLinks.classList.toggle('open');
+    }
+  }
 
-  setTimeout(() => {
-    messageElement.style.display = 'none';
-  }, 5000);
-}
+  // Stäng modals om användaren klickar utanför modal-fönstret
+  window.onclick = function(event) {
+    if (event.target.className === 'modal') {
+      closeModal('login-modal');
+      closeModal('register-modal');
+    }
+  }
+
+  // Kontrollera om användaren är inloggad vid sidladdning
+  const token = localStorage.getItem('token');
+  if (token) {
+    fetch('/auth/user', {
+      headers: {
+        'Authorization': `Bearer ${token}`,  // Skicka token som header
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.loggedIn) {
+        document.getElementById('login-register-links').style.display = 'none';
+        document.getElementById('logout-link').style.display = 'block';
+
+        // Visa användarinformation och uppdatera den
+        const userInfo = document.getElementById('user-info');
+        if (userInfo) {
+          userInfo.style.display = 'block'; // Visa user-info
+          userInfo.innerText = `Logged in as: ${data.username}`;
+        }
+      }
+    })
+    .catch(error => console.error('Error checking login:', error));
+  }
+
+  // Funktion för att visa login-medddelande i ett stiliserat UI-element
+  function showLoginMessage(message) {
+    // Skapa meddelandet elementet om det inte finns
+    let messageElement = document.getElementById('login-message');
+    if (!messageElement) {
+      messageElement = document.createElement('div');
+      messageElement.id = 'login-message';
+      document.body.appendChild(messageElement);
+    }
+
+    // Ställ in meddelandets text och gör det synligt
+    messageElement.innerHTML = `${message} <a href="/auth/login">Login here</a>`;
+    messageElement.style.display = 'block';
+
+    // Dölja meddelandet efter 5 sekunder (kan justeras om så önskas)
+    setTimeout(() => {
+      messageElement.style.display = 'none';
+    }, 5000); // Döljs efter 5 sekunder
+  }
+});
