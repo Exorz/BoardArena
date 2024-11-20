@@ -1,5 +1,3 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User'); // Din användarmodell
 const router = express.Router();
@@ -23,7 +21,7 @@ router.post('/register', (req, res) => {
 
       // Kryptera lösenordet
       const hashedPassword = bcrypt.hashSync(password, 10);
-      
+
       // Skapa ny användare
       const newUser = new User({
         username,
@@ -85,7 +83,7 @@ router.post('/login', (req, res) => {
 // Logout-rutt
 router.get('/logout', (req, res) => {
   const { userId } = req.body;
-  
+
   console.log('Logging out user with ID:', userId);  // Logga utloggningen
 
   User.findById(userId)
@@ -109,9 +107,8 @@ router.get('/logout', (req, res) => {
 
 // Kontrollera om användaren är inloggad med JWT
 router.get('/user', (req, res) => {
-  // Här hämtar vi token från query parameter istället för headern
-  const token = req.query.token;  // Hämta token från query parameter
-
+  const token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // Förväntar sig "Bearer <token>"
+  
   console.log('Checking user login status with token:', token); // Logga token kontroll
 
   if (!token) {
