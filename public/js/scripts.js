@@ -68,10 +68,12 @@ function initHamburgerMenu() {
     const navLinks = document.getElementById('nav-links');
 
     // Debugging: Kontrollera om dessa element finns i DOM
-    console.log(menuIcon, navLinks);
+    console.log("menuIcon:", menuIcon);
+    console.log("navLinks:", navLinks);
 
     // Kontrollera om båda elementen finns i DOM innan vi lägger till eventlyssnare
     if (menuIcon && navLinks) {
+        console.log('Hamburgarmenyn hittades, lägger till eventlyssnare.');
         menuIcon.addEventListener('click', function() {
             console.log('Hamburgarmenyn klickades!');
             navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
@@ -82,6 +84,7 @@ function initHamburgerMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
+
 
 
 
