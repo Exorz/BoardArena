@@ -67,11 +67,9 @@ function initHamburgerMenu() {
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
 
-    // Debugging: Kontrollera om dessa element finns i DOM
     console.log("menuIcon:", menuIcon);
     console.log("navLinks:", navLinks);
 
-    // Kontrollera om båda elementen finns i DOM innan vi lägger till eventlyssnare
     if (menuIcon && navLinks) {
         console.log('Hamburgarmenyn hittades, lägger till eventlyssnare.');
         menuIcon.addEventListener('click', function() {
@@ -82,6 +80,7 @@ function initHamburgerMenu() {
         console.error('Hamburgermenyn eller länkarna saknas!');
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
 
