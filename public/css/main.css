@@ -265,7 +265,7 @@ nav.nav ul li a:hover {
     top: 20px; /* Justera från toppen av headern */
     right: 20px; /* Justera från höger sida */
     cursor: pointer;
-    z-index: 10; /* Se till att hamburgermenyn är över andra element */
+    z-index: 100; /* Se till att hamburgermenyn är ovanpå andra element */
 }
 
 .menu-icon span {
@@ -417,6 +417,7 @@ nav.nav ul li a:hover {
         width: 200px;
         flex-direction: column;
         gap: 0;
+        z-index: 99; /* Se till att menyn är ovanpå andra element */
     }
 
     /* Visa menyn när hamburgarmenyn klickas */
