@@ -10,33 +10,38 @@ console.log('[scripts.js] Initializing scripts.js script.');
 
 function loadHeaderAndFooter() {
     console.log('[scripts.js] Loading header and footer.');
+    
+    // Ladda header
     fetch('/partials/header.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
 
+            // Efter att headern är inläst, initiera hamburgarmenyn
+            initHamburgerMenu();
+
+            // Kontrollera inloggningstatus
             checkLoginStatus();
 
             const logoutButton = document.getElementById('logout-button');
-       if (logoutButton) {
-    logoutButton.addEventListener('click', function() {
-        console.log('[scripts.js] Logout button clicked.');
-        const socket = window.socket;
-        if (socket) {
-            socket.emit('logout');
-        }
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    console.log('[scripts.js] Logout button clicked.');
+                    const socket = window.socket;
+                    if (socket) {
+                        socket.emit('logout');
+                    }
 
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        localStorage.removeItem('userId');  // Remove userId from localStorage on logout
-        checkLoginStatus();
-        alert('You have logged out.');
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('userId');  // Remove userId from localStorage on logout
+                    checkLoginStatus();
+                    alert('You have logged out.');
 
-        // Lägg till omdirigering till index.html
-        window.location.href = '/';
-
-    });
+                    // Omdirigera till index.html
+                    window.location.href = '/';
+                });
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
@@ -45,6 +50,7 @@ function loadHeaderAndFooter() {
             console.error('[scripts.js] Error loading header:', error);
         });
 
+    // Ladda footer
     fetch('/partials/footer.html')
         .then(response => response.text())
         .then(data => {
@@ -55,6 +61,23 @@ function loadHeaderAndFooter() {
             console.error('[scripts.js] Error loading footer:', error);
         });
 }
+
+// Funktion för att hantera hamburgermenyn
+function initHamburgerMenu() {
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.getElementById('nav-links');
+
+    console.log(menuIcon, navLinks); // Debugging: kolla om dessa element finns i DOM
+
+    if (menuIcon && navLinks) {
+        menuIcon.addEventListener('click', function() {
+            navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
+        });
+    } else {
+        console.error('Hamburgermenyn eller länkarna saknas!');
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
 
@@ -168,6 +191,8 @@ async function register() {
 document.addEventListener('DOMContentLoaded', function() {
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
+
+    console.log(menuIcon, navLinks); // Debugger för att kontrollera om de finns
 
     if (menuIcon && navLinks) {
         menuIcon.addEventListener('click', function() {
