@@ -13,10 +13,11 @@
 </head>
 <body>
     <header class="header">
-    <!-- Logo -->
+    <!-- Logo 
     <div class="logo">
         <img src="" alt="Blip.se Logo">
     </div>
+	 -->
 
     <!-- Main content for header -->
     <main class="content">
@@ -29,40 +30,20 @@
         Logged in as: <span id="username-display"></span>
     </div>
 
-    <!-- Desktop Navigation -->
+    <!-- Navigation -->
     <nav class="nav">
-        <ul id="nav-links">
+        <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/games">Games</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/about">About</a></li>
             <li id="register"><a href="#" onclick="openRegisterForm()">Register</a></li>
             <li id="login"><a href="#" onclick="openLoginForm()">Login</a></li>
             <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
         </ul>
     </nav>
-
-    <!-- Mobile Navigation (Hamburger Menu) -->
-    <nav class="hamburger-nav">
-        <div class="hamburger-menu" id="hamburger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        
-        <ul id="mobile-nav-links" class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/games">Games</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/about">About</a></li>
-            <li id="register"><a href="#" onclick="openRegisterForm()">Register</a></li>
-            <li id="login"><a href="#" onclick="openLoginForm()">Login</a></li>
-            <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- Login popup modal -->
+	
+	
+	<!-- Login popup modal -->
 <div class="form-popup" id="loginForm">
     <div class="form-container">
         <h2>Login</h2>
@@ -96,5 +77,8 @@
         <div id="register-message"></div>
     </div>
 </div>
+
+
+</header>
 </body>
 </html>
