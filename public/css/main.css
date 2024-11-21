@@ -385,10 +385,7 @@ nav.nav ul li a:hover {
     .news-container,
     .header,
     .footer,
-    nav.nav {
-        width: 100%; /* Ensure all sections take full width */
-        padding: 15px; /* Add padding for mobile view */
-    }
+
     .contact-container {
         margin: 20px 0; /* Add vertical margin for better spacing */
     }
@@ -396,15 +393,9 @@ nav.nav ul li a:hover {
         flex-direction: column; /* Stack game cards vertically on small screens */
         gap: 10px; /* Reduce gap between cards */
     }
-    .game-card {
-        width: 100%; /* Game cards take full width */
-        height: auto; /* Auto height to adjust based on content */
-    }
+    
     .logo img {
         height: 40px; /* Smaller logo for mobile */
-    }
-    nav.nav ul {
-        flex-direction: column; /* Stack nav items vertically on mobile */
     }
     nav.nav ul li a {
         padding: 10px; /* Increase padding for easier clicking on mobile */
