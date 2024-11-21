@@ -256,25 +256,26 @@ nav.nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Hamburgermeny */
-.menu-icon {
-    display: none; /* Dölj hamburgermenyn på större skärmar */
+/* Hamburgermeny - Dölj på desktop */
+.hamburger-nav .hamburger-menu {
+    display: none; /* Döljer hamburgarmenyn på större skärmar */
     flex-direction: column;
     gap: 5px;
-    position: absolute; /* Placera hamburgermenyn i headern */
-    top: 20px; /* Justera från toppen av headern */
-    right: 20px; /* Justera från höger sida */
+    position: absolute;
+    top: 20px;
+    right: 20px;
     cursor: pointer;
-    z-index: 100; /* Se till att hamburgermenyn är ovanpå andra element */
+    z-index: 100;
 }
 
-.menu-icon span {
+.hamburger-nav .hamburger-menu span {
     width: 25px;
     height: 4px;
     background-color: black;
     border-radius: 5px;
 }
 
+/* Menylänkar */
 #nav-links {
     display: flex;
     list-style: none;
@@ -390,37 +391,30 @@ nav.nav ul li a:hover {
     color: red;
 }
 
-/* Media query för mobilskärmar */
+/* För mobil */
 @media (max-width: 768px) {
-    nav.nav {
-        display: none; /* Dölj den vanliga gröna navigationen på mobilen */
+    .hamburger-nav .hamburger-menu {
+        display: flex; /* Visa hamburgarmenyn på mobil */
     }
 
-    .menu-icon {
-        display: flex; /* Visa hamburgermenyn på mobilen */
+    /* Dölj länkar till en början */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        flex-direction: column;
+        gap: 0;
+        z-index: 99;
     }
 
-/* Initialt, göm menyn på mobil */
-#nav-links {
-    display: none; /* Dölj menyn till en början */
-    visibility: hidden; /* Lägg till denna rad för att vara säker på att menyn inte påverkar layouten */
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    flex-direction: column;
-    gap: 0;
-    z-index: 99;
-}
-
-#nav-links.show {
-    display: flex; /* Gör menyn synlig när show-klassen läggs till */
-    visibility: visible; /* Gör menyn synlig när show-klassen läggs till */
-}
-
+    .nav-links.show {
+        display: flex; /* Gör menyn synlig när show-klassen läggs till */
+    }
 
     #nav-links li a {
         padding: 10px 15px;
@@ -434,7 +428,6 @@ nav.nav ul li a:hover {
         background-color: rgba(255, 255, 255, 0.2);
     }
 }
-
 
 
 
