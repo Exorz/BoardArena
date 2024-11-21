@@ -262,9 +262,9 @@ nav.nav ul li a:hover {
     display: none; /* Dölj hamburgermenyn på större skärmar */
     flex-direction: column;
     gap: 5px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: absolute; /* Placera den absolut i headern */
+    top: 20px; /* Justera från toppen av headern */
+    right: 20px; /* Justera från höger sida */
     cursor: pointer;
 }
 
@@ -397,9 +397,7 @@ nav.nav ul li a:hover {
     .logo img {
         height: 40px; /* Smaller logo for mobile */
     }
-    nav.nav ul li a {
-        padding: 10px; /* Increase padding for easier clicking on mobile */
-    }
+    
 nav.nav ul {
         display: none;
         flex-direction: column; /* Gör att menyn staplas vertikalt */
