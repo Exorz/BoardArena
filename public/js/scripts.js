@@ -15,12 +15,11 @@ function loadHeaderAndFooter() {
     fetch('/partials/header.html')
         .then(response => response.text())
         .then(data => {
-            // Sätt in headern i DOM
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
 
-            // Initiera hamburgermenyn först när headern är korrekt inläst
-            initHamburgerMenu();
+            // Efter att headern är inläst, vänta en liten stund innan vi initierar hamburgarmenyn
+            setTimeout(initHamburgerMenu, 100); // Väntar i 100ms så att DOM är redo
 
             // Kontrollera inloggningsstatus
             checkLoginStatus();
@@ -82,11 +81,9 @@ function initHamburgerMenu() {
     }
 }
 
-
-
-
-
 document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
+
+
 
 function checkLoginStatus() {
     console.log('[scripts.js] Checking login status.');
