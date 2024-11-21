@@ -1,409 +1,100 @@
-/* General text color for body */
-html, body {
-    height: 100%; /* Ensure the body takes up the full height of the screen */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column; /* Flexbox layout for sticky footer */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoardArena</title>
+    
+    <!-- Path to main.css -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Path to JavaScript (optional) -->
+    <script src="/js/scripts.js" defer></script> <!-- Hanterar login/logout -->
+</head>
+<body>
+    <header class="header">
+    <!-- Logo -->
+    <div class="logo">
+        <img src="" alt="Blip.se Logo">
+    </div>
 
-body {
-    font-family: Arial, sans-serif;
-    background-image: url('/img/background.jpg'); /* Background for entire body */
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: black; /* Set default text color to black */
-}
+    <!-- Main content for header -->
+    <main class="content">
+        <h1>BoardArena</h1>
+        <p>Play your favorite games online and challenge your friends!</p>
+    </main>
 
-/* Game section styles */
-.games {
-    padding: 20px; /* Outer padding for the game section */
-    text-align: center; /* Center align text in the section */
-    width: 60%; /* Set the width of the container to 60% of the screen */
-    margin: 0 auto; /* Center the container horizontally */
-}
+    <!-- User Info Section (to display after login) -->
+    <div class="user-info" id="user-info" hidden>
+        Logged in as: <span id="username-display"></span>
+    </div>
 
-.games h2 {
-    margin: 20px 0; /* Add margin for spacing */
-    color: white; /* Set h2 color to white */
-}
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+        <ul id="desktop-nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/games">Games</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/about">About</a></li>
+            <li id="register"><a href="#" onclick="openRegisterForm()">Register</a></li>
+            <li id="login"><a href="#" onclick="openLoginForm()">Login</a></li>
+            <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
+        </ul>
+    </nav>
 
-/* Game list styles */
-.game-list {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow wrapping */
-    gap: 20px; /* Space between cards */
-    justify-content: center; /* Center the cards */
-}
+    <!-- Mobile Navigation (Hamburger Menu) -->
+    <nav class="hamburger-nav">
+        <div class="hamburger-menu" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <ul id="mobile-nav-links" class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/games">Games</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/about">About</a></li>
+            <li id="register"><a href="#" onclick="openRegisterForm()">Register</a></li>
+            <li id="login"><a href="#" onclick="openLoginForm()">Login</a></li>
+            <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
+        </ul>
+    </nav>
+</header>
 
-/* Game card styles */
-.game-card {
-    width: 200px; /* Set a fixed width for the game cards */
-    margin-bottom: 20px; /* Space between cards */
-    background-size: cover; /* Cover the entire card */
-    background-position: center; /* Center the background image */
-    padding: 20px; /* Space inside the card */
-    border-radius: 10px; /* Rounded corners */
-    color: white; /* Default text color */
-    text-align: center; /* Center text */
-    height: 200px; /* Height for the card */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    background-color: rgba(233, 236, 239, 0.5); /* Light background with transparency */
-    display: flex; /* Enable flexbox on card */
-    flex-direction: column; /* Align items in a column */
-    justify-content: space-between; /* Space items to fill card */
-}
+<!-- Login popup modal -->
+<div class="form-popup" id="loginForm">
+    <div class="form-container">
+        <h2>Login</h2>
+        <label for="email"><b>Email</b></label>
+        <input type="text" id="login-email" placeholder="Enter Email" name="email" required>
 
-/* Specific styles for the h3 and p elements within game-card */
-.game-card h3,
-.game-card p {
-    margin-top: 0; /* Remove top margin */
-    background-color: rgba(40, 167, 69, 0.7); /* Semi-transparent green background */
-    padding: 5px; /* Padding around text */
-    border-radius: 5px; /* Rounded corners */
-    color: white; /* Ensure text is white for readability */
-}
+        <label for="password"><b>Password</b></label>
+        <input type="password" id="login-password" placeholder="Enter Password" name="password" required>
 
-/* Button styles */
-.game-card button {
-    background-color: #28a745; /* Green background */
-    color: white; /* White text */
-    padding: 10px; /* Padding inside the button */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor */
-    transition: background-color 0.3s; /* Transition for hover effect */
-    margin-top: auto; /* Push button to bottom */
-    margin-bottom: 0px; /* Margin below the button */
-    width: 100%; /* Full width of the card */
-}
+        <button type="submit" class="btn" onclick="login()">Login</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <div id="login-message"></div>
+    </div>
+</div>
 
-.game-card button:hover {
-    background-color: #218838; /* Darker green on hover */
-}
+<!-- Register popup modal -->
+<div class="form-popup" id="registerForm">
+    <div class="form-container">
+        <h2>Register</h2>
+        <label for="username"><b>Username</b></label>
+        <input type="text" id="register-username" placeholder="Enter Username" name="username" required>
 
-/* Ensure main content takes up remaining space */
-main {
-    flex: 1; /* Allow main to expand and take available space */
-}
+        <label for="email"><b>Email</b></label>
+        <input type="email" id="register-email" placeholder="Enter Email" name="email" required>
 
-/* Contact form styles */
-.contact {
-    text-align: center; /* Center text for the entire contact section */
-}
+        <label for="password"><b>Password</b></label>
+        <input type="password" id="register-password" placeholder="Enter Password" name="password" required>
 
-.contact-container {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: flex-start; /* Align to top (do not center vertically) */
-    margin: 20px auto; /* Center the container horizontally */
-    width: 50%; /* Set the width to 50% of the parent */
-    max-width: 800px; /* Optional: Set a maximum width for larger screens */
-    background-color: #f0f0f0; /* Background color */
-    padding: 20px; /* Optional: Add padding to the container for better spacing */
-    border-radius: 5px; /* Optional: Add rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
-}
-
-.contact h2 {
-    margin: 20px 0; /* Add margin for spacing */
-    color: white; /* Set h2 color to white */
-}
-/* Contact form styling continued */
-.contact-form {
-    background-color: white; /* White background for the form */
-    padding: 20px; /* Padding around the form */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
-    width: 100%; /* Ensure the form takes the full width of the container */
-}
-
-/* Labels and input fields */
-.contact-form label {
-    display: block; /* Make labels block elements */
-    margin-bottom: 5px; /* Space under label */
-    font-weight: bold; /* Bold for labels */
-    color: black; /* Set label text color to black */
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%; /* Full width */
-    padding: 10px; /* Padding inside fields */
-    margin-bottom: 15px; /* Space under fields */
-    border: 1px solid #ccc; /* Gray border */
-    border-radius: 4px; /* Rounded corners */
-}
-
-/* Button styling */
-.contact-form button,
-.login-container button,
-.form-container .btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%; /* Full width on button */
-}
-
-.contact-form button:hover,
-.login-container button:hover,
-.form-container .btn:hover {
-    background-color: #218838;
-}
-
-/* News section styles */
-.news-container {
-    background-color: white; /* White background for the container */
-    padding: 20px; /* Padding inside the container */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
-    max-width: 600px; /* Maximum width of the news section */
-    margin: 20px auto; /* Center the container and add some margin */
-}
-
-.news {
-    text-align: center; /* Center align text in the news section */
-    margin: 20px 0; /* Optional: Add some vertical margin */
-}
-
-.news h2 {
-    margin: 0; /* Remove default margin from h2 */
-    color: black; /* Set h2 color to black */
-}
-
-.news p {
-    margin: 10px 0 0; /* Add margin to p for spacing from h2 */
-    color: black; /* Set p color to black */
-}
-
-/* Header styles */
-.header {
-    background-image: url('/img/header.jpg'); /* Path to your header image */
-    background-size: cover; /* Ensure the header image covers the header area */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-position: bottom center; /* Align the bottom of the image with the bottom of the header */
-    color: black; /* Text color */
-    padding: 0; /* Remove padding to allow the image to go up */
-    margin: 0 auto; /* Center the header */
-    height: 157px; /* Specify the height */
-    text-align: center; /* Center align text */
-    position: relative; /* Ensures positioning is handled properly */
-    top: 0; /* Align the header to the top */
-    width: 80%; /* Set header width to 80% */
-    border-radius: 15px; /* Add rounded corners to the header */
-    overflow: hidden; /* Ensure that rounded corners cut off any overflowing content */
-}
-
-/* Logo styles */
-.logo img {
-    height: 50px;
-    position: absolute; /* Position the logo */
-    top: 10px; /* Space from the top */
-    left: 20px; /* Space from the left */
-}
-
-/* Main content styles */
-main.content {
-    text-align: center; /* Center text in the main content */
-    color: black; /* Set main content text color to black */
-}
-
-/* Navigation styles */
-nav.nav {
-    background-color: #66bb6a; /* Den gröna navigationsfärgen */
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 15px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-}
-
-nav.nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-}
-
-nav.nav ul li a {
-    color: black;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
-}
-
-nav.nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-/* Hamburgermeny - Dölj på desktop */
-.hamburger-nav .hamburger-menu {
-    display: none; /* Döljer hamburgarmenyn på större skärmar */
-    flex-direction: column;
-    gap: 5px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 100;
-}
-
-.hamburger-nav .hamburger-menu span {
-    width: 25px;
-    height: 4px;
-    background-color: black;
-    border-radius: 5px;
-}
-
-/* Menylänkar */
-#nav-links {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 15px;
-}
-
-#nav-links li a {
-    color: black;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
-}
-
-#nav-links li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Sticky footer */
-.footer {
-    background-color: #66bb6a; /* Match navigation background */
-    color: black; /* Text color */
-    padding: 20px; /* Padding inside footer */
-    text-align: center; /* Center text */
-    position: relative;
-    width: 100%; /* Full width */
-    bottom: 0;
-    margin-top: auto; /* Push footer to the bottom */
-}
-
-/* Popup form */
-.form-popup {
-    display: none; /* Keep this as none until triggered */
-    position: fixed; /* Fixed positioning for the popup */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Offset to truly center */
-    z-index: 100; /* Ensure form is above all other elements */
-}
-
-/* Add styles to the form container */
-.form-container {
-    max-width: 300px; /* Maximum width of the form */
-    padding: 10px; /* Padding inside the form */
-    background-color: white; /* Background color of the form */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-    border-radius: 8px; /* Rounded corners */
-}
-
-/* Full-width input fields */
-.form-container input[type="text"],
-.form-container input[type="email"], 
-.form-container input[type="password"] {
-    width: 100%; /* Full width for input fields */
-    padding: 12px; /* Padding for input fields */
-    margin: 5px 0 20px 0; /* Margin for spacing */
-    border: 1px solid #ddd; /* Border for input fields */
-    border-radius: 5px; /* Rounded corners */
-}
-
-.form-container input:focus {
-    background-color: #ddd; /* Change background on focus */
-    outline: none; /* Remove outline */
-}
-
-/* Style for buttons */
-.form-container .btn,
-.contact-form button {
-    background-color: #04AA6D; /* Button color */
-    color: white; /* Text color for buttons */
-    padding: 12px; /* Padding for buttons */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners for buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-    width: 100%; /* Full width for buttons */
-    margin-bottom: 10px; /* Margin below buttons */
-    opacity: 0.9; /* Slight opacity */
-}
-
-.form-container .cancel {
-    background-color: red; /* Color for cancel button */
-}
-
-/* Add hover effects to buttons */
-.form-container .btn:hover {
-    opacity: 1; /* Full opacity on hover */
-}
-
-.user-info {
-    position: absolute; /* Place user information the same way */
-    top: 60px; /* Adjust so it lies on the same level as login */
-    right: 20px; /* Adjust to fit design */
-    color: black; /* Change to black for visibility */
-    font-size: 14px; /* Adjust font size if needed */
-}
-
-/* General box-sizing for better control over element sizing */
-* {
-  box-sizing: border-box;
-}
-
-#redirect-message {
-    font-size: 18px;
-    margin-top: 20px;
-    text-align: center;
-    color: red;
-}
-
-/* För mobil */
-@media (max-width: 768px) {
-    .hamburger-nav .hamburger-menu {
-        display: flex; /* Visa hamburgarmenyn på mobil */
-    }
-
-    /* Dölj länkar till en början */
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        right: 20px;
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 200px;
-        flex-direction: column;
-        gap: 0;
-        z-index: 99;
-    }
-
-    .nav-links.show {
-        display: flex; /* Gör menyn synlig när show-klassen läggs till */
-    }
-
-    #nav-links li a {
-        padding: 10px 15px;
-        color: black;
-        text-decoration: none;
-        display: block;
-        transition: background-color 0.3s;
-    }
-
-    #nav-links li a:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
-}
+        <button type="submit" class="btn" onclick="register()">Register</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <div id="register-message"></div>
+    </div>
+</div>
+</body>
+</html>
