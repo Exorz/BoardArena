@@ -203,22 +203,29 @@ async function register() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('[scripts.js] DOM fully loaded and parsed.');
 
-    // Vi ska säkerställa att vi lägger till eventlyssnaren för hamburgermenyn direkt här
+    // Försök att initiera hamburgermenyn efter att DOM är helt laddad
+    initHamburgerMenu();
+});
+
+// Funktion för att initiera hamburgermenyn
+function initHamburgerMenu() {
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
 
-    console.log(menuIcon, navLinks); // Kontrollera om dessa element är laddade
+    // Debugging: Kontrollera om dessa element finns i DOM
+    console.log(menuIcon, navLinks);
 
     if (menuIcon && navLinks) {
         // Lägg till eventlyssnare till hamburgermenyn
         menuIcon.addEventListener('click', function() {
-            console.log('Hamburgarmenyn klickades!');  // Kontrollera om den triggas
+            console.log('Hamburgarmenyn klickades!');
             navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
         });
     } else {
         console.error('Hamburgermenyn eller länkarna saknas!');
     }
-});
+}
+
 
 
 
