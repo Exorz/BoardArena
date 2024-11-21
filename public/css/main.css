@@ -400,28 +400,24 @@ nav.nav ul li a:hover {
         display: flex; /* Visa hamburgermenyn på mobilen */
     }
 
-    /* Dölj menyn initialt på mobil */
-    #nav-links {
-        display: none; /* Dölj länkarna initialt */
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        position: absolute;
-        top: 70px; /* Placera menyn under hamburgermenyn */
-        right: 20px;
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 200px;
-        flex-direction: column;
-        gap: 0;
-        z-index: 99;
-    }
+/* Initialt, göm menyn på mobil */
+#nav-links {
+    display: none; /* Dölj menyn till en början */
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    flex-direction: column;
+    gap: 0;
+    z-index: 99;
+}
 
-    /* Visa menyn när hamburgarmenyn klickas (med show-klassen) */
-    #nav-links.show {
-        display: flex; /* Gör menyn synlig */
-    }
+#nav-links.show {
+    display: flex; /* Gör menyn synlig när show-klassen läggs till */
+}
 
     #nav-links li a {
         padding: 10px 15px;
