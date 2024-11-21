@@ -22,10 +22,17 @@ body {
     width: 60%; /* Set the width of the container to 60% of the screen */
     margin: 0 auto; /* Center the container horizontally */
 }
-
 .games h2 {
     margin: 20px 0; /* Add margin for spacing */
     color: white; /* Set h2 color to white */
+}
+
+/* Game list styles */
+.game-list {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center the cards */
 }
 
 /* Game list styles */
@@ -82,6 +89,8 @@ body {
     background-color: #218838; /* Darker green on hover */
 }
 
+
+
 /* Ensure main content takes up remaining space */
 main {
     flex: 1; /* Allow main to expand and take available space */
@@ -109,7 +118,7 @@ main {
     margin: 20px 0; /* Add margin for spacing */
     color: white; /* Set h2 color to white */
 }
-/* Contact form styling continued */
+
 .contact-form {
     background-color: white; /* White background for the form */
     padding: 20px; /* Padding around the form */
@@ -154,6 +163,10 @@ main {
 .form-container .btn:hover {
     background-color: #218838;
 }
+
+
+
+
 
 /* News section styles */
 .news-container {
@@ -210,75 +223,43 @@ main {
 main.content {
     text-align: center; /* Center text in the main content */
     color: black; /* Set main content text color to black */
+	
 }
 
 /* Navigation styles */
 nav.nav {
-    background-color: #66bb6a; /* Den gröna navigationsfärgen */
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 15px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
+    background-color: #66bb6a; /* Lighter green background for navigation */
+    width: 80%; /* Set width to match header */
+    padding: 10px 0; /* Padding for vertical spacing */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for depth */
+    margin: 20px auto; /* Center the navigation */
 }
 
 nav.nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 15px;
+    list-style: none; /* Remove list bullets */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: center; /* Center the nav items */
+    gap: 15px; /* Space between nav items */
 }
 
 nav.nav ul li a {
-    color: black;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
+    color: black; /* Set links color to black */
+    text-decoration: none; /* No underline */
+    padding: 10px 15px; /* Padding around links */
+    transition: background-color 0.3s; /* Smooth background color transition */
 }
 
 nav.nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-/* Hamburgermeny - Dölj på desktop */
-.hamburger-nav .hamburger-menu {
-    display: none; /* Döljer hamburgarmenyn på större skärmar */
-    flex-direction: column;
-    gap: 5px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.2); /* Lighten background on hover */
 }
 
-.hamburger-nav .hamburger-menu span {
-    width: 25px;
-    height: 4px;
-    background-color: black;
-    border-radius: 5px;
-}
 
-/* Menylänkar */
-#nav-links {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 15px;
-}
 
-#nav-links li a {
-    color: black;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
-}
 
-#nav-links li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
+
 
 /* Sticky footer */
 .footer {
@@ -350,13 +331,69 @@ nav.nav ul li a:hover {
     opacity: 1; /* Full opacity on hover */
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+    .header {
+        height: auto; /* Adjust height for smaller screens */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .logo img {
+        height: 40px; /* Reduce logo size */
+    }
+
+    .nav ul {
+        flex-direction: column; /* Stack links in a column */
+        gap: 10px; /* Reduce gap between links */
+    }
+
+
+
+
+
+
+
+    .login-container {
+        width: 90%; /* Make login container wider */
+        right: 5%; /* Center it */
+        top: 20px; /* Adjust to be closer to top */
+    }
+
+    .footer {
+        position: relative; /* Avoid fixed footer on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 5px; /* Adjust padding */
+    }
+
+
+
+    .footer {
+        padding: 10px; /* Reduce padding in footer */
+		
+    }
+
+    .login-container {
+        width: 95%; /* Make login container even wider */
+    }
+
+    .input-group {
+        margin-right: 5px; /* Reduce spacing */
+    }
+}
+
 .user-info {
     position: absolute; /* Place user information the same way */
     top: 60px; /* Adjust so it lies on the same level as login */
     right: 20px; /* Adjust to fit design */
     color: black; /* Change to black for visibility */
     font-size: 14px; /* Adjust font size if needed */
+    /* Removed display: none; */
 }
+
 
 /* General box-sizing for better control over element sizing */
 * {
@@ -368,42 +405,4 @@ nav.nav ul li a:hover {
     margin-top: 20px;
     text-align: center;
     color: red;
-}
-
-/* För mobil */
-@media (max-width: 768px) {
-    .hamburger-nav .hamburger-menu {
-        display: flex; /* Visa hamburgarmenyn på mobil */
-    }
-
-    /* Dölj länkar till en början */
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        right: 20px;
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 200px;
-        flex-direction: column;
-        gap: 0;
-        z-index: 99;
-    }
-
-    .nav-links.show {
-        display: flex; /* Gör menyn synlig när show-klassen läggs till */
-    }
-
-    #nav-links li a {
-        padding: 10px 15px;
-        color: black;
-        text-decoration: none;
-        display: block;
-        transition: background-color 0.3s;
-    }
-
-    #nav-links li a:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
 }
