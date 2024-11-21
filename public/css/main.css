@@ -376,41 +376,50 @@ nav.nav ul li a:hover {
     color: red;
 }
 
-/* Media query for mobile and smaller screens */
+/* Media query för mobilskärmar */
 @media (max-width: 768px) {
     .games {
-        width: 100%; /* Make game section full width on smaller screens */
+        width: 100%; /* Gör spelet fullbredd på mindre skärmar */
     }
     .contact-container,
     .news-container,
+    .game-card,
     .header,
     .footer,
-
+    nav.nav {
+        width: 100%; /* Se till att alla sektioner tar upp full bredd */
+        padding: 15px; /* Lägg till padding för mobilvy */
+    }
     .contact-container {
-        margin: 20px 0; /* Add vertical margin for better spacing */
+        margin: 20px 0; /* Lägg till vertikalt avstånd för bättre mellanrum */
     }
     .game-list {
-        flex-direction: column; /* Stack game cards vertically on small screens */
-        gap: 10px; /* Reduce gap between cards */
+        flex-direction: column; /* Ställ spelets kort vertikalt på små skärmar */
+        gap: 10px; /* Minska mellanrummet mellan kort */
     }
-    
+    .game-card {
+        width: 100%; /* Game cards tar full bredd */
+        height: auto; /* Automatisk höjd för att justera baserat på innehåll */
+    }
     .logo img {
-        height: 40px; /* Smaller logo for mobile */
+        height: 40px; /* Mindre logotyp för mobil */
     }
-    
-nav.nav ul {
-        display: none;
-        flex-direction: column; /* Gör att menyn staplas vertikalt */
-        width: 100%; /* Full bredd */
+    nav.nav ul {
+        flex-direction: column; /* Ställ upp nav-item vertikalt på mobilen */
+        width: 100%; /* Full bredd på mobilen */
+        display: none; /* Döljer menyn på mobilen som standard */
+    }
+    nav.nav ul li a {
+        padding: 10px; /* Öka padding för lättare klickning på mobilen */
     }
 
     /* Visa hamburgermenyn på mobilen */
     .menu-icon {
-        display: flex;
+        display: flex; /* Visa hamburgermenyn på mobil */
     }
 
     /* När menyn är aktiv */
     #nav-links.show {
-        display: flex;
+        display: flex; /* Visa menyn när hamburgaren är klickad */
     }
 }
