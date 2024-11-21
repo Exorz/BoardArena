@@ -403,6 +403,7 @@ nav.nav ul li a:hover {
 /* Initialt, göm menyn på mobil */
 #nav-links {
     display: none; /* Dölj menyn till en början */
+    visibility: hidden; /* Lägg till denna rad för att vara säker på att menyn inte påverkar layouten */
     position: absolute;
     top: 70px;
     right: 20px;
@@ -417,7 +418,9 @@ nav.nav ul li a:hover {
 
 #nav-links.show {
     display: flex; /* Gör menyn synlig när show-klassen läggs till */
+    visibility: visible; /* Gör menyn synlig när show-klassen läggs till */
 }
+
 
     #nav-links li a {
         padding: 10px 15px;
