@@ -18,9 +18,6 @@ function loadHeaderAndFooter() {
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
 
-            // Efter att headern är inläst, vänta en liten stund innan vi initierar hamburgarmenyn
-            setTimeout(initHamburgerMenu, 100); // Väntar i 100ms så att DOM är redo
-
             // Kontrollera inloggningsstatus
             checkLoginStatus();
 
@@ -45,6 +42,9 @@ function loadHeaderAndFooter() {
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
+
+            // Initiera hamburgarmenyn efter att headern är inläst
+            initHamburgerMenu();
         })
         .catch(error => {
             console.error('[scripts.js] Error loading header:', error);
@@ -85,9 +85,7 @@ function initHamburgerMenu() {
 
 document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
 
-
-
-
+// Kontrollera om användaren är inloggad
 function checkLoginStatus() {
     console.log('[scripts.js] Checking login status.');
     const token = localStorage.getItem('token');
@@ -117,6 +115,7 @@ function checkLoginStatus() {
         console.error("[scripts.js] One or more elements not found. Check the HTML structure.");
     }
 }
+
 
 function openLoginForm() {
     console.log('[scripts.js] Opening login form.');
