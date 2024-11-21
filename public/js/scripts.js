@@ -65,7 +65,7 @@ function loadHeaderAndFooter() {
 
 // Funktion för att hantera hamburgarmenyn
 function initHamburgerMenu() {
-    const menuIcon = document.getElementById('menu-icon');
+    const menuIcon = document.getElementById('hamburger-menu');
     const navLinks = document.getElementById('nav-links');
 
     console.log("menuIcon:", menuIcon);
@@ -122,9 +122,6 @@ function checkLoginStatus() {
 
 // Initiera header och footer när DOM är helt laddad
 document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
-
-
-
 
 function openLoginForm() {
     console.log('[scripts.js] Opening login form.');
@@ -209,10 +206,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Försök att initiera hamburgermenyn efter att DOM är helt laddad
     initHamburgerMenu();
 });
-
-
-
-
-
-
 
