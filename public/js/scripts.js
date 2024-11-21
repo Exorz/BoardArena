@@ -1,6 +1,3 @@
-
-
-
 // Basic client-side logger
 function log(message) {
     console.log(`[Client Log] ${message}`);
@@ -8,19 +5,22 @@ function log(message) {
 
 console.log('[scripts.js] Initializing scripts.js script.');
 
+// Funktion för att ladda header och footer
 function loadHeaderAndFooter() {
     console.log('[scripts.js] Loading header and footer.');
 
-    // Ladda header
+    // Ladda headern
     fetch('/partials/header.html')
         .then(response => response.text())
         .then(data => {
+            // Sätt in den laddade headern i container-elementet
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
 
             // Kontrollera inloggningsstatus
             checkLoginStatus();
 
+            // Hitta och hantera logout-knappen
             const logoutButton = document.getElementById('logout-button');
             if (logoutButton) {
                 logoutButton.addEventListener('click', function() {
@@ -30,13 +30,14 @@ function loadHeaderAndFooter() {
                         socket.emit('logout');
                     }
 
+                    // Ta bort token, användarnamn och userId från localStorage
                     localStorage.removeItem('token');
                     localStorage.removeItem('username');
-                    localStorage.removeItem('userId');  // Remove userId from localStorage on logout
+                    localStorage.removeItem('userId');
                     checkLoginStatus();
                     alert('You have logged out.');
 
-                    // Omdirigera till index.html
+                    // Omdirigera till startsidan
                     window.location.href = '/';
                 });
             } else {
@@ -50,7 +51,7 @@ function loadHeaderAndFooter() {
             console.error('[scripts.js] Error loading header:', error);
         });
 
-    // Ladda footer
+    // Ladda footern
     fetch('/partials/footer.html')
         .then(response => response.text())
         .then(data => {
@@ -62,7 +63,7 @@ function loadHeaderAndFooter() {
         });
 }
 
-// Funktion för att hantera hamburgermenyn
+// Funktion för att hantera hamburgarmenyn
 function initHamburgerMenu() {
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
@@ -70,8 +71,10 @@ function initHamburgerMenu() {
     console.log("menuIcon:", menuIcon);
     console.log("navLinks:", navLinks);
 
+    // Kontrollera om både hamburgarmenyn och länkarna finns i DOM
     if (menuIcon && navLinks) {
         console.log('Hamburgarmenyn hittades, lägger till eventlyssnare.');
+        // När hamburgermenyn klickas, toggla visningen av menyn
         menuIcon.addEventListener('click', function() {
             console.log('Hamburgarmenyn klickades!');
             navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
@@ -81,12 +84,11 @@ function initHamburgerMenu() {
     }
 }
 
-
-document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
-
-// Kontrollera om användaren är inloggad
+// Kontrollera inloggningsstatus
 function checkLoginStatus() {
     console.log('[scripts.js] Checking login status.');
+
+    // Hämta element från DOM
     const token = localStorage.getItem('token');
     const loginLink = document.getElementById('login');
     const registerLink = document.getElementById('register');
@@ -94,8 +96,10 @@ function checkLoginStatus() {
     const userInfo = document.getElementById('user-info');
     const usernameDisplay = document.getElementById('username-display');
 
+    // Kontrollera om alla element finns
     if (loginLink && registerLink && logoutLink && userInfo && usernameDisplay) {
         if (token) {
+            // Om användaren är inloggad
             loginLink.hidden = true;
             registerLink.hidden = true;
             logoutLink.hidden = false;
@@ -105,6 +109,7 @@ function checkLoginStatus() {
             usernameDisplay.textContent = username || 'User';
             console.log("[scripts.js] User logged in as:", username);
         } else {
+            // Om användaren inte är inloggad
             loginLink.hidden = false;
             registerLink.hidden = false;
             logoutLink.hidden = true;
@@ -114,6 +119,11 @@ function checkLoginStatus() {
         console.error("[scripts.js] One or more elements not found. Check the HTML structure.");
     }
 }
+
+// Initiera header och footer när DOM är helt laddad
+document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
+
+
 
 
 function openLoginForm() {
