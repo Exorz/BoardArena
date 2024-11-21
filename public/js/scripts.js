@@ -203,23 +203,23 @@ async function register() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('[scripts.js] DOM fully loaded and parsed.');
 
+    // Vi ska säkerställa att vi lägger till eventlyssnaren för hamburgermenyn direkt här
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
 
-    // Debugger: Kontrollera om dessa element finns i DOM
-    console.log(menuIcon, navLinks);
+    console.log(menuIcon, navLinks); // Kontrollera om dessa element är laddade
 
-    // Kontrollera om både menuIcon och navLinks finns innan eventlyssnaren kopplas
     if (menuIcon && navLinks) {
         // Lägg till eventlyssnare till hamburgermenyn
         menuIcon.addEventListener('click', function() {
-            console.log('Hamburgarmenyn klickades!');  // För att verifiera att den triggas
+            console.log('Hamburgarmenyn klickades!');  // Kontrollera om den triggas
             navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
         });
     } else {
         console.error('Hamburgermenyn eller länkarna saknas!');
     }
 });
+
 
 
 
