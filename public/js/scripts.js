@@ -164,3 +164,10 @@ async function register() {
         console.error('[scripts.js] Registration failed:', data.message);
     }
 }
+
+// Lägg till denna kod i din script.js
+document.getElementById('menu-icon').addEventListener('click', function() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('show'); // Växla visningen av menyn
+});
+
