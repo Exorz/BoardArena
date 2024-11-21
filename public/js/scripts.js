@@ -15,13 +15,14 @@ function loadHeaderAndFooter() {
     fetch('/partials/header.html')
         .then(response => response.text())
         .then(data => {
+            // Sätt in headern i DOM
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
 
-            // Initiera hamburgermenyn efter att headern är inläst
+            // Initiera hamburgermenyn först när headern är korrekt inläst
             initHamburgerMenu();
 
-            // Kontrollera inloggningstatus
+            // Kontrollera inloggningsstatus
             checkLoginStatus();
 
             const logoutButton = document.getElementById('logout-button');
@@ -67,26 +68,20 @@ function initHamburgerMenu() {
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
 
-    console.log(menuIcon, navLinks); // Debugging: kolla om dessa element finns
+    // Debugging: Kontrollera om dessa element finns i DOM
+    console.log(menuIcon, navLinks);
 
-    // Lägg till eventlyssnare till hamburgermenyn
+    // Kontrollera om båda elementen finns i DOM innan vi lägger till eventlyssnare
     if (menuIcon && navLinks) {
         menuIcon.addEventListener('click', function() {
             console.log('Hamburgarmenyn klickades!');
-            // Toggla visningen av mobilenavigationen
-            navLinks.classList.toggle('show'); 
-
-            // Alternativ metod om classList inte fungerar som förväntat
-            // if (navLinks.style.display === 'block') {
-            //     navLinks.style.display = 'none';
-            // } else {
-            //     navLinks.style.display = 'block';
-            // }
+            navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
         });
     } else {
         console.error('Hamburgermenyn eller länkarna saknas!');
     }
 }
+
 
 
 
@@ -207,24 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initHamburgerMenu();
 });
 
-// Funktion för att initiera hamburgermenyn
-function initHamburgerMenu() {
-    const menuIcon = document.getElementById('menu-icon');
-    const navLinks = document.getElementById('nav-links');
-
-    // Debugging: Kontrollera om dessa element finns i DOM
-    console.log(menuIcon, navLinks);
-
-    if (menuIcon && navLinks) {
-        // Lägg till eventlyssnare till hamburgermenyn
-        menuIcon.addEventListener('click', function() {
-            console.log('Hamburgarmenyn klickades!');
-            navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
-        });
-    } else {
-        console.error('Hamburgermenyn eller länkarna saknas!');
-    }
-}
 
 
 
