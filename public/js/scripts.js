@@ -18,7 +18,7 @@ function loadHeaderAndFooter() {
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
 
-            // Efter att headern är inläst, initiera hamburgarmenyn
+            // Initiera hamburgermenyn efter att headern är inläst
             initHamburgerMenu();
 
             // Kontrollera inloggningstatus
@@ -69,14 +69,25 @@ function initHamburgerMenu() {
 
     console.log(menuIcon, navLinks); // Debugging: kolla om dessa element finns
 
+    // Lägg till eventlyssnare till hamburgermenyn
     if (menuIcon && navLinks) {
         menuIcon.addEventListener('click', function() {
-            navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
+            console.log('Hamburgarmenyn klickades!');
+            // Toggla visningen av mobilenavigationen
+            navLinks.classList.toggle('show'); 
+
+            // Alternativ metod om classList inte fungerar som förväntat
+            // if (navLinks.style.display === 'block') {
+            //     navLinks.style.display = 'none';
+            // } else {
+            //     navLinks.style.display = 'block';
+            // }
         });
     } else {
         console.error('Hamburgermenyn eller länkarna saknas!');
     }
 }
+
 
 
 
