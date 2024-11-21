@@ -262,9 +262,10 @@ nav.nav ul li a:hover {
     flex-direction: column;
     gap: 5px;
     position: absolute; /* Placera hamburgermenyn i headern */
-    top: 20px;
-    right: 20px;
+    top: 20px; /* Justera från toppen av headern */
+    right: 20px; /* Justera från höger sida */
     cursor: pointer;
+    z-index: 10; /* Se till att hamburgermenyn är över andra element */
 }
 
 .menu-icon span {
