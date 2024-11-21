@@ -10,7 +10,7 @@ console.log('[scripts.js] Initializing scripts.js script.');
 
 function loadHeaderAndFooter() {
     console.log('[scripts.js] Loading header and footer.');
-    
+
     // Ladda header
     fetch('/partials/header.html')
         .then(response => response.text())
@@ -67,7 +67,7 @@ function initHamburgerMenu() {
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
 
-    console.log(menuIcon, navLinks); // Debugging: kolla om dessa element finns i DOM
+    console.log(menuIcon, navLinks); // Debugging: kolla om dessa element finns
 
     if (menuIcon && navLinks) {
         menuIcon.addEventListener('click', function() {
@@ -77,6 +77,7 @@ function initHamburgerMenu() {
         console.error('Hamburgermenyn eller länkarna saknas!');
     }
 }
+
 
 
 document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
