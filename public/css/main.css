@@ -228,34 +228,57 @@ main.content {
 
 /* Navigation styles */
 nav.nav {
-    background-color: #66bb6a; /* Lighter green background for navigation */
-    width: 80%; /* Set width to match header */
-    padding: 10px 0; /* Padding for vertical spacing */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for depth */
-    margin: 20px auto; /* Center the navigation */
+    position: relative; /* Gör så att hamburgermenyn kan placeras överst */
+    background-color: #66bb6a;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 15px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 nav.nav ul {
-    list-style: none; /* Remove list bullets */
-    margin: 0; /* Remove margin */
-    padding: 0; /* Remove padding */
-    display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: center; /* Center the nav items */
-    gap: 15px; /* Space between nav items */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
 }
 
 nav.nav ul li a {
-    color: black; /* Set links color to black */
-    text-decoration: none; /* No underline */
-    padding: 10px 15px; /* Padding around links */
-    transition: background-color 0.3s; /* Smooth background color transition */
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
 }
 
 nav.nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Lighten background on hover */
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Hamburgermeny */
+.menu-icon {
+    display: none; /* Dölj hamburgermenyn på större skärmar */
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.menu-icon span {
+    width: 25px;
+    height: 4px;
+    background-color: black;
+    border-radius: 5px;
+}
+
+/* När hamburgermenyn visas */
+#nav-links {
+    display: flex; /* Visa länkar horisontellt på desktop */
+}
 
 
 
@@ -360,7 +383,6 @@ nav.nav ul li a:hover {
     }
     .contact-container,
     .news-container,
-    .game-card,
     .header,
     .footer,
     nav.nav {
@@ -386,5 +408,20 @@ nav.nav ul li a:hover {
     }
     nav.nav ul li a {
         padding: 10px; /* Increase padding for easier clicking on mobile */
+    }
+nav.nav ul {
+        display: none;
+        flex-direction: column; /* Gör att menyn staplas vertikalt */
+        width: 100%; /* Full bredd */
+    }
+
+    /* Visa hamburgermenyn på mobilen */
+    .menu-icon {
+        display: flex;
+    }
+
+    /* När menyn är aktiv */
+    #nav-links.show {
+        display: flex;
     }
 }
