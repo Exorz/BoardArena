@@ -165,10 +165,18 @@ async function register() {
     }
 }
 
-// JavaScript för att toggla hamburgermenyn
-document.getElementById('menu-icon').addEventListener('click', function() {
+document.addEventListener('DOMContentLoaded', function() {
+    const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
-    navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
+
+    if (menuIcon && navLinks) {
+        menuIcon.addEventListener('click', function() {
+            navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
+        });
+    } else {
+        console.error('Hamburgermenyn eller länkarna saknas!');
+    }
 });
+
 
 
