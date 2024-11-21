@@ -22,17 +22,10 @@ body {
     width: 60%; /* Set the width of the container to 60% of the screen */
     margin: 0 auto; /* Center the container horizontally */
 }
+
 .games h2 {
     margin: 20px 0; /* Add margin for spacing */
     color: white; /* Set h2 color to white */
-}
-
-/* Game list styles */
-.game-list {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow wrapping */
-    gap: 20px; /* Space between cards */
-    justify-content: center; /* Center the cards */
 }
 
 /* Game list styles */
@@ -89,8 +82,6 @@ body {
     background-color: #218838; /* Darker green on hover */
 }
 
-
-
 /* Ensure main content takes up remaining space */
 main {
     flex: 1; /* Allow main to expand and take available space */
@@ -118,7 +109,7 @@ main {
     margin: 20px 0; /* Add margin for spacing */
     color: white; /* Set h2 color to white */
 }
-
+/* Contact form styling continued */
 .contact-form {
     background-color: white; /* White background for the form */
     padding: 20px; /* Padding around the form */
@@ -163,10 +154,6 @@ main {
 .form-container .btn:hover {
     background-color: #218838;
 }
-
-
-
-
 
 /* News section styles */
 .news-container {
@@ -223,7 +210,6 @@ main {
 main.content {
     text-align: center; /* Center text in the main content */
     color: black; /* Set main content text color to black */
-	
 }
 
 /* Navigation styles */
@@ -255,7 +241,6 @@ nav.nav ul li a {
 nav.nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
-
 /* Hamburgermeny - Dölj på desktop */
 .hamburger-nav .hamburger-menu {
     display: none; /* Döljer hamburgarmenyn på större skärmar */
@@ -294,10 +279,6 @@ nav.nav ul li a:hover {
 #nav-links li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
-
-
-
-
 
 /* Sticky footer */
 .footer {
@@ -375,9 +356,7 @@ nav.nav ul li a:hover {
     right: 20px; /* Adjust to fit design */
     color: black; /* Change to black for visibility */
     font-size: 14px; /* Adjust font size if needed */
-    /* Removed display: none; */
 }
-
 
 /* General box-sizing for better control over element sizing */
 * {
@@ -428,6 +407,3 @@ nav.nav ul li a:hover {
         background-color: rgba(255, 255, 255, 0.2);
     }
 }
-
-
-
