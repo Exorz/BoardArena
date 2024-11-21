@@ -165,9 +165,10 @@ async function register() {
     }
 }
 
-// Lägg till denna kod i din script.js
+// JavaScript för att toggla hamburgermenyn
 document.getElementById('menu-icon').addEventListener('click', function() {
     const navLinks = document.getElementById('nav-links');
-    navLinks.classList.toggle('show'); // Växla visningen av menyn
+    navLinks.classList.toggle('show'); // Växla visningen av mobilenavigationen
 });
+
 
