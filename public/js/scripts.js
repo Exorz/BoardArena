@@ -160,16 +160,14 @@ async function register() {
         document.getElementById('register-message').innerText = data.message;
         console.error('[scripts.js] Registration failed:', data.message);
     }
+}
 
     // Funktion för att toggla den mobila menyn
 function toggleMobileNav() {
     const mobileNav = document.getElementById('mobile-nav');
     if (mobileNav.style.display === 'block') {
-        mobileNav.style.display = 'none';  // Om den är synlig, döljs den
+        mobileNav.style.display = 'none';  // Om menyn är synlig, döljs den
     } else {
-        mobileNav.style.display = 'block'; // Om den är dold, visas den
+        mobileNav.style.display = 'block'; // Om menyn är dold, visas den
     }
-}
-
-
 }
