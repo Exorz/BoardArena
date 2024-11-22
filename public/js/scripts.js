@@ -33,6 +33,8 @@ function loadHeaderAndFooter() {
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
+
+            addNavigationEventListeners(); // Lägg till eventhanterare efter headern har laddats
         })
         .catch(error => {
             console.error('[scripts.js] Error loading header:', error);
@@ -174,10 +176,11 @@ function toggleMobileNav() {
     }
 }
 
-// Lägg till event listeners för att stänga menyn när "Register" eller "Login" klickas
-document.addEventListener('DOMContentLoaded', function () {
-    console.log("[scripts.js] DOMContentLoaded event triggered.");
- const registerLink = document.getElementById('register');
+// Lägg till event listeners för Register och Login efter att headern är laddad
+function addNavigationEventListeners() {
+    console.log("[scripts.js] Adding navigation event listeners.");
+
+    const registerLink = document.getElementById('register');
     const loginLink = document.getElementById('login');
     const mobileNav = document.getElementById('mobile-nav');
 
@@ -187,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (registerLink) {
         console.log("[scripts.js] Register link found.");
-        registerLink.addEventListener('click', function (event) {
+        registerLink.addEventListener('click', function(event) {
             console.log("[scripts.js] Register link clicked.");
             event.preventDefault(); // Förhindrar den normala länkhändelsen
             if (mobileNav) {
@@ -202,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (loginLink) {
         console.log("[scripts.js] Login link found.");
-        loginLink.addEventListener('click', function (event) {
+        loginLink.addEventListener('click', function(event) {
             console.log("[scripts.js] Login link clicked.");
             event.preventDefault(); // Förhindrar den normala länkhändelsen
             if (mobileNav) {
@@ -214,10 +217,8 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.warn("[scripts.js] Login link not found.");
     }
-});
-
-
-// Funktion för att stänga menyn
+}
+// Funktion för att stänga mobilnavet
 function closeMobileNav() {
     console.log("[scripts.js] closeMobileNav() called.");
     const mobileNav = document.getElementById('mobile-nav');
@@ -230,18 +231,46 @@ function closeMobileNav() {
 }
 
 // Funktion för att hantera logout
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("[scripts.js] DOMContentLoaded event triggered for logout setup.");
     const logoutLink = document.getElementById('logout');
     if (logoutLink) {
-        logoutLink.addEventListener('click', function(event) {
-            event.preventDefault();
-            console.log('[scripts.js] Logging out.');
+        logoutLink.addEventListener('click', function (event) {
+            console.log("[scripts.js] Logout link clicked.");
+            event.preventDefault(); // Förhindrar standardlänkhändelsen
             localStorage.removeItem('token');
             localStorage.removeItem('username');
             localStorage.removeItem('userId');
             alert('You have logged out.');
             checkLoginStatus();
-            window.location.href = '/';
+            window.location.href = '/'; // Omdirigera till hemsidan
         });
+    } else {
+        console.warn("[scripts.js] Logout link not found.");
     }
+});
+
+// Funktion för att hantera när sidan laddas om och mobilenav kan vara öppet
+window.addEventListener('resize', function () {
+    console.log("[scripts.js] Window resize detected.");
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileNav && window.innerWidth > 768) {
+        console.log("[scripts.js] Hiding mobile nav on larger screens.");
+        closeMobileNav(); // Stäng mobilnavigering om skärmen blir större än mobilstorlek
+    }
+});
+
+// Extra felsökningsloggar
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("[scripts.js] Running post-DOMContentLoaded setup.");
+    console.log("[scripts.js] Current window width:", window.innerWidth);
+
+    // Kontrollera om viktiga element finns
+    const mobileNav = document.getElementById('mobile-nav');
+    const registerLink = document.getElementById('register');
+    const loginLink = document.getElementById('login');
+
+    console.log("[scripts.js] mobile-nav exists:", !!mobileNav);
+    console.log("[scripts.js] register link exists:", !!registerLink);
+    console.log("[scripts.js] login link exists:", !!loginLink);
 });
