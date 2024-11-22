@@ -409,6 +409,16 @@ nav.nav ul li a:hover {
         width: 100%; /* Gör spelsektionen fullbred på små skärmar */
         padding: 10px; /* Minska padding på små skärmar */
     }
+
+    .contact-container {
+        width: 90%; /* Make contact container 90% width on smaller screens */
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
+    .contact-form {
+        width: 100%; /* Ensure form takes up the full width of the container */
+        padding: 10px; /* Adjust padding to fit smaller screens */
+    }
 }
 
 /* På större skärmar, dölja hamburgarmenyn och visa desktop-menyn */
