@@ -220,10 +220,21 @@ function addNavigationEventListeners() {
 // Close the mobile navigation when clicking outside
 window.addEventListener('click', closeMobileNavIfClickedOutside);
 
-// Toggle hamburger menu
-document.getElementById('hamburger-menu').addEventListener('click', function(event) {
-    event.stopPropagation(); // Prevent the event from propagating to the document and closing the menu
-    toggleMobileNav();
+// Toggle hamburger menu only if the hamburger menu exists
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent the event from propagating to the document and closing the menu
+            toggleMobileNav();
+        });
+    } else {
+        console.error('Hamburger menu not found in DOM.');
+    }
+
+    // Initialize the navigation event listeners
+    addNavigationEventListeners();
+    checkLoginStatus();
 });
 
 // Handle logout
