@@ -172,23 +172,15 @@ function toggleMobileNav() {
     }
 }
 
-// Funktion för att toggla den mobila menyn
-function toggleMobileNav() {
-    const mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav.style.display === 'block') {
-        mobileNav.style.display = 'none';  // Om menyn är synlig, döljs den
-    } else {
-        mobileNav.style.display = 'block'; // Om menyn är dold, visas den
-    }
-}
-
-// Stänger menyn när "Register" eller "Login" klickas
+// Lägg till event listeners för att stänga menyn när "Register" eller "Login" klickas
 document.getElementById('register')?.addEventListener('click', function(event) {
     closeMobileNav();  // Stänger menyn när register länken klickas
+    openRegisterForm(); // Öppnar registreringsformuläret
 });
 
 document.getElementById('login')?.addEventListener('click', function(event) {
     closeMobileNav();  // Stänger menyn när login länken klickas
+    openLoginForm(); // Öppnar inloggningsformuläret
 });
 
 // Funktion för att stänga menyn
