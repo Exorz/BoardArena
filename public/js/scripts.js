@@ -172,12 +172,22 @@ function toggleMobileNav() {
     }
 }
 
-// Lägg till event listeners för att stänga menyn när "Login" eller "Register" klickas
-document.getElementById('register')?.addEventListener('click', function(event) {
+// Funktion för att toggla den mobila menyn
+function toggleMobileNav() {
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileNav.style.display === 'block') {
+        mobileNav.style.display = 'none';  // Om menyn är synlig, döljs den
+    } else {
+        mobileNav.style.display = 'block'; // Om menyn är dold, visas den
+    }
+}
+
+// Stänger menyn när "Register" eller "Login" klickas
+document.getElementById('register')?.addEventListener('click', function() {
     closeMobileNav();  // Stänger menyn när register länken klickas
 });
 
-document.getElementById('login')?.addEventListener('click', function(event) {
+document.getElementById('login')?.addEventListener('click', function() {
     closeMobileNav();  // Stänger menyn när login länken klickas
 });
 
