@@ -164,7 +164,12 @@ async function register() {
     // Funktion för att toggla den mobila menyn
 function toggleMobileNav() {
     const mobileNav = document.getElementById('mobile-nav');
-    mobileNav.style.display = (mobileNav.style.display === 'block') ? 'none' : 'block';
+    if (mobileNav.style.display === 'block') {
+        mobileNav.style.display = 'none';  // Om den är synlig, döljs den
+    } else {
+        mobileNav.style.display = 'block'; // Om den är dold, visas den
+    }
 }
+
 
 }
