@@ -161,7 +161,6 @@ window.addEventListener('resize', function () {
     if (mobileNav && window.innerWidth > 768) {
         closeMobileNav(); // Hide mobile nav on larger screens
     }
-});
 // Funktion för att stänga mobilnavet när en länk klickas på i hamburgarmenyn
 function closeMobileNavOnLinkClick(event) {
     const mobileNav = document.getElementById('mobile-nav');
