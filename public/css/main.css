@@ -356,6 +356,7 @@ nav.nav ul li a:hover {
 
 
 /* Visar hamburgarmenyn på små skärmar */
+/* Visar hamburgarmenyn på små skärmar */
 @media (max-width: 768px) {
     #desktop-nav {
         display: none; /* Döljer desktop-menyn på små skärmar */
@@ -381,8 +382,7 @@ nav.nav ul li a:hover {
         display: none; /* Döljer den mobila menyn som standard */
         position: absolute; /* Absolut position under hamburgarmenyn */
         top: 60px; /* Placera den precis under hamburgarmenyn */
-        left: 50%; /* Placerar menyn i mitten */
-        transform: translateX(-50%); /* Centrera menyn horisontellt */
+        right: 20px; /* Justera till höger under hamburgarmenyn */
         background-color: #66bb6a;
         width: 30%; /* 30% bredd på mobilenyn */
         padding-top: 10px;
@@ -416,6 +416,7 @@ nav.nav ul li a:hover {
         background-color: rgba(255, 255, 255, 0.2); /* Lägg till hover-effekt */
     }
 }
+
 
 /* På större skärmar, dölja hamburgarmenyn och visa desktop-menyn */
 @media (min-width: 769px) {
