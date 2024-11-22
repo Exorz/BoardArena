@@ -35,14 +35,6 @@ body {
     justify-content: center; /* Center the cards */
 }
 
-/* Game list styles */
-.game-list {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow wrapping */
-    gap: 20px; /* Space between cards */
-    justify-content: center; /* Center the cards */
-}
-
 /* Game card styles */
 .game-card {
     width: 200px; /* Set a fixed width for the game cards */
@@ -88,8 +80,6 @@ body {
 .game-card button:hover {
     background-color: #218838; /* Darker green on hover */
 }
-
-
 
 /* Ensure main content takes up remaining space */
 main {
@@ -164,10 +154,6 @@ main {
     background-color: #218838;
 }
 
-
-
-
-
 /* News section styles */
 .news-container {
     background-color: white; /* White background for the container */
@@ -223,7 +209,6 @@ main {
 main.content {
     text-align: center; /* Center text in the main content */
     color: black; /* Set main content text color to black */
-	
 }
 
 /* Navigation styles */
@@ -255,11 +240,6 @@ nav.nav ul li a {
 nav.nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Lighten background on hover */
 }
-
-
-
-
-
 
 /* Sticky footer */
 .footer {
@@ -340,7 +320,6 @@ nav.nav ul li a:hover {
     /* Removed display: none; */
 }
 
-
 /* General box-sizing for better control over element sizing */
 * {
   box-sizing: border-box;
@@ -351,26 +330,6 @@ nav.nav ul li a:hover {
     margin-top: 20px;
     text-align: center;
     color: red;
-}
-
-
-
-
-
-
-/* På större skärmar, dölja hamburgarmenyn och visa desktop-menyn */
-@media (min-width: 769px) {
-    #desktop-nav {
-        display: block; /* Visar desktop-menyn på större skärmar */
-    }
-
-    #hamburger-menu {
-        display: none; /* Döljer hamburgerknappen på större skärmar */
-    }
-
-    #mobile-nav {
-        display: none; /* Döljer den mobila menyn på större skärmar */
-    }
 }
 
 /* Visar hamburgarmenyn på små skärmar */
@@ -431,5 +390,38 @@ nav.nav ul li a:hover {
 
     #mobile-nav ul li a:hover {
         background-color: rgba(255, 255, 255, 0.2); /* Lägg till hover-effekt */
+    }
+
+    /* Responsiv anpassning för header */
+    .header {
+        width: 100%; /* Gör headern fullbred på små skärmar */
+        height: auto; /* Gör höjden automatisk */
+    }
+
+    /* Anpassa spelkort till mindre skärmar */
+    .game-card {
+        width: 150px; /* Justera bredden på spelkort */
+        height: auto; /* Justera höjden för att rymma innehållet bättre */
+        margin-bottom: 15px; /* Minska avståndet mellan kort */
+    }
+
+    .games {
+        width: 100%; /* Gör spelsektionen fullbred på små skärmar */
+        padding: 10px; /* Minska padding på små skärmar */
+    }
+}
+
+/* På större skärmar, dölja hamburgarmenyn och visa desktop-menyn */
+@media (min-width: 769px) {
+    #desktop-nav {
+        display: block; /* Visar desktop-menyn på större skärmar */
+    }
+
+    #hamburger-menu {
+        display: none; /* Döljer hamburgerknappen på större skärmar */
+    }
+
+    #mobile-nav {
+        display: none; /* Döljer den mobila menyn på större skärmar */
     }
 }
