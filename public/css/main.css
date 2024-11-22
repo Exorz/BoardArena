@@ -411,7 +411,7 @@ nav.nav ul li a:hover {
     }
 
     .contact-container {
-        width: 90%; /* Make contact container 90% width on smaller screens */
+        width: 100%; /* Make contact container 90% width on smaller screens */
         padding: 10px; /* Reduce padding on smaller screens */
     }
 
