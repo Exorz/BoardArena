@@ -353,35 +353,66 @@ nav.nav ul li a:hover {
     color: red;
 }
 
-/* Responsive styles */
+/* Dölja desktop-menyn på små skärmar och visa hamburgarmenyn */
 @media (max-width: 768px) {
-    .header {
-        height: auto; /* Adjust height for smaller screens */
-        padding: 10px; /* Reduce padding */
+    #desktop-nav {
+        display: none; /* Döljer desktop-menyn på små skärmar */
     }
 
-    .logo img {
-        height: 40px; /* Reduce logo size */
+    #hamburger-menu {
+        display: block; /* Visar hamburgerknappen på små skärmar */
+        cursor: pointer;
+        position: absolute;
+        top: 20px;
+        right: 20px;
     }
 
-    .nav ul {
-        flex-direction: column; /* Stack links in a column */
-        gap: 10px; /* Reduce gap between links */
+    .hamburger-menu .bar {
+        width: 30px;
+        height: 4px;
+        background-color: #333;
+        margin: 5px 0;
     }
 
-
-
-
-
-
-
-    .login-container {
-        width: 90%; /* Make login container wider */
-        right: 5%; /* Center it */
-        top: 20px; /* Adjust to be closer to top */
+    #mobile-nav {
+        display: none; /* Döljer den mobila menyn */
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #66bb6a;
+        width: 100%;
+        height: 100%;
+        padding-top: 60px;
+        text-align: center;
     }
 
-    .footer {
-        position: relative; /* Avoid fixed footer on small screens */
+    #mobile-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    #mobile-nav ul li {
+        padding: 10px 0;
+    }
+
+    #mobile-nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+}
+
+/* På större skärmar, dölja hamburgarmenyn och visa desktop-menyn */
+@media (min-width: 769px) {
+    #desktop-nav {
+        display: block; /* Visar desktop-menyn på större skärmar */
+    }
+
+    #hamburger-menu {
+        display: none; /* Döljer hamburgerknappen på större skärmar */
+    }
+
+    #mobile-nav {
+        display: none; /* Döljer den mobila menyn på större skärmar */
     }
 }
