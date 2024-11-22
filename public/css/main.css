@@ -384,7 +384,7 @@ nav.nav ul li a:hover {
         left: 0;
         right: 0;
         background-color: #66bb6a;
-        width: 100%; /* Full bredd på mobilenyn */
+        width: 20%; /* Full bredd på mobilenyn */
         padding-top: 10px;
         text-align: center;
         z-index: 500; /* Se till att mobilenyn är under hamburgarmenyn */
