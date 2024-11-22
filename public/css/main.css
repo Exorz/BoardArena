@@ -381,14 +381,15 @@ nav.nav ul li a:hover {
         display: none; /* Döljer den mobila menyn som standard */
         position: absolute; /* Absolut position under hamburgarmenyn */
         top: 60px; /* Placera den precis under hamburgarmenyn */
-        left: 0;
-        right: 60px;
+        left: 50%; /* Placerar menyn i mitten */
+        transform: translateX(-50%); /* Centrera menyn horisontellt */
         background-color: #66bb6a;
-        width: 20%; /* Full bredd på mobilenyn */
+        width: 30%; /* 30% bredd på mobilenyn */
         padding-top: 10px;
         text-align: center;
         z-index: 500; /* Se till att mobilenyn är under hamburgarmenyn */
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Lägger till en skugga för att ge djup */
+        border-radius: 8px; /* Rundade hörn för menyn */
     }
 
     #mobile-nav ul {
@@ -398,13 +399,21 @@ nav.nav ul li a:hover {
     }
 
     #mobile-nav ul li {
-        padding: 10px 0;
+        padding: 12px 0; /* Mer utrymme mellan länkar */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Lägger till linjer mellan menylänkar */
     }
 
     #mobile-nav ul li a {
         color: white;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 18px; /* Justera textstorleken */
+        display: block; /* Gör länkarna blockelement för bättre klickyta */
+        padding: 10px; /* Lite padding på länkarna */
+        transition: background-color 0.3s; /* Smooth övergång på hover */
+    }
+
+    #mobile-nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Lägg till hover-effekt */
     }
 }
 
