@@ -16,24 +16,23 @@ function loadHeaderAndFooter() {
             checkLoginStatus();
 
             const logoutButton = document.getElementById('logout-button');
-       if (logoutButton) {
-    logoutButton.addEventListener('click', function() {
-        console.log('[scripts.js] Logout button clicked.');
-        const socket = window.socket;
-        if (socket) {
-            socket.emit('logout');
-        }
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    console.log('[scripts.js] Logout button clicked.');
+                    const socket = window.socket;
+                    if (socket) {
+                        socket.emit('logout');
+                    }
 
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        localStorage.removeItem('userId');  // Remove userId from localStorage on logout
-        checkLoginStatus();
-        alert('You have logged out.');
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('userId');  // Remove userId from localStorage on logout
+                    checkLoginStatus();
+                    alert('You have logged out.');
 
-        // Lägg till omdirigering till index.html
-        window.location.href = '/';
-
-    });
+                    // Lägg till omdirigering till index.html
+                    window.location.href = '/';
+                });
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
@@ -161,17 +160,6 @@ async function register() {
         console.error('[scripts.js] Registration failed:', data.message);
     }
 }
-
-    // Funktion för att toggla den mobila menyn
-function toggleMobileNav() {
-    const mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav.style.display === 'block') {
-        mobileNav.style.display = 'none';  // Om menyn är synlig, döljs den
-    } else {
-        mobileNav.style.display = 'block'; // Om menyn är dold, visas den
-    }
-}
-
 // Funktion för att toggla den mobila menyn
 function toggleMobileNav() {
     const mobileNav = document.getElementById('mobile-nav');
