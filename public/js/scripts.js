@@ -16,21 +16,20 @@ function loadHeaderAndFooter() {
             checkLoginStatus();
 
             const logoutButton = document.getElementById('logout-button');
-       if (logoutButton) {
-    logoutButton.addEventListener('click', function() {
-        console.log('[scripts.js] Logout button clicked.');
-        const socket = window.socket;
-        if (socket) {
-            socket.emit('logout');
-        }
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        localStorage.removeItem('userId');  // Remove userId from localStorage on logout
-        checkLoginStatus();
-        alert('You have logged out.');
-        // Lägg till omdirigering till index.html
-        window.location.href = '/';
-    });
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    console.log('[scripts.js] Logout button clicked.');
+                    const socket = window.socket;
+                    if (socket) {
+                        socket.emit('logout');
+                    }
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('userId'); // Remove userId from localStorage on logout
+                    checkLoginStatus();
+                    alert('You have logged out.');
+                    window.location.href = '/'; // Redirect to index.html
+                });
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
@@ -97,7 +96,6 @@ function closeForm() {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('registerForm').style.display = 'none';
 }
-
 async function login() {
     console.log('[scripts.js] Logging in.');
     const email = document.getElementById('login-email').value;
@@ -158,40 +156,60 @@ async function register() {
         console.error('[scripts.js] Registration failed:', data.message);
     }
 }
-    // Funktion för att toggla den mobila menyn
-function toggleMobileNav() {
-    const mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav.style.display === 'block') {
-        mobileNav.style.display = 'none';  // Om menyn är synlig, döljs den
-    } else {
-        mobileNav.style.display = 'block'; // Om menyn är dold, visas den
-    }
-}
+
 // Funktion för att toggla den mobila menyn
 function toggleMobileNav() {
     const mobileNav = document.getElementById('mobile-nav');
     if (mobileNav.style.display === 'block') {
-        mobileNav.style.display = 'none';  // Om menyn är synlig, döljs den
+        mobileNav.style.display = 'none'; // Om menyn är synlig, döljs den
     } else {
         mobileNav.style.display = 'block'; // Om menyn är dold, visas den
     }
 }
 
 // Lägg till event listeners för att stänga menyn när "Register" eller "Login" klickas
-document.getElementById('register')?.addEventListener('click', function(event) {
-    event.preventDefault(); // Förhindrar den normala länkhändelsen (vi navigerar inte bort)
-    closeMobileNav();  // Stänger menyn när register länken klickas
-    openRegisterForm(); // Öppnar registreringsformuläret
-});
+document.addEventListener('DOMContentLoaded', function() {
+    const registerLink = document.getElementById('register');
+    const loginLink = document.getElementById('login');
 
-document.getElementById('login')?.addEventListener('click', function(event) {
-    event.preventDefault(); // Förhindrar den normala länkhändelsen (vi navigerar inte bort)
-    closeMobileNav();  // Stänger menyn när login länken klickas
-    openLoginForm(); // Öppnar inloggningsformuläret
+    if (registerLink) {
+        registerLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Förhindrar den normala länkhändelsen
+            closeMobileNav(); // Stänger menyn när register länken klickas
+            openRegisterForm(); // Öppnar registreringsformuläret
+        });
+    }
+
+    if (loginLink) {
+        loginLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Förhindrar den normala länkhändelsen
+            closeMobileNav(); // Stänger menyn när login länken klickas
+            openLoginForm(); // Öppnar inloggningsformuläret
+        });
+    }
 });
 
 // Funktion för att stänga menyn
 function closeMobileNav() {
     const mobileNav = document.getElementById('mobile-nav');
-    mobileNav.style.display = 'none';  // Döljer menyn
+    if (mobileNav) {
+        mobileNav.style.display = 'none'; // Döljer menyn
+    }
 }
+
+// Funktion för att hantera logout
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutLink = document.getElementById('logout');
+    if (logoutLink) {
+        logoutLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            console.log('[scripts.js] Logging out.');
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            localStorage.removeItem('userId');
+            alert('You have logged out.');
+            checkLoginStatus();
+            window.location.href = '/';
+        });
+    }
+});
