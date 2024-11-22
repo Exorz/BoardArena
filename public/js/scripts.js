@@ -109,42 +109,42 @@ async function register() {
     }
 }
 
-// Function to toggle mobile menu visibility
+// Funktion för att toggle mobilnavet
 function toggleMobileNav() {
     const mobileNav = document.getElementById('mobile-nav');
     if (mobileNav) {
-        if (mobileNav.style.display === 'block') {
-            mobileNav.style.display = 'none';
-        } else {
-            mobileNav.style.display = 'block';
-        }
+        mobileNav.style.display = (mobileNav.style.display === 'block') ? 'none' : 'block';
     }
 }
 
-// Add event listeners for mobile nav and links
-function addNavigationEventListeners() {
-    const registerLink = document.getElementById('register');
-    const loginLink = document.getElementById('login');
+// Stänger mobilnavet när användaren klickar på en länk
+function closeMobileNavOnLinkClick() {
     const mobileNav = document.getElementById('mobile-nav');
-
-    if (registerLink) {
-        registerLink.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link action
-            if (mobileNav) closeMobileNav(); // Close mobile nav if it's open
-            openRegisterForm(); // Open register form
-        });
+    if (mobileNav && mobileNav.style.display === 'block') {
+        mobileNav.style.display = 'none';
     }
+}
 
-    if (loginLink) {
-        loginLink.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link action
-            if (mobileNav) closeMobileNav(); // Close mobile nav if it's open
-            openLoginForm(); // Open login form
+// Lägg till event listeners för alla länkar i mobilnavet
+function addMobileNavLinkListeners() {
+    const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMobileNavOnLinkClick);
+    });
+}
+
+// Lägg till event listeners för hamburgermenyn
+function addHamburgerMenuListeners() {
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', function(event) {
+            event.stopPropagation();
+            toggleMobileNav(); // Växla menyns synlighet
         });
     }
 }
 
-// Function to close mobile nav when clicking outside
+// Stäng mobilnavet när användaren klickar utanför
 function closeMobileNavOnClickOutside(event) {
     const mobileNav = document.getElementById('mobile-nav');
     const hamburgerMenu = document.getElementById('hamburger-menu');
@@ -155,70 +155,14 @@ function closeMobileNavOnClickOutside(event) {
 
 document.addEventListener('click', closeMobileNavOnClickOutside);
 
-// Function to handle window resizing
-window.addEventListener('resize', function () {
-    const mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav && window.innerWidth > 768) {
-        closeMobileNav(); // Hide mobile nav on larger screens
-    }
-    });
-// Funktion för att stänga mobilnavet när en länk klickas på i hamburgarmenyn
-function closeMobileNavOnLinkClick(event) {
-    const mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav && mobileNav.style.display === 'block') {
-        mobileNav.style.display = 'none'; // Döljer menyn när en länk är klickad
-    }
-}
-
-// Lägg till event listeners för varje länk i hamburgarmenyn
-function addMobileNavLinkListeners() {
-    const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeMobileNavOnLinkClick);
-    });
-}
-
-// Lägg till event listeners för öppning och stängning av mobilmenyn
-function addHamburgerMenuListeners() {
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    if (hamburgerMenu) {
-        hamburgerMenu.addEventListener('click', function(event) {
-            event.stopPropagation(); // Förhindra att click-händelsen sprider sig
-            toggleMobileNav(); // Växla mobilmenyn
-        });
-    } else {
-        console.warn("[scripts.js] Hamburger menu element not found.");
-    }
-}
-
-// Funktion för att stänga mobilnavet
-function closeMobileNav() {
-    const mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav) {
-        mobileNav.style.display = 'none'; // Döljer menyn
-    }
-}
-
-// Lägg till alla event listeners när sidan är laddad
-document.addEventListener('DOMContentLoaded', function () {
-    // Lägg till event listeners för hamburgerknappen
-    addHamburgerMenuListeners();
-
-    // Lägg till event listeners för länkar i mobilnavet
-    addMobileNavLinkListeners();
-
-    // Lägg till event listener för att stänga menyn om man klickar utanför
-    document.addEventListener('click', closeMobileNavOnClickOutside);
-});
-
-// Säkerställ att navigeringslänkarna fungerar korrekt när användaren är inloggad
+// Uppdaterar navigationen för inloggade användare
 function updateNavigationForLoggedInUser() {
     const loginLink = document.getElementById('login');
     const registerLink = document.getElementById('register');
     const logoutLink = document.getElementById('logout');
     const userInfo = document.getElementById('user-info');
     const usernameDisplay = document.getElementById('username-display');
-
+    
     const token = localStorage.getItem('token');
 
     if (loginLink && registerLink && logoutLink && userInfo && usernameDisplay) {
@@ -239,21 +183,25 @@ function updateNavigationForLoggedInUser() {
     }
 }
 
-// Anrop för att uppdatera navigation när sidan har laddats
-document.addEventListener('DOMContentLoaded', updateNavigationForLoggedInUser);
+// Logout-funktion
+function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userId');
+    alert('You have logged out.');
+    updateNavigationForLoggedInUser(); // Uppdatera navigationen efter logout
+    window.location.href = '/'; // Om dirigerar till hemsidan
+}
 
-// Hantera logout funktion
 document.addEventListener('DOMContentLoaded', function () {
     const logoutLink = document.getElementById('logout');
     if (logoutLink) {
         logoutLink.addEventListener('click', function (event) {
             event.preventDefault();
-            localStorage.removeItem('token');
-            localStorage.removeItem('username');
-            localStorage.removeItem('userId');
-            alert('You have logged out.');
-            updateNavigationForLoggedInUser(); // Uppdatera navigationen när användaren loggas ut
-            window.location.href = '/'; // Redirect to homepage
+            logout(); // Kör logout-funktionen
         });
     }
 });
+
+// Uppdatera navigationen när sidan laddas
+document.addEventListener('DOMContentLoaded', updateNavigationForLoggedInUser);
