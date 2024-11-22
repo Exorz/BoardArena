@@ -183,11 +183,11 @@ function toggleMobileNav() {
 }
 
 // Stänger menyn när "Register" eller "Login" klickas
-document.getElementById('register')?.addEventListener('click', function() {
+document.getElementById('register')?.addEventListener('click', function(event) {
     closeMobileNav();  // Stänger menyn när register länken klickas
 });
 
-document.getElementById('login')?.addEventListener('click', function() {
+document.getElementById('login')?.addEventListener('click', function(event) {
     closeMobileNav();  // Stänger menyn när login länken klickas
 });
 
