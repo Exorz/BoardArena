@@ -159,42 +159,73 @@ async function register() {
 
 // Funktion för att toggla den mobila menyn
 function toggleMobileNav() {
+    console.log("[scripts.js] toggleMobileNav() called.");
     const mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav.style.display === 'block') {
-        mobileNav.style.display = 'none'; // Om menyn är synlig, döljs den
+    if (mobileNav) {
+        if (mobileNav.style.display === 'block') {
+            console.log("[scripts.js] Mobile nav is currently visible. Hiding it.");
+            mobileNav.style.display = 'none';
+        } else {
+            console.log("[scripts.js] Mobile nav is currently hidden. Showing it.");
+            mobileNav.style.display = 'block';
+        }
     } else {
-        mobileNav.style.display = 'block'; // Om menyn är dold, visas den
+        console.warn("[scripts.js] mobile-nav element not found in toggleMobileNav().");
     }
 }
 
 // Lägg till event listeners för att stänga menyn när "Register" eller "Login" klickas
-document.addEventListener('DOMContentLoaded', function() {
-    const registerLink = document.getElementById('register');
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("[scripts.js] DOMContentLoaded event triggered.");
+ const registerLink = document.getElementById('register');
     const loginLink = document.getElementById('login');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    if (!mobileNav) {
+        console.warn("[scripts.js] mobile-nav element not found.");
+    }
 
     if (registerLink) {
-        registerLink.addEventListener('click', function(event) {
+        console.log("[scripts.js] Register link found.");
+        registerLink.addEventListener('click', function (event) {
+            console.log("[scripts.js] Register link clicked.");
             event.preventDefault(); // Förhindrar den normala länkhändelsen
-            closeMobileNav(); // Stänger mobilnavet
+            if (mobileNav) {
+                console.log("[scripts.js] Closing mobile nav.");
+                closeMobileNav(); // Stänger mobilnavet
+            }
             openRegisterForm(); // Öppnar registerformuläret
         });
+    } else {
+        console.warn("[scripts.js] Register link not found.");
     }
 
     if (loginLink) {
-        loginLink.addEventListener('click', function(event) {
+        console.log("[scripts.js] Login link found.");
+        loginLink.addEventListener('click', function (event) {
+            console.log("[scripts.js] Login link clicked.");
             event.preventDefault(); // Förhindrar den normala länkhändelsen
-            closeMobileNav(); // Stänger mobilnavet
+            if (mobileNav) {
+                console.log("[scripts.js] Closing mobile nav.");
+                closeMobileNav(); // Stänger mobilnavet
+            }
             openLoginForm(); // Öppnar loginformuläret
         });
+    } else {
+        console.warn("[scripts.js] Login link not found.");
     }
 });
 
 
 // Funktion för att stänga menyn
 function closeMobileNav() {
+    console.log("[scripts.js] closeMobileNav() called.");
     const mobileNav = document.getElementById('mobile-nav');
     if (mobileNav) {
         mobileNav.style.display = 'none'; // Döljer menyn
+        console.log("[scripts.js] Mobile nav is now hidden.");
+    } else {
+        console.warn("[scripts.js] mobile-nav element not found in closeMobileNav().");
     }
 }
 
