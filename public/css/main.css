@@ -353,14 +353,16 @@ nav.nav ul li a:hover {
     color: red;
 }
 
-/* Dölja desktop-menyn på små skärmar och visa hamburgarmenyn */
+
+
+/* Visar hamburgermenyn på små skärmar */
 @media (max-width: 768px) {
     #desktop-nav {
         display: none; /* Döljer desktop-menyn på små skärmar */
     }
 
     #hamburger-menu {
-        display: block; /* Visar hamburgerknappen på små skärmar */
+        display: block; /* Visar hamburgerknappen */
         cursor: pointer;
         position: absolute;
         top: 20px;
@@ -375,7 +377,7 @@ nav.nav ul li a:hover {
     }
 
     #mobile-nav {
-        display: none; /* Döljer den mobila menyn */
+        display: none; /* Döljer den mobila menyn på små skärmar */
         position: absolute;
         top: 0;
         left: 0;
@@ -401,6 +403,7 @@ nav.nav ul li a:hover {
         font-size: 20px;
     }
 }
+
 
 /* På större skärmar, dölja hamburgarmenyn och visa desktop-menyn */
 @media (min-width: 769px) {
