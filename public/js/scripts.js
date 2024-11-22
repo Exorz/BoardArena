@@ -1,9 +1,7 @@
-// Basic client-side logger (removed for now)
+// Basic client-side logger
 function log(message) {
     console.log(`[Client Log] ${message}`);
 }
-
-console.log('[scripts.js] Initializing scripts.js script.');
 
 function loadHeaderAndFooter() {
     fetch('/partials/header.html')
@@ -11,7 +9,7 @@ function loadHeaderAndFooter() {
         .then(data => {
             document.getElementById('header-container').innerHTML = data;
             checkLoginStatus();
-            addNavigationEventListeners();  // Lägg till eventhanterare efter headern har laddats
+            addNavigationEventListeners();
         })
         .catch(error => {
             console.error('[scripts.js] Error loading header:', error);
@@ -37,19 +35,23 @@ function checkLoginStatus() {
     const userInfo = document.getElementById('user-info');
     const usernameDisplay = document.getElementById('username-display');
 
-    if (token) {
-        loginLink.hidden = true;
-        registerLink.hidden = true;
-        logoutLink.hidden = false;
-        userInfo.hidden = false;
+    if (loginLink && registerLink && logoutLink && userInfo && usernameDisplay) {
+        if (token) {
+            loginLink.hidden = true;
+            registerLink.hidden = true;
+            logoutLink.hidden = false;
+            userInfo.hidden = false;
 
-        const username = localStorage.getItem('username');
-        usernameDisplay.textContent = username || 'User';
+            const username = localStorage.getItem('username');
+            usernameDisplay.textContent = username || 'User';
+        } else {
+            loginLink.hidden = false;
+            registerLink.hidden = false;
+            logoutLink.hidden = true;
+            userInfo.hidden = true;
+        }
     } else {
-        loginLink.hidden = false;
-        registerLink.hidden = false;
-        logoutLink.hidden = true;
-        userInfo.hidden = true;
+        console.error("[scripts.js] One or more elements not found. Check the HTML structure.");
     }
 }
 
@@ -79,6 +81,7 @@ async function login() {
         const base64Url = data.token.split('.')[1];
         const decodedValue = JSON.parse(atob(base64Url));
         localStorage.setItem('userId', decodedValue._id);
+        alert('Login successful!');
         closeForm();
         window.location.href = '/games';
     } else {
@@ -102,6 +105,7 @@ async function register() {
         const base64Url = data.token.split('.')[1];
         const decodedValue = JSON.parse(atob(base64Url));
         localStorage.setItem('userId', decodedValue._id);
+        alert('Registration successful!');
         closeForm();
         window.location.href = '/games';
     } else {
@@ -109,99 +113,129 @@ async function register() {
     }
 }
 
-// Funktion för att toggle mobilnavet
+// Funktion för att toggla den mobila menyn
 function toggleMobileNav() {
     const mobileNav = document.getElementById('mobile-nav');
     if (mobileNav) {
-        mobileNav.style.display = (mobileNav.style.display === 'block') ? 'none' : 'block';
+        if (mobileNav.style.display === 'block') {
+            mobileNav.style.display = 'none';
+        } else {
+            mobileNav.style.display = 'block';
+        }
+    } else {
+        console.warn("[scripts.js] mobile-nav element not found in toggleMobileNav().");
     }
 }
 
-// Stänger mobilnavet när användaren klickar på en länk
-function closeMobileNavOnLinkClick() {
+// Lägg till event listeners för Register och Login efter att headern är laddad
+function addNavigationEventListeners() {
+    const registerLink = document.getElementById('register');
+    const loginLink = document.getElementById('login');
     const mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav && mobileNav.style.display === 'block') {
-        mobileNav.style.display = 'none';
+
+    if (registerLink) {
+        registerLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Förhindrar den normala länkhändelsen
+            if (mobileNav) {
+                mobileNav.style.display = 'none'; // Stänger mobilnavet när en länk klickas
+            }
+            openRegisterForm();
+        });
     }
-}
 
-// Lägg till event listeners för alla länkar i mobilnavet
-function addMobileNavLinkListeners() {
-    const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeMobileNavOnLinkClick);
-    });
-}
-
-// Lägg till event listeners för hamburgermenyn
-function addHamburgerMenuListeners() {
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    if (hamburgerMenu) {
-        hamburgerMenu.addEventListener('click', function(event) {
-            event.stopPropagation();
-            toggleMobileNav(); // Växla menyns synlighet
+    if (loginLink) {
+        loginLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Förhindrar den normala länkhändelsen
+            if (mobileNav) {
+                mobileNav.style.display = 'none'; // Stänger mobilnavet när en länk klickas
+            }
+            openLoginForm();
         });
     }
 }
-
-// Stäng mobilnavet när användaren klickar utanför
-function closeMobileNavOnClickOutside(event) {
+// Funktion för att stänga mobilnavet
+function closeMobileNav() {
     const mobileNav = document.getElementById('mobile-nav');
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    if (mobileNav && hamburgerMenu && !mobileNav.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-        mobileNav.style.display = 'none';
+    if (mobileNav) {
+        mobileNav.style.display = 'none'; // Döljer menyn
     }
 }
 
-document.addEventListener('click', closeMobileNavOnClickOutside);
-
-// Uppdaterar navigationen för inloggade användare
-function updateNavigationForLoggedInUser() {
-    const loginLink = document.getElementById('login');
-    const registerLink = document.getElementById('register');
-    const logoutLink = document.getElementById('logout');
-    const userInfo = document.getElementById('user-info');
-    const usernameDisplay = document.getElementById('username-display');
-    
-    const token = localStorage.getItem('token');
-
-    if (loginLink && registerLink && logoutLink && userInfo && usernameDisplay) {
-        if (token) {
-            loginLink.hidden = true;
-            registerLink.hidden = true;
-            logoutLink.hidden = false;
-            userInfo.hidden = false;
-
-            const username = localStorage.getItem('username');
-            usernameDisplay.textContent = username || 'User';
-        } else {
-            loginLink.hidden = false;
-            registerLink.hidden = false;
-            logoutLink.hidden = true;
-            userInfo.hidden = true;
-        }
-    }
-}
-
-// Logout-funktion
-function logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('userId');
-    alert('You have logged out.');
-    updateNavigationForLoggedInUser(); // Uppdatera navigationen efter logout
-    window.location.href = '/'; // Om dirigerar till hemsidan
-}
-
+// Funktion för att hantera logout
 document.addEventListener('DOMContentLoaded', function () {
     const logoutLink = document.getElementById('logout');
     if (logoutLink) {
         logoutLink.addEventListener('click', function (event) {
-            event.preventDefault();
-            logout(); // Kör logout-funktionen
+            event.preventDefault(); // Förhindrar standardlänkhändelsen
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            localStorage.removeItem('userId');
+            alert('You have logged out.');
+            checkLoginStatus();
+            window.location.href = '/'; // Omdirigera till hemsidan
         });
     }
 });
 
-// Uppdatera navigationen när sidan laddas
-document.addEventListener('DOMContentLoaded', updateNavigationForLoggedInUser);
+// Funktion för att hantera när sidan laddas om och mobilenav kan vara öppet
+window.addEventListener('resize', function () {
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileNav && window.innerWidth > 768) {
+        closeMobileNav(); // Stänger mobilnavigering om skärmen blir större än mobilstorlek
+    }
+});
+
+// Funktion för att hantera klick utanför mobilenyn
+window.addEventListener('click', function(event) {
+    const mobileNav = document.getElementById('mobile-nav');
+    const hamburgerButton = document.getElementById('hamburger-menu');
+    
+    // Om man klickar utanför menyn och hamburgermenyn
+    if (mobileNav && hamburgerButton && !mobileNav.contains(event.target) && !hamburgerButton.contains(event.target)) {
+        mobileNav.style.display = 'none'; // Stänger mobilenyn
+    }
+});
+
+// Funktion för att toggla hamburgerknappen
+document.getElementById('hamburger-menu').addEventListener('click', function(event) {
+    event.stopPropagation(); // Stoppar eventet från att bubbla upp och trigga eventet som stänger menyn
+    toggleMobileNav();
+});
+
+// Funktion för att hantera när en knapp i mobilenyn är klickad
+const mobileLinks = document.querySelectorAll('#mobile-nav ul li a');
+mobileLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+        closeMobileNav(); // Stänger menyn när en länk i mobilenyn klickas
+    });
+});
+
+// Funktion för att hantera klick på login och register och stänga mobilenyn
+function handleNavLinks() {
+    const registerLink = document.getElementById('register');
+    const loginLink = document.getElementById('login');
+
+    if (registerLink) {
+        registerLink.addEventListener('click', function() {
+            closeMobileNav(); // Stänger mobilenyn vid klick på register
+        });
+    }
+
+    if (loginLink) {
+        loginLink.addEventListener('click', function() {
+            closeMobileNav(); // Stänger mobilenyn vid klick på login
+        });
+    }
+}
+
+// Förhindrar att mobilenyn stänger vid klick på den
+document.getElementById('mobile-nav').addEventListener('click', function(event) {
+    event.stopPropagation(); // Stoppar bubbla av event så att den inte stänger när du klickar på menyn
+});
+
+// Lägg till event listeners för Register och Login efter att headern är laddad
+document.addEventListener('DOMContentLoaded', function() {
+    handleNavLinks();
+    checkLoginStatus();
+    addNavigationEventListeners();
+});
