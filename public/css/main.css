@@ -331,6 +331,28 @@ nav.nav ul li a:hover {
     opacity: 1; /* Full opacity on hover */
 }
 
+.user-info {
+    position: absolute; /* Place user information the same way */
+    top: 60px; /* Adjust so it lies on the same level as login */
+    right: 20px; /* Adjust to fit design */
+    color: black; /* Change to black for visibility */
+    font-size: 14px; /* Adjust font size if needed */
+    /* Removed display: none; */
+}
+
+
+/* General box-sizing for better control over element sizing */
+* {
+  box-sizing: border-box;
+}
+
+#redirect-message {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+    color: red;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
     .header {
@@ -362,47 +384,4 @@ nav.nav ul li a:hover {
     .footer {
         position: relative; /* Avoid fixed footer on small screens */
     }
-}
-
-@media (max-width: 480px) {
-    .header {
-        padding: 5px; /* Adjust padding */
-    }
-
-
-
-    .footer {
-        padding: 10px; /* Reduce padding in footer */
-		
-    }
-
-    .login-container {
-        width: 95%; /* Make login container even wider */
-    }
-
-    .input-group {
-        margin-right: 5px; /* Reduce spacing */
-    }
-}
-
-.user-info {
-    position: absolute; /* Place user information the same way */
-    top: 60px; /* Adjust so it lies on the same level as login */
-    right: 20px; /* Adjust to fit design */
-    color: black; /* Change to black for visibility */
-    font-size: 14px; /* Adjust font size if needed */
-    /* Removed display: none; */
-}
-
-
-/* General box-sizing for better control over element sizing */
-* {
-  box-sizing: border-box;
-}
-
-#redirect-message {
-    font-size: 18px;
-    margin-top: 20px;
-    text-align: center;
-    color: red;
 }
