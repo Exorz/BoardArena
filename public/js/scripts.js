@@ -128,6 +128,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('[scripts.js] Registration failed:', data.message);
         }
     }
+});
+
 // Funktion för att toggla den mobila menyn
 function toggleMobileNav() {
     const mobileNav = document.getElementById('mobile-nav');
@@ -213,3 +215,23 @@ function checkLoginStatus() {
         console.error("[scripts.js] One or more elements not found. Check the HTML structure.");
     }
 }
+
+// Hantera logout
+document.getElementById('logout')?.addEventListener('click', function(event) {
+    event.preventDefault();
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userId');
+    checkLoginStatus();
+    alert('You have logged out.');
+
+    // Omdirigera till startsidan
+    window.location.href = '/';
+});
+
+// Logga användaren ut direkt om en session inte finns
+if (!localStorage.getItem('token')) {
+    document.getElementById('logout').hidden = true;
+    document.getElementById('user-info').hidden = true;
+}
+
