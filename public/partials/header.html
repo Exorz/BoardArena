@@ -13,7 +13,24 @@
 </head>
 <body>
     <header class="header">
-        <!-- Desktop navigation -->
+        <!-- Logo (valfritt, utkommenterat)
+        <div class="logo">
+            <img src="" alt="Blip.se Logo">
+        </div>
+        -->
+
+        <!-- Main content for header -->
+        <main class="content">
+            <h1>BoardArena</h1>
+            <p>Play your favorite games online and challenge your friends!</p>
+        </main>
+
+        <!-- User Info Section (to display after login) -->
+        <div class="user-info" id="user-info" hidden>
+            Logged in as: <span id="username-display"></span>
+        </div>
+
+        <!-- Desktop Navigation -->
         <nav class="nav" id="desktop-nav">
             <ul>
                 <li><a href="/">Home</a></li>
@@ -33,7 +50,7 @@
             <div class="bar"></div>
         </div>
 
-        <!-- Mobile navigation (hidden by default) -->
+        <!-- Mobile Navigation (hidden by default) -->
         <nav class="mobile-nav" id="mobile-nav">
             <ul>
                 <li><a href="/">Home</a></li>
@@ -45,17 +62,6 @@
                 <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
             </ul>
         </nav>
-
-        <!-- User Info Section (to display after login) -->
-        <div class="user-info" id="user-info" hidden>
-            Logged in as: <span id="username-display"></span>
-        </div>
-
-        <!-- Main content for header -->
-        <main class="content">
-            <h1>BoardArena</h1>
-            <p>Play your favorite games online and challenge your friends!</p>
-        </main>
 
         <!-- Login popup modal -->
         <div class="form-popup" id="loginForm">
