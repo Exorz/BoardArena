@@ -14,6 +14,7 @@ function loadHeaderAndFooter() {
             console.log('[scripts.js] Header loaded.');
 
             checkLoginStatus();
+            addNavigationEventListeners();  // Lägg till eventhanterare efter headern har laddats
 
             const logoutButton = document.getElementById('logout-button');
             if (logoutButton) {
@@ -33,7 +34,6 @@ function loadHeaderAndFooter() {
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
-            addNavigationEventListeners(); // Lägg till eventhanterare efter headern har laddats
         })
         .catch(error => {
             console.error('[scripts.js] Error loading header:', error);
@@ -146,6 +146,7 @@ async function register() {
         console.error('[scripts.js] Registration failed:', data.message);
     }
 }
+
 // Funktion för att toggla den mobila menyn
 function toggleMobileNav() {
     console.log("[scripts.js] toggleMobileNav() called.");
@@ -162,6 +163,7 @@ function toggleMobileNav() {
         console.warn("[scripts.js] mobile-nav element not found in toggleMobileNav().");
     }
 }
+
 // Lägg till event listeners för Register och Login efter att headern är laddad
 function addNavigationEventListeners() {
     console.log("[scripts.js] Adding navigation event listeners.");
@@ -204,6 +206,7 @@ function addNavigationEventListeners() {
         console.warn("[scripts.js] Login link not found.");
     }
 }
+
 // Funktion för att stänga mobilnavet
 function closeMobileNav() {
     console.log("[scripts.js] closeMobileNav() called.");
@@ -215,6 +218,7 @@ function closeMobileNav() {
         console.warn("[scripts.js] mobile-nav element not found in closeMobileNav().");
     }
 }
+
 // Funktion för att hantera logout
 document.addEventListener('DOMContentLoaded', function () {
     console.log("[scripts.js] DOMContentLoaded event triggered for logout setup.");
@@ -234,6 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.warn("[scripts.js] Logout link not found.");
     }
 });
+
 // Funktion för att hantera när sidan laddas om och mobilenav kan vara öppet
 window.addEventListener('resize', function () {
     console.log("[scripts.js] Window resize detected.");
@@ -243,6 +248,7 @@ window.addEventListener('resize', function () {
         closeMobileNav(); // Stäng mobilnavigering om skärmen blir större än mobilstorlek
     }
 });
+
 // Extra felsökningsloggar
 document.addEventListener('DOMContentLoaded', function () {
     console.log("[scripts.js] Running post-DOMContentLoaded setup.");
