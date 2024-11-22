@@ -160,4 +160,11 @@ async function register() {
         document.getElementById('register-message').innerText = data.message;
         console.error('[scripts.js] Registration failed:', data.message);
     }
+
+    // Funktion för att toggla den mobila menyn
+function toggleMobileNav() {
+    const mobileNav = document.getElementById('mobile-nav');
+    mobileNav.style.display = (mobileNav.style.display === 'block') ? 'none' : 'block';
+}
+
 }
