@@ -175,19 +175,20 @@ document.addEventListener('DOMContentLoaded', function() {
     if (registerLink) {
         registerLink.addEventListener('click', function(event) {
             event.preventDefault(); // Förhindrar den normala länkhändelsen
-            closeMobileNav(); // Stänger menyn när register länken klickas
-            openRegisterForm(); // Öppnar registreringsformuläret
+            closeMobileNav(); // Stänger mobilnavet
+            openRegisterForm(); // Öppnar registerformuläret
         });
     }
 
     if (loginLink) {
         loginLink.addEventListener('click', function(event) {
             event.preventDefault(); // Förhindrar den normala länkhändelsen
-            closeMobileNav(); // Stänger menyn när login länken klickas
-            openLoginForm(); // Öppnar inloggningsformuläret
+            closeMobileNav(); // Stänger mobilnavet
+            openLoginForm(); // Öppnar loginformuläret
         });
     }
 });
+
 
 // Funktion för att stänga menyn
 function closeMobileNav() {
