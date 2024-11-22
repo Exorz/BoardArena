@@ -367,7 +367,7 @@ nav.nav ul li a:hover {
         position: absolute; /* Placerar hamburgarmenyn i headern */
         top: 20px; /* Avstånd från toppen */
         right: 20px; /* Avstånd från höger */
-        z-index: 100; /* Gör att hamburgarmenyn ligger över andra element */
+        z-index: 1000; /* Gör att hamburgarmenyn ligger över andra element */
     }
 
     .hamburger-menu .bar {
@@ -387,7 +387,7 @@ nav.nav ul li a:hover {
         width: 100%; /* Full bredd på mobilenyn */
         padding-top: 10px;
         text-align: center;
-        z-index: 50; /* Se till att mobilenyn är under hamburgarmenyn */
+        z-index: 500; /* Se till att mobilenyn är under hamburgarmenyn */
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Lägger till en skugga för att ge djup */
     }
 
