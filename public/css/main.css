@@ -355,7 +355,24 @@ nav.nav ul li a:hover {
 
 
 
-/* Visar hamburgarmenyn på små skärmar */
+
+
+
+/* På större skärmar, dölja hamburgarmenyn och visa desktop-menyn */
+@media (min-width: 769px) {
+    #desktop-nav {
+        display: block; /* Visar desktop-menyn på större skärmar */
+    }
+
+    #hamburger-menu {
+        display: none; /* Döljer hamburgerknappen på större skärmar */
+    }
+
+    #mobile-nav {
+        display: none; /* Döljer den mobila menyn på större skärmar */
+    }
+}
+
 /* Visar hamburgarmenyn på små skärmar */
 @media (max-width: 768px) {
     #desktop-nav {
@@ -414,21 +431,5 @@ nav.nav ul li a:hover {
 
     #mobile-nav ul li a:hover {
         background-color: rgba(255, 255, 255, 0.2); /* Lägg till hover-effekt */
-    }
-}
-
-
-/* På större skärmar, dölja hamburgarmenyn och visa desktop-menyn */
-@media (min-width: 769px) {
-    #desktop-nav {
-        display: block; /* Visar desktop-menyn på större skärmar */
-    }
-
-    #hamburger-menu {
-        display: none; /* Döljer hamburgerknappen på större skärmar */
-    }
-
-    #mobile-nav {
-        display: none; /* Döljer den mobila menyn på större skärmar */
     }
 }
