@@ -13,73 +13,85 @@
 </head>
 <body>
     <header class="header">
-    <!-- Logo 
-    <div class="logo">
-        <img src="" alt="Blip.se Logo">
-    </div>
-	 -->
+        <!-- Desktop navigation -->
+        <nav class="nav" id="desktop-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/games">Games</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about">About</a></li>
+                <li id="register"><a href="#" onclick="openRegisterForm()">Register</a></li>
+                <li id="login"><a href="#" onclick="openLoginForm()">Login</a></li>
+                <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
+            </ul>
+        </nav>
 
-    <!-- Main content for header -->
-    <main class="content">
-        <h1>BoardArena</h1>
-        <p>Play your favorite games online and challenge your friends!</p>
-    </main>
+        <!-- Hamburger Menu for mobile -->
+        <div class="hamburger-menu" id="hamburger-menu" onclick="toggleMobileNav()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
 
-    <!-- User Info Section (to display after login) -->
-    <div class="user-info" id="user-info" hidden>
-        Logged in as: <span id="username-display"></span>
-    </div>
+        <!-- Mobile navigation (hidden by default) -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/games">Games</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about">About</a></li>
+                <li id="register"><a href="#" onclick="openRegisterForm()">Register</a></li>
+                <li id="login"><a href="#" onclick="openLoginForm()">Login</a></li>
+                <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
+            </ul>
+        </nav>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/games">Games</a></li>
-            <li><a href="/contact">Contact</a></li>
-	    <li><a href="/about">About</a></li>
-            <li id="register"><a href="#" onclick="openRegisterForm()">Register</a></li>
-            <li id="login"><a href="#" onclick="openLoginForm()">Login</a></li>
-            <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
-        </ul>
-    </nav>
-	
-	
-	<!-- Login popup modal -->
-<div class="form-popup" id="loginForm">
-    <div class="form-container">
-        <h2>Login</h2>
-        <label for="email"><b>Email</b></label>
-        <input type="text" id="login-email" placeholder="Enter Email" name="email" required>
+        <!-- User Info Section (to display after login) -->
+        <div class="user-info" id="user-info" hidden>
+            Logged in as: <span id="username-display"></span>
+        </div>
 
-        <label for="password"><b>Password</b></label>
-        <input type="password" id="login-password" placeholder="Enter Password" name="password" required>
+        <!-- Main content for header -->
+        <main class="content">
+            <h1>BoardArena</h1>
+            <p>Play your favorite games online and challenge your friends!</p>
+        </main>
 
-        <button type="submit" class="btn" onclick="login()">Login</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        <div id="login-message"></div>
-    </div>
-</div>
+        <!-- Login popup modal -->
+        <div class="form-popup" id="loginForm">
+            <div class="form-container">
+                <h2>Login</h2>
+                <label for="email"><b>Email</b></label>
+                <input type="text" id="login-email" placeholder="Enter Email" name="email" required>
 
-<!-- Register popup modal -->
-<div class="form-popup" id="registerForm">
-    <div class="form-container">
-        <h2>Register</h2>
-        <label for="username"><b>Username</b></label>
-        <input type="text" id="register-username" placeholder="Enter Username" name="username" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" id="login-password" placeholder="Enter Password" name="password" required>
 
-        <label for="email"><b>Email</b></label>
-        <input type="email" id="register-email" placeholder="Enter Email" name="email" required>
+                <button type="submit" class="btn" onclick="login()">Login</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                <div id="login-message"></div>
+            </div>
+        </div>
 
-        <label for="password"><b>Password</b></label>
-        <input type="password" id="register-password" placeholder="Enter Password" name="password" required>
+        <!-- Register popup modal -->
+        <div class="form-popup" id="registerForm">
+            <div class="form-container">
+                <h2>Register</h2>
+                <label for="username"><b>Username</b></label>
+                <input type="text" id="register-username" placeholder="Enter Username" name="username" required>
 
-        <button type="submit" class="btn" onclick="register()">Register</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        <div id="register-message"></div>
-    </div>
-</div>
+                <label for="email"><b>Email</b></label>
+                <input type="email" id="register-email" placeholder="Enter Email" name="email" required>
 
+                <label for="password"><b>Password</b></label>
+                <input type="password" id="register-password" placeholder="Enter Password" name="password" required>
 
-</header>
+                <button type="submit" class="btn" onclick="register()">Register</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                <div id="register-message"></div>
+            </div>
+        </div>
+
+    </header>
 </body>
 </html>
