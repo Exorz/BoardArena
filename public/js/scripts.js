@@ -65,11 +65,10 @@ function loadNavigation() {
     console.log('[scripts.js] Loading navigation.');
 
     // Return promise for navigation loading
-    fetch('/partials/navigation.html')
+    return fetch('/partials/navigation.html')
         .then(response => {
             if (!response.ok) {
-                console.error("[scripts.js] Failed to load navigation.html. Status:", response.status);
-                return;
+                throw new Error("[scripts.js] Failed to load navigation.html. Status:", response.status);
             }
             return response.text();
         })
@@ -77,14 +76,11 @@ function loadNavigation() {
             document.getElementById('navigation').innerHTML = data;
             console.log('[scripts.js] Navigation loaded.');
 
-            // Check if the hamburger menu element is available
+            // Initialize hamburger menu toggle
             const hamburgerMenu = document.getElementById('hamburger-menu');
             if (hamburgerMenu) {
-                console.log('[scripts.js] Hamburger menu element found.');
                 hamburgerMenu.addEventListener('click', toggleMenu);
                 console.log('[scripts.js] Hamburger menu click listener added.');
-            } else {
-                console.error("[scripts.js] Hamburger menu element not found.");
             }
 
             // Initialize logout button after loading navigation
@@ -105,14 +101,10 @@ function toggleMenu() {
     console.log('[scripts.js] Hamburger menu clicked. Toggling menu visibility.');
 
     var nav = document.querySelector('.nav');
-    if (!nav) {
-        console.error('[scripts.js] Menu (nav) element not found.');
-        return;
-    }
-
     nav.classList.toggle('active');
     console.log('[scripts.js] Menu toggled. Active class: ', nav.classList.contains('active'));
 }
+
 
 
 // Handle logout
