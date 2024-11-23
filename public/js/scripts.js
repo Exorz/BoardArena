@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Load header, footer, and navigation sequentially
     loadHeaderAndFooter();
-    loadNavigation();
+    loadNavigation();  
 });
 
 // Load header and footer
@@ -82,7 +82,7 @@ function loadNavigation() {
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
-            
+
             // After navigation is loaded, check login status
             checkLoginStatus(); // Ensure we check login status after all elements have loaded
         })
