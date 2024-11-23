@@ -96,28 +96,27 @@ function loadNavigation() {
         });
 }
 
-// Toggle menu (for the hamburger)
 function toggleMenu() {
-    var nav = document.querySelector('.nav');  // Get the nav element
-    var ul = nav.querySelector('ul'); // Get the ul element inside the nav
-    
     console.log('[scripts.js] Hamburger menu clicked. Toggling menu visibility.');
-    console.log('[scripts.js] Current classes on nav:', nav.classList);
-    console.log('[scripts.js] Menu display property:', getComputedStyle(nav).display);
+
+    var nav = document.querySelector('.nav');
+    var ul = document.querySelector('nav.nav ul');
 
     if (!nav || !ul) {
         console.error('[scripts.js] nav or ul element not found.');
         return;
     }
 
-    // Toggle the 'active' class on nav
+    console.log('[scripts.js] Current classes on nav: ', nav.classList);
     nav.classList.toggle('active');
-    
-    console.log('[scripts.js] Menu toggled. Active class: ', nav.classList.contains('active'));
 
-    // Log the display property of the menu
-    console.log('[scripts.js] Menu display property: ', window.getComputedStyle(ul).display);
+    // Log the current class after toggle
+    console.log('[scripts.js] Active class toggled:', nav.classList.contains('active'));
+    
+    // Log the visibility of the menu
+    console.log('[scripts.js] Menu visibility after toggle: ', ul.style.display);
 }
+
 
 
 
