@@ -226,35 +226,7 @@ main.content {
 	
 }
 
-/* Navigation styles */
-nav.nav {
-    background-color: #66bb6a; /* Lighter green background for navigation */
-    width: 80%; /* Set width to match header */
-    padding: 10px 0; /* Padding for vertical spacing */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for depth */
-    margin: 20px auto; /* Center the navigation */
-}
 
-nav.nav ul {
-    list-style: none; /* Remove list bullets */
-    margin: 0; /* Remove margin */
-    padding: 0; /* Remove padding */
-    display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: center; /* Center the nav items */
-    gap: 15px; /* Space between nav items */
-}
-
-nav.nav ul li a {
-    color: black; /* Set links color to black */
-    text-decoration: none; /* No underline */
-    padding: 10px 15px; /* Padding around links */
-    transition: background-color 0.3s; /* Smooth background color transition */
-}
-
-nav.nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Lighten background on hover */
-}
 
 
 
@@ -331,60 +303,6 @@ nav.nav ul li a:hover {
     opacity: 1; /* Full opacity on hover */
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-    .header {
-        height: auto; /* Adjust height for smaller screens */
-        padding: 10px; /* Reduce padding */
-    }
-
-    .logo img {
-        height: 40px; /* Reduce logo size */
-    }
-
-    .nav ul {
-        flex-direction: column; /* Stack links in a column */
-        gap: 10px; /* Reduce gap between links */
-    }
-
-
-
-
-
-
-
-    .login-container {
-        width: 90%; /* Make login container wider */
-        right: 5%; /* Center it */
-        top: 20px; /* Adjust to be closer to top */
-    }
-
-    .footer {
-        position: relative; /* Avoid fixed footer on small screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        padding: 5px; /* Adjust padding */
-    }
-
-
-
-    .footer {
-        padding: 10px; /* Reduce padding in footer */
-		
-    }
-
-    .login-container {
-        width: 95%; /* Make login container even wider */
-    }
-
-    .input-group {
-        margin-right: 5px; /* Reduce spacing */
-    }
-}
-
 .user-info {
     position: absolute; /* Place user information the same way */
     top: 60px; /* Adjust so it lies on the same level as login */
@@ -394,15 +312,90 @@ nav.nav ul li a:hover {
     /* Removed display: none; */
 }
 
-
-/* General box-sizing for better control over element sizing */
-* {
-  box-sizing: border-box;
-}
-
 #redirect-message {
     font-size: 18px;
     margin-top: 20px;
     text-align: center;
     color: red;
+}
+
+
+/* Navigation styles */
+nav.nav {
+    background-color: #66bb6a; /* Lighter green background for navigation */
+    width: 80%; /* Set width to match header */
+    padding: 10px 0; /* Padding for vertical spacing */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for depth */
+    margin: 20px auto; /* Center the navigation */
+    position: relative; /* For positioning the hamburger */
+}
+
+/* Navigation links */
+nav.nav ul {
+    list-style: none; /* Remove list bullets */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: center; /* Center the nav items */
+    gap: 15px; /* Space between nav items */
+}
+
+/* Navigation link styles */
+nav.nav ul li a {
+    color: black; /* Set links color to black */
+    text-decoration: none; /* No underline */
+    padding: 10px 15px; /* Padding around links */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+nav.nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Lighten background on hover */
+}
+
+/* Hamburger icon */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    /* Hide the nav links by default on small screens */
+    nav.nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #66bb6a; /* Use the same green as the background */
+        padding: 10px 0;
+        gap: 10px;
+    }
+
+    /* Show the hamburger icon on small screens */
+    .hamburger {
+        display: block;
+    }
+
+    /* When menu is active, show the links */
+    nav.nav.active ul {
+        display: flex;
+    }
+
+    /* Adjust padding and logo for small screens */
+    .header {
+        height: auto; /* Adjust height for smaller screens */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .logo img {
+        height: 40px; /* Reduce logo size */
+    }
 }
