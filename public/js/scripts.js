@@ -90,6 +90,7 @@ function toggleMenu() {
 
 
 
+
 // Check login status and show/hide appropriate links
 function checkLoginStatus() {
     console.log('[scripts.js] Checking login status.');
