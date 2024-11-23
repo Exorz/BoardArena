@@ -81,6 +81,14 @@ document.addEventListener('DOMContentLoaded', function() {
     loadNavigation();  // Load the navigation as well
 });
 
+// Toggle menu (for the hamburger)
+function toggleMenu() {
+    var nav = document.querySelector('.nav');
+    nav.classList.toggle('active');
+}
+
+
+
 // Check login status and show/hide appropriate links
 function checkLoginStatus() {
     console.log('[scripts.js] Checking login status.');
