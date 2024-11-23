@@ -375,7 +375,7 @@ nav.nav ul li a:hover {
 
     /* Hide the navigation links by default on small screens */
     nav.nav ul {
-        display: none;
+        display: flex;
         flex-direction: column;
         width: 100%;
         position: absolute;
