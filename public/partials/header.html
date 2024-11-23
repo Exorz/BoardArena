@@ -3,91 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoardArena</title>
+    <title>Blip.se</title>
     
-
+    <!-- Path to main.css -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Path to JavaScript (optional) -->
+    <script src="/js/scripts.js" defer></script> <!-- Hanterar login/logout -->
 </head>
 <body>
     <header class="header">
-        <!-- Main content for header -->
-        <main class="content">
-            <h1>BoardArena</h1>
-            <p>Play your favorite games online and challenge your friends!</p>
-        </main>
+    <!-- Logo 
+    <div class="logo">
+        <img src="" alt="Blip.se Logo">
+    </div>
+	 -->
 
-        <!-- User Info Section (to display after login) -->
-        <div class="user-info" id="user-info" hidden>
-            Logged in as: <span id="username-display"></span>
-        </div>
+    <!-- Main content for header -->
+    <main class="content">
+        <h1>Welcome to Blip.se</h1>
+        <p>Play your favorite games online and challenge your friends!</p>
+    </main>
 
-        <!-- Desktop Navigation -->
-        <nav class="nav" id="desktop-nav">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/games">Games</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/about">About</a></li>
-                <li id="register"><a href="#" onclick="openRegisterForm()">Register</a></li>
-                <li id="login"><a href="#" onclick="openLoginForm()">Login</a></li>
-                <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- User Info Section (to display after login) -->
+    <div class="user-info" id="user-info" hidden>
+        Logged in as: <span id="username-display"></span>
+    </div>
 
-   <!-- Hamburger Menu for mobile (Placed outside the header) -->
-<div class="hamburger-menu" id="hamburger-menu" onclick="toggleMobileNav()">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
+    <!-- Navigation -->
+    <nav class="nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/games">Games</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li id="register"><a href="#" onclick="openRegisterForm()">Register</a></li>
+            <li id="login"><a href="#" onclick="openLoginForm()">Login</a></li>
+            <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
+        </ul>
+    </nav>
+	
+	
+	<!-- Login popup modal -->
+<div class="form-popup" id="loginForm">
+    <div class="form-container">
+        <h2>Login</h2>
+        <label for="email"><b>Email</b></label>
+        <input type="text" id="login-email" placeholder="Enter Email" name="email" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" id="login-password" placeholder="Enter Password" name="password" required>
+
+        <button type="submit" class="btn" onclick="login()">Login</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <div id="login-message"></div>
+    </div>
 </div>
 
-<!-- Mobile Navigation (hidden by default) -->
-<nav class="mobile-nav" id="mobile-nav">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/games">Games</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/about">About</a></li>
-        <li id="register"><a href="#" onclick="openRegisterForm()">Register</a></li>
-        <li id="login"><a href="#" onclick="openLoginForm()">Login</a></li>
-        <li id="logout" hidden><a href="#" id="logout-button">Logout</a></li>
-    </ul>
-</nav>
+<!-- Register popup modal -->
+<div class="form-popup" id="registerForm">
+    <div class="form-container">
+        <h2>Register</h2>
+        <label for="username"><b>Username</b></label>
+        <input type="text" id="register-username" placeholder="Enter Username" name="username" required>
 
+        <label for="email"><b>Email</b></label>
+        <input type="email" id="register-email" placeholder="Enter Email" name="email" required>
 
-    <!-- Login popup modal -->
-    <div class="form-popup" id="loginForm">
-        <div class="form-container">
-            <h2>Login</h2>
-            <label for="email"><b>Username</b></label>
-            <input type="text" id="login-email" placeholder="Enter Username" name="email" required>
+        <label for="password"><b>Password</b></label>
+        <input type="password" id="register-password" placeholder="Enter Password" name="password" required>
 
-            <label for="password"><b>Password</b></label>
-            <input type="password" id="login-password" placeholder="Enter Password" name="password" required>
-
-            <button type="submit" class="btn" onclick="login()">Login</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-            <div id="login-message"></div>
-        </div>
+        <button type="submit" class="btn" onclick="register()">Register</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <div id="register-message"></div>
     </div>
+</div>
 
-    <!-- Register popup modal -->
-    <div class="form-popup" id="registerForm">
-        <div class="form-container">
-            <h2>Register</h2>
-            <label for="username"><b>Username</b></label>
-            <input type="text" id="register-username" placeholder="Enter Username" name="username" required>
 
-            <label for="email"><b>Email</b></label>
-            <input type="email" id="register-email" placeholder="Enter Email" name="email" required>
-
-            <label for="password"><b>Password</b></label>
-            <input type="password" id="register-password" placeholder="Enter Password" name="password" required>
-
-            <button type="submit" class="btn" onclick="register()">Register</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-            <div id="register-message"></div>
-        </div>
-    </div>
+</header>
 </body>
 </html>
