@@ -35,6 +35,14 @@ body {
     justify-content: center; /* Center the cards */
 }
 
+/* Game list styles */
+.game-list {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center the cards */
+}
+
 /* Game card styles */
 .game-card {
     width: 200px; /* Set a fixed width for the game cards */
@@ -80,6 +88,8 @@ body {
 .game-card button:hover {
     background-color: #218838; /* Darker green on hover */
 }
+
+
 
 /* Ensure main content takes up remaining space */
 main {
@@ -154,6 +164,10 @@ main {
     background-color: #218838;
 }
 
+
+
+
+
 /* News section styles */
 .news-container {
     background-color: white; /* White background for the container */
@@ -209,6 +223,7 @@ main {
 main.content {
     text-align: center; /* Center text in the main content */
     color: black; /* Set main content text color to black */
+	
 }
 
 /* Navigation styles */
@@ -240,6 +255,11 @@ nav.nav ul li a {
 nav.nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Lighten background on hover */
 }
+
+
+
+
+
 
 /* Sticky footer */
 .footer {
@@ -311,6 +331,60 @@ nav.nav ul li a:hover {
     opacity: 1; /* Full opacity on hover */
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+    .header {
+        height: auto; /* Adjust height for smaller screens */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .logo img {
+        height: 40px; /* Reduce logo size */
+    }
+
+    .nav ul {
+        flex-direction: column; /* Stack links in a column */
+        gap: 10px; /* Reduce gap between links */
+    }
+
+
+
+
+
+
+
+    .login-container {
+        width: 90%; /* Make login container wider */
+        right: 5%; /* Center it */
+        top: 20px; /* Adjust to be closer to top */
+    }
+
+    .footer {
+        position: relative; /* Avoid fixed footer on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 5px; /* Adjust padding */
+    }
+
+
+
+    .footer {
+        padding: 10px; /* Reduce padding in footer */
+		
+    }
+
+    .login-container {
+        width: 95%; /* Make login container even wider */
+    }
+
+    .input-group {
+        margin-right: 5px; /* Reduce spacing */
+    }
+}
+
 .user-info {
     position: absolute; /* Place user information the same way */
     top: 60px; /* Adjust so it lies on the same level as login */
@@ -319,6 +393,7 @@ nav.nav ul li a:hover {
     font-size: 14px; /* Adjust font size if needed */
     /* Removed display: none; */
 }
+
 
 /* General box-sizing for better control over element sizing */
 * {
@@ -330,108 +405,4 @@ nav.nav ul li a:hover {
     margin-top: 20px;
     text-align: center;
     color: red;
-}
-
-/* Visar hamburgarmenyn på små skärmar */
-@media (max-width: 768px) {
-    #desktop-nav {
-        display: none; /* Döljer desktop-menyn på små skärmar */
-    }
-
-    #hamburger-menu {
-        display: block; /* Visar hamburgerknappen */
-        cursor: pointer;
-        position: absolute; /* Placerar hamburgarmenyn i headern */
-        top: 20px; /* Avstånd från toppen */
-        right: 20px; /* Avstånd från höger */
-        z-index: 1000; /* Gör att hamburgarmenyn ligger över andra element */
-    }
-
-    .hamburger-menu .bar {
-        width: 30px;
-        height: 4px;
-        background-color: #333;
-        margin: 5px 0;
-    }
-
-    #mobile-nav {
-        display: none; /* Döljer den mobila menyn som standard */
-        position: absolute; /* Absolut position under hamburgarmenyn */
-        top: 60px; /* Placera den precis under hamburgarmenyn */
-        right: 20px; /* Justera till höger under hamburgarmenyn */
-        background-color: #66bb6a;
-        width: 30%; /* 30% bredd på mobilenyn */
-        padding-top: 10px;
-        text-align: center;
-        z-index: 500; /* Se till att mobilenyn är under hamburgarmenyn */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Lägger till en skugga för att ge djup */
-        border-radius: 8px; /* Rundade hörn för menyn */
-    }
-
-    #mobile-nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    #mobile-nav ul li {
-        padding: 12px 0; /* Mer utrymme mellan länkar */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Lägger till linjer mellan menylänkar */
-    }
-
-    #mobile-nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-size: 18px; /* Justera textstorleken */
-        display: block; /* Gör länkarna blockelement för bättre klickyta */
-        padding: 10px; /* Lite padding på länkarna */
-        transition: background-color 0.3s; /* Smooth övergång på hover */
-    }
-
-    #mobile-nav ul li a:hover {
-        background-color: rgba(255, 255, 255, 0.2); /* Lägg till hover-effekt */
-    }
-
-    /* Responsiv anpassning för header */
-    .header {
-        width: 100%; /* Gör headern fullbred på små skärmar */
-        height: auto; /* Gör höjden automatisk */
-    }
-
-    /* Anpassa spelkort till mindre skärmar */
-    .game-card {
-        width: 150px; /* Justera bredden på spelkort */
-        height: auto; /* Justera höjden för att rymma innehållet bättre */
-        margin-bottom: 15px; /* Minska avståndet mellan kort */
-    }
-
-    .games {
-        width: 100%; /* Gör spelsektionen fullbred på små skärmar */
-        padding: 10px; /* Minska padding på små skärmar */
-    }
-
-    .contact-container {
-        width: 100%; /* Make contact container 90% width on smaller screens */
-        padding: 10px; /* Reduce padding on smaller screens */
-    }
-
-    .contact-form {
-        width: 100%; /* Ensure form takes up the full width of the container */
-        padding: 10px; /* Adjust padding to fit smaller screens */
-    }
-}
-
-/* På större skärmar, dölja hamburgarmenyn och visa desktop-menyn */
-@media (min-width: 769px) {
-    #desktop-nav {
-        display: block; /* Visar desktop-menyn på större skärmar */
-    }
-
-    #hamburger-menu {
-        display: none; /* Döljer hamburgerknappen på större skärmar */
-    }
-
-    #mobile-nav {
-        display: none; /* Döljer den mobila menyn på större skärmar */
-    }
 }
