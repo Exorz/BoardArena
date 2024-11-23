@@ -16,23 +16,24 @@ function loadHeaderAndFooter() {
             checkLoginStatus();
 
             const logoutButton = document.getElementById('logout-button');
-            if (logoutButton) {
-                logoutButton.addEventListener('click', function() {
-                    console.log('[scripts.js] Logout button clicked.');
-                    const socket = window.socket;
-                    if (socket) {
-                        socket.emit('logout');
-                    }
+       if (logoutButton) {
+    logoutButton.addEventListener('click', function() {
+        console.log('[scripts.js] Logout button clicked.');
+        const socket = window.socket;
+        if (socket) {
+            socket.emit('logout');
+        }
 
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('username');
-                    localStorage.removeItem('userId');  // Remove userId from localStorage on logout
-                    checkLoginStatus();
-                    alert('You have logged out.');
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        localStorage.removeItem('userId');  // Remove userId from localStorage on logout
+        checkLoginStatus();
+        alert('You have logged out.');
 
-                    // Add redirection to index.html
-                    window.location.href = '/';
-                });
+        // Lägg till omdirigering till index.html
+        window.location.href = '/';
+
+    });
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
@@ -160,103 +161,3 @@ async function register() {
         console.error('[scripts.js] Registration failed:', data.message);
     }
 }
-
-// Function to toggle the mobile navigation
-function toggleMobileNav() {
-    const mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav) {
-        if (mobileNav.style.display === 'block') {
-            mobileNav.style.display = 'none';
-        } else {
-            mobileNav.style.display = 'block';
-        }
-    } else {
-        console.warn("[scripts.js] mobile-nav element not found in toggleMobileNav().");
-    }
-}
-
-// Close the mobile navigation if the user clicks outside
-function closeMobileNavIfClickedOutside(event) {
-    const mobileNav = document.getElementById('mobile-nav');
-    const hamburgerButton = document.getElementById('hamburger-menu');
-    
-    // If the user clicks outside the mobile menu or hamburger menu, close it
-    if (mobileNav && hamburgerButton && !mobileNav.contains(event.target) && !hamburgerButton.contains(event.target)) {
-        mobileNav.style.display = 'none';
-    }
-}
-
-// Add event listeners for navigation links
-function addNavigationEventListeners() {
-    const registerLink = document.getElementById('register');
-    const loginLink = document.getElementById('login');
-    const mobileNav = document.getElementById('mobile-nav');
-
-    if (registerLink) {
-        registerLink.addEventListener('click', function(event) {
-            event.preventDefault();
-            if (mobileNav) mobileNav.style.display = 'none'; // Close mobile nav when a link is clicked
-            openRegisterForm();
-        });
-    }
-
-    if (loginLink) {
-        loginLink.addEventListener('click', function(event) {
-            event.preventDefault();
-            if (mobileNav) mobileNav.style.display = 'none'; // Close mobile nav when a link is clicked
-            openLoginForm();
-        });
-    }
-
-    // Close mobile menu when clicking a mobile navigation link
-    const mobileLinks = document.querySelectorAll('#mobile-nav ul li a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            closeMobileNav();
-        });
-    });
-}
-
-// Close the mobile navigation when clicking outside
-window.addEventListener('click', closeMobileNavIfClickedOutside);
-
-// Toggle hamburger menu only if the hamburger menu exists
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    if (hamburgerMenu) {
-        hamburgerMenu.addEventListener('click', function(event) {
-            event.stopPropagation(); // Prevent the event from propagating to the document and closing the menu
-            toggleMobileNav();
-        });
-    } else {
-        console.error('Hamburger menu not found in DOM.');
-    }
-
-    // Initialize the navigation event listeners
-    addNavigationEventListeners();
-    checkLoginStatus();
-});
-
-// Handle logout
-document.addEventListener('DOMContentLoaded', function () {
-    const logoutLink = document.getElementById('logout');
-    if (logoutLink) {
-        logoutLink.addEventListener('click', function (event) {
-            event.preventDefault();
-            localStorage.removeItem('token');
-            localStorage.removeItem('username');
-            localStorage.removeItem('userId');
-            alert('You have logged out.');
-            checkLoginStatus();
-            window.location.href = '/'; // Redirect to homepage
-        });
-    }
-});
-
-// Close mobile nav on window resize if screen is larger than mobile size
-window.addEventListener('resize', function () {
-    const mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav && window.innerWidth > 768) {
-        closeMobileNav();
-    }
-});
