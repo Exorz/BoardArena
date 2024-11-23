@@ -331,14 +331,21 @@ nav.nav {
     position: relative; /* For positioning the hamburger */
 }
 
-/* Hide the navigation links by default */
+/* Hide the navigation links by default (before active class is added) */
 nav.nav ul {
     list-style: none; /* Remove list bullets */
     margin: 0; /* Remove margin */
     padding: 0; /* Remove padding */
-    display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: center; /* Center the nav items */
-    gap: 15px; /* Space between nav items */
+    display: none; /* Start hidden */
+    flex-direction: column; /* Stack links vertically */
+    justify-content: center;
+    align-items: center; /* Center items horizontally */
+    gap: 15px;
+}
+
+/* When the active class is added, show the menu */
+nav.nav.active ul {
+    display: flex; /* Show menu */
 }
 
 /* Navigation link styles */
@@ -373,23 +380,6 @@ nav.nav ul li a:hover {
         box-shadow: none; /* Optional: remove shadow for cleaner look */
     }
 
-    /* Hide the navigation links by default on small screens */
-    nav.nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px; /* Position it just below the header */
-        left: 0;
-        background-color: #66bb6a; /* Use the same green as the background */
-        padding: 10px 0;
-        gap: 10px;
-    }
-nav.nav.active ul {
-    display: flex;
-}
-
-	
     /* Show the hamburger icon on small screens */
     .hamburger {
         display: block;
