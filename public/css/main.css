@@ -361,7 +361,7 @@ nav.nav ul li a:hover {
     cursor: pointer;
     position: absolute;
     top: 1px;
-    right: 15px;
+    right: 1px;
     z-index: 100; /* Ensure the hamburger is above other content */
 }
 
