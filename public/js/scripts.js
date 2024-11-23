@@ -103,7 +103,7 @@ function toggleMenu() {
     console.log('[scripts.js] Hamburger menu clicked. Toggling menu visibility.');
     console.log('[scripts.js] Current classes on nav:', nav.classList);
     console.log('[scripts.js] Menu display property:', getComputedStyle(nav).display);
-}
+
 
     
     if (!nav || !ul) {
