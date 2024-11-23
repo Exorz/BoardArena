@@ -223,7 +223,7 @@ main {
 main.content {
     text-align: center; /* Center text in the main content */
     color: black; /* Set main content text color to black */
-	
+
 }
 
 
@@ -414,5 +414,3 @@ nav.nav ul li a:hover {
         height: 40px; /* Reduce logo size */
     }
 }
-
-
