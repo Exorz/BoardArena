@@ -323,7 +323,7 @@ main.content {
 /* Navigation styles */
 nav.nav {
     background-color: #66bb6a; /* Lighter green background for navigation */
-    width: 80%; /* Set width to match header */
+    width: 100%; /* Set width to 100% to match the screen width */
     padding: 10px 0; /* Padding for vertical spacing */
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for depth */
@@ -360,8 +360,8 @@ nav.nav ul li a:hover {
     color: white;
     cursor: pointer;
     position: absolute;
-    top: 1px;
-    right: 1px;
+    top: 15px;  /* Position the hamburger at the top of the header */
+    right: 15px;  /* Align the hamburger to the right */
     z-index: 100; /* Ensure the hamburger is above other content */
 }
 
@@ -379,7 +379,7 @@ nav.nav ul li a:hover {
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 60px;
+        top: 60px; /* Position it just below the header */
         left: 0;
         background-color: #66bb6a; /* Use the same green as the background */
         padding: 10px 0;
@@ -398,7 +398,7 @@ nav.nav ul li a:hover {
 
     /* Adjust padding and logo for small screens */
     .header {
-	    width: 100%;
+        width: 100%; /* Ensure header spans the full width */
         height: auto; /* Adjust height for smaller screens */
         padding: 10px; /* Reduce padding */
     }
