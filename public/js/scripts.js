@@ -97,25 +97,16 @@ function loadNavigation() {
 }
 
 function toggleMenu() {
-    console.log('[scripts.js] Hamburger menu clicked. Toggling menu visibility.');
-
-    var nav = document.querySelector('.nav');
-    var ul = document.querySelector('nav.nav ul');
-
-    if (!nav || !ul) {
-        console.error('[scripts.js] nav or ul element not found.');
-        return;
+    var nav = document.querySelector('nav.nav');
+    if (nav) {
+        nav.classList.toggle('active');  // Toggle class 'active' på nav
+        console.log('[scripts.js] Hamburger menu clicked. Toggling menu visibility.');
+        console.log('[scripts.js] Current classes on nav:', nav.classList);
+    } else {
+        console.error('[scripts.js] nav element not found.');
     }
-
-    console.log('[scripts.js] Current classes on nav: ', nav.classList);
-    nav.classList.toggle('active');
-
-    // Log the current class after toggle
-    console.log('[scripts.js] Active class toggled:', nav.classList.contains('active'));
-    
-    // Log the visibility of the menu
-    console.log('[scripts.js] Menu visibility after toggle: ', ul.style.display);
 }
+
 
 
 
