@@ -385,7 +385,11 @@ nav.nav ul li a:hover {
         padding: 10px 0;
         gap: 10px;
     }
+nav.nav.active ul {
+    display: flex;
+}
 
+	
     /* Show the hamburger icon on small screens */
     .hamburger {
         display: block;
