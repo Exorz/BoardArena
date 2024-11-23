@@ -9,9 +9,9 @@ console.log('[scripts.js] Initializing scripts.js script.');
 document.addEventListener('DOMContentLoaded', function () {
     console.log('[scripts.js] DOM fully loaded.');
 
-    // Load header, footer, and navigation
+    // Load header, footer, and navigation sequentially
     loadHeaderAndFooter();
-    loadNavigation();  
+    loadNavigation();
 });
 
 // Load header and footer
@@ -127,6 +127,7 @@ function checkLoginStatus() {
     const userInfo = document.getElementById('user-info');
     const usernameDisplay = document.getElementById('username-display');
 
+    // Check if the elements are available in the DOM
     if (loginLink && registerLink && logoutLink && userInfo && usernameDisplay) {
         if (token) {
             loginLink.hidden = true;
