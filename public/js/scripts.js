@@ -65,10 +65,11 @@ function loadNavigation() {
     console.log('[scripts.js] Loading navigation.');
 
     // Return promise for navigation loading
-    return fetch('/partials/navigation.html')
+    fetch('/partials/navigation.html')
         .then(response => {
             if (!response.ok) {
-                throw new Error("[scripts.js] Failed to load navigation.html. Status:", response.status);
+                console.error("[scripts.js] Failed to load navigation.html. Status:", response.status);
+                return;
             }
             return response.text();
         })
@@ -76,11 +77,14 @@ function loadNavigation() {
             document.getElementById('navigation').innerHTML = data;
             console.log('[scripts.js] Navigation loaded.');
 
-            // Initialize hamburger menu toggle
+            // Check if the hamburger menu element is available
             const hamburgerMenu = document.getElementById('hamburger-menu');
             if (hamburgerMenu) {
+                console.log('[scripts.js] Hamburger menu element found.');
                 hamburgerMenu.addEventListener('click', toggleMenu);
                 console.log('[scripts.js] Hamburger menu click listener added.');
+            } else {
+                console.error("[scripts.js] Hamburger menu element not found.");
             }
 
             // Initialize logout button after loading navigation
@@ -101,16 +105,15 @@ function toggleMenu() {
     console.log('[scripts.js] Hamburger menu clicked. Toggling menu visibility.');
 
     var nav = document.querySelector('.nav');
+    if (!nav) {
+        console.error('[scripts.js] Menu (nav) element not found.');
+        return;
+    }
+
     nav.classList.toggle('active');
     console.log('[scripts.js] Menu toggled. Active class: ', nav.classList.contains('active'));
 }
 
-
-// Toggle menu (for the hamburger)
-function toggleMenu() {
-    var nav = document.querySelector('.nav');
-    nav.classList.toggle('active');
-}
 
 // Handle logout
 function handleLogout() {
