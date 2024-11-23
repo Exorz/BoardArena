@@ -380,9 +380,9 @@ nav.nav ul li a:hover {
         box-shadow: none; /* Optional: remove shadow for cleaner look */
     }
 
-	 /* Hide the navigation links by default on small screens */
+    /* Hide the navigation links by default on small screens */
     nav.nav ul {
-        display: none;
+        display: none; /* Start hidden */
         flex-direction: column;
         width: 100%;
         position: absolute;
@@ -392,10 +392,6 @@ nav.nav ul li a:hover {
         padding: 10px 0;
         gap: 10px;
     }
-nav.nav.active ul {
-    display: flex;
-}
-
 
     /* Show the hamburger icon on small screens */
     .hamburger {
@@ -404,7 +400,7 @@ nav.nav.active ul {
 
     /* When menu is active, show the links */
     nav.nav.active ul {
-        display: flex;
+        display: flex; /* Show the menu when active class is added */
     }
 
     /* Adjust padding and logo for small screens */
@@ -418,3 +414,4 @@ nav.nav.active ul {
         height: 40px; /* Reduce logo size */
     }
 }
+
