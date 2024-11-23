@@ -203,4 +203,3 @@ async function register() {
         console.error('[scripts.js] Registration failed:', data.message);
     }
 }
-s
