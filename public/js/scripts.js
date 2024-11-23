@@ -68,7 +68,7 @@ function loadNavigation() {
     return fetch('/partials/navigation.html')
         .then(response => {
             if (!response.ok) {
-                throw new Error("[scripts.js] Failed to load navigation.html. Status:", response.status);
+                throw new Error("[scripts.js] Failed to load navigation.html. Status: " + response.status);
             }
             return response.text();
         })
@@ -81,14 +81,17 @@ function loadNavigation() {
             if (hamburgerMenu) {
                 hamburgerMenu.addEventListener('click', toggleMenu);
                 console.log('[scripts.js] Hamburger menu click listener added.');
+            } else {
+                console.error("[scripts.js] Hamburger menu not found.");
             }
 
             // Initialize logout button after loading navigation
             const logoutButton = document.getElementById('logout-button');
             if (logoutButton) {
                 logoutButton.addEventListener('click', handleLogout);
+                console.log('[scripts.js] Logout button click listener added.');
             } else {
-                console.error("[scripts.js] Logout button not found.");
+                console.warn("[scripts.js] Logout button not found. This is fine if the user is not logged in.");
             }
         })
         .catch(error => {
@@ -96,6 +99,7 @@ function loadNavigation() {
         });
 }
 
+// Toggle menu (for the hamburger)
 function toggleMenu() {
     var navLinks = document.getElementById('nav-links');
     if (navLinks) {
@@ -106,6 +110,7 @@ function toggleMenu() {
         console.error('[scripts.js] Navigation links element not found.');
     }
 }
+
 
 
 
