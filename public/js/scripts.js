@@ -7,6 +7,8 @@ console.log('[scripts.js] Initializing scripts.js script.');
 
 function loadHeaderAndFooter() {
     console.log('[scripts.js] Loading header and footer.');
+    
+    // Load header
     fetch('/partials/header.html')
         .then(response => response.text())
         .then(data => {
@@ -16,24 +18,23 @@ function loadHeaderAndFooter() {
             checkLoginStatus();
 
             const logoutButton = document.getElementById('logout-button');
-       if (logoutButton) {
-    logoutButton.addEventListener('click', function() {
-        console.log('[scripts.js] Logout button clicked.');
-        const socket = window.socket;
-        if (socket) {
-            socket.emit('logout');
-        }
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    console.log('[scripts.js] Logout button clicked.');
+                    const socket = window.socket;
+                    if (socket) {
+                        socket.emit('logout');
+                    }
 
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        localStorage.removeItem('userId');  // Remove userId from localStorage on logout
-        checkLoginStatus();
-        alert('You have logged out.');
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('userId');  // Remove userId from localStorage on logout
+                    checkLoginStatus();
+                    alert('You have logged out.');
 
-        // Lägg till omdirigering till index.html
-        window.location.href = '/';
-
-    });
+                    // Redirect to index.html
+                    window.location.href = '/';
+                });
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
@@ -42,6 +43,7 @@ function loadHeaderAndFooter() {
             console.error('[scripts.js] Error loading header:', error);
         });
 
+    // Load footer
     fetch('/partials/footer.html')
         .then(response => response.text())
         .then(data => {
@@ -53,8 +55,33 @@ function loadHeaderAndFooter() {
         });
 }
 
-document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
+// Load navigation (hamburger menu included)
+function loadNavigation() {
+    console.log('[scripts.js] Loading navigation.');
 
+    fetch('/partials/navigation.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navigation').innerHTML = data;
+            console.log('[scripts.js] Navigation loaded.');
+
+            // Initialize hamburger menu toggle
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            if (hamburgerMenu) {
+                hamburgerMenu.addEventListener('click', toggleMenu);
+            }
+        })
+        .catch(error => {
+            console.error('[scripts.js] Error loading navigation:', error);
+        });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadHeaderAndFooter();
+    loadNavigation();  // Load the navigation as well
+});
+
+// Check login status and show/hide appropriate links
 function checkLoginStatus() {
     console.log('[scripts.js] Checking login status.');
     const token = localStorage.getItem('token');
@@ -83,6 +110,12 @@ function checkLoginStatus() {
     } else {
         console.error("[scripts.js] One or more elements not found. Check the HTML structure.");
     }
+}
+
+// Toggle menu (for the hamburger)
+function toggleMenu() {
+    var nav = document.querySelector('.nav');
+    nav.classList.toggle('active');
 }
 
 function openLoginForm() {
