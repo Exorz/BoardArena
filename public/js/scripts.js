@@ -10,58 +10,65 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('[scripts.js] DOM fully loaded.');
 
     // Load header, footer, and navigation sequentially
-    loadHeaderAndFooter();
-    loadNavigation();  
+    Promise.all([
+        loadHeaderAndFooter(), 
+        loadNavigation()
+    ]).then(() => {
+        // After all resources are loaded, check login status
+        console.log('[scripts.js] All resources loaded.');
+        checkLoginStatus();  // Only run login check after everything is in place
+    }).catch(error => {
+        console.error('[scripts.js] Error loading resources:', error);
+    });
 });
 
 // Load header and footer
 function loadHeaderAndFooter() {
     console.log('[scripts.js] Loading header and footer.');
 
-    // Load header
-    fetch('/partials/header.html')
-        .then(response => {
-            if (!response.ok) {
-                console.error("[scripts.js] Failed to load header.html. Status:", response.status);
-                return;
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('header-container').innerHTML = data;
-            console.log('[scripts.js] Header loaded.');
-        })
-        .catch(error => {
-            console.error('[scripts.js] Error loading header:', error);
-        });
+    // Return promises for header and footer
+    return Promise.all([
+        fetch('/partials/header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("[scripts.js] Failed to load header.html. Status: " + response.status);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                console.log('[scripts.js] Header loaded.');
+            })
+            .catch(error => {
+                console.error('[scripts.js] Error loading header:', error);
+            }),
 
-    // Load footer
-    fetch('/partials/footer.html')
-        .then(response => {
-            if (!response.ok) {
-                console.error("[scripts.js] Failed to load footer.html. Status:", response.status);
-                return;
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('footer-container').innerHTML = data;
-            console.log('[scripts.js] Footer loaded.');
-        })
-        .catch(error => {
-            console.error('[scripts.js] Error loading footer:', error);
-        });
+        fetch('/partials/footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("[scripts.js] Failed to load footer.html. Status: " + response.status);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+                console.log('[scripts.js] Footer loaded.');
+            })
+            .catch(error => {
+                console.error('[scripts.js] Error loading footer:', error);
+            })
+    ]);
 }
 
 // Load navigation (hamburger menu included)
 function loadNavigation() {
     console.log('[scripts.js] Loading navigation.');
 
-    fetch('/partials/navigation.html')
+    // Return promise for navigation loading
+    return fetch('/partials/navigation.html')
         .then(response => {
             if (!response.ok) {
-                console.error("[scripts.js] Failed to load navigation.html. Status:", response.status);
-                return;
+                throw new Error("[scripts.js] Failed to load navigation.html. Status:", response.status);
             }
             return response.text();
         })
@@ -82,9 +89,6 @@ function loadNavigation() {
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
-
-            // After navigation is loaded, check login status
-            checkLoginStatus(); // Ensure we check login status after all elements have loaded
         })
         .catch(error => {
             console.error('[scripts.js] Error loading navigation:', error);
