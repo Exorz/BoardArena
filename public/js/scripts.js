@@ -8,7 +8,7 @@ console.log('[scripts.js] Initializing scripts.js script.');
 // Load header and footer
 function loadHeaderAndFooter() {
     console.log('[scripts.js] Loading header and footer.');
-    
+
     // Load header
     fetch('/partials/header.html')
         .then(response => response.text())
@@ -16,7 +16,8 @@ function loadHeaderAndFooter() {
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
 
-            checkLoginStatus(); // Check login status after header is loaded
+            // After header is loaded, load navigation and check login status
+            loadNavigation();  // Move loadNavigation here
         })
         .catch(error => {
             console.error('[scripts.js] Error loading header:', error);
@@ -57,16 +58,14 @@ function loadNavigation() {
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
+
+            // Now that navigation is loaded, check login status
+            checkLoginStatus();  // Call checkLoginStatus here to ensure elements are loaded
         })
         .catch(error => {
             console.error('[scripts.js] Error loading navigation:', error);
         });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    loadHeaderAndFooter();
-    loadNavigation();  // Load the navigation as well
-});
 
 // Toggle menu (for the hamburger)
 function toggleMenu() {
@@ -204,3 +203,4 @@ async function register() {
         console.error('[scripts.js] Registration failed:', data.message);
     }
 }
+s
