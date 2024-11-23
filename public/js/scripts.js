@@ -80,6 +80,7 @@ function loadNavigation() {
             const hamburgerMenu = document.getElementById('hamburger-menu');
             if (hamburgerMenu) {
                 hamburgerMenu.addEventListener('click', toggleMenu);
+                console.log('[scripts.js] Hamburger menu click listener added.');
             }
 
             // Initialize logout button after loading navigation
@@ -94,6 +95,16 @@ function loadNavigation() {
             console.error('[scripts.js] Error loading navigation:', error);
         });
 }
+
+// Toggle menu (for the hamburger)
+function toggleMenu() {
+    console.log('[scripts.js] Hamburger menu clicked. Toggling menu visibility.');
+
+    var nav = document.querySelector('.nav');
+    nav.classList.toggle('active');
+    console.log('[scripts.js] Menu toggled. Active class: ', nav.classList.contains('active'));
+}
+
 
 // Toggle menu (for the hamburger)
 function toggleMenu() {
