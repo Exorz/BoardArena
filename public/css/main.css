@@ -331,12 +331,19 @@ nav.nav {
     position: relative; /* For positioning the hamburger */
 }
 
-/* Navigation links styling */
+/* Navigation links for desktop */
 #nav-links {
-    display: none; /* Start hidden */
     list-style: none; /* Remove list bullets */
     margin: 0; /* Remove margin */
     padding: 0; /* Remove padding */
+    display: flex; /* Default display for desktop */
+    justify-content: center; /* Center align links */
+    gap: 15px; /* Space between links */
+}
+
+/* Navigation links styling for mobile */
+#nav-links.open {
+    display: none; /* Start hidden on mobile */
     flex-direction: column; /* Stack links vertically */
     width: 100%;
     position: absolute;
@@ -345,11 +352,6 @@ nav.nav {
     background-color: #66bb6a; /* Same green as navigation */
     gap: 10px; /* Space between links */
     padding: 10px 0;
-}
-
-#nav-links.open {
-    display: flex; /* Show menu when 'open' class is added */
-    align-items: center; /* Center align links horizontally */
 }
 
 /* Navigation link styles */
@@ -376,35 +378,40 @@ nav.nav ul li a:hover {
     z-index: 100; /* Ensure the hamburger is above other content */
 }
 
-/* When screen width is less than or equal to 768px (for mobile screens) */
+/* Mobile-specific styles */
 @media screen and (max-width: 768px) {
     nav.nav {
         background-color: transparent; /* Remove the green background */
         box-shadow: none; /* Optional: remove shadow for cleaner look */
     }
 
+    /* Hide desktop menu links by default on mobile */
+    #nav-links {
+        display: none; /* Start hidden on mobile */
+    }
+
+    /* Show links when hamburger menu is open */
+    #nav-links.open {
+        display: flex; /* Show links on mobile */
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center align links horizontally */
+        gap: 10px;
+        background-color: #66bb6a;
+    }
+
     .hamburger {
         display: block; /* Show the hamburger icon */
     }
-
-    #nav-links {
-        display: none; /* Hide links by default */
-    }
-
-    #nav-links.open {
-        display: flex; /* Show links when open */
-    }
 }
 
-
-    /* Adjust padding and logo for small screens */
-    .header {
-        width: 100%; /* Ensure header spans the full width */
-        height: auto; /* Adjust height for smaller screens */
-        padding: 10px; /* Reduce padding */
-    }
-
-    .logo img {
-        height: 40px; /* Reduce logo size */
-    }
+/* Header adjustments for small screens */
+.header {
+    width: 100%; /* Ensure header spans the full width */
+    height: auto; /* Adjust height for smaller screens */
+    padding: 10px; /* Reduce padding */
 }
+
+.logo img {
+    height: 40px; /* Reduce logo size */
+}
+
