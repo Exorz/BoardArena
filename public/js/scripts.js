@@ -30,8 +30,6 @@ function loadHeaderAndFooter() {
         .then(data => {
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
-            // Now that header is loaded, check login status
-            checkLoginStatus();
         })
         .catch(error => {
             console.error('[scripts.js] Error loading header:', error);
@@ -85,8 +83,8 @@ function loadNavigation() {
                 console.error("[scripts.js] Logout button not found.");
             }
             
-            // After navigation is loaded, check login status again
-            checkLoginStatus(); // Ensure we check login status again after navigation
+            // After navigation is loaded, check login status
+            checkLoginStatus(); // Ensure we check login status after all elements have loaded
         })
         .catch(error => {
             console.error('[scripts.js] Error loading navigation:', error);
