@@ -9,10 +9,8 @@ console.log('[scripts.js] Initializing scripts.js script.');
 document.addEventListener('DOMContentLoaded', function () {
     console.log('[scripts.js] DOM fully loaded.');
 
-    // Load header and footer
+    // Load header, footer, and navigation
     loadHeaderAndFooter();
-
-    // Load navigation
     loadNavigation();  
 });
 
@@ -32,7 +30,8 @@ function loadHeaderAndFooter() {
         .then(data => {
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
-            checkLoginStatus(); // Check login status after loading header
+            // Now that header is loaded, check login status
+            checkLoginStatus();
         })
         .catch(error => {
             console.error('[scripts.js] Error loading header:', error);
@@ -85,8 +84,9 @@ function loadNavigation() {
             } else {
                 console.error("[scripts.js] Logout button not found.");
             }
-
-            checkLoginStatus();  // Check login status here to ensure elements are loaded
+            
+            // After navigation is loaded, check login status again
+            checkLoginStatus(); // Ensure we check login status again after navigation
         })
         .catch(error => {
             console.error('[scripts.js] Error loading navigation:', error);
@@ -147,7 +147,6 @@ function checkLoginStatus() {
         console.error("[scripts.js] One or more elements not found. Check the HTML structure.");
     }
 }
-
 
 // Open login form
 function openLoginForm() {
