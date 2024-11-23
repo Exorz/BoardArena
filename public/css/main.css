@@ -331,7 +331,7 @@ nav.nav {
     position: relative; /* For positioning the hamburger */
 }
 
-/* Navigation links */
+/* Hide the navigation links by default */
 nav.nav ul {
     list-style: none; /* Remove list bullets */
     margin: 0; /* Remove margin */
@@ -364,9 +364,15 @@ nav.nav ul li a:hover {
     right: 15px;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-    /* Hide the nav links by default on small screens */
+/* When screen width is less than or equal to 768px (for mobile screens) */
+@media screen and (max-width: 768px) {
+    /* Hide the green background nav */
+    nav.nav {
+        background-color: transparent; /* Remove the green background */
+        box-shadow: none; /* Optional: remove shadow for cleaner look */
+    }
+
+    /* Hide the navigation links by default on small screens */
     nav.nav ul {
         display: none;
         flex-direction: column;
