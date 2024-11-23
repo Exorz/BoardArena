@@ -97,15 +97,16 @@ function loadNavigation() {
 }
 
 function toggleMenu() {
-    var nav = document.querySelector('nav.nav');
-    if (nav) {
-        nav.classList.toggle('active');  // Toggle class 'active' på nav
+    var navLinks = document.getElementById('nav-links');
+    if (navLinks) {
+        navLinks.classList.toggle('open');  // Lägg till/ta bort 'open' klass
         console.log('[scripts.js] Hamburger menu clicked. Toggling menu visibility.');
-        console.log('[scripts.js] Current classes on nav:', nav.classList);
+        console.log('[scripts.js] Current classes on nav-links:', navLinks.classList);
     } else {
-        console.error('[scripts.js] nav element not found.');
+        console.error('[scripts.js] Navigation links element not found.');
     }
 }
+
 
 
 
