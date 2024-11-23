@@ -96,14 +96,24 @@ function loadNavigation() {
         });
 }
 
-// Toggle menu (for the hamburger)
 function toggleMenu() {
     console.log('[scripts.js] Hamburger menu clicked. Toggling menu visibility.');
 
     var nav = document.querySelector('.nav');
+    if (!nav) {
+        console.error('[scripts.js] Menu (nav) element not found.');
+        return;
+    }
+
+    // Logga innan vi togglar
+    console.log('[scripts.js] Current classes on nav: ', nav.classList);
+
     nav.classList.toggle('active');
+    
+    // Logga efter vi togglat
     console.log('[scripts.js] Menu toggled. Active class: ', nav.classList.contains('active'));
 }
+
 
 
 
