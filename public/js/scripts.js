@@ -11,7 +11,13 @@ function loadHeaderAndFooter() {
 
     // Load header
     fetch('/partials/header.html')
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                console.error("[scripts.js] Failed to load header.html");
+                return;
+            }
+            return response.text();
+        })
         .then(data => {
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
@@ -25,7 +31,13 @@ function loadHeaderAndFooter() {
 
     // Load footer
     fetch('/partials/footer.html')
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                console.error("[scripts.js] Failed to load footer.html");
+                return;
+            }
+            return response.text();
+        })
         .then(data => {
             document.getElementById('footer-container').innerHTML = data;
             console.log('[scripts.js] Footer loaded.');
@@ -40,7 +52,13 @@ function loadNavigation() {
     console.log('[scripts.js] Loading navigation.');
 
     fetch('/partials/navigation.html')
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                console.error("[scripts.js] Failed to load navigation.html");
+                return;
+            }
+            return response.text();
+        })
         .then(data => {
             document.getElementById('navigation').innerHTML = data;
             console.log('[scripts.js] Navigation loaded.');
