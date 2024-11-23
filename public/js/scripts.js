@@ -117,18 +117,19 @@ function handleLogout() {
     window.location.href = '/';
 }
 
-// Check login status and show/hide appropriate links
 function checkLoginStatus() {
     console.log('[scripts.js] Checking login status.');
     const token = localStorage.getItem('token');
+    console.log('Token found:', token);
+
     const loginLink = document.getElementById('login');
     const registerLink = document.getElementById('register');
     const logoutLink = document.getElementById('logout');
     const userInfo = document.getElementById('user-info');
     const usernameDisplay = document.getElementById('username-display');
 
-    // Check if the elements are available in the DOM
     if (loginLink && registerLink && logoutLink && userInfo && usernameDisplay) {
+        console.log("All required elements are found.");
         if (token) {
             loginLink.hidden = true;
             registerLink.hidden = true;
@@ -148,6 +149,7 @@ function checkLoginStatus() {
         console.error("[scripts.js] One or more elements not found. Check the HTML structure.");
     }
 }
+
 
 // Open login form
 function openLoginForm() {
