@@ -362,6 +362,7 @@ nav.nav ul li a:hover {
     position: absolute;
     top: 15px;
     right: 15px;
+    z-index: 100; /* Ensure the hamburger is above other content */
 }
 
 /* When screen width is less than or equal to 768px (for mobile screens) */
