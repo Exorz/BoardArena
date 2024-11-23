@@ -5,6 +5,7 @@ function log(message) {
 
 console.log('[scripts.js] Initializing scripts.js script.');
 
+// Load header and footer
 function loadHeaderAndFooter() {
     console.log('[scripts.js] Loading header and footer.');
     
@@ -15,29 +16,7 @@ function loadHeaderAndFooter() {
             document.getElementById('header-container').innerHTML = data;
             console.log('[scripts.js] Header loaded.');
 
-            checkLoginStatus();
-
-            const logoutButton = document.getElementById('logout-button');
-            if (logoutButton) {
-                logoutButton.addEventListener('click', function() {
-                    console.log('[scripts.js] Logout button clicked.');
-                    const socket = window.socket;
-                    if (socket) {
-                        socket.emit('logout');
-                    }
-
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('username');
-                    localStorage.removeItem('userId');  // Remove userId from localStorage on logout
-                    checkLoginStatus();
-                    alert('You have logged out.');
-
-                    // Redirect to index.html
-                    window.location.href = '/';
-                });
-            } else {
-                console.error("[scripts.js] Logout button not found.");
-            }
+            checkLoginStatus(); // Check login status after header is loaded
         })
         .catch(error => {
             console.error('[scripts.js] Error loading header:', error);
@@ -70,6 +49,14 @@ function loadNavigation() {
             if (hamburgerMenu) {
                 hamburgerMenu.addEventListener('click', toggleMenu);
             }
+
+            // Initialize logout button after loading navigation
+            const logoutButton = document.getElementById('logout-button');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', handleLogout);
+            } else {
+                console.error("[scripts.js] Logout button not found.");
+            }
         })
         .catch(error => {
             console.error('[scripts.js] Error loading navigation:', error);
@@ -87,9 +74,23 @@ function toggleMenu() {
     nav.classList.toggle('active');
 }
 
+// Handle logout
+function handleLogout() {
+    console.log('[scripts.js] Logout button clicked.');
+    const socket = window.socket;
+    if (socket) {
+        socket.emit('logout');
+    }
 
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userId');  // Remove userId from localStorage on logout
+    checkLoginStatus();
+    alert('You have logged out.');
 
-
+    // Redirect to index.html
+    window.location.href = '/';
+}
 
 // Check login status and show/hide appropriate links
 function checkLoginStatus() {
@@ -122,28 +123,26 @@ function checkLoginStatus() {
     }
 }
 
-// Toggle menu (for the hamburger)
-function toggleMenu() {
-    var nav = document.querySelector('.nav');
-    nav.classList.toggle('active');
-}
-
+// Open login form
 function openLoginForm() {
     console.log('[scripts.js] Opening login form.');
     document.getElementById('loginForm').style.display = 'block';
 }
 
+// Open register form
 function openRegisterForm() {
     console.log('[scripts.js] Opening register form.');
     document.getElementById('registerForm').style.display = 'block';
 }
 
+// Close login/register form
 function closeForm() {
     console.log('[scripts.js] Closing form.');
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('registerForm').style.display = 'none';
 }
 
+// Login user
 async function login() {
     console.log('[scripts.js] Logging in.');
     const email = document.getElementById('login-email').value;
@@ -174,6 +173,7 @@ async function login() {
     }
 }
 
+// Register user
 async function register() {
     console.log('[scripts.js] Registering new user.');
     const username = document.getElementById('register-username').value;
