@@ -10,7 +10,6 @@ html, body {
     background-position: center;
     background-repeat: no-repeat;
     box-sizing: border-box;
-    align-items: center; /* Center all direct children horizontally */
 }
 
 
@@ -21,9 +20,13 @@ body {
 }
 
 main {
-    flex-grow: 1; /* Allow main to expand and fill available space */
+    flex-grow: 1; /* Allow main to expand */
     padding: 20px;
+    max-width: 1200px; /* Restrict the content width */
+    width: 100%; /* Ensure it spans full width on smaller screens */
+    margin: 0 auto; /* Center main content */
 }
+
 
 /* Header styles */
 .header {
