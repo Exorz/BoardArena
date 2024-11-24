@@ -210,13 +210,13 @@ function closeForm() {
 // Login user
 async function login() {
     console.log('[scripts.js] Logging in.');
-    const email = document.getElementById('login-email').value;
+    const username = document.getElementById('login-username').value;  // Change here to 'login-username'
     const password = document.getElementById('login-password').value;
 
     const response = await fetch('/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ username, password })  // Pass username instead of email
     });
 
     const data = await response.json();
@@ -237,6 +237,7 @@ async function login() {
         console.error('[scripts.js] Login failed:', data.message);
     }
 }
+
 
 // Register user
 async function register() {
