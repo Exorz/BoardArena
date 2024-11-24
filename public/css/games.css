@@ -196,7 +196,7 @@
     .game-list {
         display: grid; /* Use grid layout for precise control */
         grid-template-columns: repeat(2, 1fr); /* Always two cards per row */
-        gap: 10px; /* Space between cards */
+        gap: 0px; /* Space between cards */
     }
 
     .game-card {
