@@ -131,9 +131,12 @@ main {
         font-size: 16px; /* Adjust size for better readability */
     }
 
-    .user-info {
-        top: 80px;
-        right: 10px; /* Adjust for smaller screens */
-        font-size: 12px; /* Reduce font size for smaller screens */
-    }
+.user-info {
+    position: absolute;
+    bottom: 0; /* Align to the bottom of the header */
+    right: 10px; /* Adjust horizontal position */
+    font-size: 12px; /* You can adjust the font size as needed */
+    padding-bottom: 10px; /* Optional: add some padding to prevent the text from touching the very bottom */
+}
+
 }
