@@ -1,5 +1,3 @@
-/* Navigation container */
-/* Navigation styles */
 nav.nav {
     background-color: #66bb6a; /* Match header's theme */
     width: 80%; /* Match the header's width */
@@ -52,7 +50,7 @@ nav.nav ul li a:hover {
 .hamburger {
     display: none; /* Hidden by default */
     font-size: 30px; /* Icon size */
-    color: white; /* White color for icon */
+    color: black; /* White color for icon */
     cursor: pointer;
     position: absolute;
     top: 15px; /* Position near the top */
