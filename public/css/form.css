@@ -1,0 +1,57 @@
+/* Popup form */
+.form-popup {
+    display: none; /* Keep this as none until triggered */
+    position: fixed; /* Fixed positioning for the popup */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset to truly center */
+    z-index: 100; /* Ensure form is above all other elements */
+}
+
+/* Add styles to the form container */
+.form-container {
+    max-width: 300px; /* Maximum width of the form */
+    padding: 10px; /* Padding inside the form */
+    background-color: white; /* Background color of the form */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Full-width input fields */
+.form-container input[type="text"],
+.form-container input[type="email"], 
+.form-container input[type="password"] {
+    width: 100%; /* Full width for input fields */
+    padding: 12px; /* Padding for input fields */
+    margin: 5px 0 20px 0; /* Margin for spacing */
+    border: 1px solid #ddd; /* Border for input fields */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.form-container input:focus {
+    background-color: #ddd; /* Change background on focus */
+    outline: none; /* Remove outline */
+}
+
+/* Style for buttons */
+.form-container .btn,
+.contact-form button {
+    background-color: #04AA6D; /* Button color */
+    color: white; /* Text color for buttons */
+    padding: 12px; /* Padding for buttons */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    width: 100%; /* Full width for buttons */
+    margin-bottom: 10px; /* Margin below buttons */
+    opacity: 0.9; /* Slight opacity */
+}
+
+.form-container .cancel {
+    background-color: red; /* Color for cancel button */
+}
+
+/* Add hover effects to buttons */
+.form-container .btn:hover {
+    opacity: 1; /* Full opacity on hover */
+}
