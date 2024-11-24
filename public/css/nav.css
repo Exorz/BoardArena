@@ -80,7 +80,7 @@ nav.nav ul li a:hover {
         display: none; /* Dölj navigeringen initialt */
         flex-direction: column; /* Stapla länkar vertikalt */
         align-items: center; /* Centrera länkarna */
-        width: 80%; /* Justera bredden */
+        width: 30%; /* Justera bredden */
         position: absolute; /* Positionera den relativt till hamburgaren */
         top: 50px; /* Placera navigeringen precis under hamburgaren */
         left: 10%; /* Centrerad horisontellt */
