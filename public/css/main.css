@@ -204,7 +204,7 @@ main {
     margin: 0 auto; /* Center the header */
     height: 157px; /* Specify the height */
     text-align: center; /* Center align text */
-    position: absolute; /* Ensures positioning is handled properly */
+    position: relative; /* Ensures positioning is handled properly */
     top: 0; /* Align the header to the top */
     width: 80%; /* Set header width to 80% */
     border-radius: 15px; /* Add rounded corners to the header */
