@@ -93,6 +93,20 @@ function loadNavigation() {
             } else {
                 console.warn("[scripts.js] Logout button not found. This is fine if the user is not logged in.");
             }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const navLinks = document.getElementById('nav-links');
+                const hamburgerMenu = document.getElementById('hamburger-menu');
+
+                // Check if the click was outside of the menu and the hamburger icon
+                if (!navLinks.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                    if (navLinks.classList.contains('open')) {
+                        navLinks.classList.remove('open');
+                        console.log('[scripts.js] Menu closed because clicked outside.');
+                    }
+                }
+            });
         })
         .catch(error => {
             console.error('[scripts.js] Error loading navigation:', error);
