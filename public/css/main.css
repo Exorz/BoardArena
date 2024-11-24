@@ -25,15 +25,31 @@ main {
     background-repeat: no-repeat; /* Prevent the image from repeating */
     background-position: bottom center; /* Align the bottom of the image with the bottom of the header */
     color: black; /* Text color */
-    padding: 0; /* Remove padding to allow the image to go up */
     margin: 0 auto; /* Center the header */
     height: 157px; /* Specify the height */
     text-align: center; /* Center align text */
     position: relative; /* Ensures positioning is handled properly */
     top: 0; /* Align the header to the top */
     width: 80%; /* Set header width to 80% */
-    border-radius: 15px; /* Add rounded corners to the header */
     overflow: hidden; /* Ensure that rounded corners cut off any overflowing content */
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Align elements to the top */
+    align-items: center; /* Center elements horizontally */
+    padding-top: 10px; /* Add some space at the top */
+}
+
+/* Title styles */
+.header h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 2.5rem; /* Adjust font size for the title */
+}
+
+/* Subtitle styles */
+.header p {
+    margin: 5px 0 0; /* Reduce margin between title and subtitle */
+    font-size: 1.2rem; /* Adjust font size for the subtitle */
+    color: #333; /* Slightly darker text color for contrast */
 }
 
 /* Logo styles */
@@ -81,7 +97,15 @@ main {
         width: 100%; /* Use full width for small screens */
         border-radius: 0;
         height: auto; /* Adjust height for smaller screens */
-        padding: 10px; /* Add padding for better spacing */
+        padding: 15px 0; /* Add padding for better spacing */
+    }
+
+    .header h1 {
+        font-size: 2rem; /* Smaller font size for the title */
+    }
+
+    .header p {
+        font-size: 1rem; /* Smaller font size for the subtitle */
     }
 
     .logo img {
