@@ -92,15 +92,44 @@
     }
 }
 
-@media screen and (max-width: 480px) {
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .games {
+        width: 100%; /* Full width for the games section */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .game-list {
+        display: grid; /* Use grid layout for precise control */
+        grid-template-columns: repeat(2, 1fr); /* Always two cards per row */
+        gap: 10px; /* Space between cards */
+    }
+
     .game-card {
-        width: calc(50% - 8px); /* Slightly tighter gap for very small screens */
-        height: min(100px, 35vw); /* Adjust height for even smaller screens */
+        height: auto; /* Let the height adjust naturally */
+        aspect-ratio: 1 / 1; /* Ensure cards maintain a square aspect ratio */
     }
 
     .game-card h3,
     .game-card p {
-        font-size: 0.7rem; /* Further reduce font size */
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+
+    .game-card button {
+        padding: 8px; /* Slightly smaller buttons */
+        font-size: 0.8rem; /* Adjust button text size */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-list {
+        grid-template-columns: repeat(2, 1fr); /* Still two cards per row */
+        gap: 8px; /* Slightly smaller gap for very small screens */
+    }
+
+    .game-card h3,
+    .game-card p {
+        font-size: 0.8rem; /* Smaller text for very small screens */
     }
 
     .game-card button {
@@ -108,5 +137,6 @@
         font-size: 0.7rem; /* Adjust button text size */
     }
 }
+
 
 
