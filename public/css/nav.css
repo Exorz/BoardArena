@@ -34,7 +34,7 @@ nav.nav {
     border-radius: 8px; /* Round corners */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     width: auto; /* Adjust width to fit the content */
-    min-width: 150px; /* Ensure a minimum width */
+    min-width: 100px; /* Ensure a minimum width */
     z-index: 1000; /* Keep it above other elements */
 }
 
