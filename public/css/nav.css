@@ -60,16 +60,35 @@ nav.nav ul li a:hover {
     z-index: 100; /* Ensure visibility above other elements */
 }
 
-/* Responsive styles for mobile devices */
+/* Mobile-specific styles */
 @media screen and (max-width: 768px) {
-    nav.nav {
-        background-color: transparent; /* Remove green background */
-        box-shadow: none; /* Remove shadow for cleaner mobile look */
+    .hamburger {
+        display: block; /* Show hamburger icon */
+        position: fixed; /* Fix it to the top-right */
+        top: 10px; /* Align to the top */
+        right: 10px; /* Align to the right */
+        z-index: 100; /* Ensure it is above all elements */
+        font-size: 30px;
+        color: white;
     }
 
-    /* Hide desktop menu links by default */
+    nav.nav {
+        padding: 0; /* Remove extra padding */
+        background-color: transparent; /* Keep nav background clean */
+        box-shadow: none; /* Remove shadows for simplicity */
+    }
+
     #nav-links {
         display: none; /* Start hidden */
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links */
+        width: 100%;
+        position: absolute;
+        top: 50px; /* Place just below the hamburger */
+        left: 0;
+        background-color: #66bb6a;
+        gap: 10px;
+        padding: 10px 0;
     }
 
     /* Show mobile menu when hamburger is toggled */
