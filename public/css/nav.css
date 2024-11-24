@@ -66,7 +66,7 @@ nav.nav ul li a:hover {
         display: block; /* Visa hamburgaren */
         position: fixed; /* Fixerad position i det övre högra hörnet */
         top: 10px; /* Justera avstånd från toppen */
-        right: 10px; /* Justera avstånd från höger */
+        right: 20px; /* Justera avstånd från höger */
         z-index: 100; /* Se till att den alltid är över andra element */
         font-size: 30px; /* Storleken på hamburgaren */
         color: white;
