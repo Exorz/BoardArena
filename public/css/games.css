@@ -70,7 +70,21 @@
         width: 90%; /* Adjust container width on smaller screens */
     }
 
+    .game-list {
+        gap: 10px; /* Reduce gap between cards for small screens */
+    }
+
     .game-card {
-        width: 100%; /* Full width for game cards on small screens */
+        width: calc(50% - 10px); /* Two cards per row with space */
+        height: 180px; /* Adjust height for smaller screens */
+    }
+
+    .game-card h3,
+    .game-card p {
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+
+    .game-card button {
+        padding: 8px; /* Slightly smaller buttons */
     }
 }
