@@ -1,41 +1,42 @@
 /* Contact section */
 .contact {
-    text-align: center; /* Center-align all text */
-    margin: 20px auto; /* Add spacing around the section */
-    padding: 0 10px; /* Add padding for small screens */
+    text-align: center;
+    margin: 20px auto;
 }
 
 /* Contact container */
 .contact-container {
-    display: flex; /* Use flexbox for layout */
-    justify-content: center; /* Horizontally center the container */
-    align-items: flex-start; /* Align items to the top */
-    margin: 20px auto; /* Center horizontally */
-    width: 90%; /* Make the container responsive */
-    max-width: 800px; /* Set a maximum width for larger screens */
-    background-color: #f0f0f0; /* Light gray background */
-    padding: 20px; /* Inner padding for spacing */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    box-sizing: border-box; /* Include padding in width calculation */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start;
+    align-items: center; /* Center horizontally */
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Section title */
 .contact h2 {
-    margin: 20px 0; /* Add vertical spacing */
-    color: black; /* Change to black for better contrast */
-    font-size: 1.8rem; /* Slightly larger font size */
-    text-align: center; /* Ensure the title is centered */
+    margin: 0 0 20px 0; /* Move inside the container */
+    color: black;
+    font-size: 1.8rem;
+    width: 100%; /* Match container width */
+    text-align: center; /* Align to the center */
+    padding-bottom: 10px; /* Add spacing under the title */
+    border-bottom: 1px solid #ccc; /* Optional: Separator line */
 }
 
 /* Contact form */
 .contact-form {
-    background-color: white; /* White background for the form */
-    padding: 20px; /* Inner padding */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    width: 100%; /* Full width within the container */
-    box-sizing: border-box; /* Include padding in width calculation */
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 /* Labels */
