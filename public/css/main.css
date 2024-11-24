@@ -1,24 +1,19 @@
-/* General text color for body */
-/* Fix background image to cover the entire page */
 html, body {
-    height: 100%; /* Ensure body and html take up the full viewport height */
+    height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Flexbox layout for sticky footer */
-    background-image: url('/img/background.jpg'); /* Path to your background image */
-    background-size: cover; /* Cover the entire page */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent repeating the image */
-    background-attachment: fixed; /* Fix the background so it stays in place */
+    flex-direction: column;
+    background-image: url('/img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* Main content fills remaining space */
 main {
-    flex: 1; /* Allow main to expand and take available space */
-    text-align: center; /* Center text in the main content */
-    color: black; /* Set main content text color to black */
-    padding: 20px; /* Add some padding for better spacing */
+    flex-grow: 1; /* Allow main to expand */
+    padding: 20px;
+    overflow: hidden; /* Prevent unnecessary scrolling */
 }
 
 /* Header styles */
@@ -47,18 +42,16 @@ main {
     left: 20px; /* Space from the left */
 }
 
-/* Sticky footer */
 .footer {
-    background-color: #66bb6a; /* Match navigation background */
-    color: black; /* Text color */
-    padding: 20px; /* Padding inside footer */
-    text-align: center; /* Center text */
-    position: relative;
-    width: 100%; /* Full width */
+    background-color: #66bb6a;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    position: sticky; /* Sticky to bottom */
+    width: 100%;
     bottom: 0;
-    margin-top: auto; /* Push footer to the bottom */
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for depth */
-    font-size: 0.9rem; /* Slightly smaller text for footer */
+    margin-top: auto; /* Push footer to bottom */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* User Info (e.g., logged-in user info) */
