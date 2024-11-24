@@ -28,7 +28,7 @@ nav.nav {
     gap: 10px; /* Space between links */
     position: absolute;
     top: -20px; /* Below the header */
-    left: 100px;
+    left: 0px;
     width: 10%; /* Full width on mobile */
     background-color: #66bb6a; /* Green background */
     padding: 10px 0; /* Add padding inside menu */
