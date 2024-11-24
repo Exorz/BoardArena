@@ -1,4 +1,8 @@
-
+/* Contact section */
+.contact {
+    text-align: center;
+    margin: 20px auto;
+}
 
 /* Contact container */
 .contact-container {
