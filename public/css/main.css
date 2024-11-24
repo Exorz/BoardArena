@@ -1,18 +1,25 @@
 /* General text color for body */
-html, body {
-    height: 100%; /* Ensure the body takes up the full height of the screen */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column; /* Flexbox layout for sticky footer */
+.html, body {
+  height: 100%;  /* Se till att body och html tar upp hela visningshöjden */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;  /* Använd flexbox och arrangera element vertikalt */
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-image: url('/img/background.jpg'); /* Background for entire body */
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: black; /* Set default text color to black */
+.body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  background-image: url('/img/background.jpg');  /* Bakgrundsbilden */
+  background-size: cover;  /* Gör så att bakgrunden täcker hela området */
+  background-position: center;  /* Centrera bakgrunden */
+  background-repeat: no-repeat;  /* Förhindrar upprepning av bakgrundsbilden */
+  color: black;  /* Sätt all text till svart */
+  min-height: 100vh;  /* Gör så att body tar upp hela visningshöjden */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* Håll content högst upp om det inte finns tillräckligt med innehåll */
+  margin-bottom: 0;  /* Ta bort eventuell extra marginal längst ner */
 }
 
 /* Game section styles */
@@ -195,20 +202,12 @@ main {
 
 /* Header styles */
 .header {
-    background-image: url('/img/header.jpg'); /* Path to your header image */
-    background-size: cover; /* Ensure the header image covers the header area */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-position: bottom center; /* Align the bottom of the image with the bottom of the header */
-    color: black; /* Text color */
-    padding: 0; /* Remove padding to allow the image to go up */
-    margin: 0 auto; /* Center the header */
-    height: 157px; /* Specify the height */
-    text-align: center; /* Center align text */
-    position: relative; /* Ensures positioning is handled properly */
-    top: 0; /* Align the header to the top */
-    width: 80%; /* Set header width to 80% */
-    border-radius: 15px; /* Add rounded corners to the header */
-    overflow: hidden; /* Ensure that rounded corners cut off any overflowing content */
+  background-image: url('/img/header.jpg');  /* Lägger till bakgrundsbilden */
+  background-size: cover;  /* Gör så att bilden täcker hela området */
+  background-position: bottom center;  /* Visar den nedersta delen av bilden */
+  padding: 30px 0;
+  text-align: center;
+  color: black;  /* Sätt textfärgen i headern till svart */
 }
 
 /* Logo styles */
@@ -235,14 +234,14 @@ main.content {
 
 /* Sticky footer */
 .footer {
-    background-color: #66bb6a; /* Match navigation background */
-    color: black; /* Text color */
-    padding: 20px; /* Padding inside footer */
-    text-align: center; /* Center text */
-    position: relative;
-    width: 100%; /* Full width */
-    bottom: 0;
-    margin-top: auto; /* Push footer to the bottom */
+  background-color: #66bb6a;  /* Samma färg som navigeringen */
+  color: black;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: auto; /* Detta gör att footern kommer längst ner */
+  flex-shrink: 0;  /* Förhindrar att footern krymper om innehållet är litet */
+  position: relative;
 }
 
 /* Popup form */
