@@ -58,11 +58,12 @@ main {
 
 /* User Info (e.g., logged-in user info) */
 .user-info {
-    position: absolute; /* Place user information the same way */
-    top: 60px; /* Adjust so it lies on the same level as login */
-    right: 20px; /* Adjust to fit design */
-    color: black; /* Change to black for visibility */
-    font-size: 14px; /* Adjust font size if needed */
+    position: absolute;
+    top: 60px; /* Default top position */
+    right: 20px; /* Default right position */
+    color: black;
+    font-size: 14px;
+    z-index: 10; /* Ensure it is above other elements */
 }
 
 /* Redirect message (e.g., alerts or errors) */
@@ -98,5 +99,10 @@ main {
 
     #redirect-message {
         font-size: 16px; /* Adjust size for better readability */
+    }
+ .user-info {
+        top: 10px; /* Move it closer to the top */
+        right: 10px; /* Align closer to the edge */
+        font-size: 12px; /* Reduce font size for smaller screens */
     }
 }
