@@ -76,17 +76,37 @@
     }
 
     .game-card {
-        width: calc(30% - 10px); /* Two cards per row */
-        height: 70px; /* Adjust height for small screens */
+        width: calc(50% - 10px); /* Always two cards per row */
+        height: min(120px, 30vw); /* Dynamically adjust height based on screen width */
     }
 
     .game-card h3,
     .game-card p {
-        font-size: 0.9rem; /* Adjust font size */
+        font-size: 0.8rem; /* Adjust font size for small screens */
+        margin: 5px 0; /* Reduce margin for tighter spacing */
     }
 
     .game-card button {
         padding: 8px; /* Slightly smaller buttons */
+        font-size: 0.8rem; /* Adjust button text size */
     }
 }
+
+@media screen and (max-width: 480px) {
+    .game-card {
+        width: calc(50% - 8px); /* Slightly tighter gap for very small screens */
+        height: min(100px, 35vw); /* Adjust height for even smaller screens */
+    }
+
+    .game-card h3,
+    .game-card p {
+        font-size: 0.7rem; /* Further reduce font size */
+    }
+
+    .game-card button {
+        padding: 6px; /* Smaller buttons for very small screens */
+        font-size: 0.7rem; /* Adjust button text size */
+    }
+}
+
 
