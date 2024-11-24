@@ -18,7 +18,7 @@
     gap: 15px; /* Space between cards */
     justify-content: center; /* Center cards horizontally */
     align-items: start; /* Align cards at the top */
-    width: 100%; /* Full width for the grid */
+    width: 70%; /* Full width for the grid */
     max-width: 100%; /* Ensure it doesn’t exceed its container */
     margin: 0 auto; /* Center the entire grid container */
     padding: 0 10px; /* Add padding for consistent spacing on smaller screens */
