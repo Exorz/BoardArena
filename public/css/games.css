@@ -14,15 +14,17 @@
 /* Game list container */
 .game-list {
     display: grid; /* Use grid layout */
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dynamically adjust to 2+ columns */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust to available space */
     gap: 15px; /* Space between cards */
-    justify-content: center; /* Center the grid horizontally */
-    align-items: start; /* Align items at the top */
+    justify-content: center; /* Center cards horizontally */
+    align-items: start; /* Align cards at the top */
     width: 100%; /* Full width for the grid */
-    max-width: 800px; /* Optional: Restrict max width for consistent layout */
-    margin: 0 auto; /* Center grid on the page */
-    padding-top: 10px; /* Add a little space at the top */
+    max-width: 100%; /* Ensure it doesn’t exceed its container */
+    margin: 0 auto; /* Center the entire grid container */
+    padding: 0 10px; /* Add padding for consistent spacing on smaller screens */
+    box-sizing: border-box; /* Ensure padding doesn’t affect the width */
 }
+
 
 
 /* Game card styles */
