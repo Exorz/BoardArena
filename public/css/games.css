@@ -1,0 +1,26 @@
+.game-card h3,
+.game-card p {
+    margin-top: 0; /* Remove top margin */
+    background-color: rgba(40, 167, 69, 0.7); /* Semi-transparent green background */
+    padding: 5px; /* Padding around text */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* Ensure text is white for readability */
+}
+
+/* Button styles */
+.game-card button {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    padding: 10px; /* Padding inside the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    margin-top: auto; /* Push button to bottom */
+    margin-bottom: 0px; /* Margin below the button */
+    width: 100%; /* Full width of the card */
+}
+
+.game-card button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
