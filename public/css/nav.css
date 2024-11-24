@@ -27,11 +27,15 @@ nav.nav {
     align-items: center; /* Center-align links */
     gap: 10px; /* Space between links */
     position: absolute;
-    top: -20px; /* Below the header */
-    left: 0px;
-    width: 10%; /* Full width on mobile */
+    top: 50px; /* Below the hamburger icon */
+    right: 20px; /* Align with the right edge of the hamburger icon */
     background-color: #66bb6a; /* Green background */
-    padding: 10px 0; /* Add padding inside menu */
+    padding: 10px; /* Add padding inside menu */
+    border-radius: 8px; /* Round corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: auto; /* Adjust width to fit the content */
+    min-width: 150px; /* Ensure a minimum width */
+    z-index: 1000; /* Keep it above other elements */
 }
 
 /* Navigation link styles */
@@ -50,11 +54,11 @@ nav.nav ul li a:hover {
 .hamburger {
     display: none; /* Hidden by default */
     font-size: 30px; /* Icon size */
-    color: black; /* White color for icon */
+    color: black; /* Black color for icon */
     cursor: pointer;
-    position: absolute;
-    top: 15px; /* Position near the top */
-    right: 15px; /* Align to the right */
+    position: fixed; /* Fix position to top-right */
+    top: 10px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
     z-index: 100; /* Ensure visibility above other elements */
 }
 
@@ -76,25 +80,26 @@ nav.nav ul li a:hover {
         box-shadow: none; /* Remove shadows for simplicity */
     }
 
-    #nav-links {
-        display: none; /* Dölj navigeringen initialt */
-        flex-direction: column; /* Stapla länkar vertikalt */
-        align-items: center; /* Centrera länkarna */
-        width: 30%; /* Justera bredden */
-        position: absolute; /* Positionera den relativt till hamburgaren */
-        top: 50px; /* Placera navigeringen precis under hamburgaren */
-        left: 10%; /* Centrerad horisontellt */
-        background-color: #66bb6a; /* Bakgrundsfärg för navigeringen */
-        gap: 10px;
-        padding: 10px 0;
-        border-radius: 8px; /* Gör navigeringen lite mjukare */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Lägg till en subtil skugga */
+ #nav-links {
+        display: none; /* Hide navigation initially */
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center-align links */
+        position: absolute; /* Position relative to the hamburger */
+        top: 50px; /* Place below the hamburger */
+        right: 20px; /* Align with the right edge of the hamburger */
+        background-color: #66bb6a; /* Background color for the navigation */
+        gap: 10px; /* Space between links */
+        padding: 10px 0; /* Add padding inside menu */
+        border-radius: 8px; /* Round the corners */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        width: auto; /* Auto width to adjust to content */
+        min-width: 150px; /* Ensure minimum width */
+        z-index: 1000; /* Keep above other elements */
     }
 
-#nav-links.open {
-        display: flex; /* Visa navigeringen när hamburgaren är öppen */
+  #nav-links.open {
+        display: flex; /* Show navigation when hamburger is open */
     }
-
 
     /* Show hamburger icon */
     .hamburger {
