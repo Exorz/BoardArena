@@ -101,13 +101,15 @@
 
     .game-list {
         display: grid; /* Use grid layout for precise control */
-        grid-template-columns: repeat(2, 1fr); /* Always two cards per row */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Always two cards per row */
         gap: 10px; /* Space between cards */
+        justify-content: center; /* Center the grid horizontally */
     }
 
     .game-card {
         height: auto; /* Let the height adjust naturally */
         aspect-ratio: 1 / 1; /* Ensure cards maintain a square aspect ratio */
+        margin: 0 auto; /* Center each card within its grid cell */
     }
 
     .game-card h3,
@@ -125,6 +127,7 @@
     .game-list {
         grid-template-columns: repeat(2, 1fr); /* Still two cards per row */
         gap: 8px; /* Slightly smaller gap for very small screens */
+        justify-content: center; /* Ensure grid stays centered */
     }
 
     .game-card h3,
@@ -137,6 +140,7 @@
         font-size: 0.7rem; /* Adjust button text size */
     }
 }
+
 
 
 
