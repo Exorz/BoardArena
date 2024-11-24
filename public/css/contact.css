@@ -1,67 +1,101 @@
-/* Contact form styles */
+/* Contact section */
 .contact {
-    text-align: center; /* Center text for the entire contact section */
+    text-align: center; /* Center-align all text */
+    margin: 20px auto; /* Add spacing around the section */
 }
 
+/* Contact container */
 .contact-container {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: flex-start; /* Align to top (do not center vertically) */
-    margin: 20px auto; /* Center the container horizontally */
-    width: 50%; /* Set the width to 50% of the parent */
-    max-width: 800px; /* Optional: Set a maximum width for larger screens */
-    background-color: #f0f0f0; /* Background color */
-    padding: 20px; /* Optional: Add padding to the container for better spacing */
-    border-radius: 5px; /* Optional: Add rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Horizontally center the container */
+    align-items: flex-start; /* Align items to the top */
+    margin: 20px auto; /* Center horizontally */
+    width: 90%; /* Make the container responsive */
+    max-width: 800px; /* Set a maximum width for larger screens */
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 20px; /* Inner padding for spacing */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+/* Section title */
 .contact h2 {
-    margin: 20px 0; /* Add margin for spacing */
-    color: white; /* Set h2 color to white */
+    margin: 20px 0; /* Add vertical spacing */
+    color: black; /* Change to black for better contrast */
+    font-size: 1.8rem; /* Slightly larger font size */
 }
 
+/* Contact form */
 .contact-form {
     background-color: white; /* White background for the form */
-    padding: 20px; /* Padding around the form */
+    padding: 20px; /* Inner padding */
     border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
-    width: 100%; /* Ensure the form takes the full width of the container */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%; /* Full width within the container */
 }
 
-/* Labels and input fields */
+/* Labels */
 .contact-form label {
-    display: block; /* Make labels block elements */
-    margin-bottom: 5px; /* Space under label */
-    font-weight: bold; /* Bold for labels */
-    color: black; /* Set label text color to black */
+    display: block; /* Block-level element for labels */
+    margin-bottom: 5px; /* Space below label */
+    font-weight: bold; /* Make labels bold */
+    color: black; /* Label text color */
+    font-size: 1rem; /* Consistent font size */
 }
 
+/* Input and textarea fields */
 .contact-form input,
 .contact-form textarea {
-    width: 100%; /* Full width */
-    padding: 10px; /* Padding inside fields */
-    margin-bottom: 15px; /* Space under fields */
-    border: 1px solid #ccc; /* Gray border */
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Inner padding for spacing */
+    margin-bottom: 15px; /* Space below each field */
+    border: 1px solid #ccc; /* Light gray border */
     border-radius: 4px; /* Rounded corners */
+    font-size: 1rem; /* Standard font size */
 }
 
-/* Button styling */
-.contact-form button,
-.login-container button,
-.form-container .btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%; /* Full width on button */
+.contact-form textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 100px; /* Minimum height for textareas */
 }
 
-.contact-form button:hover,
-.login-container button:hover,
-.form-container .btn:hover {
-    background-color: #218838;
+/* Form buttons */
+.contact-form button {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    padding: 12px; /* Inner padding for buttons */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    width: 100%; /* Full width for buttons */
+}
+
+.contact-form button:hover {
+    background-color: #218838; /* Slightly darker green on hover */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        width: 95%; /* Adjust width for mobile devices */
+    }
+
+    .contact-form {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+
+    .contact h2 {
+        font-size: 1.5rem; /* Reduce title font size */
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px; /* Slightly larger padding for touchscreens */
+    }
+
+    .contact-form button {
+        padding: 14px; /* Larger buttons for mobile users */
+    }
 }
