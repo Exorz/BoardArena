@@ -20,14 +20,14 @@
     margin: 10px 0 0; /* Add margin to separate from h2 */
     color: black; /* Set text color to black */
     font-size: 1rem; /* Standard font size for readability */
-    line-height: 1.5; /* Improve text spacing for readability */
+    line-height: 1.6; /* Slightly larger line-height for better readability */
 }
 
 /* Responsiveness for smaller screens */
 @media screen and (max-width: 768px) {
     .news-container {
         padding: 15px; /* Reduce padding for smaller screens */
-        max-width: 90%; /* Use more width on smaller screens */
+        max-width: 100%; /* Full width for smaller screens */
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Subtler shadow for mobile */
     }
 
