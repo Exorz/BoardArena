@@ -22,7 +22,6 @@ body {
 main {
     flex-grow: 1; /* Allow main to expand */
     padding: 20px;
-    max-width: 1200px; /* Restrict the content width */
     width: 100%; /* Ensure it spans full width on smaller screens */
     margin: 0 auto; /* Center main content */
 }
