@@ -200,6 +200,7 @@
     }
 
     .game-card {
+        display: flex;
         height: auto; /* Let the height adjust naturally */
         aspect-ratio: 1 / 1; /* Ensure cards maintain a square aspect ratio */
         text-align: center;
