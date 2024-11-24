@@ -372,7 +372,7 @@ nav.nav ul li a:hover {
     font-size: 30px;
     color: white;
     cursor: pointer;
-    position: absolute;
+    position: flex;
     top: 0px;  /* Position the hamburger at the top of the header */
     right: 15px;  /* Align the hamburger to the right */
     z-index: 100; /* Ensure the hamburger is above other content */
