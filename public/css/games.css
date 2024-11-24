@@ -198,7 +198,7 @@
         grid-template-columns: repeat(2, 1fr); /* Always two cards per row */
         gap: 5px; /* Space between cards */
         margin: 0 auto;
-          text-align: center;
+     justify-content: center;
     }
 
     .game-card {
