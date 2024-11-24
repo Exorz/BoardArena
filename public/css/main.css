@@ -5,25 +5,21 @@ html, body {
     padding: 0;
     display: flex;
     flex-direction: column; /* Flexbox layout for sticky footer */
-}
-body {
     font-family: Arial, sans-serif;
     background-image: url('/img/background.jpg'); /* Background for entire body */
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     color: black; /* Set default text color to black */
 }
 
-
-
-
-/* Ensure main content takes up remaining space */
+/* Main content fills remaining space */
 main {
     flex: 1; /* Allow main to expand and take available space */
+    text-align: center; /* Center text in the main content */
+    color: black; /* Set main content text color to black */
+    padding: 20px; /* Add some padding for better spacing */
 }
-
-
-
 
 /* Header styles */
 .header {
@@ -51,20 +47,6 @@ main {
     left: 20px; /* Space from the left */
 }
 
-/* Main content styles */
-main.content {
-    text-align: center; /* Center text in the main content */
-    color: black; /* Set main content text color to black */
-
-}
-
-
-
-
-
-
-
-
 /* Sticky footer */
 .footer {
     background-color: #66bb6a; /* Match navigation background */
@@ -75,24 +57,50 @@ main.content {
     width: 100%; /* Full width */
     bottom: 0;
     margin-top: auto; /* Push footer to the bottom */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for depth */
+    font-size: 0.9rem; /* Slightly smaller text for footer */
 }
 
-
-
+/* User Info (e.g., logged-in user info) */
 .user-info {
     position: absolute; /* Place user information the same way */
     top: 60px; /* Adjust so it lies on the same level as login */
     right: 20px; /* Adjust to fit design */
     color: black; /* Change to black for visibility */
     font-size: 14px; /* Adjust font size if needed */
-    /* Removed display: none; */
 }
 
+/* Redirect message (e.g., alerts or errors) */
 #redirect-message {
     font-size: 18px;
     margin-top: 20px;
     text-align: center;
     color: red;
+    font-weight: bold; /* Make the message stand out */
 }
 
+/* Responsiveness for small screens */
+@media screen and (max-width: 768px) {
+    .header {
+        width: 100%; /* Use full width for small screens */
+        height: auto; /* Adjust height for smaller screens */
+        padding: 10px; /* Add padding for better spacing */
+    }
 
+    .logo img {
+        height: 40px; /* Reduce logo size for small screens */
+    }
+
+    main {
+        padding: 10px; /* Reduce padding on small screens */
+    }
+
+    .footer {
+        font-size: 0.8rem; /* Slightly smaller text in footer */
+        padding: 10px; /* Reduce padding for better fit */
+    }
+
+    #redirect-message {
+        font-size: 16px; /* Adjust size for better readability */
+    }
+}
