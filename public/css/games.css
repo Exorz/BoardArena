@@ -96,31 +96,55 @@
 @media screen and (max-width: 768px) {
     .games {
         width: 100%; /* Full width for the games section */
-        padding: 10px; /* Adjust padding for smaller screens */
+        padding: 20px; /* Add some padding for spacing */
         display: flex; /* Ensure container stays flexible */
-        justify-content: center; /* Center content */
+        justify-content: center; /* Center content horizontally */
+        align-items: flex-start; /* Align content to the top */
     }
 
     .game-list {
         display: grid; /* Use grid layout */
-        grid-template-columns: repeat(2, 1fr); /* Always two cards per row */
-        gap: 10px; /* Space between cards */
-        max-width: 100%; /* Restrict max width */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Always two cards per row */
+        gap: 15px; /* Space between cards */
+        width: 90%; /* Restrict grid width to fit nicely */
+        margin: 0 auto; /* Center the grid container */
     }
 
     .game-card {
         width: 100%; /* Take full space within grid cell */
-        height: auto; /* Let height adjust dynamically */
         aspect-ratio: 1 / 1; /* Ensure cards stay square */
+        background-size: cover; /* Make sure the background image covers the card */
         margin: 0; /* Remove additional margins */
-        display: flex; /* Ensure card content is flexed */
+        display: flex; /* Flexbox for card content */
         flex-direction: column; /* Stack content inside */
         justify-content: space-between; /* Space out content within cards */
+        text-align: center; /* Center text content */
     }
 
     .game-card h3,
     .game-card p {
-        font-size: 0.9rem; /* Adjust font size */
+        font-size: 1rem; /* Adjust font size for readability */
+    }
+
+    .game-card button {
+        padding: 10px; /* Button padding */
+        font-size: 0.9rem; /* Adjust button font size */
+    }
+}
+
+/* Even smaller screens (e.g., phones) */
+@media screen and (max-width: 480px) {
+    .game-list {
+        gap: 10px; /* Reduce gap for smaller screens */
+    }
+
+    .game-card {
+        aspect-ratio: 3 / 4; /* Slightly taller cards for readability */
+    }
+
+    .game-card h3,
+    .game-card p {
+        font-size: 0.85rem; /* Smaller font size */
     }
 
     .game-card button {
@@ -129,20 +153,3 @@
     }
 }
 
-@media screen and (max-width: 480px) {
-    .game-list {
-        grid-template-columns: repeat(2, 1fr); /* Keep two cards per row */
-        gap: 8px; /* Smaller gap for very small screens */
-        justify-content: center; /* Ensure grid stays centered */
-    }
-
-    .game-card h3,
-    .game-card p {
-        font-size: 0.8rem; /* Smaller text */
-    }
-
-    .game-card button {
-        padding: 6px; /* Smaller button padding */
-        font-size: 0.7rem; /* Adjust button font size */
-    }
-}
