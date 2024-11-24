@@ -14,8 +14,6 @@ body {
     color: black; /* Set default text color to black */
 }
 
-/* Game section styles */
-
 
 
 
@@ -23,77 +21,6 @@ body {
 main {
     flex: 1; /* Allow main to expand and take available space */
 }
-
-/* Contact form styles */
-.contact {
-    text-align: center; /* Center text for the entire contact section */
-}
-
-.contact-container {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: flex-start; /* Align to top (do not center vertically) */
-    margin: 20px auto; /* Center the container horizontally */
-    width: 50%; /* Set the width to 50% of the parent */
-    max-width: 800px; /* Optional: Set a maximum width for larger screens */
-    background-color: #f0f0f0; /* Background color */
-    padding: 20px; /* Optional: Add padding to the container for better spacing */
-    border-radius: 5px; /* Optional: Add rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
-}
-
-.contact h2 {
-    margin: 20px 0; /* Add margin for spacing */
-    color: white; /* Set h2 color to white */
-}
-
-.contact-form {
-    background-color: white; /* White background for the form */
-    padding: 20px; /* Padding around the form */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
-    width: 100%; /* Ensure the form takes the full width of the container */
-}
-
-/* Labels and input fields */
-.contact-form label {
-    display: block; /* Make labels block elements */
-    margin-bottom: 5px; /* Space under label */
-    font-weight: bold; /* Bold for labels */
-    color: black; /* Set label text color to black */
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%; /* Full width */
-    padding: 10px; /* Padding inside fields */
-    margin-bottom: 15px; /* Space under fields */
-    border: 1px solid #ccc; /* Gray border */
-    border-radius: 4px; /* Rounded corners */
-}
-
-/* Button styling */
-.contact-form button,
-.login-container button,
-.form-container .btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%; /* Full width on button */
-}
-
-.contact-form button:hover,
-.login-container button:hover,
-.form-container .btn:hover {
-    background-color: #218838;
-}
-
-
-
 
 
 /* News section styles */
