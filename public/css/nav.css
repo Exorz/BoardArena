@@ -28,7 +28,7 @@ nav.nav {
     gap: 10px; /* Space between links */
     position: absolute;
     top: -50px; /* Below the hamburger icon */
-    right: -50px; /* Align with the right edge of the hamburger icon */
+    right: -30px; /* Align with the right edge of the hamburger icon */
     background-color: #66bb6a; /* Green background */
     padding: 10px; /* Add padding inside menu */
     border-radius: 8px; /* Round corners */
