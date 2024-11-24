@@ -77,7 +77,7 @@
 
     .game-card {
         width: calc(30% - 10px); /* Two cards per row */
-        height: 70; /* Adjust height for small screens */
+        height: 70px; /* Adjust height for small screens */
     }
 
     .game-card h3,
