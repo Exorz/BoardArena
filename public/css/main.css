@@ -4,13 +4,14 @@ html, body {
     height: 100%; /* Ensure body and html take up the full viewport height */
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column; /* Flexbox layout for sticky footer */
     background-image: url('/img/background.jpg'); /* Path to your background image */
     background-size: cover; /* Cover the entire page */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent repeating the image */
     background-attachment: fixed; /* Fix the background so it stays in place */
 }
-
 
 /* Main content fills remaining space */
 main {
