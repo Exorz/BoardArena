@@ -1,3 +1,11 @@
+/* Global reset för box-sizing för att undvika overflow */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Games section */
 .games {
     padding: 20px;
     text-align: center;
@@ -6,7 +14,7 @@
     margin: 0 auto; /* Center the container horizontally */
 }
 
-
+/* Section title */
 .games h2 {
     margin: 20px 0;
     color: white;
@@ -19,14 +27,11 @@
     gap: 15px; /* Space between cards */
     justify-content: center; /* Center cards horizontally */
     align-items: start; /* Align cards at the top */
-    width: 70%; /* Full width for the grid */
+    width: 100%; /* Full width for the grid */
     max-width: 100%; /* Ensure it doesn’t exceed its container */
     margin: 0 auto; /* Center the entire grid container */
     padding: 0 10px; /* Add padding for consistent spacing on smaller screens */
-    box-sizing: border-box; /* Ensure padding doesn’t affect the width */
 }
-
-
 
 /* Game card styles */
 .game-card {
