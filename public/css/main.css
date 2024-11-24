@@ -54,11 +54,13 @@ main {
 
 /* Logo styles */
 .logo img {
-    height: 50px;
+    height: 40px; /* Adjust logo size */
     position: absolute; /* Position the logo */
-    top: 10px; /* Space from the top */
-    left: 20px; /* Space from the left */
+    top: 10px; /* Space from the top of the header */
+    left: 20px; /* Space from the left side of the header */
+    object-fit: contain; /* Ensure the image fits within the given dimensions */
 }
+
 
 .footer {
     background-color: #66bb6a;
