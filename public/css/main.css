@@ -30,24 +30,25 @@ main {
 
 /* Header styles */
 .header {
-    background-image: url('/img/header.jpg'); /* Path to your header image */
-    background-size: cover; /* Ensure the header image covers the header area */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-position: bottom center; /* Align the bottom of the image with the bottom of the header */
-    color: black; /* Text color */
-    margin: 0 auto; /* Center the header */
-    height: 157px; /* Specify the height */
-    text-align: center; /* Center align text */
-    position: relative; /* Ensures positioning is handled properly */
-    top: 0; /* Align the header to the top */
-    width: 80%; /* Set header width to 80% */
-    overflow: hidden; /* Ensure that rounded corners cut off any overflowing content */
-    display: flex; /* Use flexbox for alignment */
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: flex-start; /* Align elements to the top */
+    background-image: url('/img/header.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    color: black;
+    margin: 0 auto;
+    height: 157px;
+    text-align: center;
+    position: relative;
+    top: 0;
+    width: 80%; /* Ensure it's centered */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center elements vertically */
     align-items: center; /* Center elements horizontally */
-    padding-top: 10px; /* Add some space at the top */
+    padding: 10px 0; /* Uniform padding */
 }
+
 
 /* Title styles */
 .header h1 {
