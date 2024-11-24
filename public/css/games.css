@@ -82,6 +82,7 @@
         grid-template-columns: repeat(2, 1fr); /* Ensure exactly two cards per row */
         gap: 10px; /* Reduce gap between cards */
         margin: 0 auto; /* Center the grid */
+        width: 100%;
     }
 
     .game-card {
@@ -104,6 +105,7 @@
     .game-list {
         grid-template-columns: repeat(2, 1fr); /* Still two cards per row */
         gap: 8px; /* Slightly smaller gap for very small screens */
+        width: 100%;
     }
 
     .game-card h3,
