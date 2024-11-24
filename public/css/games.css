@@ -2,7 +2,7 @@
 .games {
     padding: 20px;
     text-align: center;
-    width: 60%;
+    width: 100%; /* Full width to accommodate responsiveness */
     margin: 0 auto;
 }
 
@@ -13,18 +13,19 @@
 
 /* Game list container */
 .game-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dynamically adjust to 2+ columns */
+    gap: 15px; /* Spacing between cards */
+    justify-content: center; /* Center the grid */
+    width: 100%; /* Full width for the grid */
+    margin: 0 auto; /* Center grid horizontally */
+    max-width: 800px; /* Optional: Restrict max width */
 }
 
 /* Game card styles */
 .game-card {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 20px;
-    padding: 20px;
+    height: auto;
+    padding: 15px;
     background-size: cover;
     background-position: center;
     background-color: rgba(233, 236, 239, 0.5);
@@ -35,6 +36,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    aspect-ratio: 1; /* Force square aspect ratio */
 }
 
 /* Game card text */
@@ -68,154 +70,28 @@
 @media screen and (max-width: 768px) {
     .games {
         width: 100%;
-        padding: 10px; /* Adjust padding for small screens */
+        padding: 15px; /* Adjust padding for smaller screens */
     }
 
     .game-list {
+        grid-template-columns: repeat(2, 1fr); /* Ensure exactly two cards per row */
         gap: 10px; /* Reduce gap between cards */
+        margin: 0 auto; /* Center the grid */
     }
 
     .game-card {
-        width: calc(50% - 10px); /* Always two cards per row */
-        height: min(120px, 30vw); /* Dynamically adjust height based on screen width */
-    }
-
-    .game-card h3,
-    .game-card p {
-        font-size: 0.8rem; /* Adjust font size for small screens */
-        margin: 5px 0; /* Reduce margin for tighter spacing */
-    }
-
-    .game-card button {
-        padding: 8px; /* Slightly smaller buttons */
-        font-size: 0.8rem; /* Adjust button text size */
-    }
-}
-
-/* Games section styles */
-.games {
-    padding: 20px;
-    text-align: center;
-    width: 60%;
-    margin: 0 auto;
-}
-
-.games h2 {
-    margin: 20px 0;
-    color: white;
-}
-
-/* Game list container */
-.game-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-/* Game card styles */
-.game-card {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 20px;
-    padding: 20px;
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(233, 236, 239, 0.5);
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* Game card text */
-.game-card h3,
-.game-card p {
-    margin: 0;
-    padding: 5px;
-    background-color: rgba(40, 167, 69, 0.7);
-    border-radius: 5px;
-    color: white;
-}
-
-/* Game card button styles */
-.game-card button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: auto;
-    width: 100%;
-}
-
-.game-card button:hover {
-    background-color: #218838;
-}
-
-/* Responsive adjustments */
-@media screen and (max-width: 768px) {
-    .games {
-        width: 100%;
         padding: 10px; /* Adjust padding for small screens */
-    }
-
-    .game-list {
-        gap: 10px; /* Reduce gap between cards */
-    }
-
-    .game-card {
-        width: calc(50% - 10px); /* Always two cards per row */
-        height: min(120px, 30vw); /* Dynamically adjust height based on screen width */
+        font-size: 0.9rem; /* Reduce text size */
     }
 
     .game-card h3,
     .game-card p {
-        font-size: 0.8rem; /* Adjust font size for small screens */
-        margin: 5px 0; /* Reduce margin for tighter spacing */
+        font-size: 0.8rem; /* Smaller text size */
     }
 
     .game-card button {
-        padding: 8px; /* Slightly smaller buttons */
-        font-size: 0.8rem; /* Adjust button text size */
-    }
-}
-
-/* Responsive adjustments */
-@media screen and (max-width: 768px) {
-    .games {
-        width: 100%; /* Full width for the games section */
-        padding: 10px; /* Adjust padding for smaller screens */
-    }
-
-    .game-list {
-        display: grid; /* Use grid layout for precise control */
-        grid-template-columns: repeat(2, 1fr); /* Always two cards per row */
-        gap: 5px; /* Space between cards */
-        margin: 0 auto;
-     justify-content: center;
-    }
-
-    .game-card {
-        display: flex;
-        height: auto; /* Let the height adjust naturally */
-        aspect-ratio: 1 / 1; /* Ensure cards maintain a square aspect ratio */
-        text-align: center;
-    }
-
-    .game-card h3,
-    .game-card p {
-        font-size: 0.9rem; /* Adjust font size for smaller screens */
-    }
-
-    .game-card button {
-        padding: 8px; /* Slightly smaller buttons */
-        font-size: 0.8rem; /* Adjust button text size */
+        padding: 8px; /* Smaller buttons */
+        font-size: 0.8rem; /* Smaller button text */
     }
 }
 
@@ -227,11 +103,11 @@
 
     .game-card h3,
     .game-card p {
-        font-size: 0.8rem; /* Smaller text for very small screens */
+        font-size: 0.75rem; /* Smaller text for very small screens */
     }
 
     .game-card button {
-        padding: 6px; /* Smaller buttons for very small screens */
-        font-size: 0.7rem; /* Adjust button text size */
+        padding: 6px; /* Smaller buttons */
+        font-size: 0.7rem; /* Smaller button text size */
     }
 }
