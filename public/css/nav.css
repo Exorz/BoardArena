@@ -67,7 +67,7 @@ nav.nav ul li a:hover {
         right: 20px; /* Justera avstånd från höger */
         z-index: 100; /* Se till att den alltid är över andra element */
         font-size: 30px; /* Storleken på hamburgaren */
-        color: white;
+    
     }
 
     nav.nav {
