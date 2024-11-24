@@ -40,9 +40,10 @@ router.post('/register', async (req, res) => {
 
 // Login route
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body; // Update to use username instead of email
 
-    const user = await User.findOne({ email });
+    // Find the user by username
+    const user = await User.findOne({ username });  // Changed to 'username' field
     if (!user) {
         return res.status(400).json({ message: 'User not found' });
     }
@@ -55,6 +56,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ _id: user._id, username: user.username }, JWT_SECRET, { expiresIn: '24h' });
     return res.json({ token, username: user.username });
 });
+
 
 // New route to update last active time for logged-in users
 router.post('/update-last-active', authenticateToken, async (req, res) => {
