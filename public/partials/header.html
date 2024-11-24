@@ -28,21 +28,22 @@
         Logged in as: <span id="username-display"></span>
     </div>
 
-    <!-- Login popup modal -->
-    <div class="form-popup" id="loginForm">
-        <div class="form-container">
-            <h2>Login</h2>
-            <label for="email"><b>Username</b></label>
-            <input type="text" id="login-email" placeholder="Enter Email" name="email" required>
+<!-- Login popup modal -->
+<div class="form-popup" id="loginForm">
+    <div class="form-container">
+        <h2>Login</h2>
+        <label for="login-username"><b>Username</b></label> <!-- Change here -->
+        <input type="text" id="login-username" placeholder="Enter Username" name="username" required> <!-- Change here -->
 
-            <label for="password"><b>Password</b></label>
-            <input type="password" id="login-password" placeholder="Enter Password" name="password" required>
+        <label for="login-password"><b>Password</b></label>
+        <input type="password" id="login-password" placeholder="Enter Password" name="password" required>
 
-            <button type="submit" class="btn" onclick="login()">Login</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-            <div id="login-message"></div>
-        </div>
+        <button type="submit" class="btn" onclick="login()">Login</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <div id="login-message"></div>
     </div>
+</div>
+
 
     <!-- Register popup modal -->
     <div class="form-popup" id="registerForm">
