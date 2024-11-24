@@ -195,20 +195,18 @@ main {
 
 /* Header styles */
 .header {
-    background-image: url('/img/header.jpg'); /* Path to your header image */
-    background-size: cover; /* Ensure the header image covers the header area */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-position: bottom center; /* Align the bottom of the image with the bottom of the header */
-    color: black; /* Text color */
-    padding: 0; /* Remove padding to allow the image to go up */
-    margin: 0 auto; /* Center the header */
-    height: 157px; /* Specify the height */
-    text-align: center; /* Center align text */
-    position: relative; /* Ensures positioning is handled properly */
-    top: 0; /* Align the header to the top */
-    width: 80%; /* Set header width to 80% */
-    border-radius: 15px; /* Add rounded corners to the header */
-    overflow: hidden; /* Ensure that rounded corners cut off any overflowing content */
+    position: relative; /* Set positioning context for the hamburger */
+    background-image: url('/img/header.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+    padding: 0;
+    margin: 0 auto;
+    height: 157px; /* Header height */
+    text-align: center;
+    width: 100%; /* Full width */
+    overflow: hidden;
 }
 
 /* Logo styles */
@@ -323,34 +321,35 @@ main.content {
 /* Navigation styles */
 nav.nav {
     background-color: #66bb6a; /* Lighter green background for navigation */
-    width: 100%; /* Set width to 100% to match the screen width */
+    width: 100%; /* Set width to match screen width */
     padding: 10px 0; /* Padding for vertical spacing */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for depth */
-    margin: 20px auto; /* Center the navigation */
-    position: relative; /* For positioning the hamburger */
+    margin: 0; /* Remove unnecessary margin */
+    position: relative; /* Position it directly under header */
+    top: 0; /* Ensure it's right below the header */
+    border-radius: 0; /* Remove rounding if not necessary */
 }
+
 
 /* Navigation links for desktop */
 #nav-links {
-    list-style: none; /* Remove list bullets */
-    margin: 0; /* Remove margin */
-    padding: 0; /* Remove padding */
     display: flex; /* Default display for desktop */
+    list-style: none;
     justify-content: center; /* Center align links */
+    margin: 0;
+    padding: 0;
     gap: 15px; /* Space between links */
 }
 
-/* Navigation links styling for mobile */
 #nav-links.open {
-    display: none; /* Start hidden on mobile */
-    flex-direction: column; /* Stack links vertically */
-    width: 100%;
-    position: absolute;
-    top: 60px; /* Position it just below the header */
+    display: none; /* Start hidden for mobile */
+    flex-direction: column; /* Stack links vertically on mobile */
+    align-items: center;
+    background-color: #66bb6a; /* Match navigation background */
+    position: absolute; /* Overlay on mobile */
+    top: 60px; /* Adjust below header */
     left: 0;
-    background-color: #66bb6a; /* Same green as navigation */
-    gap: 10px; /* Space between links */
+    width: 100%;
+    gap: 10px;
     padding: 10px 0;
 }
 
@@ -368,14 +367,14 @@ nav.nav ul li a:hover {
 
 /* Hamburger icon */
 .hamburger {
-    display: none;
+    display: none; /* Hidden by default */
     font-size: 30px;
     color: white;
     cursor: pointer;
-    position: absolute;
-    top: 15px;  /* Position the hamburger at the top of the header */
-    right: 15px;  /* Align the hamburger to the right */
-    z-index: 100; /* Ensure the hamburger is above other content */
+    position: absolute; /* Place in header */
+    top: 10px; /* Adjust to align vertically within header */
+    right: 10px; /* Align to the right */
+    z-index: 100;
 }
 
 /* Mobile-specific styles */
@@ -391,16 +390,12 @@ nav.nav ul li a:hover {
     }
 
     /* Show links when hamburger menu is open */
-    #nav-links.open {
-        display: flex; /* Show links on mobile */
-        flex-direction: column; /* Stack links vertically */
-        align-items: center; /* Center align links horizontally */
-        gap: 10px;
-        background-color: #66bb6a;
+ #nav-links.open {
+        display: flex; /* Show links when hamburger is clicked */
     }
 
-    .hamburger {
-        display: block; /* Show the hamburger icon */
+ .hamburger {
+        display: block; /* Make it visible on mobile */
     }
 }
 
