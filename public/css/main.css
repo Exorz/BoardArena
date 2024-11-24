@@ -1,17 +1,16 @@
 /* General text color for body */
+/* Fix background image to cover the entire page */
 html, body {
-    height: 100%; /* Ensure the body takes up the full height of the screen */
+    height: 100%; /* Ensure body and html take up the full viewport height */
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column; /* Flexbox layout for sticky footer */
-    font-family: Arial, sans-serif;
-    background-image: url('/img/background.jpg'); /* Background for entire body */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: black; /* Set default text color to black */
+    background-image: url('/img/background.jpg'); /* Path to your background image */
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+    background-attachment: fixed; /* Fix the background so it stays in place */
 }
+
 
 /* Main content fills remaining space */
 main {
