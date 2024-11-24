@@ -60,7 +60,7 @@ main {
 .user-info {
     position: absolute;
     top: 60px; /* Default top position */
-    right: 20px; /* Default right position */
+    right: 25px; /* Default right position */
     color: black;
     font-size: 14px;
     z-index: 10; /* Ensure it is above other elements */
