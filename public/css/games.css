@@ -67,24 +67,26 @@
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .games {
-        width: 90%; /* Adjust container width on smaller screens */
+        width: 95%;
+        padding: 10px; /* Adjust padding for small screens */
     }
 
     .game-list {
-        gap: 10px; /* Reduce gap between cards for small screens */
+        gap: 10px; /* Reduce gap between cards */
     }
 
     .game-card {
-        width: calc(50% - 10px); /* Two cards per row with space */
-        height: 180px; /* Adjust height for smaller screens */
+        width: calc(50% - 10px); /* Two cards per row */
+        height: 160px; /* Adjust height for small screens */
     }
 
     .game-card h3,
     .game-card p {
-        font-size: 0.9rem; /* Adjust font size for smaller screens */
+        font-size: 0.9rem; /* Adjust font size */
     }
 
     .game-card button {
         padding: 8px; /* Slightly smaller buttons */
     }
 }
+
