@@ -63,12 +63,12 @@ nav.nav ul li a:hover {
 /* Mobile-specific styles */
 @media screen and (max-width: 768px) {
     .hamburger {
-        display: block; /* Show hamburger icon */
-        position: fixed; /* Fix it to the top-right */
-        top: 10px; /* Align to the top */
-        right: 10px; /* Align to the right */
-        z-index: 100; /* Ensure it is above all elements */
-        font-size: 30px;
+        display: block; /* Visa hamburgaren */
+        position: fixed; /* Fixerad position i det övre högra hörnet */
+        top: 10px; /* Justera avstånd från toppen */
+        right: 10px; /* Justera avstånd från höger */
+        z-index: 100; /* Se till att den alltid är över andra element */
+        font-size: 30px; /* Storleken på hamburgaren */
         color: white;
     }
 
@@ -79,22 +79,24 @@ nav.nav ul li a:hover {
     }
 
     #nav-links {
-        display: none; /* Start hidden */
-        flex-direction: column; /* Stack links vertically */
-        align-items: center; /* Center links */
-        width: 100%;
-        position: absolute;
-        top: 50px; /* Place just below the hamburger */
-        left: 0;
-        background-color: #66bb6a;
+        display: none; /* Dölj navigeringen initialt */
+        flex-direction: column; /* Stapla länkar vertikalt */
+        align-items: center; /* Centrera länkarna */
+        width: 80%; /* Justera bredden */
+        position: absolute; /* Positionera den relativt till hamburgaren */
+        top: 50px; /* Placera navigeringen precis under hamburgaren */
+        left: 10%; /* Centrerad horisontellt */
+        background-color: #66bb6a; /* Bakgrundsfärg för navigeringen */
         gap: 10px;
         padding: 10px 0;
+        border-radius: 8px; /* Gör navigeringen lite mjukare */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Lägg till en subtil skugga */
     }
 
-    /* Show mobile menu when hamburger is toggled */
-    #nav-links.open {
-        display: flex; /* Show menu */
+#nav-links.open {
+        display: flex; /* Visa navigeringen när hamburgaren är öppen */
     }
+
 
     /* Show hamburger icon */
     .hamburger {
