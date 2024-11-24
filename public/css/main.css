@@ -22,8 +22,8 @@ body {
 /* Main content */
 main {
     flex-grow: 1; /* Allow main to expand */
-    width: 100%; /* Ensure it spans full width on smaller screens */
-    max-width: 1200px; /* Limit width for large screens */
+    width: 100%; /* Ensure it spans full width */
+    max-width: 1200px; /* Ensure max width */
     margin: 0 auto; /* Center main content */
     padding: 20px;
 }
@@ -40,7 +40,7 @@ main {
     text-align: center;
     position: relative;
     width: 80%; /* Ensure it's centered */
-    max-width: 1200px; /* Restrict width for large screens */
+    max-width: 1200px; /* Restrict max-width */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -79,7 +79,7 @@ main {
     text-align: center;
     position: relative;
     width: 100%;
-    max-width: 1200px; /* Match content width */
+    max-width: 1200px; /* Restrict max-width for footer */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     margin-top: auto; /* Push footer to the bottom when content is less */
 }
