@@ -8,9 +8,11 @@ html, body {
 }
 body {
     font-family: Arial, sans-serif;
+    font-size: 16px;
     background-image: url('/img/background.jpg'); /* Background for entire body */
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     color: black; /* Set default text color to black */
 }
 
@@ -195,25 +197,22 @@ main {
 /* Header styles */
 .header {
     background-image: url('/img/header.jpg'); /* Path to your header image */
-    background-size: cover; /* Ensure the header image covers the header area */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-position: bottom center; /* Align the bottom of the image with the bottom of the header */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 30px 0;
+    text-align: center;
     color: black; /* Text color */
-    padding: 0; /* Remove padding to allow the image to go up */
-    margin: 0 auto; /* Center the header */
+    position: relative;
     height: 157px; /* Specify the height */
-    text-align: center; /* Center align text */
-    position: relative; /* Ensures positioning is handled properly */
-    top: 0; /* Align the header to the top */
-    width: 80%; /* Set header width to 80% */
-    border-radius: 15px; /* Add rounded corners to the header */
-    overflow: hidden; /* Ensure that rounded corners cut off any overflowing content */
+    width: 100%; /* Full width */
+    border-radius: 15px;
+    overflow: hidden;
 }
 
-/* Logo styles */
 .logo img {
     height: 50px;
-    position: absolute; /* Position the logo */
+    position: absolute;
     top: 10px; /* Space from the top */
     left: 20px; /* Space from the left */
 }
@@ -322,15 +321,15 @@ main.content {
 /* Navigation styles */
 nav.nav {
     background-color: #66bb6a; /* Lighter green background for navigation */
-    width: 100%; /* Set width to 100% to match the screen width */
+    width: 100%; /* Set width to match screen width */
     padding: 10px 0; /* Padding for vertical spacing */
+    position: relative; /* Ensure it's positioned below header */
+    top: 0;
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for depth */
-    margin: 20px auto; /* Center the navigation */
-    position: relative; /* For positioning the hamburger */
+    margin: 0 auto;
 }
 
-/* Navigation links for desktop */
 #nav-links {
     list-style: none; /* Remove list bullets */
     margin: 0; /* Remove margin */
@@ -342,7 +341,7 @@ nav.nav {
 
 /* Navigation links styling for mobile */
 #nav-links.open {
-    display: none; /* Start hidden on mobile */
+    display: none; /* Start hidden */
     flex-direction: column; /* Stack links vertically */
     width: 100%;
     position: absolute;
@@ -353,7 +352,6 @@ nav.nav {
     padding: 10px 0;
 }
 
-/* Navigation link styles */
 nav.nav ul li a {
     color: black; /* Set links color to black */
     text-decoration: none; /* No underline */
@@ -367,7 +365,7 @@ nav.nav ul li a:hover {
 
 /* Hamburger icon */
 .hamburger {
-    display: none;
+    display: none; /* Hidden by default */
     font-size: 30px;
     color: white;
     cursor: pointer;
@@ -384,12 +382,10 @@ nav.nav ul li a:hover {
         box-shadow: none; /* Optional: remove shadow for cleaner look */
     }
 
-    /* Hide desktop menu links by default on mobile */
     #nav-links {
-        display: none; /* Start hidden on mobile */
+        display: none; /* Hide links on mobile by default */
     }
 
-    /* Show links when hamburger menu is open */
     #nav-links.open {
         display: flex; /* Show links on mobile */
         flex-direction: column; /* Stack links vertically */
@@ -401,6 +397,17 @@ nav.nav ul li a:hover {
     .hamburger {
         display: block; /* Show the hamburger icon */
     }
+}
+
+/* Footer styles */
+.footer {
+    background-color: #66bb6a; /* Match navigation background */
+    color: black; /* Text color */
+    padding: 20px; /* Padding inside footer */
+    text-align: center; /* Center text */
+    position: relative;
+    width: 100%; /* Full width */
+    margin-top: auto; /* Push footer to the bottom */
 }
 
 /* Header adjustments for small screens */
