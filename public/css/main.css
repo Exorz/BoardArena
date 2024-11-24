@@ -2,7 +2,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
     display: flex;
     flex-direction: column;
     background-image: url('/img/background.jpg');
@@ -10,7 +10,9 @@ html, body {
     background-position: center;
     background-repeat: no-repeat;
     box-sizing: border-box;
+    align-items: center; /* Center all direct children horizontally */
 }
+
 
 body {
     min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
