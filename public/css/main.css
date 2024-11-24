@@ -132,7 +132,7 @@ main {
     }
 
     .user-info {
-        top: 100px;
+        top: 80px;
         right: 10px; /* Adjust for smaller screens */
         font-size: 12px; /* Reduce font size for smaller screens */
     }
