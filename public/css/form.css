@@ -1,57 +1,78 @@
-/* Popup form */
+/* Popup form container */
 .form-popup {
-    display: none; /* Keep this as none until triggered */
-    position: fixed; /* Fixed positioning for the popup */
+    display: none; /* Hidden until triggered */
+    position: fixed; /* Fixed position for overlay */
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Offset to truly center */
-    z-index: 100; /* Ensure form is above all other elements */
+    transform: translate(-50%, -50%); /* Perfect centering */
+    z-index: 100; /* Ensure the form is above other elements */
 }
 
-/* Add styles to the form container */
+/* Form container styling */
 .form-container {
-    max-width: 300px; /* Maximum width of the form */
-    padding: 10px; /* Padding inside the form */
-    background-color: white; /* Background color of the form */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-    border-radius: 8px; /* Rounded corners */
+    max-width: 300px; /* Limit the form width */
+    padding: 10px; /* Inner padding */
+    background-color: white; /* Form background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    border-radius: 8px; /* Smooth rounded corners */
 }
 
-/* Full-width input fields */
+/* Input fields styling */
 .form-container input[type="text"],
 .form-container input[type="email"], 
 .form-container input[type="password"] {
-    width: 100%; /* Full width for input fields */
-    padding: 12px; /* Padding for input fields */
-    margin: 5px 0 20px 0; /* Margin for spacing */
-    border: 1px solid #ddd; /* Border for input fields */
-    border-radius: 5px; /* Rounded corners */
+    width: 100%; /* Full width */
+    padding: 12px; /* Space inside inputs */
+    margin: 5px 0 20px; /* Space around inputs */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 5px; /* Smooth rounded corners */
 }
 
 .form-container input:focus {
-    background-color: #ddd; /* Change background on focus */
-    outline: none; /* Remove outline */
+    background-color: #f0f0f0; /* Subtle background change on focus */
+    border-color: #04AA6D; /* Green border on focus */
+    outline: none; /* Remove default outline */
 }
 
-/* Style for buttons */
-.form-container .btn,
-.contact-form button {
-    background-color: #04AA6D; /* Button color */
-    color: white; /* Text color for buttons */
-    padding: 12px; /* Padding for buttons */
+/* Button styles */
+.form-container .btn {
+    background-color: #04AA6D; /* Primary green button color */
+    color: white; /* White text */
+    padding: 12px; /* Space inside button */
     border: none; /* No border */
-    border-radius: 5px; /* Rounded corners for buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-    width: 100%; /* Full width for buttons */
-    margin-bottom: 10px; /* Margin below buttons */
-    opacity: 0.9; /* Slight opacity */
+    border-radius: 5px; /* Smooth rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    width: 100%; /* Full width */
+    margin-bottom: 10px; /* Space below button */
+    opacity: 0.9; /* Slight transparency */
+    transition: opacity 0.3s, background-color 0.3s; /* Smooth hover effects */
 }
 
-.form-container .cancel {
-    background-color: red; /* Color for cancel button */
-}
-
-/* Add hover effects to buttons */
 .form-container .btn:hover {
     opacity: 1; /* Full opacity on hover */
+    background-color: #039e5a; /* Slightly darker green on hover */
+}
+
+/* Cancel button */
+.form-container .cancel {
+    background-color: red; /* Red background for cancel button */
+    color: white; /* White text */
+}
+
+/* Adjustments for small screens */
+@media screen and (max-width: 768px) {
+    .form-container {
+        max-width: 90%; /* Adjust form width for small screens */
+        padding: 15px; /* Add more padding */
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="email"], 
+    .form-container input[type="password"] {
+        padding: 14px; /* Slightly larger padding for touchscreens */
+    }
+
+    .form-container .btn {
+        padding: 14px; /* Larger buttons for mobile */
+    }
 }
