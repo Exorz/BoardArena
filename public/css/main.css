@@ -16,15 +16,10 @@ body {
     min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
 }
 
-/* Main content */
 main {
     flex-grow: 1; /* Allow main to expand */
-    width: 100%; /* Ensure it spans full width */
-    max-width: 1200px; /* Ensure max width */
-    margin: 0 auto; /* Center main content */
     padding: 20px;
 }
 
@@ -39,8 +34,8 @@ main {
     height: 157px;
     text-align: center;
     position: relative;
+    top: 0;
     width: 80%; /* Ensure it's centered */
-    max-width: 1200px; /* Restrict max-width */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -79,7 +74,6 @@ main {
     text-align: center;
     position: relative;
     width: 100%;
-    max-width: 1200px; /* Restrict max-width for footer */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     margin-top: auto; /* Push footer to the bottom when content is less */
 }
@@ -88,11 +82,10 @@ main {
 .user-info {
     position: absolute;
     top: 60px; /* Default top position */
-    right: 20px; /* Adjusted to align closer to the edge */
+    right: 25px; /* Default right position */
     color: black;
     font-size: 14px;
     z-index: 10; /* Ensure it is above other elements */
-    text-align: right; /* Align text to the right */
 }
 
 /* Redirect message (e.g., alerts or errors) */
