@@ -76,8 +76,8 @@
     }
 
     .game-card {
-        width: calc(30% - 5px); /* Two cards per row */
-        height: auto; /* Adjust height for small screens */
+        width: calc(30% - 10px); /* Two cards per row */
+        height: 100; /* Adjust height for small screens */
     }
 
     .game-card h3,
