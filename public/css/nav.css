@@ -1,13 +1,16 @@
 /* Navigation container */
+/* Navigation styles */
 nav.nav {
-    background-color: #66bb6a; /* Lighter green background for navigation */
-    width: 100%; /* Full width of navigation */
-    padding: 10px 0; /* Vertical spacing */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    margin: 20px auto; /* Center the navigation */
-    position: relative; /* Position for hamburger menu */
+    background-color: #66bb6a; /* Match header's theme */
+    width: 80%; /* Match the header's width */
+    margin: 0 auto; /* Center the navigation bar horizontally */
+    border-radius: 15px; /* Match header's rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    position: relative; /* Position relative to the page */
+    top: -10px; /* Move up to touch the header */
+    padding: 10px 0; /* Padding inside the nav */
 }
+
 
 /* Navigation links for desktop */
 #nav-links {
