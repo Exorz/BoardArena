@@ -76,6 +76,7 @@ main {
 @media screen and (max-width: 768px) {
     .header {
         width: 100%; /* Use full width for small screens */
+        border-radius: 0;
         height: auto; /* Adjust height for smaller screens */
         padding: 10px; /* Add padding for better spacing */
     }
