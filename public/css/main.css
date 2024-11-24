@@ -12,19 +12,21 @@ html, body {
     box-sizing: border-box;
 }
 
-
 body {
     min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
     display: flex;
     flex-direction: column;
+    align-items: center; /* Center content horizontally */
 }
 
+/* Main content */
 main {
     flex-grow: 1; /* Allow main to expand */
     width: 100%; /* Ensure it spans full width on smaller screens */
+    max-width: 1200px; /* Limit width for large screens */
     margin: 0 auto; /* Center main content */
+    padding: 20px;
 }
-
 
 /* Header styles */
 .header {
@@ -37,8 +39,8 @@ main {
     height: 157px;
     text-align: center;
     position: relative;
-    top: 0;
     width: 80%; /* Ensure it's centered */
+    max-width: 1200px; /* Restrict width for large screens */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -46,7 +48,6 @@ main {
     align-items: center; /* Center elements horizontally */
     padding: 10px 0; /* Uniform padding */
 }
-
 
 /* Title styles */
 .header h1 {
@@ -78,6 +79,7 @@ main {
     text-align: center;
     position: relative;
     width: 100%;
+    max-width: 1200px; /* Match content width */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     margin-top: auto; /* Push footer to the bottom when content is less */
 }
@@ -86,10 +88,11 @@ main {
 .user-info {
     position: absolute;
     top: 60px; /* Default top position */
-    right: 25px; /* Default right position */
+    right: 20px; /* Adjusted to align closer to the edge */
     color: black;
     font-size: 14px;
     z-index: 10; /* Ensure it is above other elements */
+    text-align: right; /* Align text to the right */
 }
 
 /* Redirect message (e.g., alerts or errors) */
@@ -119,7 +122,7 @@ main {
     }
 
     .logo img {
-        height: 40px; /* Reduce logo size for small screens */
+        height: 30px; /* Reduce logo size for small screens */
     }
 
     main {
@@ -137,6 +140,7 @@ main {
 
     .user-info {
         top: 100px;
+        right: 10px; /* Adjust for smaller screens */
         font-size: 12px; /* Reduce font size for smaller screens */
     }
 }
