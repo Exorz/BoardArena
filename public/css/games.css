@@ -97,50 +97,52 @@
     .games {
         width: 100%; /* Full width for the games section */
         padding: 10px; /* Adjust padding for smaller screens */
+        display: flex; /* Ensure container stays flexible */
+        justify-content: center; /* Center content */
     }
 
     .game-list {
-        display: grid; /* Use grid layout for precise control */
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Always two cards per row */
+        display: grid; /* Use grid layout */
+        grid-template-columns: repeat(2, 1fr); /* Always two cards per row */
         gap: 10px; /* Space between cards */
-        justify-content: center; /* Center the grid horizontally */
+        max-width: 100%; /* Restrict max width */
     }
 
     .game-card {
-        height: auto; /* Let the height adjust naturally */
-        aspect-ratio: 1 / 1; /* Ensure cards maintain a square aspect ratio */
-        margin: 0 auto; /* Center each card within its grid cell */
+        width: 100%; /* Take full space within grid cell */
+        height: auto; /* Let height adjust dynamically */
+        aspect-ratio: 1 / 1; /* Ensure cards stay square */
+        margin: 0; /* Remove additional margins */
+        display: flex; /* Ensure card content is flexed */
+        flex-direction: column; /* Stack content inside */
+        justify-content: space-between; /* Space out content within cards */
     }
 
     .game-card h3,
     .game-card p {
-        font-size: 0.9rem; /* Adjust font size for smaller screens */
+        font-size: 0.9rem; /* Adjust font size */
     }
 
     .game-card button {
-        padding: 8px; /* Slightly smaller buttons */
-        font-size: 0.8rem; /* Adjust button text size */
+        padding: 8px; /* Adjust button padding */
+        font-size: 0.8rem; /* Adjust button font size */
     }
 }
 
 @media screen and (max-width: 480px) {
     .game-list {
-        grid-template-columns: repeat(2, 1fr); /* Still two cards per row */
-        gap: 8px; /* Slightly smaller gap for very small screens */
+        grid-template-columns: repeat(2, 1fr); /* Keep two cards per row */
+        gap: 8px; /* Smaller gap for very small screens */
         justify-content: center; /* Ensure grid stays centered */
     }
 
     .game-card h3,
     .game-card p {
-        font-size: 0.8rem; /* Smaller text for very small screens */
+        font-size: 0.8rem; /* Smaller text */
     }
 
     .game-card button {
-        padding: 6px; /* Smaller buttons for very small screens */
-        font-size: 0.7rem; /* Adjust button text size */
+        padding: 6px; /* Smaller button padding */
+        font-size: 0.7rem; /* Adjust button font size */
     }
 }
-
-
-
-
