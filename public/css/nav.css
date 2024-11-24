@@ -1,83 +1,81 @@
-/* Navigation styles */
+/* Navigation container */
 nav.nav {
     background-color: #66bb6a; /* Lighter green background for navigation */
-    width: 100%; /* Set width to 100% to match the screen width */
-    padding: 10px 0; /* Padding for vertical spacing */
+    width: 100%; /* Full width of navigation */
+    padding: 10px 0; /* Vertical spacing */
     border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for depth */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
     margin: 20px auto; /* Center the navigation */
-    position: relative; /* For positioning the hamburger */
+    position: relative; /* Position for hamburger menu */
 }
 
 /* Navigation links for desktop */
 #nav-links {
     list-style: none; /* Remove list bullets */
-    margin: 0; /* Remove margin */
-    padding: 0; /* Remove padding */
-    display: flex; /* Default display for desktop */
-    justify-content: center; /* Center align links */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Horizontal alignment for desktop */
+    justify-content: center; /* Center links */
     gap: 15px; /* Space between links */
 }
 
-/* Navigation links styling for mobile */
+/* Mobile menu (hidden by default) */
 #nav-links.open {
-    display: none; /* Start hidden on mobile */
+    display: flex; /* Show menu when open */
     flex-direction: column; /* Stack links vertically */
-    width: 100%;
-    position: absolute;
-    top: 60px; /* Position it just below the header */
-    left: 0;
-    background-color: #66bb6a; /* Same green as navigation */
+    align-items: center; /* Center-align links */
     gap: 10px; /* Space between links */
-    padding: 10px 0;
+    position: absolute;
+    top: 60px; /* Below the header */
+    left: 0;
+    width: 100%; /* Full width on mobile */
+    background-color: #66bb6a; /* Green background */
+    padding: 10px 0; /* Add padding inside menu */
 }
 
 /* Navigation link styles */
 nav.nav ul li a {
-    color: black; /* Set links color to black */
-    text-decoration: none; /* No underline */
-    padding: 10px 15px; /* Padding around links */
-    transition: background-color 0.3s; /* Smooth background color transition */
+    color: black; /* Black text for links */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Add clickable space around links */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
 nav.nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Lighten background on hover */
 }
 
-/* Hamburger icon */
+/* Hamburger menu icon */
 .hamburger {
-    display: none;
-    font-size: 30px;
-    color: white;
+    display: none; /* Hidden by default */
+    font-size: 30px; /* Icon size */
+    color: white; /* White color for icon */
     cursor: pointer;
     position: absolute;
-    top: 15px;  /* Position the hamburger at the top of the header */
-    right: 15px;  /* Align the hamburger to the right */
-    z-index: 100; /* Ensure the hamburger is above other content */
+    top: 15px; /* Position near the top */
+    right: 15px; /* Align to the right */
+    z-index: 100; /* Ensure visibility above other elements */
 }
 
-/* Mobile-specific styles */
+/* Responsive styles for mobile devices */
 @media screen and (max-width: 768px) {
     nav.nav {
-        background-color: transparent; /* Remove the green background */
-        box-shadow: none; /* Optional: remove shadow for cleaner look */
+        background-color: transparent; /* Remove green background */
+        box-shadow: none; /* Remove shadow for cleaner mobile look */
     }
 
-    /* Hide desktop menu links by default on mobile */
+    /* Hide desktop menu links by default */
     #nav-links {
-        display: none; /* Start hidden on mobile */
+        display: none; /* Start hidden */
     }
 
-    /* Show links when hamburger menu is open */
+    /* Show mobile menu when hamburger is toggled */
     #nav-links.open {
-        display: flex; /* Show links on mobile */
-        flex-direction: column; /* Stack links vertically */
-        align-items: center; /* Center align links horizontally */
-        gap: 10px;
-        background-color: #66bb6a;
+        display: flex; /* Show menu */
     }
 
+    /* Show hamburger icon */
     .hamburger {
-        display: block; /* Show the hamburger icon */
+        display: block; /* Visible on small screens */
     }
 }
