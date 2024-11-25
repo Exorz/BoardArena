@@ -30,13 +30,12 @@ app.use('/leaderboard', leaderboardRoutes);
 
 // Serve HTML pages
 
-app.get('/lobbies/:game/lobby.html', authenticateToken, (req, res) => {
+app.get('/lobbies/:game/lobby.html', isAuthenticated, (req, res) => {
     const { game } = req.params;
     const filePath = path.join(__dirname, 'views', 'lobbies', game, 'lobby.html');
-
-    console.log(`Försöker ladda lobby för spelet: ${game}`);
     res.sendFile(filePath);
 });
+
 
 
 
