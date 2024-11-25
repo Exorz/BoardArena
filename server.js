@@ -76,7 +76,6 @@ const server = app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
 
-// Socket.IO setup
 const io = require('socket.io')(server, {
     cors: {
         origin: '*',
@@ -85,8 +84,7 @@ const io = require('socket.io')(server, {
     }
 });
 
-// Main lobby connection
+// Anslut lobby-sockets
+require('./sockets/lobby')(io);
 
-
-// Game namespace connection
 
