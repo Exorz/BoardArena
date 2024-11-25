@@ -32,20 +32,13 @@ app.use('/leaderboard', leaderboardRoutes);
 // Serve HTML pages
 
 app.get('/lobbies/:game/lobby.html', isAuthenticated, (req, res) => {
-    const { game } = req.params;  // Hämta speltypen från URL
+    const { game } = req.params;
     const filePath = path.join(__dirname, 'views', 'lobbies', game, 'lobby.html');
 
-    console.log(`Försöker ladda lobby för spelet: ${game}`); // Logga vilken lobby som begärs
-    
-    // Kontrollera om filen existerar innan den skickas
-    fs.access(filePath, fs.constants.F_OK, (err) => {
-        if (err) {
-            console.error(`Lobby-fil inte hittad: ${filePath}`);
-            return res.status(404).send('Lobby-filen hittades inte');
-        }
-        res.sendFile(filePath);  // Skicka den specifika lobbyfilen
-    });
+    console.log(`Försöker ladda lobby för spelet: ${game}`);
+    res.sendFile(filePath);
 });
+
 
 
 // Route för How to Play filer
