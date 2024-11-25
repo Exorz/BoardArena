@@ -1,0 +1,124 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    display: flex;
+    flex-direction: column;
+    background-image: url('/img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex-grow: 1; /* Allow main to expand */
+    padding: 20px;
+}
+/* Header styles */
+.header {
+    background-image: url('/img/header.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    color: black;
+    margin: 0 auto;
+    height: 157px;
+    text-align: center;
+    position: relative;
+    top: 0;
+    width: 80%; /* Ensure it's centered */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center elements vertically */
+    align-items: center; /* Center elements horizontally */
+    padding: 10px 0; /* Uniform padding */
+}
+/* Title styles */
+.header h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 2.5rem; /* Adjust font size for the title */
+}
+/* Subtitle styles */
+.header p {
+    margin: 5px 0 0; /* Reduce margin between title and subtitle */
+    font-size: 1.2rem; /* Adjust font size for the subtitle */
+    color: #333; /* Slightly darker text color for contrast */
+}
+/* Logo styles */
+.logo img {
+    height: 40px; /* Adjust logo size */
+    position: absolute; /* Position the logo */
+    top: 10px; /* Space from the top of the header */
+    left: 20px; /* Space from the left side of the header */
+    object-fit: contain; /* Ensure the image fits within the given dimensions */
+}
+/* Footer styles */
+.footer {
+    background-color: #66bb6a;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: auto; /* Push footer to the bottom when content is less */
+}
+.user-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px; /* Slightly larger font size */
+    font-weight: bold; /* Make the text bolder */
+    padding-bottom: 10px;
+    color: white; /* White text for better contrast */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    padding: 5px 10px; /* Add some padding around the text */
+    border-radius: 5px; /* Rounded corners for background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Slight shadow for better contrast */
+}
+/* Redirect message (e.g., alerts or errors) */
+#redirect-message {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+    color: red;
+    font-weight: bold; /* Make the message stand out */
+}
+/* Responsiveness for small screens */
+@media screen and (max-width: 768px) {
+    .header {
+        width: 100%; /* Use full width for small screens */
+        border-radius: 0;
+        height: auto; /* Adjust height for smaller screens */
+        padding: 15px 0; /* Add padding for better spacing */
+    }
+    .header h1 {
+        font-size: 2rem; /* Smaller font size for the title */
+    }
+    .header p {
+        font-size: 1rem; /* Smaller font size for the subtitle */
+    }
+    .logo img {
+        height: 30px; /* Reduce logo size for small screens */
+    }
+    main {
+        padding: 10px; /* Reduce padding on small screens */
+    }
+    .footer {
+        font-size: 0.8rem; /* Slightly smaller text in footer */
+        padding: 10px; /* Reduce padding for better fit */
+    }
+    #redirect-message {
+        font-size: 16px; /* Adjust size for better readability */
+    }
+    .user-info {
+        font-size: 10px; /* Smaller font size for smaller screens */
+    }
+}
