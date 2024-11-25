@@ -12,15 +12,22 @@
 .about-page .news h2 {
     margin: 10px 0;
     color: black;
-    font-size: 2rem;
+    font-size: 2rem;  /* Consistent font size */
     font-weight: bold;
 }
 
 .about-page .news p {
     margin: 10px 0 0;
     color: black;
-    font-size: 1rem;
+    font-size: 1rem;  /* Standard font size */
     line-height: 1.6;
+}
+
+/* Reset some margins and paddings that might cause the inzoomed look */
+body, .about-page, .content {
+    margin: 0;
+    padding: 0;
+    font-size: 16px; /* Standard font size for readability */
 }
 
 /* Responsiveness for smaller screens */
@@ -32,7 +39,7 @@
     }
 
     .about-page .news h2 {
-        font-size: 1.5rem;
+        font-size: 1.5rem;  /* Adjust font size for smaller screens */
     }
 
     .about-page .news p {
