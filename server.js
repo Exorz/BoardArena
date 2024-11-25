@@ -28,14 +28,7 @@ app.use('/leaderboard', leaderboardRoutes);
 
 
 // Serve HTML pages
-// Skydda alla lobbysidor med autentisering (wildcard för alla spel)
-app.get('/lobbies/:game/lobby.html', isAuthenticated, (req, res) => {
-  const { game } = req.params;  // Hämta speltypen från URL
-  const filePath = path.join(__dirname, 'views', 'lobbies', game, 'lobby.html');
 
-  console.log(`Försöker ladda lobby för spelet: ${game}`); // Logga vilken lobby som begärs
-  res.sendFile(filePath);  // Skicka den specifika lobbyfilen
-});
 
 // Route för How to Play filer
 app.get('/howto/:game', (req, res) => {
