@@ -1,4 +1,3 @@
-/* General styles for the navigation bar */
 nav.nav {
     background-color: #66bb6a; /* Match header's theme */
     width: 80%; /* Match the header's width */
@@ -20,6 +19,23 @@ nav.nav {
     gap: 15px; /* Space between links */
 }
 
+/* Mobile menu (hidden by default) */
+#nav-links.open {
+    display: flex; /* Show menu when open */
+    flex-direction: column; /* Stack links vertically */
+    align-items: center; /* Center-align links */
+    gap: 10px; /* Space between links */
+    position: absolute;
+    top: -50px; /* Below the hamburger icon */
+    right: -30px; /* Align with the right edge of the hamburger icon */
+    background-color: #66bb6a; /* Green background */
+    padding: 10px; /* Add padding inside menu */
+    border-radius: 8px; /* Round corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: auto; /* Adjust width to fit the content */
+    min-width: 100px; /* Ensure a minimum width */
+    z-index: 1000; /* Keep it above other elements */
+}
 /* Navigation link styles */
 nav.nav ul li a {
     color: black; /* Black text for links */
@@ -47,12 +63,13 @@ nav.nav ul li a:hover {
 /* Mobile-specific styles */
 @media screen and (max-width: 768px) {
     .hamburger {
-        display: block; /* Show hamburger icon */
-        position: fixed; /* Fixed position in the top-right corner */
-        top: 10px; /* Adjust distance from the top */
-        right: 20px; /* Adjust distance from the right */
-        z-index: 100; /* Ensure visibility above other elements */
-        font-size: 30px; /* Size of the hamburger icon */
+        display: block; /* Visa hamburgaren */
+        position: fixed; /* Fixerad position i det övre högra hörnet */
+        top: 10px; /* Justera avstånd från toppen */
+        right: 20px; /* Justera avstånd från höger */
+        z-index: 100; /* Se till att den alltid är över andra element */
+        font-size: 30px; /* Storleken på hamburgaren */
+    
     }
 
     nav.nav {
@@ -61,7 +78,7 @@ nav.nav ul li a:hover {
         box-shadow: none; /* Remove shadows for simplicity */
     }
 
-    #nav-links {
+ #nav-links {
         display: none; /* Hide navigation initially */
         flex-direction: column; /* Stack links vertically */
         align-items: center; /* Center-align links */
@@ -78,13 +95,12 @@ nav.nav ul li a:hover {
         z-index: 1000; /* Keep above other elements */
     }
 
-    #nav-links.open {
+  #nav-links.open {
         display: flex; /* Show navigation when hamburger is open */
     }
 
-    /* Adjust navigation link styles for mobile */
-    nav.nav ul li a {
-        padding: 12px 15px; /* Larger clickable area on mobile */
-        font-size: 1.2rem; /* Adjust font size for better readability */
+    /* Show hamburger icon */
+    .hamburger {
+        display: block; /* Visible on small screens */
     }
 }
