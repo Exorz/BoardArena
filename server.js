@@ -29,6 +29,11 @@ app.use('/leaderboard', leaderboardRoutes);
 
 // Serve HTML pages
 
+app.get('/lobbies/:game/lobby.html', (req, res) => {
+    const { game } = req.params;
+    const filePath = path.join(__dirname, 'views', 'lobbies', game, 'lobby.html');
+    res.sendFile(filePath);
+});
 
 // Route för How to Play filer
 app.get('/howto/:game', (req, res) => {
