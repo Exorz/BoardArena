@@ -5,7 +5,6 @@ require('dotenv').config();
 const app = express();
 const morgan = require('morgan');
 const { authenticateToken } = require('./middlewares/authMiddleware');
-const isAuthenticated = authenticateToken; // Alias för bättre läsbarhet
 
 
 // Middleware for handling JSON and URL-encoded data
@@ -31,7 +30,7 @@ app.use('/leaderboard', leaderboardRoutes);
 
 // Serve HTML pages
 
-app.get('/lobbies/:game/lobby.html', isAuthenticated, (req, res) => {
+app.get('/lobbies/:game/lobby.html', authenticateToken, (req, res) => {
     const { game } = req.params;
     const filePath = path.join(__dirname, 'views', 'lobbies', game, 'lobby.html');
 
