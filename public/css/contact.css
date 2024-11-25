@@ -93,6 +93,15 @@
     background-color: #218838; /* Slightly darker green on hover */
 }
 
+/* Redirect message (e.g., alerts or errors) */
+#redirect-message {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+    color: red;
+    font-weight: bold; /* Make the message stand out */
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .contact-container {
