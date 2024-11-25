@@ -37,4 +37,18 @@
     background-color: #218838;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
+.player-count {
+    position: fixed; /* Fix it under the chat box */
+    top: calc(20% + 610px); /* Position it just below the chat-box */
+    left: 20px; /* Align with the chat-box */
+    width: 300px; /* Same width as the chat box */
+    text-align: center;
+    margin-top: 10px;
+}
 
+.online-text {
+    color: green;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+}
