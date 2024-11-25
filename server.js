@@ -5,6 +5,8 @@ require('dotenv').config();
 const app = express();
 const morgan = require('morgan');
 const { authenticateToken } = require('./middlewares/authMiddleware');
+const isAuthenticated = authenticateToken; // Alias för bättre läsbarhet
+
 
 // Middleware for handling JSON and URL-encoded data
 app.use(express.json());
