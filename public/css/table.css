@@ -1,0 +1,54 @@
+.table {
+    position: relative;
+    width: 180px;
+    height: 100px;
+    background-color: #D2B48C;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), inset 0 -5px 5px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(180deg, #D2B48C 0%, #C19A6B 100%);
+    display: inline-block;
+}
+
+/* Optional styling for locked tables */
+.table.locked {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.table-status {
+    position: absolute;
+    color: red;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.chair {
+    width: 30px;
+    height: 30px;
+    background-color: #F5DEB3;
+    border: 2px solid #A0522D;
+    border-radius: 5px;
+    position: absolute;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 -3px 3px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+	user-select: none; /* Hindrar textmarkören */
+}
+
+.chair-1 { top: -15px; left: 50%; transform: translateX(-50%); }
+.chair-2 { bottom: -15px; left: 50%; transform: translateX(-50%); }
+.chair-3 { left: -15px; top: 50%; transform: translateY(-50%); }
+.chair-4 { right: -15px; top: 50%; transform: translateY(-50%); }.taken {
+    background-color: #A9A9A9;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.chair:hover {
+    background-color: #FFE4B5;
+}
