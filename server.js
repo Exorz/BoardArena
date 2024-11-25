@@ -29,6 +29,10 @@ app.use('/leaderboard', leaderboardRoutes);
 
 // Serve HTML pages
 
+app.get('/lobbies/:game/lobby.html', isAuthenticated, (req, res) => {
+  const { game } = req.params;  // Hämta speltypen från URL
+  const filePath = path.join(__dirname, 'views', 'lobbies', game, 'lobby.html');
+
 // Route för How to Play filer
 app.get('/howto/:game', (req, res) => {
     const game = req.params.game;
