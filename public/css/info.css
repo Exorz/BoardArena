@@ -1,0 +1,112 @@
+#lobbyFormContainer { /* Ändrat till det nya ID:t */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Eller flex-start beroende på hur du vill ha det */
+    width: 100%; /* Fyller hela bredden av popup-fönstret */
+    max-width: 1000px; /* Sätt en maxbredd om du vill begränsa den */
+    padding: 10px; /* Justera padding efter behov */
+    background-color: white; /* Vit bakgrund */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Skugga för popup */
+    border-radius: 8px; /* Rundade hörn */
+}
+
+#lobbyPopupContent {
+    width: 100%; /* Se till att detta element fyller hela bredden av popup-fönstret */
+    padding: 10px; /* Justera padding om det behövs */
+    box-sizing: border-box; /* Inkludera padding och border i elementets totala bredd */
+    overflow-y: auto; /* Lägg till scroll om nödvändigt */
+    text-align: left; /* Se till att texten är vänsterjusterad */
+}
+
+
+#lobbyPopupContent.howToPlay {
+    width: 100%; /* Se till att alla barn-element fyller bredden */
+	max-height: 500px; /* Maxhöjd för popup-innehållet */
+    margin: 0; /* Ta bort marginaler */
+    padding: 0; /* Ta bort padding om det finns */
+}
+
+#lobbyPopupContent.leaderboard {
+    width: 100%; /* Behåller full bredd */
+    max-height: 500px; /* Maxhöjd för popup-innehållet */
+    padding: 10px; /* Padding för bättre layout */
+    box-sizing: border-box;
+    overflow-y: auto; /* Aktiverar scroll om innehållet överskrider maxhöjden */
+    background-color: #ffffff; /* Vit bakgrund för skärpa */
+}
+
+
+* {
+    box-sizing: border-box; /* Inkludera padding och border i totalbredden */
+}
+
+.btn.cancel {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn.cancel:hover {
+    background-color: #c9302c;
+}
+
+.leaderboard {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard table {
+    width: 100%;
+    border-collapse: collapse; /* Tar bort extra utrymme mellan celler */
+    background-color: #ffffff;
+}
+
+.leaderboard th, .leaderboard td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    color: #333;
+}
+
+.leaderboard th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.leaderboard td {
+    color: #333;
+}
+
+.leaderboard tr:nth-child(even) {
+    background-color: #f2f2f2; /* Ljusgrå bakgrund för varannan rad */
+}
+
+.leaderboard tr:nth-child(odd) {
+    background-color: #ffffff; /* Vit bakgrund för resterande rader */
+}
+
+
+.leaderboard tr:hover {
+    background-color: #e1f5fe;
+    transition: background-color 0.3s ease;
+}
+
+.leaderboard .score img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+    position: relative;
+    top: -2px; /* Finjustera om bilden är för låg */
+}
